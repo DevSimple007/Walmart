@@ -1,0 +1,62 @@
+- generic [ref=e68]:
+  - generic [ref=e70]:
+    - generic [ref=e72] [cursor=pointer]: 
+    - generic [ref=e73]: 确认订单
+  - generic [ref=e74]:
+    - generic [ref=e75]:
+      - generic [ref=e76]: 配送方式
+      - generic [ref=e77]:
+        - button "到店自提" [ref=e78] [cursor=pointer]:
+          - img [ref=e79]
+          - generic [ref=e82]: 到店自提
+        - button "送货上门" [active] [ref=e83] [cursor=pointer]:
+          - img [ref=e84]
+          - generic [ref=e89]: 送货上门
+    - generic [ref=e118]:
+      - generic [ref=e119]: 收货信息
+      - generic [ref=e120]:
+        - generic [ref=e121] [cursor=pointer]:
+          - generic [ref=e122]:
+            - generic [ref=e123]:
+              - generic [ref=e124]: 张三
+              - generic [ref=e125]: "13900139001"
+              - generic [ref=e126]: 默认
+            - generic [ref=e127]: 北京市朝阳区望京街道望京SOHO T1 20层
+          - img [ref=e128]
+        - generic [ref=e131] [cursor=pointer]:
+          - generic [ref=e132]:
+            - generic [ref=e133]: 张三(公司)
+            - generic [ref=e134]: "13900139001"
+          - generic [ref=e135]: 北京市海淀区中关村中关村大厦15层
+        - generic [ref=e136] [cursor=pointer]: 使用其他地址
+      - generic [ref=e137] [cursor=pointer]:
+        - generic [ref=e138]: 送达时间
+        - generic [ref=e139]: 请选择期望送达时间
+        - img [ref=e140]
+    - generic [ref=e90]:
+      - generic [ref=e91]: 商品清单
+      - generic [ref=e92]:
+        - img [ref=e94]
+        - generic [ref=e98]:
+          - generic [ref=e99]: iPhone 15
+          - generic [ref=e100]:
+            - generic [ref=e101]: ¥6999.00
+            - generic [ref=e102]: x1
+    - generic [ref=e104] [cursor=pointer]:
+      - generic [ref=e105]: 备注
+      - textbox "选填，对商品有什么要求" [ref=e106]
+    - generic [ref=e107]:
+      - generic [ref=e108]:
+        - generic [ref=e109]: 商品金额
+        - generic [ref=e110]: ¥6999.00
+      - generic [ref=e142]:
+        - generic [ref=e143]: 配送费
+        - generic [ref=e144]: ¥5.00
+      - generic [ref=e111]:
+        - generic [ref=e112]: 合计
+        - generic [ref=e113]: ¥7004.00
+    - generic [ref=e114]:
+      - generic [ref=e115]:
+        - text: 实付
+        - generic [ref=e116]: ¥7004.00
+      - button "提交订单" [ref=e117] [cursor=pointer]

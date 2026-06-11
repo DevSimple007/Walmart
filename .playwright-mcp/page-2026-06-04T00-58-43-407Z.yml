@@ -1,0 +1,37 @@
+- generic [ref=e1]:
+  - generic [ref=e3765]:
+    - generic [ref=e3767]:
+      - generic [ref=e3769] [cursor=pointer]: 
+      - generic [ref=e3770]: 商品详情
+    - generic [ref=e3771]:
+      - img [ref=e3773]
+      - generic [ref=e3777]:
+        - generic [ref=e3778]: ¥35.00
+        - generic [ref=e3779]: 库存充足
+      - generic [ref=e3781]: 亨氏米粉 225g
+      - generic [ref=e3782]:
+        - generic [ref=e3783]: 商品参数
+        - generic [ref=e3784]:
+          - generic [ref=e3785]:
+            - generic [ref=e3786]: 商品编号
+            - generic [ref=e3787]: "386"
+          - generic [ref=e3788]:
+            - generic [ref=e3789]: 库存数量
+            - generic [ref=e3790]: 258件
+      - generic [ref=e3791]:
+        - generic [ref=e3792]: 商品介绍
+        - generic [ref=e3793]: 亨氏婴儿营养米粉
+      - generic [ref=e3794]:
+        - generic [ref=e3795]:
+          - button "首页" [ref=e3796] [cursor=pointer]:
+            - img [ref=e3797]
+            - generic [ref=e3800]: 首页
+          - button "1 购物车" [ref=e3810] [cursor=pointer]:
+            - generic [ref=e3802]:
+              - img [ref=e3803]
+              - generic [ref=e3811]: "1"
+            - generic [ref=e3807]: 购物车
+        - button "加入购物车" [active] [ref=e3808] [cursor=pointer]
+        - button "立即购买" [ref=e3809] [cursor=pointer]
+  - dialog [ref=e3812]:
+    - generic [ref=e3813]: 已加入购物车

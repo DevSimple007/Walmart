@@ -1,0 +1,286 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - img "Walmart" [ref=e6]
+      - generic [ref=e7]: 沃尔玛OMS
+    - menubar [ref=e8]:
+      - menuitem "首页" [ref=e9] [cursor=pointer]:
+        - img [ref=e11]
+        - generic [ref=e13]: 首页
+      - menuitem "系统管理" [ref=e14]:
+        - generic [ref=e15] [cursor=pointer]:
+          - img [ref=e17]
+          - generic [ref=e19]: 系统管理
+          - img [ref=e21]
+      - menuitem "商品管理" [ref=e23]:
+        - generic [ref=e24] [cursor=pointer]:
+          - img [ref=e26]
+          - generic [ref=e28]: 商品管理
+          - img [ref=e30]
+      - menuitem "库存管理" [ref=e32]:
+        - generic [ref=e33] [cursor=pointer]:
+          - img [ref=e35]
+          - generic [ref=e38]: 库存管理
+          - img [ref=e40]
+      - menuitem "会员管理" [expanded] [ref=e42]:
+        - generic [ref=e43] [cursor=pointer]:
+          - img [ref=e45]
+          - generic [ref=e47]: 会员管理
+          - img [ref=e49]
+        - menu [ref=e51]:
+          - menuitem "会员管理" [ref=e52] [cursor=pointer]
+          - menuitem "会员等级" [ref=e53] [cursor=pointer]
+          - menuitem "优惠券管理" [ref=e54] [cursor=pointer]
+      - menuitem "订单管理" [ref=e55]:
+        - generic [ref=e56] [cursor=pointer]:
+          - img [ref=e58]
+          - generic [ref=e60]: 订单管理
+          - img [ref=e62]
+      - menuitem "销售报表" [ref=e64]:
+        - generic [ref=e65] [cursor=pointer]:
+          - img [ref=e67]
+          - generic [ref=e69]: 销售报表
+          - img [ref=e71]
+  - generic [ref=e73]:
+    - banner [ref=e74]:
+      - button "切换菜单" [ref=e76] [cursor=pointer]:
+        - img [ref=e78]
+      - generic [ref=e82]:
+        - generic [ref=e83]:
+          - generic:
+            - search
+        - textbox "搜索订单、商品、会员..." [ref=e84]
+      - generic [ref=e85]:
+        - button "通知" [ref=e87] [cursor=pointer]:
+          - img [ref=e89]
+        - button "超级管理员" [ref=e95] [cursor=pointer]:
+          - generic [ref=e97]: 超级管理员
+          - img [ref=e99]
+    - main [ref=e101]:
+      - generic [ref=e102]:
+        - generic [ref=e103]:
+          - generic [ref=e105]:
+            - generic [ref=e106]: 优惠券管理
+            - generic [ref=e107]:
+              - button "发放给所有用户" [ref=e108] [cursor=pointer]:
+                - generic [ref=e109]: 发放给所有用户
+              - button "发放给指定用户" [ref=e110] [cursor=pointer]:
+                - generic [ref=e111]: 发放给指定用户
+              - button "添加优惠券" [ref=e112] [cursor=pointer]:
+                - generic [ref=e113]: 添加优惠券
+          - generic [ref=e114]:
+            - generic [ref=e116]:
+              - table [ref=e118]:
+                - rowgroup [ref=e130]:
+                  - row "ID 优惠券名称 类型 优惠值 最低消费 发放数量 已领取 状态 创建时间 操作" [ref=e131]:
+                    - columnheader "ID" [ref=e132]:
+                      - generic [ref=e133]: ID
+                    - columnheader "优惠券名称" [ref=e134]:
+                      - generic [ref=e135]: 优惠券名称
+                    - columnheader "类型" [ref=e136]:
+                      - generic [ref=e137]: 类型
+                    - columnheader "优惠值" [ref=e138]:
+                      - generic [ref=e139]: 优惠值
+                    - columnheader "最低消费" [ref=e140]:
+                      - generic [ref=e141]: 最低消费
+                    - columnheader "发放数量" [ref=e142]:
+                      - generic [ref=e143]: 发放数量
+                    - columnheader "已领取" [ref=e144]:
+                      - generic [ref=e145]: 已领取
+                    - columnheader "状态" [ref=e146]:
+                      - generic [ref=e147]: 状态
+                    - columnheader "创建时间" [ref=e148]:
+                      - generic [ref=e149]: 创建时间
+                    - columnheader "操作" [ref=e150]:
+                      - generic [ref=e151]: 操作
+              - table [ref=e156]:
+                - rowgroup [ref=e168]:
+                  - row "1 新人满100减20 满减 20 100 1000 150 启用 2026-06-02T20:11:59 编辑 删除" [ref=e169]:
+                    - cell "1" [ref=e170]:
+                      - generic [ref=e171]: "1"
+                    - cell "新人满100减20" [ref=e172]:
+                      - generic [ref=e173]: 新人满100减20
+                    - cell "满减" [ref=e174]:
+                      - generic [ref=e177]: 满减
+                    - cell "20" [ref=e178]:
+                      - generic [ref=e179]: "20"
+                    - cell "100" [ref=e180]:
+                      - generic [ref=e181]: "100"
+                    - cell "1000" [ref=e182]:
+                      - generic [ref=e183]: "1000"
+                    - cell "150" [ref=e184]:
+                      - generic [ref=e185]: "150"
+                    - cell "启用" [ref=e186]:
+                      - generic [ref=e189]: 启用
+                    - cell "2026-06-02T20:11:59" [ref=e190]:
+                      - generic [ref=e191]: 2026-06-02T20:11:59
+                    - cell "编辑 删除" [ref=e192]:
+                      - generic [ref=e193]:
+                        - button "编辑" [ref=e194] [cursor=pointer]:
+                          - generic [ref=e195]: 编辑
+                        - button "删除" [ref=e196] [cursor=pointer]:
+                          - generic [ref=e197]: 删除
+                  - row "2 全场9折券 折扣 0.9 0 500 80 启用 2026-06-02T20:11:59 编辑 删除" [ref=e198]:
+                    - cell "2" [ref=e199]:
+                      - generic [ref=e200]: "2"
+                    - cell "全场9折券" [ref=e201]:
+                      - generic [ref=e202]: 全场9折券
+                    - cell "折扣" [ref=e203]:
+                      - generic [ref=e206]: 折扣
+                    - cell "0.9" [ref=e207]:
+                      - generic [ref=e208]: "0.9"
+                    - cell "0" [ref=e209]:
+                      - generic [ref=e210]: "0"
+                    - cell "500" [ref=e211]:
+                      - generic [ref=e212]: "500"
+                    - cell "80" [ref=e213]:
+                      - generic [ref=e214]: "80"
+                    - cell "启用" [ref=e215]:
+                      - generic [ref=e218]: 启用
+                    - cell "2026-06-02T20:11:59" [ref=e219]:
+                      - generic [ref=e220]: 2026-06-02T20:11:59
+                    - cell "编辑 删除" [ref=e221]:
+                      - generic [ref=e222]:
+                        - button "编辑" [ref=e223] [cursor=pointer]:
+                          - generic [ref=e224]: 编辑
+                        - button "删除" [ref=e225] [cursor=pointer]:
+                          - generic [ref=e226]: 删除
+                  - row "3 立减5元券 立减 5 0 2000 301 启用 2026-06-02T20:11:59 编辑 删除" [ref=e227]:
+                    - cell "3" [ref=e228]:
+                      - generic [ref=e229]: "3"
+                    - cell "立减5元券" [ref=e230]:
+                      - generic [ref=e231]: 立减5元券
+                    - cell "立减" [ref=e232]:
+                      - generic [ref=e235]: 立减
+                    - cell "5" [ref=e236]:
+                      - generic [ref=e237]: "5"
+                    - cell "0" [ref=e238]:
+                      - generic [ref=e239]: "0"
+                    - cell "2000" [ref=e240]:
+                      - generic [ref=e241]: "2000"
+                    - cell "301" [ref=e242]:
+                      - generic [ref=e243]: "301"
+                    - cell "启用" [ref=e244]:
+                      - generic [ref=e247]: 启用
+                    - cell "2026-06-02T20:11:59" [ref=e248]:
+                      - generic [ref=e249]: 2026-06-02T20:11:59
+                    - cell "编辑 删除" [ref=e250]:
+                      - generic [ref=e251]:
+                        - button "编辑" [ref=e252] [cursor=pointer]:
+                          - generic [ref=e253]: 编辑
+                        - button "删除" [ref=e254] [cursor=pointer]:
+                          - generic [ref=e255]: 删除
+                  - row "4 满200减50 满减 50 200 200 10 启用 2026-06-02T20:11:59 编辑 删除" [ref=e256]:
+                    - cell "4" [ref=e257]:
+                      - generic [ref=e258]: "4"
+                    - cell "满200减50" [ref=e259]:
+                      - generic [ref=e260]: 满200减50
+                    - cell "满减" [ref=e261]:
+                      - generic [ref=e264]: 满减
+                    - cell "50" [ref=e265]:
+                      - generic [ref=e266]: "50"
+                    - cell "200" [ref=e267]:
+                      - generic [ref=e268]: "200"
+                    - cell "200" [ref=e269]:
+                      - generic [ref=e270]: "200"
+                    - cell "10" [ref=e271]:
+                      - generic [ref=e272]: "10"
+                    - cell "启用" [ref=e273]:
+                      - generic [ref=e276]: 启用
+                    - cell "2026-06-02T20:11:59" [ref=e277]:
+                      - generic [ref=e278]: 2026-06-02T20:11:59
+                    - cell "编辑 删除" [ref=e279]:
+                      - generic [ref=e280]:
+                        - button "编辑" [ref=e281] [cursor=pointer]:
+                          - generic [ref=e282]: 编辑
+                        - button "删除" [ref=e283] [cursor=pointer]:
+                          - generic [ref=e284]: 删除
+                  - row "5 会员日85折 折扣 0.15 0 100 7 启用 2026-06-02T20:11:59 编辑 删除" [ref=e285]:
+                    - cell "5" [ref=e286]:
+                      - generic [ref=e287]: "5"
+                    - cell "会员日85折" [ref=e288]:
+                      - generic [ref=e289]: 会员日85折
+                    - cell "折扣" [ref=e290]:
+                      - generic [ref=e293]: 折扣
+                    - cell "0.15" [ref=e294]:
+                      - generic [ref=e295]: "0.15"
+                    - cell "0" [ref=e296]:
+                      - generic [ref=e297]: "0"
+                    - cell "100" [ref=e298]:
+                      - generic [ref=e299]: "100"
+                    - cell "7" [ref=e300]:
+                      - generic [ref=e301]: "7"
+                    - cell "启用" [ref=e302]:
+                      - generic [ref=e305]: 启用
+                    - cell "2026-06-02T20:11:59" [ref=e306]:
+                      - generic [ref=e307]: 2026-06-02T20:11:59
+                    - cell "编辑 删除" [ref=e308]:
+                      - generic [ref=e309]:
+                        - button "编辑" [ref=e310] [cursor=pointer]:
+                          - generic [ref=e311]: 编辑
+                        - button "删除" [ref=e312] [cursor=pointer]:
+                          - generic [ref=e313]: 删除
+                  - row "8 测试立减10元 立减 10 0 100 0 启用 2026-06-04T09:09:31 编辑 删除" [ref=e459]:
+                    - cell "8" [ref=e460]:
+                      - generic [ref=e461]: "8"
+                    - cell "测试立减10元" [ref=e462]:
+                      - generic [ref=e463]: 测试立减10元
+                    - cell "立减" [ref=e464]:
+                      - generic [ref=e467]: 立减
+                    - cell "10" [ref=e468]:
+                      - generic [ref=e469]: "10"
+                    - cell "0" [ref=e470]:
+                      - generic [ref=e471]: "0"
+                    - cell "100" [ref=e472]:
+                      - generic [ref=e473]: "100"
+                    - cell "0" [ref=e474]:
+                      - generic [ref=e475]: "0"
+                    - cell "启用" [ref=e476]:
+                      - generic [ref=e479]: 启用
+                    - cell "2026-06-04T09:09:31" [ref=e480]:
+                      - generic [ref=e481]: 2026-06-04T09:09:31
+                    - cell "编辑 删除" [ref=e482]:
+                      - generic [ref=e483]:
+                        - button "编辑" [ref=e484] [cursor=pointer]:
+                          - generic [ref=e485]: 编辑
+                        - button "删除" [ref=e486] [cursor=pointer]:
+                          - generic [ref=e487]: 删除
+            - generic [ref=e314]:
+              - generic [ref=e315]: Total 0
+              - generic [ref=e318] [cursor=pointer]:
+                - generic:
+                  - combobox [ref=e320]
+                  - generic [ref=e321]: 10/page
+                - img [ref=e324]
+              - button "Go to previous page" [disabled] [ref=e326]:
+                - generic:
+                  - img
+              - list [ref=e327]:
+                - listitem "page 1" [ref=e328]: "1"
+              - button "Go to next page" [disabled] [ref=e329]:
+                - generic:
+                  - img
+              - generic [ref=e330]:
+                - generic [ref=e331]: Go to
+                - spinbutton "Page" [ref=e334]: "1"
+        - text: "* * * * *"
+        - dialog "发放优惠券给所有用户" [ref=e494]:
+          - generic [active] [ref=e495]:
+            - generic [ref=e496]:
+              - heading "发放优惠券给所有用户" [level=2] [ref=e497]
+              - button "Close this dialog" [ref=e498] [cursor=pointer]:
+                - img [ref=e500]
+            - generic [ref=e502]:
+              - generic [ref=e504]:
+                - generic [ref=e505]: 选择优惠券
+                - generic [ref=e508] [cursor=pointer]:
+                  - generic:
+                    - combobox "选择优惠券" [ref=e510]
+                    - generic [ref=e511]: 请选择优惠券
+                  - img [ref=e514]
+              - paragraph [ref=e516]: 提示：将为所有注册用户发放此优惠券
+            - generic [ref=e517]:
+              - button "取消" [ref=e518] [cursor=pointer]:
+                - generic [ref=e519]: 取消
+              - button "确认发放" [ref=e520] [cursor=pointer]:
+                - generic [ref=e521]: 确认发放

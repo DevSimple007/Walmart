@@ -1,0 +1,2356 @@
+- generic [ref=e45]:
+  - complementary [ref=e46]:
+    - generic [ref=e47]:
+      - img "Walmart" [ref=e48]
+      - generic [ref=e49]: 沃尔玛OMS
+    - menubar [ref=e50]:
+      - menuitem "首页" [ref=e51] [cursor=pointer]:
+        - img [ref=e53]
+        - generic [ref=e55]: 首页
+      - menuitem "系统管理" [ref=e56]:
+        - generic [ref=e57] [cursor=pointer]:
+          - img [ref=e59]
+          - generic [ref=e61]: 系统管理
+          - img [ref=e63]
+      - menuitem "商品管理" [expanded] [ref=e65]:
+        - generic [ref=e66] [cursor=pointer]:
+          - img [ref=e68]
+          - generic [ref=e70]: 商品管理
+          - img [ref=e72]
+        - menu [ref=e225]:
+          - menuitem "商品分类" [ref=e226] [cursor=pointer]
+          - menuitem "商品列表" [ref=e227] [cursor=pointer]
+          - menuitem "品牌管理" [active] [ref=e228] [cursor=pointer]
+          - menuitem "分类图标管理" [ref=e229] [cursor=pointer]
+      - menuitem "库存管理" [ref=e74]:
+        - generic [ref=e75] [cursor=pointer]:
+          - img [ref=e77]
+          - generic [ref=e80]: 库存管理
+          - img [ref=e82]
+      - menuitem "会员管理" [ref=e84]:
+        - generic [ref=e85] [cursor=pointer]:
+          - img [ref=e87]
+          - generic [ref=e89]: 会员管理
+          - img [ref=e91]
+      - menuitem "订单管理" [ref=e93]:
+        - generic [ref=e94] [cursor=pointer]:
+          - img [ref=e96]
+          - generic [ref=e98]: 订单管理
+          - img [ref=e100]
+      - menuitem "销售报表" [ref=e102]:
+        - generic [ref=e103] [cursor=pointer]:
+          - img [ref=e105]
+          - generic [ref=e107]: 销售报表
+          - img [ref=e109]
+  - generic [ref=e111]:
+    - banner [ref=e112]:
+      - button "切换菜单" [ref=e114] [cursor=pointer]:
+        - img [ref=e116]
+      - generic [ref=e120]:
+        - generic [ref=e121]:
+          - generic:
+            - search
+        - textbox "搜索订单、商品、会员..." [ref=e122]
+      - generic [ref=e123]:
+        - button "通知" [ref=e125] [cursor=pointer]:
+          - img [ref=e127]
+        - button "超级管理员" [ref=e133] [cursor=pointer]:
+          - generic [ref=e135]: 超级管理员
+          - img [ref=e137]
+    - main [ref=e139]:
+      - generic [ref=e12766]:
+        - generic [ref=e12768]:
+          - generic [ref=e12769]: 品牌管理
+          - button "添加品牌" [ref=e12770] [cursor=pointer]:
+            - generic [ref=e12771]: 添加品牌
+        - generic [ref=e12772]:
+          - generic [ref=e12773]:
+            - generic [ref=e12774]:
+              - generic [ref=e12775]: 品牌名称
+              - textbox "品牌名称" [ref=e12779]:
+                - /placeholder: 请输入品牌名称
+            - generic [ref=e12781]:
+              - button "搜索" [ref=e12782] [cursor=pointer]:
+                - generic [ref=e12783]: 搜索
+              - button "重置" [ref=e12784] [cursor=pointer]:
+                - generic [ref=e12785]: 重置
+          - generic [ref=e12787]:
+            - table [ref=e12789]:
+              - rowgroup [ref=e12798]:
+                - row "ID 品牌名称 品牌Logo 品牌描述 状态 创建时间 操作" [ref=e12799]:
+                  - columnheader "ID" [ref=e12800]:
+                    - generic [ref=e12801]: ID
+                  - columnheader "品牌名称" [ref=e12802]:
+                    - generic [ref=e12803]: 品牌名称
+                  - columnheader "品牌Logo" [ref=e12804]:
+                    - generic [ref=e12805]: 品牌Logo
+                  - columnheader "品牌描述" [ref=e12806]:
+                    - generic [ref=e12807]: 品牌描述
+                  - columnheader "状态" [ref=e12808]:
+                    - generic [ref=e12809]: 状态
+                  - columnheader "创建时间" [ref=e12810]:
+                    - generic [ref=e12811]: 创建时间
+                  - columnheader "操作" [ref=e12812]:
+                    - generic [ref=e12813]: 操作
+            - table [ref=e12818]:
+              - rowgroup [ref=e12827]:
+                - row "1 苹果 FAILED 美国苹果公司 启用 2026-05-04T23:11:11 编辑 删除" [ref=e12828]:
+                  - cell "1" [ref=e12829]:
+                    - generic [ref=e12830]: "1"
+                  - cell "苹果" [ref=e12831]:
+                    - generic [ref=e12832]: 苹果
+                  - cell "FAILED" [ref=e12833]:
+                    - generic [ref=e12836]: FAILED
+                  - cell "美国苹果公司" [ref=e12837]:
+                    - generic [ref=e12838]: 美国苹果公司
+                  - cell "启用" [ref=e12839]:
+                    - generic [ref=e12842]: 启用
+                  - cell "2026-05-04T23:11:11" [ref=e12843]:
+                    - generic [ref=e12844]: 2026-05-04T23:11:11
+                  - cell "编辑 删除" [ref=e12845]:
+                    - generic [ref=e12846]:
+                      - button "编辑" [ref=e12847] [cursor=pointer]:
+                        - generic [ref=e12848]: 编辑
+                      - button "删除" [ref=e12849] [cursor=pointer]:
+                        - generic [ref=e12850]: 删除
+                - row "2 华为 FAILED 中国华为技术有限公司 启用 2026-05-04T23:11:11 编辑 删除" [ref=e12851]:
+                  - cell "2" [ref=e12852]:
+                    - generic [ref=e12853]: "2"
+                  - cell "华为" [ref=e12854]:
+                    - generic [ref=e12855]: 华为
+                  - cell "FAILED" [ref=e12856]:
+                    - generic [ref=e12859]: FAILED
+                  - cell "中国华为技术有限公司" [ref=e12860]:
+                    - generic [ref=e12861]: 中国华为技术有限公司
+                  - cell "启用" [ref=e12862]:
+                    - generic [ref=e12865]: 启用
+                  - cell "2026-05-04T23:11:11" [ref=e12866]:
+                    - generic [ref=e12867]: 2026-05-04T23:11:11
+                  - cell "编辑 删除" [ref=e12868]:
+                    - generic [ref=e12869]:
+                      - button "编辑" [ref=e12870] [cursor=pointer]:
+                        - generic [ref=e12871]: 编辑
+                      - button "删除" [ref=e12872] [cursor=pointer]:
+                        - generic [ref=e12873]: 删除
+                - row "3 小米 FAILED 小米科技有限责任公司 启用 2026-05-04T23:11:11 编辑 删除" [ref=e12874]:
+                  - cell "3" [ref=e12875]:
+                    - generic [ref=e12876]: "3"
+                  - cell "小米" [ref=e12877]:
+                    - generic [ref=e12878]: 小米
+                  - cell "FAILED" [ref=e12879]:
+                    - generic [ref=e12882]: FAILED
+                  - cell "小米科技有限责任公司" [ref=e12883]:
+                    - generic [ref=e12884]: 小米科技有限责任公司
+                  - cell "启用" [ref=e12885]:
+                    - generic [ref=e12888]: 启用
+                  - cell "2026-05-04T23:11:11" [ref=e12889]:
+                    - generic [ref=e12890]: 2026-05-04T23:11:11
+                  - cell "编辑 删除" [ref=e12891]:
+                    - generic [ref=e12892]:
+                      - button "编辑" [ref=e12893] [cursor=pointer]:
+                        - generic [ref=e12894]: 编辑
+                      - button "删除" [ref=e12895] [cursor=pointer]:
+                        - generic [ref=e12896]: 删除
+                - row "4 三星 FAILED 韩国三星电子 启用 2026-05-04T23:11:11 编辑 删除" [ref=e12897]:
+                  - cell "4" [ref=e12898]:
+                    - generic [ref=e12899]: "4"
+                  - cell "三星" [ref=e12900]:
+                    - generic [ref=e12901]: 三星
+                  - cell "FAILED" [ref=e12902]:
+                    - generic [ref=e12905]: FAILED
+                  - cell "韩国三星电子" [ref=e12906]:
+                    - generic [ref=e12907]: 韩国三星电子
+                  - cell "启用" [ref=e12908]:
+                    - generic [ref=e12911]: 启用
+                  - cell "2026-05-04T23:11:11" [ref=e12912]:
+                    - generic [ref=e12913]: 2026-05-04T23:11:11
+                  - cell "编辑 删除" [ref=e12914]:
+                    - generic [ref=e12915]:
+                      - button "编辑" [ref=e12916] [cursor=pointer]:
+                        - generic [ref=e12917]: 编辑
+                      - button "删除" [ref=e12918] [cursor=pointer]:
+                        - generic [ref=e12919]: 删除
+                - row "5 海尔 FAILED 海尔集团 启用 2026-05-04T23:11:11 编辑 删除" [ref=e12920]:
+                  - cell "5" [ref=e12921]:
+                    - generic [ref=e12922]: "5"
+                  - cell "海尔" [ref=e12923]:
+                    - generic [ref=e12924]: 海尔
+                  - cell "FAILED" [ref=e12925]:
+                    - generic [ref=e12928]: FAILED
+                  - cell "海尔集团" [ref=e12929]:
+                    - generic [ref=e12930]: 海尔集团
+                  - cell "启用" [ref=e12931]:
+                    - generic [ref=e12934]: 启用
+                  - cell "2026-05-04T23:11:11" [ref=e12935]:
+                    - generic [ref=e12936]: 2026-05-04T23:11:11
+                  - cell "编辑 删除" [ref=e12937]:
+                    - generic [ref=e12938]:
+                      - button "编辑" [ref=e12939] [cursor=pointer]:
+                        - generic [ref=e12940]: 编辑
+                      - button "删除" [ref=e12941] [cursor=pointer]:
+                        - generic [ref=e12942]: 删除
+                - row "6 格力 FAILED 格力电器 启用 2026-05-04T23:11:11 编辑 删除" [ref=e12943]:
+                  - cell "6" [ref=e12944]:
+                    - generic [ref=e12945]: "6"
+                  - cell "格力" [ref=e12946]:
+                    - generic [ref=e12947]: 格力
+                  - cell "FAILED" [ref=e12948]:
+                    - generic [ref=e12951]: FAILED
+                  - cell "格力电器" [ref=e12952]:
+                    - generic [ref=e12953]: 格力电器
+                  - cell "启用" [ref=e12954]:
+                    - generic [ref=e12957]: 启用
+                  - cell "2026-05-04T23:11:11" [ref=e12958]:
+                    - generic [ref=e12959]: 2026-05-04T23:11:11
+                  - cell "编辑 删除" [ref=e12960]:
+                    - generic [ref=e12961]:
+                      - button "编辑" [ref=e12962] [cursor=pointer]:
+                        - generic [ref=e12963]: 编辑
+                      - button "删除" [ref=e12964] [cursor=pointer]:
+                        - generic [ref=e12965]: 删除
+                - row "7 可口可乐 FAILED 饮料品牌 启用 2026-05-04T23:11:11 编辑 删除" [ref=e12966]:
+                  - cell "7" [ref=e12967]:
+                    - generic [ref=e12968]: "7"
+                  - cell "可口可乐" [ref=e12969]:
+                    - generic [ref=e12970]: 可口可乐
+                  - cell "FAILED" [ref=e12971]:
+                    - generic [ref=e12974]: FAILED
+                  - cell "饮料品牌" [ref=e12975]:
+                    - generic [ref=e12976]: 饮料品牌
+                  - cell "启用" [ref=e12977]:
+                    - generic [ref=e12980]: 启用
+                  - cell "2026-05-04T23:11:11" [ref=e12981]:
+                    - generic [ref=e12982]: 2026-05-04T23:11:11
+                  - cell "编辑 删除" [ref=e12983]:
+                    - generic [ref=e12984]:
+                      - button "编辑" [ref=e12985] [cursor=pointer]:
+                        - generic [ref=e12986]: 编辑
+                      - button "删除" [ref=e12987] [cursor=pointer]:
+                        - generic [ref=e12988]: 删除
+                - row "8 宝洁 FAILED 日化消费品牌 启用 2026-05-04T23:11:11 编辑 删除" [ref=e12989]:
+                  - cell "8" [ref=e12990]:
+                    - generic [ref=e12991]: "8"
+                  - cell "宝洁" [ref=e12992]:
+                    - generic [ref=e12993]: 宝洁
+                  - cell "FAILED" [ref=e12994]:
+                    - generic [ref=e12997]: FAILED
+                  - cell "日化消费品牌" [ref=e12998]:
+                    - generic [ref=e12999]: 日化消费品牌
+                  - cell "启用" [ref=e13000]:
+                    - generic [ref=e13003]: 启用
+                  - cell "2026-05-04T23:11:11" [ref=e13004]:
+                    - generic [ref=e13005]: 2026-05-04T23:11:11
+                  - cell "编辑 删除" [ref=e13006]:
+                    - generic [ref=e13007]:
+                      - button "编辑" [ref=e13008] [cursor=pointer]:
+                        - generic [ref=e13009]: 编辑
+                      - button "删除" [ref=e13010] [cursor=pointer]:
+                        - generic [ref=e13011]: 删除
+                - row "9 蒙牛 FAILED 蒙牛乳业 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13012]:
+                  - cell "9" [ref=e13013]:
+                    - generic [ref=e13014]: "9"
+                  - cell "蒙牛" [ref=e13015]:
+                    - generic [ref=e13016]: 蒙牛
+                  - cell "FAILED" [ref=e13017]:
+                    - generic [ref=e13020]: FAILED
+                  - cell "蒙牛乳业" [ref=e13021]:
+                    - generic [ref=e13022]: 蒙牛乳业
+                  - cell "启用" [ref=e13023]:
+                    - generic [ref=e13026]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13027]:
+                    - generic [ref=e13028]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13029]:
+                    - generic [ref=e13030]:
+                      - button "编辑" [ref=e13031] [cursor=pointer]:
+                        - generic [ref=e13032]: 编辑
+                      - button "删除" [ref=e13033] [cursor=pointer]:
+                        - generic [ref=e13034]: 删除
+                - row "10 伊利 FAILED 伊利集团 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13035]:
+                  - cell "10" [ref=e13036]:
+                    - generic [ref=e13037]: "10"
+                  - cell "伊利" [ref=e13038]:
+                    - generic [ref=e13039]: 伊利
+                  - cell "FAILED" [ref=e13040]:
+                    - generic [ref=e13043]: FAILED
+                  - cell "伊利集团" [ref=e13044]:
+                    - generic [ref=e13045]: 伊利集团
+                  - cell "启用" [ref=e13046]:
+                    - generic [ref=e13049]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13050]:
+                    - generic [ref=e13051]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13052]:
+                    - generic [ref=e13053]:
+                      - button "编辑" [ref=e13054] [cursor=pointer]:
+                        - generic [ref=e13055]: 编辑
+                      - button "删除" [ref=e13056] [cursor=pointer]:
+                        - generic [ref=e13057]: 删除
+                - row "11 三只松鼠 FAILED 三只松鼠股份有限公司 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13058]:
+                  - cell "11" [ref=e13059]:
+                    - generic [ref=e13060]: "11"
+                  - cell "三只松鼠" [ref=e13061]:
+                    - generic [ref=e13062]: 三只松鼠
+                  - cell "FAILED" [ref=e13063]:
+                    - generic [ref=e13066]: FAILED
+                  - cell "三只松鼠股份有限公司" [ref=e13067]:
+                    - generic [ref=e13068]: 三只松鼠股份有限公司
+                  - cell "启用" [ref=e13069]:
+                    - generic [ref=e13072]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13073]:
+                    - generic [ref=e13074]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13075]:
+                    - generic [ref=e13076]:
+                      - button "编辑" [ref=e13077] [cursor=pointer]:
+                        - generic [ref=e13078]: 编辑
+                      - button "删除" [ref=e13079] [cursor=pointer]:
+                        - generic [ref=e13080]: 删除
+                - row "12 百事 FAILED 百事公司 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13081]:
+                  - cell "12" [ref=e13082]:
+                    - generic [ref=e13083]: "12"
+                  - cell "百事" [ref=e13084]:
+                    - generic [ref=e13085]: 百事
+                  - cell "FAILED" [ref=e13086]:
+                    - generic [ref=e13089]: FAILED
+                  - cell "百事公司" [ref=e13090]:
+                    - generic [ref=e13091]: 百事公司
+                  - cell "启用" [ref=e13092]:
+                    - generic [ref=e13095]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13096]:
+                    - generic [ref=e13097]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13098]:
+                    - generic [ref=e13099]:
+                      - button "编辑" [ref=e13100] [cursor=pointer]:
+                        - generic [ref=e13101]: 编辑
+                      - button "删除" [ref=e13102] [cursor=pointer]:
+                        - generic [ref=e13103]: 删除
+                - row "13 联合利华 FAILED 联合利华集团 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13104]:
+                  - cell "13" [ref=e13105]:
+                    - generic [ref=e13106]: "13"
+                  - cell "联合利华" [ref=e13107]:
+                    - generic [ref=e13108]: 联合利华
+                  - cell "FAILED" [ref=e13109]:
+                    - generic [ref=e13112]: FAILED
+                  - cell "联合利华集团" [ref=e13113]:
+                    - generic [ref=e13114]: 联合利华集团
+                  - cell "启用" [ref=e13115]:
+                    - generic [ref=e13118]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13119]:
+                    - generic [ref=e13120]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13121]:
+                    - generic [ref=e13122]:
+                      - button "编辑" [ref=e13123] [cursor=pointer]:
+                        - generic [ref=e13124]: 编辑
+                      - button "删除" [ref=e13125] [cursor=pointer]:
+                        - generic [ref=e13126]: 删除
+                - row "14 雀巢 FAILED 雀巢公司 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13127]:
+                  - cell "14" [ref=e13128]:
+                    - generic [ref=e13129]: "14"
+                  - cell "雀巢" [ref=e13130]:
+                    - generic [ref=e13131]: 雀巢
+                  - cell "FAILED" [ref=e13132]:
+                    - generic [ref=e13135]: FAILED
+                  - cell "雀巢公司" [ref=e13136]:
+                    - generic [ref=e13137]: 雀巢公司
+                  - cell "启用" [ref=e13138]:
+                    - generic [ref=e13141]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13142]:
+                    - generic [ref=e13143]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13144]:
+                    - generic [ref=e13145]:
+                      - button "编辑" [ref=e13146] [cursor=pointer]:
+                        - generic [ref=e13147]: 编辑
+                      - button "删除" [ref=e13148] [cursor=pointer]:
+                        - generic [ref=e13149]: 删除
+                - row "15 美的 FAILED 美的集团 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13150]:
+                  - cell "15" [ref=e13151]:
+                    - generic [ref=e13152]: "15"
+                  - cell "美的" [ref=e13153]:
+                    - generic [ref=e13154]: 美的
+                  - cell "FAILED" [ref=e13155]:
+                    - generic [ref=e13158]: FAILED
+                  - cell "美的集团" [ref=e13159]:
+                    - generic [ref=e13160]: 美的集团
+                  - cell "启用" [ref=e13161]:
+                    - generic [ref=e13164]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13165]:
+                    - generic [ref=e13166]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13167]:
+                    - generic [ref=e13168]:
+                      - button "编辑" [ref=e13169] [cursor=pointer]:
+                        - generic [ref=e13170]: 编辑
+                      - button "删除" [ref=e13171] [cursor=pointer]:
+                        - generic [ref=e13172]: 删除
+                - row "16 飞鹤 FAILED 飞鹤乳业 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13173]:
+                  - cell "16" [ref=e13174]:
+                    - generic [ref=e13175]: "16"
+                  - cell "飞鹤" [ref=e13176]:
+                    - generic [ref=e13177]: 飞鹤
+                  - cell "FAILED" [ref=e13178]:
+                    - generic [ref=e13181]: FAILED
+                  - cell "飞鹤乳业" [ref=e13182]:
+                    - generic [ref=e13183]: 飞鹤乳业
+                  - cell "启用" [ref=e13184]:
+                    - generic [ref=e13187]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13188]:
+                    - generic [ref=e13189]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13190]:
+                    - generic [ref=e13191]:
+                      - button "编辑" [ref=e13192] [cursor=pointer]:
+                        - generic [ref=e13193]: 编辑
+                      - button "删除" [ref=e13194] [cursor=pointer]:
+                        - generic [ref=e13195]: 删除
+                - row "17 维达 FAILED 维达国际 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13196]:
+                  - cell "17" [ref=e13197]:
+                    - generic [ref=e13198]: "17"
+                  - cell "维达" [ref=e13199]:
+                    - generic [ref=e13200]: 维达
+                  - cell "FAILED" [ref=e13201]:
+                    - generic [ref=e13204]: FAILED
+                  - cell "维达国际" [ref=e13205]:
+                    - generic [ref=e13206]: 维达国际
+                  - cell "启用" [ref=e13207]:
+                    - generic [ref=e13210]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13211]:
+                    - generic [ref=e13212]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13213]:
+                    - generic [ref=e13214]:
+                      - button "编辑" [ref=e13215] [cursor=pointer]:
+                        - generic [ref=e13216]: 编辑
+                      - button "删除" [ref=e13217] [cursor=pointer]:
+                        - generic [ref=e13218]: 删除
+                - row "18 蓝月亮 FAILED 蓝月亮集团 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13219]:
+                  - cell "18" [ref=e13220]:
+                    - generic [ref=e13221]: "18"
+                  - cell "蓝月亮" [ref=e13222]:
+                    - generic [ref=e13223]: 蓝月亮
+                  - cell "FAILED" [ref=e13224]:
+                    - generic [ref=e13227]: FAILED
+                  - cell "蓝月亮集团" [ref=e13228]:
+                    - generic [ref=e13229]: 蓝月亮集团
+                  - cell "启用" [ref=e13230]:
+                    - generic [ref=e13233]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13234]:
+                    - generic [ref=e13235]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13236]:
+                    - generic [ref=e13237]:
+                      - button "编辑" [ref=e13238] [cursor=pointer]:
+                        - generic [ref=e13239]: 编辑
+                      - button "删除" [ref=e13240] [cursor=pointer]:
+                        - generic [ref=e13241]: 删除
+                - row "19 耐克 FAILED 耐克公司 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13242]:
+                  - cell "19" [ref=e13243]:
+                    - generic [ref=e13244]: "19"
+                  - cell "耐克" [ref=e13245]:
+                    - generic [ref=e13246]: 耐克
+                  - cell "FAILED" [ref=e13247]:
+                    - generic [ref=e13250]: FAILED
+                  - cell "耐克公司" [ref=e13251]:
+                    - generic [ref=e13252]: 耐克公司
+                  - cell "启用" [ref=e13253]:
+                    - generic [ref=e13256]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13257]:
+                    - generic [ref=e13258]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13259]:
+                    - generic [ref=e13260]:
+                      - button "编辑" [ref=e13261] [cursor=pointer]:
+                        - generic [ref=e13262]: 编辑
+                      - button "删除" [ref=e13263] [cursor=pointer]:
+                        - generic [ref=e13264]: 删除
+                - row "20 阿迪达斯 FAILED 阿迪达斯集团 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13265]:
+                  - cell "20" [ref=e13266]:
+                    - generic [ref=e13267]: "20"
+                  - cell "阿迪达斯" [ref=e13268]:
+                    - generic [ref=e13269]: 阿迪达斯
+                  - cell "FAILED" [ref=e13270]:
+                    - generic [ref=e13273]: FAILED
+                  - cell "阿迪达斯集团" [ref=e13274]:
+                    - generic [ref=e13275]: 阿迪达斯集团
+                  - cell "启用" [ref=e13276]:
+                    - generic [ref=e13279]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13280]:
+                    - generic [ref=e13281]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13282]:
+                    - generic [ref=e13283]:
+                      - button "编辑" [ref=e13284] [cursor=pointer]:
+                        - generic [ref=e13285]: 编辑
+                      - button "删除" [ref=e13286] [cursor=pointer]:
+                        - generic [ref=e13287]: 删除
+                - row "21 优衣库 FAILED 优衣库品牌 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13288]:
+                  - cell "21" [ref=e13289]:
+                    - generic [ref=e13290]: "21"
+                  - cell "优衣库" [ref=e13291]:
+                    - generic [ref=e13292]: 优衣库
+                  - cell "FAILED" [ref=e13293]:
+                    - generic [ref=e13296]: FAILED
+                  - cell "优衣库品牌" [ref=e13297]:
+                    - generic [ref=e13298]: 优衣库品牌
+                  - cell "启用" [ref=e13299]:
+                    - generic [ref=e13302]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13303]:
+                    - generic [ref=e13304]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13305]:
+                    - generic [ref=e13306]:
+                      - button "编辑" [ref=e13307] [cursor=pointer]:
+                        - generic [ref=e13308]: 编辑
+                      - button "删除" [ref=e13309] [cursor=pointer]:
+                        - generic [ref=e13310]: 删除
+                - row "22 戴森 FAILED 戴森公司 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13311]:
+                  - cell "22" [ref=e13312]:
+                    - generic [ref=e13313]: "22"
+                  - cell "戴森" [ref=e13314]:
+                    - generic [ref=e13315]: 戴森
+                  - cell "FAILED" [ref=e13316]:
+                    - generic [ref=e13319]: FAILED
+                  - cell "戴森公司" [ref=e13320]:
+                    - generic [ref=e13321]: 戴森公司
+                  - cell "启用" [ref=e13322]:
+                    - generic [ref=e13325]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13326]:
+                    - generic [ref=e13327]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13328]:
+                    - generic [ref=e13329]:
+                      - button "编辑" [ref=e13330] [cursor=pointer]:
+                        - generic [ref=e13331]: 编辑
+                      - button "删除" [ref=e13332] [cursor=pointer]:
+                        - generic [ref=e13333]: 删除
+                - row "23 索尼 FAILED 索尼公司 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13334]:
+                  - cell "23" [ref=e13335]:
+                    - generic [ref=e13336]: "23"
+                  - cell "索尼" [ref=e13337]:
+                    - generic [ref=e13338]: 索尼
+                  - cell "FAILED" [ref=e13339]:
+                    - generic [ref=e13342]: FAILED
+                  - cell "索尼公司" [ref=e13343]:
+                    - generic [ref=e13344]: 索尼公司
+                  - cell "启用" [ref=e13345]:
+                    - generic [ref=e13348]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13349]:
+                    - generic [ref=e13350]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13351]:
+                    - generic [ref=e13352]:
+                      - button "编辑" [ref=e13353] [cursor=pointer]:
+                        - generic [ref=e13354]: 编辑
+                      - button "删除" [ref=e13355] [cursor=pointer]:
+                        - generic [ref=e13356]: 删除
+                - row "24 飞利浦 FAILED 飞利浦公司 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13357]:
+                  - cell "24" [ref=e13358]:
+                    - generic [ref=e13359]: "24"
+                  - cell "飞利浦" [ref=e13360]:
+                    - generic [ref=e13361]: 飞利浦
+                  - cell "FAILED" [ref=e13362]:
+                    - generic [ref=e13365]: FAILED
+                  - cell "飞利浦公司" [ref=e13366]:
+                    - generic [ref=e13367]: 飞利浦公司
+                  - cell "启用" [ref=e13368]:
+                    - generic [ref=e13371]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13372]:
+                    - generic [ref=e13373]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13374]:
+                    - generic [ref=e13375]:
+                      - button "编辑" [ref=e13376] [cursor=pointer]:
+                        - generic [ref=e13377]: 编辑
+                      - button "删除" [ref=e13378] [cursor=pointer]:
+                        - generic [ref=e13379]: 删除
+                - row "25 欧莱雅 FAILED 欧莱雅集团 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13380]:
+                  - cell "25" [ref=e13381]:
+                    - generic [ref=e13382]: "25"
+                  - cell "欧莱雅" [ref=e13383]:
+                    - generic [ref=e13384]: 欧莱雅
+                  - cell "FAILED" [ref=e13385]:
+                    - generic [ref=e13388]: FAILED
+                  - cell "欧莱雅集团" [ref=e13389]:
+                    - generic [ref=e13390]: 欧莱雅集团
+                  - cell "启用" [ref=e13391]:
+                    - generic [ref=e13394]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13395]:
+                    - generic [ref=e13396]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13397]:
+                    - generic [ref=e13398]:
+                      - button "编辑" [ref=e13399] [cursor=pointer]:
+                        - generic [ref=e13400]: 编辑
+                      - button "删除" [ref=e13401] [cursor=pointer]:
+                        - generic [ref=e13402]: 删除
+                - row "26 资生堂 FAILED 资生堂集团 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13403]:
+                  - cell "26" [ref=e13404]:
+                    - generic [ref=e13405]: "26"
+                  - cell "资生堂" [ref=e13406]:
+                    - generic [ref=e13407]: 资生堂
+                  - cell "FAILED" [ref=e13408]:
+                    - generic [ref=e13411]: FAILED
+                  - cell "资生堂集团" [ref=e13412]:
+                    - generic [ref=e13413]: 资生堂集团
+                  - cell "启用" [ref=e13414]:
+                    - generic [ref=e13417]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13418]:
+                    - generic [ref=e13419]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13420]:
+                    - generic [ref=e13421]:
+                      - button "编辑" [ref=e13422] [cursor=pointer]:
+                        - generic [ref=e13423]: 编辑
+                      - button "删除" [ref=e13424] [cursor=pointer]:
+                        - generic [ref=e13425]: 删除
+                - row "27 农夫山泉 FAILED 农夫山泉股份有限公司 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13426]:
+                  - cell "27" [ref=e13427]:
+                    - generic [ref=e13428]: "27"
+                  - cell "农夫山泉" [ref=e13429]:
+                    - generic [ref=e13430]: 农夫山泉
+                  - cell "FAILED" [ref=e13431]:
+                    - generic [ref=e13434]: FAILED
+                  - cell "农夫山泉股份有限公司" [ref=e13435]:
+                    - generic [ref=e13436]: 农夫山泉股份有限公司
+                  - cell "启用" [ref=e13437]:
+                    - generic [ref=e13440]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13441]:
+                    - generic [ref=e13442]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13443]:
+                    - generic [ref=e13444]:
+                      - button "编辑" [ref=e13445] [cursor=pointer]:
+                        - generic [ref=e13446]: 编辑
+                      - button "删除" [ref=e13447] [cursor=pointer]:
+                        - generic [ref=e13448]: 删除
+                - row "28 青岛啤酒 FAILED 青岛啤酒股份有限公司 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13449]:
+                  - cell "28" [ref=e13450]:
+                    - generic [ref=e13451]: "28"
+                  - cell "青岛啤酒" [ref=e13452]:
+                    - generic [ref=e13453]: 青岛啤酒
+                  - cell "FAILED" [ref=e13454]:
+                    - generic [ref=e13457]: FAILED
+                  - cell "青岛啤酒股份有限公司" [ref=e13458]:
+                    - generic [ref=e13459]: 青岛啤酒股份有限公司
+                  - cell "启用" [ref=e13460]:
+                    - generic [ref=e13463]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13464]:
+                    - generic [ref=e13465]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13466]:
+                    - generic [ref=e13467]:
+                      - button "编辑" [ref=e13468] [cursor=pointer]:
+                        - generic [ref=e13469]: 编辑
+                      - button "删除" [ref=e13470] [cursor=pointer]:
+                        - generic [ref=e13471]: 删除
+                - row "29 汤臣倍健 FAILED 汤臣倍健股份有限公司 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13472]:
+                  - cell "29" [ref=e13473]:
+                    - generic [ref=e13474]: "29"
+                  - cell "汤臣倍健" [ref=e13475]:
+                    - generic [ref=e13476]: 汤臣倍健
+                  - cell "FAILED" [ref=e13477]:
+                    - generic [ref=e13480]: FAILED
+                  - cell "汤臣倍健股份有限公司" [ref=e13481]:
+                    - generic [ref=e13482]: 汤臣倍健股份有限公司
+                  - cell "启用" [ref=e13483]:
+                    - generic [ref=e13486]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13487]:
+                    - generic [ref=e13488]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13489]:
+                    - generic [ref=e13490]:
+                      - button "编辑" [ref=e13491] [cursor=pointer]:
+                        - generic [ref=e13492]: 编辑
+                      - button "删除" [ref=e13493] [cursor=pointer]:
+                        - generic [ref=e13494]: 删除
+                - row "30 乐高 FAILED 乐高集团 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13495]:
+                  - cell "30" [ref=e13496]:
+                    - generic [ref=e13497]: "30"
+                  - cell "乐高" [ref=e13498]:
+                    - generic [ref=e13499]: 乐高
+                  - cell "FAILED" [ref=e13500]:
+                    - generic [ref=e13503]: FAILED
+                  - cell "乐高集团" [ref=e13504]:
+                    - generic [ref=e13505]: 乐高集团
+                  - cell "启用" [ref=e13506]:
+                    - generic [ref=e13509]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13510]:
+                    - generic [ref=e13511]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13512]:
+                    - generic [ref=e13513]:
+                      - button "编辑" [ref=e13514] [cursor=pointer]:
+                        - generic [ref=e13515]: 编辑
+                      - button "删除" [ref=e13516] [cursor=pointer]:
+                        - generic [ref=e13517]: 删除
+                - row "31 好时 FAILED 好时公司 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13518]:
+                  - cell "31" [ref=e13519]:
+                    - generic [ref=e13520]: "31"
+                  - cell "好时" [ref=e13521]:
+                    - generic [ref=e13522]: 好时
+                  - cell "FAILED" [ref=e13523]:
+                    - generic [ref=e13526]: FAILED
+                  - cell "好时公司" [ref=e13527]:
+                    - generic [ref=e13528]: 好时公司
+                  - cell "启用" [ref=e13529]:
+                    - generic [ref=e13532]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13533]:
+                    - generic [ref=e13534]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13535]:
+                    - generic [ref=e13536]:
+                      - button "编辑" [ref=e13537] [cursor=pointer]:
+                        - generic [ref=e13538]: 编辑
+                      - button "删除" [ref=e13539] [cursor=pointer]:
+                        - generic [ref=e13540]: 删除
+                - row "32 旺旺 FAILED 旺旺集团 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13541]:
+                  - cell "32" [ref=e13542]:
+                    - generic [ref=e13543]: "32"
+                  - cell "旺旺" [ref=e13544]:
+                    - generic [ref=e13545]: 旺旺
+                  - cell "FAILED" [ref=e13546]:
+                    - generic [ref=e13549]: FAILED
+                  - cell "旺旺集团" [ref=e13550]:
+                    - generic [ref=e13551]: 旺旺集团
+                  - cell "启用" [ref=e13552]:
+                    - generic [ref=e13555]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13556]:
+                    - generic [ref=e13557]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13558]:
+                    - generic [ref=e13559]:
+                      - button "编辑" [ref=e13560] [cursor=pointer]:
+                        - generic [ref=e13561]: 编辑
+                      - button "删除" [ref=e13562] [cursor=pointer]:
+                        - generic [ref=e13563]: 删除
+                - row "33 康师傅 FAILED 康师傅控股 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13564]:
+                  - cell "33" [ref=e13565]:
+                    - generic [ref=e13566]: "33"
+                  - cell "康师傅" [ref=e13567]:
+                    - generic [ref=e13568]: 康师傅
+                  - cell "FAILED" [ref=e13569]:
+                    - generic [ref=e13572]: FAILED
+                  - cell "康师傅控股" [ref=e13573]:
+                    - generic [ref=e13574]: 康师傅控股
+                  - cell "启用" [ref=e13575]:
+                    - generic [ref=e13578]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13579]:
+                    - generic [ref=e13580]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13581]:
+                    - generic [ref=e13582]:
+                      - button "编辑" [ref=e13583] [cursor=pointer]:
+                        - generic [ref=e13584]: 编辑
+                      - button "删除" [ref=e13585] [cursor=pointer]:
+                        - generic [ref=e13586]: 删除
+                - row "34 统一 FAILED 统一企业 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13587]:
+                  - cell "34" [ref=e13588]:
+                    - generic [ref=e13589]: "34"
+                  - cell "统一" [ref=e13590]:
+                    - generic [ref=e13591]: 统一
+                  - cell "FAILED" [ref=e13592]:
+                    - generic [ref=e13595]: FAILED
+                  - cell "统一企业" [ref=e13596]:
+                    - generic [ref=e13597]: 统一企业
+                  - cell "启用" [ref=e13598]:
+                    - generic [ref=e13601]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13602]:
+                    - generic [ref=e13603]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13604]:
+                    - generic [ref=e13605]:
+                      - button "编辑" [ref=e13606] [cursor=pointer]:
+                        - generic [ref=e13607]: 编辑
+                      - button "删除" [ref=e13608] [cursor=pointer]:
+                        - generic [ref=e13609]: 删除
+                - row "35 立白 FAILED 立白集团 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13610]:
+                  - cell "35" [ref=e13611]:
+                    - generic [ref=e13612]: "35"
+                  - cell "立白" [ref=e13613]:
+                    - generic [ref=e13614]: 立白
+                  - cell "FAILED" [ref=e13615]:
+                    - generic [ref=e13618]: FAILED
+                  - cell "立白集团" [ref=e13619]:
+                    - generic [ref=e13620]: 立白集团
+                  - cell "启用" [ref=e13621]:
+                    - generic [ref=e13624]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13625]:
+                    - generic [ref=e13626]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13627]:
+                    - generic [ref=e13628]:
+                      - button "编辑" [ref=e13629] [cursor=pointer]:
+                        - generic [ref=e13630]: 编辑
+                      - button "删除" [ref=e13631] [cursor=pointer]:
+                        - generic [ref=e13632]: 删除
+                - row "36 恒安 FAILED 恒安国际 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13633]:
+                  - cell "36" [ref=e13634]:
+                    - generic [ref=e13635]: "36"
+                  - cell "恒安" [ref=e13636]:
+                    - generic [ref=e13637]: 恒安
+                  - cell "FAILED" [ref=e13638]:
+                    - generic [ref=e13641]: FAILED
+                  - cell "恒安国际" [ref=e13642]:
+                    - generic [ref=e13643]: 恒安国际
+                  - cell "启用" [ref=e13644]:
+                    - generic [ref=e13647]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13648]:
+                    - generic [ref=e13649]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13650]:
+                    - generic [ref=e13651]:
+                      - button "编辑" [ref=e13652] [cursor=pointer]:
+                        - generic [ref=e13653]: 编辑
+                      - button "删除" [ref=e13654] [cursor=pointer]:
+                        - generic [ref=e13655]: 删除
+                - row "37 全棉时代 FAILED 全棉时代品牌 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13656]:
+                  - cell "37" [ref=e13657]:
+                    - generic [ref=e13658]: "37"
+                  - cell "全棉时代" [ref=e13659]:
+                    - generic [ref=e13660]: 全棉时代
+                  - cell "FAILED" [ref=e13661]:
+                    - generic [ref=e13664]: FAILED
+                  - cell "全棉时代品牌" [ref=e13665]:
+                    - generic [ref=e13666]: 全棉时代品牌
+                  - cell "启用" [ref=e13667]:
+                    - generic [ref=e13670]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13671]:
+                    - generic [ref=e13672]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13673]:
+                    - generic [ref=e13674]:
+                      - button "编辑" [ref=e13675] [cursor=pointer]:
+                        - generic [ref=e13676]: 编辑
+                      - button "删除" [ref=e13677] [cursor=pointer]:
+                        - generic [ref=e13678]: 删除
+                - row "38 十月结晶 FAILED 母婴品牌 启用 2026-06-02T22:20:34 编辑 删除" [ref=e13679]:
+                  - cell "38" [ref=e13680]:
+                    - generic [ref=e13681]: "38"
+                  - cell "十月结晶" [ref=e13682]:
+                    - generic [ref=e13683]: 十月结晶
+                  - cell "FAILED" [ref=e13684]:
+                    - generic [ref=e13687]: FAILED
+                  - cell "母婴品牌" [ref=e13688]:
+                    - generic [ref=e13689]: 母婴品牌
+                  - cell "启用" [ref=e13690]:
+                    - generic [ref=e13693]: 启用
+                  - cell "2026-06-02T22:20:34" [ref=e13694]:
+                    - generic [ref=e13695]: 2026-06-02T22:20:34
+                  - cell "编辑 删除" [ref=e13696]:
+                    - generic [ref=e13697]:
+                      - button "编辑" [ref=e13698] [cursor=pointer]:
+                        - generic [ref=e13699]: 编辑
+                      - button "删除" [ref=e13700] [cursor=pointer]:
+                        - generic [ref=e13701]: 删除
+                - row "39 OPPO FAILED OPPO广东移动通信 启用 2026-06-02T22:28:02 编辑 删除" [ref=e13702]:
+                  - cell "39" [ref=e13703]:
+                    - generic [ref=e13704]: "39"
+                  - cell "OPPO" [ref=e13705]:
+                    - generic [ref=e13706]: OPPO
+                  - cell "FAILED" [ref=e13707]:
+                    - generic [ref=e13710]: FAILED
+                  - cell "OPPO广东移动通信" [ref=e13711]:
+                    - generic [ref=e13712]: OPPO广东移动通信
+                  - cell "启用" [ref=e13713]:
+                    - generic [ref=e13716]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e13717]:
+                    - generic [ref=e13718]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e13719]:
+                    - generic [ref=e13720]:
+                      - button "编辑" [ref=e13721] [cursor=pointer]:
+                        - generic [ref=e13722]: 编辑
+                      - button "删除" [ref=e13723] [cursor=pointer]:
+                        - generic [ref=e13724]: 删除
+                - row "40 vivo FAILED 维沃移动通信 启用 2026-06-02T22:28:02 编辑 删除" [ref=e13725]:
+                  - cell "40" [ref=e13726]:
+                    - generic [ref=e13727]: "40"
+                  - cell "vivo" [ref=e13728]:
+                    - generic [ref=e13729]: vivo
+                  - cell "FAILED" [ref=e13730]:
+                    - generic [ref=e13733]: FAILED
+                  - cell "维沃移动通信" [ref=e13734]:
+                    - generic [ref=e13735]: 维沃移动通信
+                  - cell "启用" [ref=e13736]:
+                    - generic [ref=e13739]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e13740]:
+                    - generic [ref=e13741]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e13742]:
+                    - generic [ref=e13743]:
+                      - button "编辑" [ref=e13744] [cursor=pointer]:
+                        - generic [ref=e13745]: 编辑
+                      - button "删除" [ref=e13746] [cursor=pointer]:
+                        - generic [ref=e13747]: 删除
+                - row "41 荣耀 FAILED 荣耀终端 启用 2026-06-02T22:28:02 编辑 删除" [ref=e13748]:
+                  - cell "41" [ref=e13749]:
+                    - generic [ref=e13750]: "41"
+                  - cell "荣耀" [ref=e13751]:
+                    - generic [ref=e13752]: 荣耀
+                  - cell "FAILED" [ref=e13753]:
+                    - generic [ref=e13756]: FAILED
+                  - cell "荣耀终端" [ref=e13757]:
+                    - generic [ref=e13758]: 荣耀终端
+                  - cell "启用" [ref=e13759]:
+                    - generic [ref=e13762]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e13763]:
+                    - generic [ref=e13764]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e13765]:
+                    - generic [ref=e13766]:
+                      - button "编辑" [ref=e13767] [cursor=pointer]:
+                        - generic [ref=e13768]: 编辑
+                      - button "删除" [ref=e13769] [cursor=pointer]:
+                        - generic [ref=e13770]: 删除
+                - row "42 联想 FAILED 联想集团 启用 2026-06-02T22:28:02 编辑 删除" [ref=e13771]:
+                  - cell "42" [ref=e13772]:
+                    - generic [ref=e13773]: "42"
+                  - cell "联想" [ref=e13774]:
+                    - generic [ref=e13775]: 联想
+                  - cell "FAILED" [ref=e13776]:
+                    - generic [ref=e13779]: FAILED
+                  - cell "联想集团" [ref=e13780]:
+                    - generic [ref=e13781]: 联想集团
+                  - cell "启用" [ref=e13782]:
+                    - generic [ref=e13785]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e13786]:
+                    - generic [ref=e13787]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e13788]:
+                    - generic [ref=e13789]:
+                      - button "编辑" [ref=e13790] [cursor=pointer]:
+                        - generic [ref=e13791]: 编辑
+                      - button "删除" [ref=e13792] [cursor=pointer]:
+                        - generic [ref=e13793]: 删除
+                - row "43 戴尔 FAILED 戴尔科技集团 启用 2026-06-02T22:28:02 编辑 删除" [ref=e13794]:
+                  - cell "43" [ref=e13795]:
+                    - generic [ref=e13796]: "43"
+                  - cell "戴尔" [ref=e13797]:
+                    - generic [ref=e13798]: 戴尔
+                  - cell "FAILED" [ref=e13799]:
+                    - generic [ref=e13802]: FAILED
+                  - cell "戴尔科技集团" [ref=e13803]:
+                    - generic [ref=e13804]: 戴尔科技集团
+                  - cell "启用" [ref=e13805]:
+                    - generic [ref=e13808]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e13809]:
+                    - generic [ref=e13810]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e13811]:
+                    - generic [ref=e13812]:
+                      - button "编辑" [ref=e13813] [cursor=pointer]:
+                        - generic [ref=e13814]: 编辑
+                      - button "删除" [ref=e13815] [cursor=pointer]:
+                        - generic [ref=e13816]: 删除
+                - row "44 惠普 FAILED 惠普公司 启用 2026-06-02T22:28:02 编辑 删除" [ref=e13817]:
+                  - cell "44" [ref=e13818]:
+                    - generic [ref=e13819]: "44"
+                  - cell "惠普" [ref=e13820]:
+                    - generic [ref=e13821]: 惠普
+                  - cell "FAILED" [ref=e13822]:
+                    - generic [ref=e13825]: FAILED
+                  - cell "惠普公司" [ref=e13826]:
+                    - generic [ref=e13827]: 惠普公司
+                  - cell "启用" [ref=e13828]:
+                    - generic [ref=e13831]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e13832]:
+                    - generic [ref=e13833]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e13834]:
+                    - generic [ref=e13835]:
+                      - button "编辑" [ref=e13836] [cursor=pointer]:
+                        - generic [ref=e13837]: 编辑
+                      - button "删除" [ref=e13838] [cursor=pointer]:
+                        - generic [ref=e13839]: 删除
+                - row "45 JBL FAILED 哈曼旗下音频品牌 启用 2026-06-02T22:28:02 编辑 删除" [ref=e13840]:
+                  - cell "45" [ref=e13841]:
+                    - generic [ref=e13842]: "45"
+                  - cell "JBL" [ref=e13843]:
+                    - generic [ref=e13844]: JBL
+                  - cell "FAILED" [ref=e13845]:
+                    - generic [ref=e13848]: FAILED
+                  - cell "哈曼旗下音频品牌" [ref=e13849]:
+                    - generic [ref=e13850]: 哈曼旗下音频品牌
+                  - cell "启用" [ref=e13851]:
+                    - generic [ref=e13854]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e13855]:
+                    - generic [ref=e13856]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e13857]:
+                    - generic [ref=e13858]:
+                      - button "编辑" [ref=e13859] [cursor=pointer]:
+                        - generic [ref=e13860]: 编辑
+                      - button "删除" [ref=e13861] [cursor=pointer]:
+                        - generic [ref=e13862]: 删除
+                - row "46 漫步者 FAILED 漫步者科技 启用 2026-06-02T22:28:02 编辑 删除" [ref=e13863]:
+                  - cell "46" [ref=e13864]:
+                    - generic [ref=e13865]: "46"
+                  - cell "漫步者" [ref=e13866]:
+                    - generic [ref=e13867]: 漫步者
+                  - cell "FAILED" [ref=e13868]:
+                    - generic [ref=e13871]: FAILED
+                  - cell "漫步者科技" [ref=e13872]:
+                    - generic [ref=e13873]: 漫步者科技
+                  - cell "启用" [ref=e13874]:
+                    - generic [ref=e13877]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e13878]:
+                    - generic [ref=e13879]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e13880]:
+                    - generic [ref=e13881]:
+                      - button "编辑" [ref=e13882] [cursor=pointer]:
+                        - generic [ref=e13883]: 编辑
+                      - button "删除" [ref=e13884] [cursor=pointer]:
+                        - generic [ref=e13885]: 删除
+                - row "47 TCL FAILED TCL集团 启用 2026-06-02T22:28:02 编辑 删除" [ref=e13886]:
+                  - cell "47" [ref=e13887]:
+                    - generic [ref=e13888]: "47"
+                  - cell "TCL" [ref=e13889]:
+                    - generic [ref=e13890]: TCL
+                  - cell "FAILED" [ref=e13891]:
+                    - generic [ref=e13894]: FAILED
+                  - cell "TCL集团" [ref=e13895]:
+                    - generic [ref=e13896]: TCL集团
+                  - cell "启用" [ref=e13897]:
+                    - generic [ref=e13900]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e13901]:
+                    - generic [ref=e13902]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e13903]:
+                    - generic [ref=e13904]:
+                      - button "编辑" [ref=e13905] [cursor=pointer]:
+                        - generic [ref=e13906]: 编辑
+                      - button "删除" [ref=e13907] [cursor=pointer]:
+                        - generic [ref=e13908]: 删除
+                - row "48 海信 FAILED 海信集团 启用 2026-06-02T22:28:02 编辑 删除" [ref=e13909]:
+                  - cell "48" [ref=e13910]:
+                    - generic [ref=e13911]: "48"
+                  - cell "海信" [ref=e13912]:
+                    - generic [ref=e13913]: 海信
+                  - cell "FAILED" [ref=e13914]:
+                    - generic [ref=e13917]: FAILED
+                  - cell "海信集团" [ref=e13918]:
+                    - generic [ref=e13919]: 海信集团
+                  - cell "启用" [ref=e13920]:
+                    - generic [ref=e13923]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e13924]:
+                    - generic [ref=e13925]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e13926]:
+                    - generic [ref=e13927]:
+                      - button "编辑" [ref=e13928] [cursor=pointer]:
+                        - generic [ref=e13929]: 编辑
+                      - button "删除" [ref=e13930] [cursor=pointer]:
+                        - generic [ref=e13931]: 删除
+                - row "49 创维 FAILED 创维集团 启用 2026-06-02T22:28:02 编辑 删除" [ref=e13932]:
+                  - cell "49" [ref=e13933]:
+                    - generic [ref=e13934]: "49"
+                  - cell "创维" [ref=e13935]:
+                    - generic [ref=e13936]: 创维
+                  - cell "FAILED" [ref=e13937]:
+                    - generic [ref=e13940]: FAILED
+                  - cell "创维集团" [ref=e13941]:
+                    - generic [ref=e13942]: 创维集团
+                  - cell "启用" [ref=e13943]:
+                    - generic [ref=e13946]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e13947]:
+                    - generic [ref=e13948]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e13949]:
+                    - generic [ref=e13950]:
+                      - button "编辑" [ref=e13951] [cursor=pointer]:
+                        - generic [ref=e13952]: 编辑
+                      - button "删除" [ref=e13953] [cursor=pointer]:
+                        - generic [ref=e13954]: 删除
+                - row "50 西门子 FAILED 西门子家电 启用 2026-06-02T22:28:02 编辑 删除" [ref=e13955]:
+                  - cell "50" [ref=e13956]:
+                    - generic [ref=e13957]: "50"
+                  - cell "西门子" [ref=e13958]:
+                    - generic [ref=e13959]: 西门子
+                  - cell "FAILED" [ref=e13960]:
+                    - generic [ref=e13963]: FAILED
+                  - cell "西门子家电" [ref=e13964]:
+                    - generic [ref=e13965]: 西门子家电
+                  - cell "启用" [ref=e13966]:
+                    - generic [ref=e13969]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e13970]:
+                    - generic [ref=e13971]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e13972]:
+                    - generic [ref=e13973]:
+                      - button "编辑" [ref=e13974] [cursor=pointer]:
+                        - generic [ref=e13975]: 编辑
+                      - button "删除" [ref=e13976] [cursor=pointer]:
+                        - generic [ref=e13977]: 删除
+                - row "51 容声 FAILED 容声冰箱 启用 2026-06-02T22:28:02 编辑 删除" [ref=e13978]:
+                  - cell "51" [ref=e13979]:
+                    - generic [ref=e13980]: "51"
+                  - cell "容声" [ref=e13981]:
+                    - generic [ref=e13982]: 容声
+                  - cell "FAILED" [ref=e13983]:
+                    - generic [ref=e13986]: FAILED
+                  - cell "容声冰箱" [ref=e13987]:
+                    - generic [ref=e13988]: 容声冰箱
+                  - cell "启用" [ref=e13989]:
+                    - generic [ref=e13992]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e13993]:
+                    - generic [ref=e13994]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e13995]:
+                    - generic [ref=e13996]:
+                      - button "编辑" [ref=e13997] [cursor=pointer]:
+                        - generic [ref=e13998]: 编辑
+                      - button "删除" [ref=e13999] [cursor=pointer]:
+                        - generic [ref=e14000]: 删除
+                - row "52 美菱 FAILED 美菱电器 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14001]:
+                  - cell "52" [ref=e14002]:
+                    - generic [ref=e14003]: "52"
+                  - cell "美菱" [ref=e14004]:
+                    - generic [ref=e14005]: 美菱
+                  - cell "FAILED" [ref=e14006]:
+                    - generic [ref=e14009]: FAILED
+                  - cell "美菱电器" [ref=e14010]:
+                    - generic [ref=e14011]: 美菱电器
+                  - cell "启用" [ref=e14012]:
+                    - generic [ref=e14015]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14016]:
+                    - generic [ref=e14017]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14018]:
+                    - generic [ref=e14019]:
+                      - button "编辑" [ref=e14020] [cursor=pointer]:
+                        - generic [ref=e14021]: 编辑
+                      - button "删除" [ref=e14022] [cursor=pointer]:
+                        - generic [ref=e14023]: 删除
+                - row "53 奥克斯 FAILED 奥克斯空调 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14024]:
+                  - cell "53" [ref=e14025]:
+                    - generic [ref=e14026]: "53"
+                  - cell "奥克斯" [ref=e14027]:
+                    - generic [ref=e14028]: 奥克斯
+                  - cell "FAILED" [ref=e14029]:
+                    - generic [ref=e14032]: FAILED
+                  - cell "奥克斯空调" [ref=e14033]:
+                    - generic [ref=e14034]: 奥克斯空调
+                  - cell "启用" [ref=e14035]:
+                    - generic [ref=e14038]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14039]:
+                    - generic [ref=e14040]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14041]:
+                    - generic [ref=e14042]:
+                      - button "编辑" [ref=e14043] [cursor=pointer]:
+                        - generic [ref=e14044]: 编辑
+                      - button "删除" [ref=e14045] [cursor=pointer]:
+                        - generic [ref=e14046]: 删除
+                - row "54 志高 FAILED 志高空调 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14047]:
+                  - cell "54" [ref=e14048]:
+                    - generic [ref=e14049]: "54"
+                  - cell "志高" [ref=e14050]:
+                    - generic [ref=e14051]: 志高
+                  - cell "FAILED" [ref=e14052]:
+                    - generic [ref=e14055]: FAILED
+                  - cell "志高空调" [ref=e14056]:
+                    - generic [ref=e14057]: 志高空调
+                  - cell "启用" [ref=e14058]:
+                    - generic [ref=e14061]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14062]:
+                    - generic [ref=e14063]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14064]:
+                    - generic [ref=e14065]:
+                      - button "编辑" [ref=e14066] [cursor=pointer]:
+                        - generic [ref=e14067]: 编辑
+                      - button "删除" [ref=e14068] [cursor=pointer]:
+                        - generic [ref=e14069]: 删除
+                - row "55 乐事 FAILED 百事旗下薯片品牌 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14070]:
+                  - cell "55" [ref=e14071]:
+                    - generic [ref=e14072]: "55"
+                  - cell "乐事" [ref=e14073]:
+                    - generic [ref=e14074]: 乐事
+                  - cell "FAILED" [ref=e14075]:
+                    - generic [ref=e14078]: FAILED
+                  - cell "百事旗下薯片品牌" [ref=e14079]:
+                    - generic [ref=e14080]: 百事旗下薯片品牌
+                  - cell "启用" [ref=e14081]:
+                    - generic [ref=e14084]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14085]:
+                    - generic [ref=e14086]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14087]:
+                    - generic [ref=e14088]:
+                      - button "编辑" [ref=e14089] [cursor=pointer]:
+                        - generic [ref=e14090]: 编辑
+                      - button "删除" [ref=e14091] [cursor=pointer]:
+                        - generic [ref=e14092]: 删除
+                - row "56 良品铺子 FAILED 良品铺子股份 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14093]:
+                  - cell "56" [ref=e14094]:
+                    - generic [ref=e14095]: "56"
+                  - cell "良品铺子" [ref=e14096]:
+                    - generic [ref=e14097]: 良品铺子
+                  - cell "FAILED" [ref=e14098]:
+                    - generic [ref=e14101]: FAILED
+                  - cell "良品铺子股份" [ref=e14102]:
+                    - generic [ref=e14103]: 良品铺子股份
+                  - cell "启用" [ref=e14104]:
+                    - generic [ref=e14107]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14108]:
+                    - generic [ref=e14109]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14110]:
+                    - generic [ref=e14111]:
+                      - button "编辑" [ref=e14112] [cursor=pointer]:
+                        - generic [ref=e14113]: 编辑
+                      - button "删除" [ref=e14114] [cursor=pointer]:
+                        - generic [ref=e14115]: 删除
+                - row "57 百草味 FAILED 百草味食品 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14116]:
+                  - cell "57" [ref=e14117]:
+                    - generic [ref=e14118]: "57"
+                  - cell "百草味" [ref=e14119]:
+                    - generic [ref=e14120]: 百草味
+                  - cell "FAILED" [ref=e14121]:
+                    - generic [ref=e14124]: FAILED
+                  - cell "百草味食品" [ref=e14125]:
+                    - generic [ref=e14126]: 百草味食品
+                  - cell "启用" [ref=e14127]:
+                    - generic [ref=e14130]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14131]:
+                    - generic [ref=e14132]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14133]:
+                    - generic [ref=e14134]:
+                      - button "编辑" [ref=e14135] [cursor=pointer]:
+                        - generic [ref=e14136]: 编辑
+                      - button "删除" [ref=e14137] [cursor=pointer]:
+                        - generic [ref=e14138]: 删除
+                - row "58 来伊份 FAILED 来伊份股份 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14139]:
+                  - cell "58" [ref=e14140]:
+                    - generic [ref=e14141]: "58"
+                  - cell "来伊份" [ref=e14142]:
+                    - generic [ref=e14143]: 来伊份
+                  - cell "FAILED" [ref=e14144]:
+                    - generic [ref=e14147]: FAILED
+                  - cell "来伊份股份" [ref=e14148]:
+                    - generic [ref=e14149]: 来伊份股份
+                  - cell "启用" [ref=e14150]:
+                    - generic [ref=e14153]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14154]:
+                    - generic [ref=e14155]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14156]:
+                    - generic [ref=e14157]:
+                      - button "编辑" [ref=e14158] [cursor=pointer]:
+                        - generic [ref=e14159]: 编辑
+                      - button "删除" [ref=e14160] [cursor=pointer]:
+                        - generic [ref=e14161]: 删除
+                - row "59 洽洽 FAILED 洽洽食品 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14162]:
+                  - cell "59" [ref=e14163]:
+                    - generic [ref=e14164]: "59"
+                  - cell "洽洽" [ref=e14165]:
+                    - generic [ref=e14166]: 洽洽
+                  - cell "FAILED" [ref=e14167]:
+                    - generic [ref=e14170]: FAILED
+                  - cell "洽洽食品" [ref=e14171]:
+                    - generic [ref=e14172]: 洽洽食品
+                  - cell "启用" [ref=e14173]:
+                    - generic [ref=e14176]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14177]:
+                    - generic [ref=e14178]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14179]:
+                    - generic [ref=e14180]:
+                      - button "编辑" [ref=e14181] [cursor=pointer]:
+                        - generic [ref=e14182]: 编辑
+                      - button "删除" [ref=e14183] [cursor=pointer]:
+                        - generic [ref=e14184]: 删除
+                - row "60 达利园 FAILED 达利食品集团 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14185]:
+                  - cell "60" [ref=e14186]:
+                    - generic [ref=e14187]: "60"
+                  - cell "达利园" [ref=e14188]:
+                    - generic [ref=e14189]: 达利园
+                  - cell "FAILED" [ref=e14190]:
+                    - generic [ref=e14193]: FAILED
+                  - cell "达利食品集团" [ref=e14194]:
+                    - generic [ref=e14195]: 达利食品集团
+                  - cell "启用" [ref=e14196]:
+                    - generic [ref=e14199]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14200]:
+                    - generic [ref=e14201]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14202]:
+                    - generic [ref=e14203]:
+                      - button "编辑" [ref=e14204] [cursor=pointer]:
+                        - generic [ref=e14205]: 编辑
+                      - button "删除" [ref=e14206] [cursor=pointer]:
+                        - generic [ref=e14207]: 删除
+                - row "61 盼盼 FAILED 盼盼食品 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14208]:
+                  - cell "61" [ref=e14209]:
+                    - generic [ref=e14210]: "61"
+                  - cell "盼盼" [ref=e14211]:
+                    - generic [ref=e14212]: 盼盼
+                  - cell "FAILED" [ref=e14213]:
+                    - generic [ref=e14216]: FAILED
+                  - cell "盼盼食品" [ref=e14217]:
+                    - generic [ref=e14218]: 盼盼食品
+                  - cell "启用" [ref=e14219]:
+                    - generic [ref=e14222]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14223]:
+                    - generic [ref=e14224]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14225]:
+                    - generic [ref=e14226]:
+                      - button "编辑" [ref=e14227] [cursor=pointer]:
+                        - generic [ref=e14228]: 编辑
+                      - button "删除" [ref=e14229] [cursor=pointer]:
+                        - generic [ref=e14230]: 删除
+                - row "62 光明 FAILED 光明乳业 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14231]:
+                  - cell "62" [ref=e14232]:
+                    - generic [ref=e14233]: "62"
+                  - cell "光明" [ref=e14234]:
+                    - generic [ref=e14235]: 光明
+                  - cell "FAILED" [ref=e14236]:
+                    - generic [ref=e14239]: FAILED
+                  - cell "光明乳业" [ref=e14240]:
+                    - generic [ref=e14241]: 光明乳业
+                  - cell "启用" [ref=e14242]:
+                    - generic [ref=e14245]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14246]:
+                    - generic [ref=e14247]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14248]:
+                    - generic [ref=e14249]:
+                      - button "编辑" [ref=e14250] [cursor=pointer]:
+                        - generic [ref=e14251]: 编辑
+                      - button "删除" [ref=e14252] [cursor=pointer]:
+                        - generic [ref=e14253]: 删除
+                - row "63 三元 FAILED 三元食品 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14254]:
+                  - cell "63" [ref=e14255]:
+                    - generic [ref=e14256]: "63"
+                  - cell "三元" [ref=e14257]:
+                    - generic [ref=e14258]: 三元
+                  - cell "FAILED" [ref=e14259]:
+                    - generic [ref=e14262]: FAILED
+                  - cell "三元食品" [ref=e14263]:
+                    - generic [ref=e14264]: 三元食品
+                  - cell "启用" [ref=e14265]:
+                    - generic [ref=e14268]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14269]:
+                    - generic [ref=e14270]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14271]:
+                    - generic [ref=e14272]:
+                      - button "编辑" [ref=e14273] [cursor=pointer]:
+                        - generic [ref=e14274]: 编辑
+                      - button "删除" [ref=e14275] [cursor=pointer]:
+                        - generic [ref=e14276]: 删除
+                - row "64 新希望 FAILED 新希望乳业 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14277]:
+                  - cell "64" [ref=e14278]:
+                    - generic [ref=e14279]: "64"
+                  - cell "新希望" [ref=e14280]:
+                    - generic [ref=e14281]: 新希望
+                  - cell "FAILED" [ref=e14282]:
+                    - generic [ref=e14285]: FAILED
+                  - cell "新希望乳业" [ref=e14286]:
+                    - generic [ref=e14287]: 新希望乳业
+                  - cell "启用" [ref=e14288]:
+                    - generic [ref=e14291]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14292]:
+                    - generic [ref=e14293]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14294]:
+                    - generic [ref=e14295]:
+                      - button "编辑" [ref=e14296] [cursor=pointer]:
+                        - generic [ref=e14297]: 编辑
+                      - button "删除" [ref=e14298] [cursor=pointer]:
+                        - generic [ref=e14299]: 删除
+                - row "65 维他奶 FAILED 维他奶国际 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14300]:
+                  - cell "65" [ref=e14301]:
+                    - generic [ref=e14302]: "65"
+                  - cell "维他奶" [ref=e14303]:
+                    - generic [ref=e14304]: 维他奶
+                  - cell "FAILED" [ref=e14305]:
+                    - generic [ref=e14308]: FAILED
+                  - cell "维他奶国际" [ref=e14309]:
+                    - generic [ref=e14310]: 维他奶国际
+                  - cell "启用" [ref=e14311]:
+                    - generic [ref=e14314]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14315]:
+                    - generic [ref=e14316]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14317]:
+                    - generic [ref=e14318]:
+                      - button "编辑" [ref=e14319] [cursor=pointer]:
+                        - generic [ref=e14320]: 编辑
+                      - button "删除" [ref=e14321] [cursor=pointer]:
+                        - generic [ref=e14322]: 删除
+                - row "66 元气森林 FAILED 元气森林 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14323]:
+                  - cell "66" [ref=e14324]:
+                    - generic [ref=e14325]: "66"
+                  - cell "元气森林" [ref=e14326]:
+                    - generic [ref=e14327]: 元气森林
+                  - cell "FAILED" [ref=e14328]:
+                    - generic [ref=e14331]: FAILED
+                  - cell "元气森林" [ref=e14332]:
+                    - generic [ref=e14333]: 元气森林
+                  - cell "启用" [ref=e14334]:
+                    - generic [ref=e14337]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14338]:
+                    - generic [ref=e14339]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14340]:
+                    - generic [ref=e14341]:
+                      - button "编辑" [ref=e14342] [cursor=pointer]:
+                        - generic [ref=e14343]: 编辑
+                      - button "删除" [ref=e14344] [cursor=pointer]:
+                        - generic [ref=e14345]: 删除
+                - row "67 东鹏 FAILED 东鹏饮料 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14346]:
+                  - cell "67" [ref=e14347]:
+                    - generic [ref=e14348]: "67"
+                  - cell "东鹏" [ref=e14349]:
+                    - generic [ref=e14350]: 东鹏
+                  - cell "FAILED" [ref=e14351]:
+                    - generic [ref=e14354]: FAILED
+                  - cell "东鹏饮料" [ref=e14355]:
+                    - generic [ref=e14356]: 东鹏饮料
+                  - cell "启用" [ref=e14357]:
+                    - generic [ref=e14360]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14361]:
+                    - generic [ref=e14362]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14363]:
+                    - generic [ref=e14364]:
+                      - button "编辑" [ref=e14365] [cursor=pointer]:
+                        - generic [ref=e14366]: 编辑
+                      - button "删除" [ref=e14367] [cursor=pointer]:
+                        - generic [ref=e14368]: 删除
+                - row "68 怡宝 FAILED 华润怡宝 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14369]:
+                  - cell "68" [ref=e14370]:
+                    - generic [ref=e14371]: "68"
+                  - cell "怡宝" [ref=e14372]:
+                    - generic [ref=e14373]: 怡宝
+                  - cell "FAILED" [ref=e14374]:
+                    - generic [ref=e14377]: FAILED
+                  - cell "华润怡宝" [ref=e14378]:
+                    - generic [ref=e14379]: 华润怡宝
+                  - cell "启用" [ref=e14380]:
+                    - generic [ref=e14383]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14384]:
+                    - generic [ref=e14385]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14386]:
+                    - generic [ref=e14387]:
+                      - button "编辑" [ref=e14388] [cursor=pointer]:
+                        - generic [ref=e14389]: 编辑
+                      - button "删除" [ref=e14390] [cursor=pointer]:
+                        - generic [ref=e14391]: 删除
+                - row "69 娃哈哈 FAILED 娃哈哈集团 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14392]:
+                  - cell "69" [ref=e14393]:
+                    - generic [ref=e14394]: "69"
+                  - cell "娃哈哈" [ref=e14395]:
+                    - generic [ref=e14396]: 娃哈哈
+                  - cell "FAILED" [ref=e14397]:
+                    - generic [ref=e14400]: FAILED
+                  - cell "娃哈哈集团" [ref=e14401]:
+                    - generic [ref=e14402]: 娃哈哈集团
+                  - cell "启用" [ref=e14403]:
+                    - generic [ref=e14406]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14407]:
+                    - generic [ref=e14408]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14409]:
+                    - generic [ref=e14410]:
+                      - button "编辑" [ref=e14411] [cursor=pointer]:
+                        - generic [ref=e14412]: 编辑
+                      - button "删除" [ref=e14413] [cursor=pointer]:
+                        - generic [ref=e14414]: 删除
+                - row "70 百岁山 FAILED 百岁山矿泉水 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14415]:
+                  - cell "70" [ref=e14416]:
+                    - generic [ref=e14417]: "70"
+                  - cell "百岁山" [ref=e14418]:
+                    - generic [ref=e14419]: 百岁山
+                  - cell "FAILED" [ref=e14420]:
+                    - generic [ref=e14423]: FAILED
+                  - cell "百岁山矿泉水" [ref=e14424]:
+                    - generic [ref=e14425]: 百岁山矿泉水
+                  - cell "启用" [ref=e14426]:
+                    - generic [ref=e14429]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14430]:
+                    - generic [ref=e14431]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14432]:
+                    - generic [ref=e14433]:
+                      - button "编辑" [ref=e14434] [cursor=pointer]:
+                        - generic [ref=e14435]: 编辑
+                      - button "删除" [ref=e14436] [cursor=pointer]:
+                        - generic [ref=e14437]: 删除
+                - row "71 雪花啤酒 FAILED 华润雪花啤酒 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14438]:
+                  - cell "71" [ref=e14439]:
+                    - generic [ref=e14440]: "71"
+                  - cell "雪花啤酒" [ref=e14441]:
+                    - generic [ref=e14442]: 雪花啤酒
+                  - cell "FAILED" [ref=e14443]:
+                    - generic [ref=e14446]: FAILED
+                  - cell "华润雪花啤酒" [ref=e14447]:
+                    - generic [ref=e14448]: 华润雪花啤酒
+                  - cell "启用" [ref=e14449]:
+                    - generic [ref=e14452]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14453]:
+                    - generic [ref=e14454]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14455]:
+                    - generic [ref=e14456]:
+                      - button "编辑" [ref=e14457] [cursor=pointer]:
+                        - generic [ref=e14458]: 编辑
+                      - button "删除" [ref=e14459] [cursor=pointer]:
+                        - generic [ref=e14460]: 删除
+                - row "72 百威啤酒 FAILED 百威英博 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14461]:
+                  - cell "72" [ref=e14462]:
+                    - generic [ref=e14463]: "72"
+                  - cell "百威啤酒" [ref=e14464]:
+                    - generic [ref=e14465]: 百威啤酒
+                  - cell "FAILED" [ref=e14466]:
+                    - generic [ref=e14469]: FAILED
+                  - cell "百威英博" [ref=e14470]:
+                    - generic [ref=e14471]: 百威英博
+                  - cell "启用" [ref=e14472]:
+                    - generic [ref=e14475]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14476]:
+                    - generic [ref=e14477]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14478]:
+                    - generic [ref=e14479]:
+                      - button "编辑" [ref=e14480] [cursor=pointer]:
+                        - generic [ref=e14481]: 编辑
+                      - button "删除" [ref=e14482] [cursor=pointer]:
+                        - generic [ref=e14483]: 删除
+                - row "73 哈尔滨啤酒 FAILED 哈尔滨啤酒 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14484]:
+                  - cell "73" [ref=e14485]:
+                    - generic [ref=e14486]: "73"
+                  - cell "哈尔滨啤酒" [ref=e14487]:
+                    - generic [ref=e14488]: 哈尔滨啤酒
+                  - cell "FAILED" [ref=e14489]:
+                    - generic [ref=e14492]: FAILED
+                  - cell "哈尔滨啤酒" [ref=e14493]:
+                    - generic [ref=e14494]: 哈尔滨啤酒
+                  - cell "启用" [ref=e14495]:
+                    - generic [ref=e14498]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14499]:
+                    - generic [ref=e14500]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14501]:
+                    - generic [ref=e14502]:
+                      - button "编辑" [ref=e14503] [cursor=pointer]:
+                        - generic [ref=e14504]: 编辑
+                      - button "删除" [ref=e14505] [cursor=pointer]:
+                        - generic [ref=e14506]: 删除
+                - row "74 金龙鱼 FAILED 益海嘉里 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14507]:
+                  - cell "74" [ref=e14508]:
+                    - generic [ref=e14509]: "74"
+                  - cell "金龙鱼" [ref=e14510]:
+                    - generic [ref=e14511]: 金龙鱼
+                  - cell "FAILED" [ref=e14512]:
+                    - generic [ref=e14515]: FAILED
+                  - cell "益海嘉里" [ref=e14516]:
+                    - generic [ref=e14517]: 益海嘉里
+                  - cell "启用" [ref=e14518]:
+                    - generic [ref=e14521]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14522]:
+                    - generic [ref=e14523]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14524]:
+                    - generic [ref=e14525]:
+                      - button "编辑" [ref=e14526] [cursor=pointer]:
+                        - generic [ref=e14527]: 编辑
+                      - button "删除" [ref=e14528] [cursor=pointer]:
+                        - generic [ref=e14529]: 删除
+                - row "75 福临门 FAILED 中粮集团 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14530]:
+                  - cell "75" [ref=e14531]:
+                    - generic [ref=e14532]: "75"
+                  - cell "福临门" [ref=e14533]:
+                    - generic [ref=e14534]: 福临门
+                  - cell "FAILED" [ref=e14535]:
+                    - generic [ref=e14538]: FAILED
+                  - cell "中粮集团" [ref=e14539]:
+                    - generic [ref=e14540]: 中粮集团
+                  - cell "启用" [ref=e14541]:
+                    - generic [ref=e14544]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14545]:
+                    - generic [ref=e14546]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14547]:
+                    - generic [ref=e14548]:
+                      - button "编辑" [ref=e14549] [cursor=pointer]:
+                        - generic [ref=e14550]: 编辑
+                      - button "删除" [ref=e14551] [cursor=pointer]:
+                        - generic [ref=e14552]: 删除
+                - row "76 鲁花 FAILED 鲁花集团 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14553]:
+                  - cell "76" [ref=e14554]:
+                    - generic [ref=e14555]: "76"
+                  - cell "鲁花" [ref=e14556]:
+                    - generic [ref=e14557]: 鲁花
+                  - cell "FAILED" [ref=e14558]:
+                    - generic [ref=e14561]: FAILED
+                  - cell "鲁花集团" [ref=e14562]:
+                    - generic [ref=e14563]: 鲁花集团
+                  - cell "启用" [ref=e14564]:
+                    - generic [ref=e14567]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14568]:
+                    - generic [ref=e14569]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14570]:
+                    - generic [ref=e14571]:
+                      - button "编辑" [ref=e14572] [cursor=pointer]:
+                        - generic [ref=e14573]: 编辑
+                      - button "删除" [ref=e14574] [cursor=pointer]:
+                        - generic [ref=e14575]: 删除
+                - row "77 北大荒 FAILED 北大荒集团 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14576]:
+                  - cell "77" [ref=e14577]:
+                    - generic [ref=e14578]: "77"
+                  - cell "北大荒" [ref=e14579]:
+                    - generic [ref=e14580]: 北大荒
+                  - cell "FAILED" [ref=e14581]:
+                    - generic [ref=e14584]: FAILED
+                  - cell "北大荒集团" [ref=e14585]:
+                    - generic [ref=e14586]: 北大荒集团
+                  - cell "启用" [ref=e14587]:
+                    - generic [ref=e14590]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14591]:
+                    - generic [ref=e14592]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14593]:
+                    - generic [ref=e14594]:
+                      - button "编辑" [ref=e14595] [cursor=pointer]:
+                        - generic [ref=e14596]: 编辑
+                      - button "删除" [ref=e14597] [cursor=pointer]:
+                        - generic [ref=e14598]: 删除
+                - row "78 五常 FAILED 五常大米 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14599]:
+                  - cell "78" [ref=e14600]:
+                    - generic [ref=e14601]: "78"
+                  - cell "五常" [ref=e14602]:
+                    - generic [ref=e14603]: 五常
+                  - cell "FAILED" [ref=e14604]:
+                    - generic [ref=e14607]: FAILED
+                  - cell "五常大米" [ref=e14608]:
+                    - generic [ref=e14609]: 五常大米
+                  - cell "启用" [ref=e14610]:
+                    - generic [ref=e14613]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14614]:
+                    - generic [ref=e14615]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14616]:
+                    - generic [ref=e14617]:
+                      - button "编辑" [ref=e14618] [cursor=pointer]:
+                        - generic [ref=e14619]: 编辑
+                      - button "删除" [ref=e14620] [cursor=pointer]:
+                        - generic [ref=e14621]: 删除
+                - row "79 十月稻田 FAILED 十月稻田集团 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14622]:
+                  - cell "79" [ref=e14623]:
+                    - generic [ref=e14624]: "79"
+                  - cell "十月稻田" [ref=e14625]:
+                    - generic [ref=e14626]: 十月稻田
+                  - cell "FAILED" [ref=e14627]:
+                    - generic [ref=e14630]: FAILED
+                  - cell "十月稻田集团" [ref=e14631]:
+                    - generic [ref=e14632]: 十月稻田集团
+                  - cell "启用" [ref=e14633]:
+                    - generic [ref=e14636]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14637]:
+                    - generic [ref=e14638]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14639]:
+                    - generic [ref=e14640]:
+                      - button "编辑" [ref=e14641] [cursor=pointer]:
+                        - generic [ref=e14642]: 编辑
+                      - button "删除" [ref=e14643] [cursor=pointer]:
+                        - generic [ref=e14644]: 删除
+                - row "80 白象 FAILED 白象食品 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14645]:
+                  - cell "80" [ref=e14646]:
+                    - generic [ref=e14647]: "80"
+                  - cell "白象" [ref=e14648]:
+                    - generic [ref=e14649]: 白象
+                  - cell "FAILED" [ref=e14650]:
+                    - generic [ref=e14653]: FAILED
+                  - cell "白象食品" [ref=e14654]:
+                    - generic [ref=e14655]: 白象食品
+                  - cell "启用" [ref=e14656]:
+                    - generic [ref=e14659]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14660]:
+                    - generic [ref=e14661]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14662]:
+                    - generic [ref=e14663]:
+                      - button "编辑" [ref=e14664] [cursor=pointer]:
+                        - generic [ref=e14665]: 编辑
+                      - button "删除" [ref=e14666] [cursor=pointer]:
+                        - generic [ref=e14667]: 删除
+                - row "81 今麦郎 FAILED 今麦郎食品 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14668]:
+                  - cell "81" [ref=e14669]:
+                    - generic [ref=e14670]: "81"
+                  - cell "今麦郎" [ref=e14671]:
+                    - generic [ref=e14672]: 今麦郎
+                  - cell "FAILED" [ref=e14673]:
+                    - generic [ref=e14676]: FAILED
+                  - cell "今麦郎食品" [ref=e14677]:
+                    - generic [ref=e14678]: 今麦郎食品
+                  - cell "启用" [ref=e14679]:
+                    - generic [ref=e14682]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14683]:
+                    - generic [ref=e14684]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14685]:
+                    - generic [ref=e14686]:
+                      - button "编辑" [ref=e14687] [cursor=pointer]:
+                        - generic [ref=e14688]: 编辑
+                      - button "删除" [ref=e14689] [cursor=pointer]:
+                        - generic [ref=e14690]: 删除
+                - row "82 花王 FAILED 花王集团 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14691]:
+                  - cell "82" [ref=e14692]:
+                    - generic [ref=e14693]: "82"
+                  - cell "花王" [ref=e14694]:
+                    - generic [ref=e14695]: 花王
+                  - cell "FAILED" [ref=e14696]:
+                    - generic [ref=e14699]: FAILED
+                  - cell "花王集团" [ref=e14700]:
+                    - generic [ref=e14701]: 花王集团
+                  - cell "启用" [ref=e14702]:
+                    - generic [ref=e14705]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14706]:
+                    - generic [ref=e14707]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14708]:
+                    - generic [ref=e14709]:
+                      - button "编辑" [ref=e14710] [cursor=pointer]:
+                        - generic [ref=e14711]: 编辑
+                      - button "删除" [ref=e14712] [cursor=pointer]:
+                        - generic [ref=e14713]: 删除
+                - row "83 力士 FAILED 联合利华旗下 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14714]:
+                  - cell "83" [ref=e14715]:
+                    - generic [ref=e14716]: "83"
+                  - cell "力士" [ref=e14717]:
+                    - generic [ref=e14718]: 力士
+                  - cell "FAILED" [ref=e14719]:
+                    - generic [ref=e14722]: FAILED
+                  - cell "联合利华旗下" [ref=e14723]:
+                    - generic [ref=e14724]: 联合利华旗下
+                  - cell "启用" [ref=e14725]:
+                    - generic [ref=e14728]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14729]:
+                    - generic [ref=e14730]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14731]:
+                    - generic [ref=e14732]:
+                      - button "编辑" [ref=e14733] [cursor=pointer]:
+                        - generic [ref=e14734]: 编辑
+                      - button "删除" [ref=e14735] [cursor=pointer]:
+                        - generic [ref=e14736]: 删除
+                - row "84 多芬 FAILED 联合利华旗下 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14737]:
+                  - cell "84" [ref=e14738]:
+                    - generic [ref=e14739]: "84"
+                  - cell "多芬" [ref=e14740]:
+                    - generic [ref=e14741]: 多芬
+                  - cell "FAILED" [ref=e14742]:
+                    - generic [ref=e14745]: FAILED
+                  - cell "联合利华旗下" [ref=e14746]:
+                    - generic [ref=e14747]: 联合利华旗下
+                  - cell "启用" [ref=e14748]:
+                    - generic [ref=e14751]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14752]:
+                    - generic [ref=e14753]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14754]:
+                    - generic [ref=e14755]:
+                      - button "编辑" [ref=e14756] [cursor=pointer]:
+                        - generic [ref=e14757]: 编辑
+                      - button "删除" [ref=e14758] [cursor=pointer]:
+                        - generic [ref=e14759]: 删除
+                - row "85 潘婷 FAILED 宝洁旗下 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14760]:
+                  - cell "85" [ref=e14761]:
+                    - generic [ref=e14762]: "85"
+                  - cell "潘婷" [ref=e14763]:
+                    - generic [ref=e14764]: 潘婷
+                  - cell "FAILED" [ref=e14765]:
+                    - generic [ref=e14768]: FAILED
+                  - cell "宝洁旗下" [ref=e14769]:
+                    - generic [ref=e14770]: 宝洁旗下
+                  - cell "启用" [ref=e14771]:
+                    - generic [ref=e14774]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14775]:
+                    - generic [ref=e14776]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14777]:
+                    - generic [ref=e14778]:
+                      - button "编辑" [ref=e14779] [cursor=pointer]:
+                        - generic [ref=e14780]: 编辑
+                      - button "删除" [ref=e14781] [cursor=pointer]:
+                        - generic [ref=e14782]: 删除
+                - row "86 清扬 FAILED 联合利华旗下 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14783]:
+                  - cell "86" [ref=e14784]:
+                    - generic [ref=e14785]: "86"
+                  - cell "清扬" [ref=e14786]:
+                    - generic [ref=e14787]: 清扬
+                  - cell "FAILED" [ref=e14788]:
+                    - generic [ref=e14791]: FAILED
+                  - cell "联合利华旗下" [ref=e14792]:
+                    - generic [ref=e14793]: 联合利华旗下
+                  - cell "启用" [ref=e14794]:
+                    - generic [ref=e14797]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14798]:
+                    - generic [ref=e14799]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14800]:
+                    - generic [ref=e14801]:
+                      - button "编辑" [ref=e14802] [cursor=pointer]:
+                        - generic [ref=e14803]: 编辑
+                      - button "删除" [ref=e14804] [cursor=pointer]:
+                        - generic [ref=e14805]: 删除
+                - row "87 蜂花 FAILED 蜂花日化 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14806]:
+                  - cell "87" [ref=e14807]:
+                    - generic [ref=e14808]: "87"
+                  - cell "蜂花" [ref=e14809]:
+                    - generic [ref=e14810]: 蜂花
+                  - cell "FAILED" [ref=e14811]:
+                    - generic [ref=e14814]: FAILED
+                  - cell "蜂花日化" [ref=e14815]:
+                    - generic [ref=e14816]: 蜂花日化
+                  - cell "启用" [ref=e14817]:
+                    - generic [ref=e14820]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14821]:
+                    - generic [ref=e14822]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14823]:
+                    - generic [ref=e14824]:
+                      - button "编辑" [ref=e14825] [cursor=pointer]:
+                        - generic [ref=e14826]: 编辑
+                      - button "删除" [ref=e14827] [cursor=pointer]:
+                        - generic [ref=e14828]: 删除
+                - row "88 百雀羚 FAILED 百雀羚集团 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14829]:
+                  - cell "88" [ref=e14830]:
+                    - generic [ref=e14831]: "88"
+                  - cell "百雀羚" [ref=e14832]:
+                    - generic [ref=e14833]: 百雀羚
+                  - cell "FAILED" [ref=e14834]:
+                    - generic [ref=e14837]: FAILED
+                  - cell "百雀羚集团" [ref=e14838]:
+                    - generic [ref=e14839]: 百雀羚集团
+                  - cell "启用" [ref=e14840]:
+                    - generic [ref=e14843]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14844]:
+                    - generic [ref=e14845]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14846]:
+                    - generic [ref=e14847]:
+                      - button "编辑" [ref=e14848] [cursor=pointer]:
+                        - generic [ref=e14849]: 编辑
+                      - button "删除" [ref=e14850] [cursor=pointer]:
+                        - generic [ref=e14851]: 删除
+                - row "89 珀莱雅 FAILED 珀莱雅化妆品 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14852]:
+                  - cell "89" [ref=e14853]:
+                    - generic [ref=e14854]: "89"
+                  - cell "珀莱雅" [ref=e14855]:
+                    - generic [ref=e14856]: 珀莱雅
+                  - cell "FAILED" [ref=e14857]:
+                    - generic [ref=e14860]: FAILED
+                  - cell "珀莱雅化妆品" [ref=e14861]:
+                    - generic [ref=e14862]: 珀莱雅化妆品
+                  - cell "启用" [ref=e14863]:
+                    - generic [ref=e14866]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14867]:
+                    - generic [ref=e14868]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14869]:
+                    - generic [ref=e14870]:
+                      - button "编辑" [ref=e14871] [cursor=pointer]:
+                        - generic [ref=e14872]: 编辑
+                      - button "删除" [ref=e14873] [cursor=pointer]:
+                        - generic [ref=e14874]: 删除
+                - row "90 自然堂 FAILED 伽蓝集团 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14875]:
+                  - cell "90" [ref=e14876]:
+                    - generic [ref=e14877]: "90"
+                  - cell "自然堂" [ref=e14878]:
+                    - generic [ref=e14879]: 自然堂
+                  - cell "FAILED" [ref=e14880]:
+                    - generic [ref=e14883]: FAILED
+                  - cell "伽蓝集团" [ref=e14884]:
+                    - generic [ref=e14885]: 伽蓝集团
+                  - cell "启用" [ref=e14886]:
+                    - generic [ref=e14889]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14890]:
+                    - generic [ref=e14891]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14892]:
+                    - generic [ref=e14893]:
+                      - button "编辑" [ref=e14894] [cursor=pointer]:
+                        - generic [ref=e14895]: 编辑
+                      - button "删除" [ref=e14896] [cursor=pointer]:
+                        - generic [ref=e14897]: 删除
+                - row "91 薇诺娜 FAILED 贝泰妮集团 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14898]:
+                  - cell "91" [ref=e14899]:
+                    - generic [ref=e14900]: "91"
+                  - cell "薇诺娜" [ref=e14901]:
+                    - generic [ref=e14902]: 薇诺娜
+                  - cell "FAILED" [ref=e14903]:
+                    - generic [ref=e14906]: FAILED
+                  - cell "贝泰妮集团" [ref=e14907]:
+                    - generic [ref=e14908]: 贝泰妮集团
+                  - cell "启用" [ref=e14909]:
+                    - generic [ref=e14912]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14913]:
+                    - generic [ref=e14914]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14915]:
+                    - generic [ref=e14916]:
+                      - button "编辑" [ref=e14917] [cursor=pointer]:
+                        - generic [ref=e14918]: 编辑
+                      - button "删除" [ref=e14919] [cursor=pointer]:
+                        - generic [ref=e14920]: 删除
+                - row "92 心相印 FAILED 恒安集团旗下 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14921]:
+                  - cell "92" [ref=e14922]:
+                    - generic [ref=e14923]: "92"
+                  - cell "心相印" [ref=e14924]:
+                    - generic [ref=e14925]: 心相印
+                  - cell "FAILED" [ref=e14926]:
+                    - generic [ref=e14929]: FAILED
+                  - cell "恒安集团旗下" [ref=e14930]:
+                    - generic [ref=e14931]: 恒安集团旗下
+                  - cell "启用" [ref=e14932]:
+                    - generic [ref=e14935]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14936]:
+                    - generic [ref=e14937]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14938]:
+                    - generic [ref=e14939]:
+                      - button "编辑" [ref=e14940] [cursor=pointer]:
+                        - generic [ref=e14941]: 编辑
+                      - button "删除" [ref=e14942] [cursor=pointer]:
+                        - generic [ref=e14943]: 删除
+                - row "93 洁柔 FAILED 中顺洁柔 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14944]:
+                  - cell "93" [ref=e14945]:
+                    - generic [ref=e14946]: "93"
+                  - cell "洁柔" [ref=e14947]:
+                    - generic [ref=e14948]: 洁柔
+                  - cell "FAILED" [ref=e14949]:
+                    - generic [ref=e14952]: FAILED
+                  - cell "中顺洁柔" [ref=e14953]:
+                    - generic [ref=e14954]: 中顺洁柔
+                  - cell "启用" [ref=e14955]:
+                    - generic [ref=e14958]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14959]:
+                    - generic [ref=e14960]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14961]:
+                    - generic [ref=e14962]:
+                      - button "编辑" [ref=e14963] [cursor=pointer]:
+                        - generic [ref=e14964]: 编辑
+                      - button "删除" [ref=e14965] [cursor=pointer]:
+                        - generic [ref=e14966]: 删除
+                - row "94 清风 FAILED 金光集团旗下 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14967]:
+                  - cell "94" [ref=e14968]:
+                    - generic [ref=e14969]: "94"
+                  - cell "清风" [ref=e14970]:
+                    - generic [ref=e14971]: 清风
+                  - cell "FAILED" [ref=e14972]:
+                    - generic [ref=e14975]: FAILED
+                  - cell "金光集团旗下" [ref=e14976]:
+                    - generic [ref=e14977]: 金光集团旗下
+                  - cell "启用" [ref=e14978]:
+                    - generic [ref=e14981]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e14982]:
+                    - generic [ref=e14983]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e14984]:
+                    - generic [ref=e14985]:
+                      - button "编辑" [ref=e14986] [cursor=pointer]:
+                        - generic [ref=e14987]: 编辑
+                      - button "删除" [ref=e14988] [cursor=pointer]:
+                        - generic [ref=e14989]: 删除
+                - row "95 好爸爸 FAILED 立白集团旗下 启用 2026-06-02T22:28:02 编辑 删除" [ref=e14990]:
+                  - cell "95" [ref=e14991]:
+                    - generic [ref=e14992]: "95"
+                  - cell "好爸爸" [ref=e14993]:
+                    - generic [ref=e14994]: 好爸爸
+                  - cell "FAILED" [ref=e14995]:
+                    - generic [ref=e14998]: FAILED
+                  - cell "立白集团旗下" [ref=e14999]:
+                    - generic [ref=e15000]: 立白集团旗下
+                  - cell "启用" [ref=e15001]:
+                    - generic [ref=e15004]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15005]:
+                    - generic [ref=e15006]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15007]:
+                    - generic [ref=e15008]:
+                      - button "编辑" [ref=e15009] [cursor=pointer]:
+                        - generic [ref=e15010]: 编辑
+                      - button "删除" [ref=e15011] [cursor=pointer]:
+                        - generic [ref=e15012]: 删除
+                - row "96 超能 FAILED 纳爱斯集团旗下 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15013]:
+                  - cell "96" [ref=e15014]:
+                    - generic [ref=e15015]: "96"
+                  - cell "超能" [ref=e15016]:
+                    - generic [ref=e15017]: 超能
+                  - cell "FAILED" [ref=e15018]:
+                    - generic [ref=e15021]: FAILED
+                  - cell "纳爱斯集团旗下" [ref=e15022]:
+                    - generic [ref=e15023]: 纳爱斯集团旗下
+                  - cell "启用" [ref=e15024]:
+                    - generic [ref=e15027]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15028]:
+                    - generic [ref=e15029]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15030]:
+                    - generic [ref=e15031]:
+                      - button "编辑" [ref=e15032] [cursor=pointer]:
+                        - generic [ref=e15033]: 编辑
+                      - button "删除" [ref=e15034] [cursor=pointer]:
+                        - generic [ref=e15035]: 删除
+                - row "97 奥妙 FAILED 联合利华旗下 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15036]:
+                  - cell "97" [ref=e15037]:
+                    - generic [ref=e15038]: "97"
+                  - cell "奥妙" [ref=e15039]:
+                    - generic [ref=e15040]: 奥妙
+                  - cell "FAILED" [ref=e15041]:
+                    - generic [ref=e15044]: FAILED
+                  - cell "联合利华旗下" [ref=e15045]:
+                    - generic [ref=e15046]: 联合利华旗下
+                  - cell "启用" [ref=e15047]:
+                    - generic [ref=e15050]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15051]:
+                    - generic [ref=e15052]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15053]:
+                    - generic [ref=e15054]:
+                      - button "编辑" [ref=e15055] [cursor=pointer]:
+                        - generic [ref=e15056]: 编辑
+                      - button "删除" [ref=e15057] [cursor=pointer]:
+                        - generic [ref=e15058]: 删除
+                - row "98 美赞臣 FAILED 美赞臣营养品 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15059]:
+                  - cell "98" [ref=e15060]:
+                    - generic [ref=e15061]: "98"
+                  - cell "美赞臣" [ref=e15062]:
+                    - generic [ref=e15063]: 美赞臣
+                  - cell "FAILED" [ref=e15064]:
+                    - generic [ref=e15067]: FAILED
+                  - cell "美赞臣营养品" [ref=e15068]:
+                    - generic [ref=e15069]: 美赞臣营养品
+                  - cell "启用" [ref=e15070]:
+                    - generic [ref=e15073]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15074]:
+                    - generic [ref=e15075]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15076]:
+                    - generic [ref=e15077]:
+                      - button "编辑" [ref=e15078] [cursor=pointer]:
+                        - generic [ref=e15079]: 编辑
+                      - button "删除" [ref=e15080] [cursor=pointer]:
+                        - generic [ref=e15081]: 删除
+                - row "99 惠氏 FAILED 惠氏营养品 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15082]:
+                  - cell "99" [ref=e15083]:
+                    - generic [ref=e15084]: "99"
+                  - cell "惠氏" [ref=e15085]:
+                    - generic [ref=e15086]: 惠氏
+                  - cell "FAILED" [ref=e15087]:
+                    - generic [ref=e15090]: FAILED
+                  - cell "惠氏营养品" [ref=e15091]:
+                    - generic [ref=e15092]: 惠氏营养品
+                  - cell "启用" [ref=e15093]:
+                    - generic [ref=e15096]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15097]:
+                    - generic [ref=e15098]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15099]:
+                    - generic [ref=e15100]:
+                      - button "编辑" [ref=e15101] [cursor=pointer]:
+                        - generic [ref=e15102]: 编辑
+                      - button "删除" [ref=e15103] [cursor=pointer]:
+                        - generic [ref=e15104]: 删除
+                - row "100 雅培 FAILED 雅培公司 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15105]:
+                  - cell "100" [ref=e15106]:
+                    - generic [ref=e15107]: "100"
+                  - cell "雅培" [ref=e15108]:
+                    - generic [ref=e15109]: 雅培
+                  - cell "FAILED" [ref=e15110]:
+                    - generic [ref=e15113]: FAILED
+                  - cell "雅培公司" [ref=e15114]:
+                    - generic [ref=e15115]: 雅培公司
+                  - cell "启用" [ref=e15116]:
+                    - generic [ref=e15119]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15120]:
+                    - generic [ref=e15121]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15122]:
+                    - generic [ref=e15123]:
+                      - button "编辑" [ref=e15124] [cursor=pointer]:
+                        - generic [ref=e15125]: 编辑
+                      - button "删除" [ref=e15126] [cursor=pointer]:
+                        - generic [ref=e15127]: 删除
+                - row "101 嘉宝 FAILED 雀巢旗下母婴 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15128]:
+                  - cell "101" [ref=e15129]:
+                    - generic [ref=e15130]: "101"
+                  - cell "嘉宝" [ref=e15131]:
+                    - generic [ref=e15132]: 嘉宝
+                  - cell "FAILED" [ref=e15133]:
+                    - generic [ref=e15136]: FAILED
+                  - cell "雀巢旗下母婴" [ref=e15137]:
+                    - generic [ref=e15138]: 雀巢旗下母婴
+                  - cell "启用" [ref=e15139]:
+                    - generic [ref=e15142]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15143]:
+                    - generic [ref=e15144]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15145]:
+                    - generic [ref=e15146]:
+                      - button "编辑" [ref=e15147] [cursor=pointer]:
+                        - generic [ref=e15148]: 编辑
+                      - button "删除" [ref=e15149] [cursor=pointer]:
+                        - generic [ref=e15150]: 删除
+                - row "102 亨氏 FAILED 卡夫亨氏 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15151]:
+                  - cell "102" [ref=e15152]:
+                    - generic [ref=e15153]: "102"
+                  - cell "亨氏" [ref=e15154]:
+                    - generic [ref=e15155]: 亨氏
+                  - cell "FAILED" [ref=e15156]:
+                    - generic [ref=e15159]: FAILED
+                  - cell "卡夫亨氏" [ref=e15160]:
+                    - generic [ref=e15161]: 卡夫亨氏
+                  - cell "启用" [ref=e15162]:
+                    - generic [ref=e15165]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15166]:
+                    - generic [ref=e15167]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15168]:
+                    - generic [ref=e15169]:
+                      - button "编辑" [ref=e15170] [cursor=pointer]:
+                        - generic [ref=e15171]: 编辑
+                      - button "删除" [ref=e15172] [cursor=pointer]:
+                        - generic [ref=e15173]: 删除
+                - row "103 贝亲 FAILED 贝亲株式会社 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15174]:
+                  - cell "103" [ref=e15175]:
+                    - generic [ref=e15176]: "103"
+                  - cell "贝亲" [ref=e15177]:
+                    - generic [ref=e15178]: 贝亲
+                  - cell "FAILED" [ref=e15179]:
+                    - generic [ref=e15182]: FAILED
+                  - cell "贝亲株式会社" [ref=e15183]:
+                    - generic [ref=e15184]: 贝亲株式会社
+                  - cell "启用" [ref=e15185]:
+                    - generic [ref=e15188]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15189]:
+                    - generic [ref=e15190]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15191]:
+                    - generic [ref=e15192]:
+                      - button "编辑" [ref=e15193] [cursor=pointer]:
+                        - generic [ref=e15194]: 编辑
+                      - button "删除" [ref=e15195] [cursor=pointer]:
+                        - generic [ref=e15196]: 删除
+                - row "104 好孩子 FAILED 好孩子集团 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15197]:
+                  - cell "104" [ref=e15198]:
+                    - generic [ref=e15199]: "104"
+                  - cell "好孩子" [ref=e15200]:
+                    - generic [ref=e15201]: 好孩子
+                  - cell "FAILED" [ref=e15202]:
+                    - generic [ref=e15205]: FAILED
+                  - cell "好孩子集团" [ref=e15206]:
+                    - generic [ref=e15207]: 好孩子集团
+                  - cell "启用" [ref=e15208]:
+                    - generic [ref=e15211]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15212]:
+                    - generic [ref=e15213]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15214]:
+                    - generic [ref=e15215]:
+                      - button "编辑" [ref=e15216] [cursor=pointer]:
+                        - generic [ref=e15217]: 编辑
+                      - button "删除" [ref=e15218] [cursor=pointer]:
+                        - generic [ref=e15219]: 删除
+                - row "105 禧天龙 FAILED 禧天龙家居 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15220]:
+                  - cell "105" [ref=e15221]:
+                    - generic [ref=e15222]: "105"
+                  - cell "禧天龙" [ref=e15223]:
+                    - generic [ref=e15224]: 禧天龙
+                  - cell "FAILED" [ref=e15225]:
+                    - generic [ref=e15228]: FAILED
+                  - cell "禧天龙家居" [ref=e15229]:
+                    - generic [ref=e15230]: 禧天龙家居
+                  - cell "启用" [ref=e15231]:
+                    - generic [ref=e15234]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15235]:
+                    - generic [ref=e15236]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15237]:
+                    - generic [ref=e15238]:
+                      - button "编辑" [ref=e15239] [cursor=pointer]:
+                        - generic [ref=e15240]: 编辑
+                      - button "删除" [ref=e15241] [cursor=pointer]:
+                        - generic [ref=e15242]: 删除
+                - row "106 茶花 FAILED 茶花现代家居 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15243]:
+                  - cell "106" [ref=e15244]:
+                    - generic [ref=e15245]: "106"
+                  - cell "茶花" [ref=e15246]:
+                    - generic [ref=e15247]: 茶花
+                  - cell "FAILED" [ref=e15248]:
+                    - generic [ref=e15251]: FAILED
+                  - cell "茶花现代家居" [ref=e15252]:
+                    - generic [ref=e15253]: 茶花现代家居
+                  - cell "启用" [ref=e15254]:
+                    - generic [ref=e15257]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15258]:
+                    - generic [ref=e15259]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15260]:
+                    - generic [ref=e15261]:
+                      - button "编辑" [ref=e15262] [cursor=pointer]:
+                        - generic [ref=e15263]: 编辑
+                      - button "删除" [ref=e15264] [cursor=pointer]:
+                        - generic [ref=e15265]: 删除
+                - row "107 富光 FAILED 富光实业 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15266]:
+                  - cell "107" [ref=e15267]:
+                    - generic [ref=e15268]: "107"
+                  - cell "富光" [ref=e15269]:
+                    - generic [ref=e15270]: 富光
+                  - cell "FAILED" [ref=e15271]:
+                    - generic [ref=e15274]: FAILED
+                  - cell "富光实业" [ref=e15275]:
+                    - generic [ref=e15276]: 富光实业
+                  - cell "启用" [ref=e15277]:
+                    - generic [ref=e15280]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15281]:
+                    - generic [ref=e15282]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15283]:
+                    - generic [ref=e15284]:
+                      - button "编辑" [ref=e15285] [cursor=pointer]:
+                        - generic [ref=e15286]: 编辑
+                      - button "删除" [ref=e15287] [cursor=pointer]:
+                        - generic [ref=e15288]: 删除
+                - row "108 膳魔师 FAILED 膳魔师集团 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15289]:
+                  - cell "108" [ref=e15290]:
+                    - generic [ref=e15291]: "108"
+                  - cell "膳魔师" [ref=e15292]:
+                    - generic [ref=e15293]: 膳魔师
+                  - cell "FAILED" [ref=e15294]:
+                    - generic [ref=e15297]: FAILED
+                  - cell "膳魔师集团" [ref=e15298]:
+                    - generic [ref=e15299]: 膳魔师集团
+                  - cell "启用" [ref=e15300]:
+                    - generic [ref=e15303]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15304]:
+                    - generic [ref=e15305]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15306]:
+                    - generic [ref=e15307]:
+                      - button "编辑" [ref=e15308] [cursor=pointer]:
+                        - generic [ref=e15309]: 编辑
+                      - button "删除" [ref=e15310] [cursor=pointer]:
+                        - generic [ref=e15311]: 删除
+                - row "109 象印 FAILED 象印株式会社 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15312]:
+                  - cell "109" [ref=e15313]:
+                    - generic [ref=e15314]: "109"
+                  - cell "象印" [ref=e15315]:
+                    - generic [ref=e15316]: 象印
+                  - cell "FAILED" [ref=e15317]:
+                    - generic [ref=e15320]: FAILED
+                  - cell "象印株式会社" [ref=e15321]:
+                    - generic [ref=e15322]: 象印株式会社
+                  - cell "启用" [ref=e15323]:
+                    - generic [ref=e15326]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15327]:
+                    - generic [ref=e15328]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15329]:
+                    - generic [ref=e15330]:
+                      - button "编辑" [ref=e15331] [cursor=pointer]:
+                        - generic [ref=e15332]: 编辑
+                      - button "删除" [ref=e15333] [cursor=pointer]:
+                        - generic [ref=e15334]: 删除
+                - row "110 罗莱 FAILED 罗莱生活科技 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15335]:
+                  - cell "110" [ref=e15336]:
+                    - generic [ref=e15337]: "110"
+                  - cell "罗莱" [ref=e15338]:
+                    - generic [ref=e15339]: 罗莱
+                  - cell "FAILED" [ref=e15340]:
+                    - generic [ref=e15343]: FAILED
+                  - cell "罗莱生活科技" [ref=e15344]:
+                    - generic [ref=e15345]: 罗莱生活科技
+                  - cell "启用" [ref=e15346]:
+                    - generic [ref=e15349]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15350]:
+                    - generic [ref=e15351]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15352]:
+                    - generic [ref=e15353]:
+                      - button "编辑" [ref=e15354] [cursor=pointer]:
+                        - generic [ref=e15355]: 编辑
+                      - button "删除" [ref=e15356] [cursor=pointer]:
+                        - generic [ref=e15357]: 删除
+                - row "111 水星家纺 FAILED 水星家纺 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15358]:
+                  - cell "111" [ref=e15359]:
+                    - generic [ref=e15360]: "111"
+                  - cell "水星家纺" [ref=e15361]:
+                    - generic [ref=e15362]: 水星家纺
+                  - cell "FAILED" [ref=e15363]:
+                    - generic [ref=e15366]: FAILED
+                  - cell "水星家纺" [ref=e15367]:
+                    - generic [ref=e15368]: 水星家纺
+                  - cell "启用" [ref=e15369]:
+                    - generic [ref=e15372]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15373]:
+                    - generic [ref=e15374]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15375]:
+                    - generic [ref=e15376]:
+                      - button "编辑" [ref=e15377] [cursor=pointer]:
+                        - generic [ref=e15378]: 编辑
+                      - button "删除" [ref=e15379] [cursor=pointer]:
+                        - generic [ref=e15380]: 删除
+                - row "112 富安娜 FAILED 富安娜家居 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15381]:
+                  - cell "112" [ref=e15382]:
+                    - generic [ref=e15383]: "112"
+                  - cell "富安娜" [ref=e15384]:
+                    - generic [ref=e15385]: 富安娜
+                  - cell "FAILED" [ref=e15386]:
+                    - generic [ref=e15389]: FAILED
+                  - cell "富安娜家居" [ref=e15390]:
+                    - generic [ref=e15391]: 富安娜家居
+                  - cell "启用" [ref=e15392]:
+                    - generic [ref=e15395]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15396]:
+                    - generic [ref=e15397]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15398]:
+                    - generic [ref=e15399]:
+                      - button "编辑" [ref=e15400] [cursor=pointer]:
+                        - generic [ref=e15401]: 编辑
+                      - button "删除" [ref=e15402] [cursor=pointer]:
+                        - generic [ref=e15403]: 删除
+                - row "113 李宁 FAILED 李宁体育用品 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15404]:
+                  - cell "113" [ref=e15405]:
+                    - generic [ref=e15406]: "113"
+                  - cell "李宁" [ref=e15407]:
+                    - generic [ref=e15408]: 李宁
+                  - cell "FAILED" [ref=e15409]:
+                    - generic [ref=e15412]: FAILED
+                  - cell "李宁体育用品" [ref=e15413]:
+                    - generic [ref=e15414]: 李宁体育用品
+                  - cell "启用" [ref=e15415]:
+                    - generic [ref=e15418]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15419]:
+                    - generic [ref=e15420]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15421]:
+                    - generic [ref=e15422]:
+                      - button "编辑" [ref=e15423] [cursor=pointer]:
+                        - generic [ref=e15424]: 编辑
+                      - button "删除" [ref=e15425] [cursor=pointer]:
+                        - generic [ref=e15426]: 删除
+                - row "114 安踏 FAILED 安踏体育用品 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15427]:
+                  - cell "114" [ref=e15428]:
+                    - generic [ref=e15429]: "114"
+                  - cell "安踏" [ref=e15430]:
+                    - generic [ref=e15431]: 安踏
+                  - cell "FAILED" [ref=e15432]:
+                    - generic [ref=e15435]: FAILED
+                  - cell "安踏体育用品" [ref=e15436]:
+                    - generic [ref=e15437]: 安踏体育用品
+                  - cell "启用" [ref=e15438]:
+                    - generic [ref=e15441]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15442]:
+                    - generic [ref=e15443]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15444]:
+                    - generic [ref=e15445]:
+                      - button "编辑" [ref=e15446] [cursor=pointer]:
+                        - generic [ref=e15447]: 编辑
+                      - button "删除" [ref=e15448] [cursor=pointer]:
+                        - generic [ref=e15449]: 删除
+                - row "115 特步 FAILED 特步国际 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15450]:
+                  - cell "115" [ref=e15451]:
+                    - generic [ref=e15452]: "115"
+                  - cell "特步" [ref=e15453]:
+                    - generic [ref=e15454]: 特步
+                  - cell "FAILED" [ref=e15455]:
+                    - generic [ref=e15458]: FAILED
+                  - cell "特步国际" [ref=e15459]:
+                    - generic [ref=e15460]: 特步国际
+                  - cell "启用" [ref=e15461]:
+                    - generic [ref=e15464]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15465]:
+                    - generic [ref=e15466]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15467]:
+                    - generic [ref=e15468]:
+                      - button "编辑" [ref=e15469] [cursor=pointer]:
+                        - generic [ref=e15470]: 编辑
+                      - button "删除" [ref=e15471] [cursor=pointer]:
+                        - generic [ref=e15472]: 删除
+                - row "116 善存 FAILED 辉瑞旗下保健品牌 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15473]:
+                  - cell "116" [ref=e15474]:
+                    - generic [ref=e15475]: "116"
+                  - cell "善存" [ref=e15476]:
+                    - generic [ref=e15477]: 善存
+                  - cell "FAILED" [ref=e15478]:
+                    - generic [ref=e15481]: FAILED
+                  - cell "辉瑞旗下保健品牌" [ref=e15482]:
+                    - generic [ref=e15483]: 辉瑞旗下保健品牌
+                  - cell "启用" [ref=e15484]:
+                    - generic [ref=e15487]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15488]:
+                    - generic [ref=e15489]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15490]:
+                    - generic [ref=e15491]:
+                      - button "编辑" [ref=e15492] [cursor=pointer]:
+                        - generic [ref=e15493]: 编辑
+                      - button "删除" [ref=e15494] [cursor=pointer]:
+                        - generic [ref=e15495]: 删除
+                - row "117 安利纽崔莱 FAILED 安利旗下营养品牌 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15496]:
+                  - cell "117" [ref=e15497]:
+                    - generic [ref=e15498]: "117"
+                  - cell "安利纽崔莱" [ref=e15499]:
+                    - generic [ref=e15500]: 安利纽崔莱
+                  - cell "FAILED" [ref=e15501]:
+                    - generic [ref=e15504]: FAILED
+                  - cell "安利旗下营养品牌" [ref=e15505]:
+                    - generic [ref=e15506]: 安利旗下营养品牌
+                  - cell "启用" [ref=e15507]:
+                    - generic [ref=e15510]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15511]:
+                    - generic [ref=e15512]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15513]:
+                    - generic [ref=e15514]:
+                      - button "编辑" [ref=e15515] [cursor=pointer]:
+                        - generic [ref=e15516]: 编辑
+                      - button "删除" [ref=e15517] [cursor=pointer]:
+                        - generic [ref=e15518]: 删除
+                - row "118 Swisse FAILED 澳大利亚保健品牌 启用 2026-06-02T22:28:02 编辑 删除" [ref=e15519]:
+                  - cell "118" [ref=e15520]:
+                    - generic [ref=e15521]: "118"
+                  - cell "Swisse" [ref=e15522]:
+                    - generic [ref=e15523]: Swisse
+                  - cell "FAILED" [ref=e15524]:
+                    - generic [ref=e15527]: FAILED
+                  - cell "澳大利亚保健品牌" [ref=e15528]:
+                    - generic [ref=e15529]: 澳大利亚保健品牌
+                  - cell "启用" [ref=e15530]:
+                    - generic [ref=e15533]: 启用
+                  - cell "2026-06-02T22:28:02" [ref=e15534]:
+                    - generic [ref=e15535]: 2026-06-02T22:28:02
+                  - cell "编辑 删除" [ref=e15536]:
+                    - generic [ref=e15537]:
+                      - button "编辑" [ref=e15538] [cursor=pointer]:
+                        - generic [ref=e15539]: 编辑
+                      - button "删除" [ref=e15540] [cursor=pointer]:
+                        - generic [ref=e15541]: 删除
+          - generic [ref=e15542]:
+            - generic [ref=e15543]: Total 0
+            - generic [ref=e15546] [cursor=pointer]:
+              - generic:
+                - combobox [ref=e15548]
+                - generic [ref=e15549]: 10/page
+              - img [ref=e15552]
+            - button "Go to previous page" [disabled] [ref=e15554]:
+              - generic:
+                - img
+            - list [ref=e15555]:
+              - listitem "page 1" [ref=e15556]: "1"
+            - button "Go to next page" [disabled] [ref=e15557]:
+              - generic:
+                - img
+            - generic [ref=e15558]:
+              - generic [ref=e15559]: Go to
+              - spinbutton "Page" [ref=e15562]: "1"

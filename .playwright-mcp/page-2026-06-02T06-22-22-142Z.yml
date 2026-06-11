@@ -1,0 +1,29 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e51]:
+    - generic [ref=e53]:
+      - generic [ref=e55] [cursor=pointer]: 
+      - generic [ref=e56]: 订单详情
+    - generic [ref=e57]:
+      - generic [ref=e58]:
+        - img [ref=e60]
+        - generic [ref=e62]: 待发货
+      - generic [ref=e64]:
+        - img [ref=e66]
+        - generic [ref=e70]:
+          - generic [ref=e71]: 荣耀平板 X9
+          - generic [ref=e72]:
+            - generic [ref=e73]: ¥1699.00
+            - generic [ref=e74]: x1
+      - generic [ref=e75]:
+        - generic [ref=e76]:
+          - generic [ref=e77]: 订单号
+          - generic [ref=e78]: ORD17803812720317825
+        - generic [ref=e79]:
+          - generic [ref=e80]: 下单时间
+          - generic [ref=e81]: 2026-06-02T14:21:12
+        - generic [ref=e82]:
+          - generic [ref=e83]: 订单金额
+          - generic [ref=e84]: ¥1699.00
+      - button "返回首页" [ref=e88] [cursor=pointer]
+  - dialog [ref=e93]:
+    - generic [ref=e94]: 付款成功

@@ -1,0 +1,20 @@
+- generic [ref=e3]:
+  - generic [ref=e5]:
+    - heading "购物车" [level=1] [ref=e7]
+    - generic [ref=e8]:
+      - img [ref=e10]
+      - paragraph [ref=e14]: 购物车是空的
+      - button "去逛逛" [ref=e15] [cursor=pointer]
+  - tablist [ref=e16]:
+    - tab "首页" [ref=e17] [cursor=pointer]:
+      - img [ref=e19]
+      - generic [ref=e22]: 首页
+    - tab "分类" [ref=e23] [cursor=pointer]:
+      - img [ref=e25]
+      - generic [ref=e30]: 分类
+    - tab "购物车" [selected] [ref=e31] [cursor=pointer]:
+      - img [ref=e34]
+      - generic [ref=e38]: 购物车
+    - tab "我的" [ref=e39] [cursor=pointer]:
+      - img [ref=e41]
+      - generic [ref=e44]: 我的

@@ -1,0 +1,71 @@
+- generic [ref=e3]:
+  - generic [ref=e646]:
+    - generic [ref=e647]:
+      - generic [ref=e648]: 分类
+      - generic [ref=e649]:
+        - img
+        - textbox "搜索商品" [ref=e650]
+    - generic [ref=e652]:
+      - generic [ref=e653] [cursor=pointer]: 全部
+      - generic [ref=e654] [cursor=pointer]: 电子产品
+      - generic [ref=e655] [cursor=pointer]: 家用电器
+      - generic [ref=e656] [cursor=pointer]: 服装鞋帽
+      - generic [ref=e657] [cursor=pointer]: 食品饮料
+      - generic [ref=e658] [cursor=pointer]: 日化百货
+      - generic [ref=e659] [cursor=pointer]: 沃集鲜
+      - generic [ref=e660] [cursor=pointer]: 水果生鲜
+      - generic [ref=e661] [cursor=pointer]: 牛奶烘焙
+      - generic [ref=e662] [cursor=pointer]: 休闲零食
+      - generic [ref=e663] [cursor=pointer]: 粮油调味
+      - generic [ref=e664] [cursor=pointer]: 酒水饮料
+      - generic [ref=e665] [cursor=pointer]: 个护美妆
+      - generic [ref=e666] [cursor=pointer]: 纸品家清
+      - generic [ref=e667] [cursor=pointer]: 母婴玩具
+      - generic [ref=e668] [cursor=pointer]: 潮玩萌宠
+      - generic [ref=e669] [cursor=pointer]: 全球好物
+      - generic [ref=e670] [cursor=pointer]: 家居百货
+      - generic [ref=e671] [cursor=pointer]: 床品家纺
+      - generic [ref=e672] [cursor=pointer]: 服饰鞋帽
+      - generic [ref=e673] [cursor=pointer]: 家电数码
+      - generic [ref=e674] [cursor=pointer]: 营养保健
+    - generic [ref=e675]:
+      - generic [ref=e676]:
+        - generic [ref=e677] [cursor=pointer]: 全部
+        - generic [ref=e678] [cursor=pointer]: 苹果/梨/枣
+        - generic [ref=e679] [cursor=pointer]: 蔬菜
+        - generic [ref=e680] [cursor=pointer]: 粽子
+      - feed [ref=e682]:
+        - generic [ref=e683]:
+          - generic [ref=e684] [cursor=pointer]:
+            - img [ref=e686]
+            - generic [ref=e690]:
+              - generic [ref=e691]: 红富士苹果 5斤装
+              - generic [ref=e692]: ¥29.90
+          - generic [ref=e693] [cursor=pointer]:
+            - img [ref=e695]
+            - generic [ref=e699]:
+              - generic [ref=e700]: 新疆库尔勒香梨 5斤
+              - generic [ref=e701]: ¥39.90
+          - generic [ref=e702] [cursor=pointer]:
+            - img [ref=e704]
+            - generic [ref=e708]:
+              - generic [ref=e709]: 有机蔬菜礼盒
+              - generic [ref=e710]: ¥68.00
+          - generic [ref=e711] [cursor=pointer]:
+            - img [ref=e713]
+            - generic [ref=e717]:
+              - generic [ref=e718]: 五芳斋粽子礼盒
+              - generic [ref=e719]: ¥89.90
+  - tablist [ref=e617]:
+    - tab "首页" [ref=e618] [cursor=pointer]:
+      - img [ref=e620]
+      - generic [ref=e623]: 首页
+    - tab "分类" [selected] [ref=e624] [cursor=pointer]:
+      - img [ref=e626]
+      - generic [ref=e631]: 分类
+    - tab "购物车" [ref=e632] [cursor=pointer]:
+      - img [ref=e635]
+      - generic [ref=e639]: 购物车
+    - tab "我的" [ref=e640] [cursor=pointer]:
+      - img [ref=e642]
+      - generic [ref=e645]: 我的

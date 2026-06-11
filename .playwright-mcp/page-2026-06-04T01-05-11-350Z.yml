@@ -1,0 +1,45 @@
+- generic [ref=e52]:
+  - generic [ref=e54]:
+    - generic [ref=e56] [cursor=pointer]: 
+    - generic [ref=e57]: 确认订单
+  - generic [ref=e58]:
+    - generic [ref=e59]:
+      - generic [ref=e60]: 配送方式
+      - generic [ref=e61]:
+        - button "到店自提" [ref=e62] [cursor=pointer]:
+          - img [ref=e63]
+          - generic [ref=e66]: 到店自提
+        - button "送货上门" [ref=e67] [cursor=pointer]:
+          - img [ref=e68]
+          - generic [ref=e73]: 送货上门
+    - generic [ref=e74]:
+      - generic [ref=e75]: 商品清单
+      - generic [ref=e76]:
+        - img [ref=e78]
+        - generic [ref=e82]:
+          - generic [ref=e83]: 贝亲辅食碗
+          - generic [ref=e84]:
+            - generic [ref=e85]: ¥45.00
+            - generic [ref=e86]: x1
+    - generic [ref=e88] [cursor=pointer]:
+      - generic [ref=e89]: 备注
+      - textbox "选填，对商品有什么要求" [ref=e90]
+    - generic [ref=e92] [cursor=pointer]:
+      - generic [ref=e93]: 优惠券
+      - generic [ref=e94]: "-6.75元"
+      - img [ref=e95]
+    - generic [ref=e97]:
+      - generic [ref=e98]:
+        - generic [ref=e99]: 商品金额
+        - generic [ref=e100]: ¥45.00
+      - generic [ref=e124]:
+        - generic [ref=e125]: 优惠券
+        - generic [ref=e126]: "-¥6.75"
+      - generic [ref=e101]:
+        - generic [ref=e102]: 合计
+        - generic [ref=e103]: ¥38.25
+    - generic [ref=e104]:
+      - generic [ref=e105]:
+        - text: 实付
+        - generic [ref=e106]: ¥38.25
+      - button "提交订单" [ref=e107] [cursor=pointer]

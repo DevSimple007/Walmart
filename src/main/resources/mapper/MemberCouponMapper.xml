@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.walmart.oms.mapper.MemberCouponMapper">
+    <select id="selectMemberCoupons" resultType="com.walmart.oms.entity.MemberCoupon">
+        SELECT mc.*, c.coupon_name AS couponName, c.coupon_type AS couponType,
+               c.coupon_value AS couponValue, c.min_amount AS minAmount,
+               c.start_time AS startTime, c.end_time AS endTime
+        FROM member_coupon mc
+        LEFT JOIN coupon c ON mc.coupon_id = c.id
+        WHERE mc.member_id = #{memberId}
+        ORDER BY mc.create_time DESC
+    </select>
+</mapper>

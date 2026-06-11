@@ -1,0 +1,190 @@
+- generic [ref=e1]:
+  - generic [ref=e45]:
+    - complementary [ref=e46]:
+      - generic [ref=e47]:
+        - img "Walmart" [ref=e48]
+        - generic [ref=e49]: 沃尔玛OMS
+      - menubar [ref=e50]:
+        - menuitem "首页" [ref=e51] [cursor=pointer]:
+          - img [ref=e53]
+          - generic [ref=e55]: 首页
+        - menuitem "系统管理" [ref=e56]:
+          - generic [ref=e57] [cursor=pointer]:
+            - img [ref=e59]
+            - generic [ref=e61]: 系统管理
+            - img [ref=e63]
+        - menuitem "商品管理" [ref=e65]:
+          - generic [ref=e66] [cursor=pointer]:
+            - img [ref=e68]
+            - generic [ref=e70]: 商品管理
+            - img [ref=e72]
+        - menuitem "库存管理" [ref=e74]:
+          - generic [ref=e75] [cursor=pointer]:
+            - img [ref=e77]
+            - generic [ref=e80]: 库存管理
+            - img [ref=e82]
+        - menuitem "会员管理" [ref=e84]:
+          - generic [ref=e85] [cursor=pointer]:
+            - img [ref=e87]
+            - generic [ref=e89]: 会员管理
+            - img [ref=e91]
+        - menuitem "订单管理" [expanded] [ref=e93]:
+          - generic [ref=e94] [cursor=pointer]:
+            - img [ref=e96]
+            - generic [ref=e98]: 订单管理
+            - img [ref=e100]
+          - menu [ref=e23743]:
+            - menuitem "订单列表" [ref=e23744] [cursor=pointer]
+            - menuitem "订单详情" [ref=e23745] [cursor=pointer]
+        - menuitem "销售报表" [ref=e102]:
+          - generic [ref=e103] [cursor=pointer]:
+            - img [ref=e105]
+            - generic [ref=e107]: 销售报表
+            - img [ref=e109]
+    - generic [ref=e111]:
+      - banner [ref=e112]:
+        - button "切换菜单" [ref=e114] [cursor=pointer]:
+          - img [ref=e116]
+        - generic [ref=e120]:
+          - generic [ref=e121]:
+            - generic:
+              - search
+          - textbox "搜索订单、商品、会员..." [ref=e122]
+        - generic [ref=e123]:
+          - button "通知" [ref=e125] [cursor=pointer]:
+            - img [ref=e127]
+          - button "超级管理员" [ref=e133] [cursor=pointer]:
+            - generic [ref=e135]: 超级管理员
+            - img [ref=e137]
+      - main [ref=e139]:
+        - generic [ref=e23747]:
+          - heading "订单管理" [level=2] [ref=e23749]
+          - generic [ref=e23751]:
+            - generic [ref=e23752]:
+              - generic [ref=e23753]: 订单号
+              - textbox "订单号" [ref=e23757]:
+                - /placeholder: 请输入订单号
+            - generic [ref=e23758]:
+              - generic [ref=e23759]: 订单状态
+              - generic [ref=e23762] [cursor=pointer]:
+                - generic:
+                  - combobox "订单状态" [expanded] [active] [ref=e23764]
+                  - generic: 请选择订单状态
+                - img [ref=e23767]
+            - generic [ref=e23770]:
+              - button "搜索" [ref=e23771] [cursor=pointer]:
+                - generic [ref=e23772]: 搜索
+              - button "重置" [ref=e23773] [cursor=pointer]:
+                - generic [ref=e23774]: 重置
+          - generic [ref=e23777]:
+            - table [ref=e23779]:
+              - rowgroup [ref=e23789]:
+                - row "ID 订单号 用户ID 总金额 订单状态 创建时间 更新时间 操作" [ref=e23790]:
+                  - columnheader "ID" [ref=e23791]:
+                    - generic [ref=e23792]: ID
+                  - columnheader "订单号" [ref=e23793]:
+                    - generic [ref=e23794]: 订单号
+                  - columnheader "用户ID" [ref=e23795]:
+                    - generic [ref=e23796]: 用户ID
+                  - columnheader "总金额" [ref=e23797]:
+                    - generic [ref=e23798]: 总金额
+                  - columnheader "订单状态" [ref=e23799]:
+                    - generic [ref=e23800]: 订单状态
+                  - columnheader "创建时间" [ref=e23801]:
+                    - generic [ref=e23802]: 创建时间
+                  - columnheader "更新时间" [ref=e23803]:
+                    - generic [ref=e23804]: 更新时间
+                  - columnheader "操作" [ref=e23805]:
+                    - generic [ref=e23806]: 操作
+            - table [ref=e23811]:
+              - rowgroup [ref=e23821]:
+                - row "4 ORD17803812720317825 1 ¥1699 已支付 2026-06-02T14:21:12 2026-06-02T14:22:20 详情 删除" [ref=e23822]:
+                  - cell "4" [ref=e23823]:
+                    - generic [ref=e23824]: "4"
+                  - cell "ORD17803812720317825" [ref=e23825]:
+                    - generic [ref=e23826]: ORD17803812720317825
+                  - cell "1" [ref=e23827]:
+                    - generic [ref=e23828]: "1"
+                  - cell "¥1699" [ref=e23829]:
+                    - generic [ref=e23830]: ¥1699
+                  - cell "已支付" [ref=e23831]:
+                    - generic [ref=e23834]: 已支付
+                  - cell "2026-06-02T14:21:12" [ref=e23835]:
+                    - generic [ref=e23836]: 2026-06-02T14:21:12
+                  - cell "2026-06-02T14:22:20" [ref=e23837]:
+                    - generic [ref=e23838]: 2026-06-02T14:22:20
+                  - cell "详情 删除" [ref=e23839]:
+                    - generic [ref=e23840]:
+                      - button "详情" [ref=e23841] [cursor=pointer]:
+                        - generic [ref=e23842]: 详情
+                      - button "删除" [ref=e23843] [cursor=pointer]:
+                        - generic [ref=e23844]: 删除
+                - row "5 ORD17804068903750449 1 ¥29.9 待支付 2026-06-02T21:28:10 2026-06-02T21:28:10 详情 删除" [ref=e23845]:
+                  - cell "5" [ref=e23846]:
+                    - generic [ref=e23847]: "5"
+                  - cell "ORD17804068903750449" [ref=e23848]:
+                    - generic [ref=e23849]: ORD17804068903750449
+                  - cell "1" [ref=e23850]:
+                    - generic [ref=e23851]: "1"
+                  - cell "¥29.9" [ref=e23852]:
+                    - generic [ref=e23853]: ¥29.9
+                  - cell "待支付" [ref=e23854]:
+                    - generic [ref=e23857]: 待支付
+                  - cell "2026-06-02T21:28:10" [ref=e23858]:
+                    - generic [ref=e23859]: 2026-06-02T21:28:10
+                  - cell "2026-06-02T21:28:10" [ref=e23860]:
+                    - generic [ref=e23861]: 2026-06-02T21:28:10
+                  - cell "详情 删除" [ref=e23862]:
+                    - generic [ref=e23863]:
+                      - button "详情" [ref=e23864] [cursor=pointer]:
+                        - generic [ref=e23865]: 详情
+                      - button "删除" [ref=e23866] [cursor=pointer]:
+                        - generic [ref=e23867]: 删除
+                - row "6 ORD17804079828627950 1 ¥7999 待支付 2026-06-02T21:46:23 2026-06-02T21:46:23 详情 删除" [ref=e23868]:
+                  - cell "6" [ref=e23869]:
+                    - generic [ref=e23870]: "6"
+                  - cell "ORD17804079828627950" [ref=e23871]:
+                    - generic [ref=e23872]: ORD17804079828627950
+                  - cell "1" [ref=e23873]:
+                    - generic [ref=e23874]: "1"
+                  - cell "¥7999" [ref=e23875]:
+                    - generic [ref=e23876]: ¥7999
+                  - cell "待支付" [ref=e23877]:
+                    - generic [ref=e23880]: 待支付
+                  - cell "2026-06-02T21:46:23" [ref=e23881]:
+                    - generic [ref=e23882]: 2026-06-02T21:46:23
+                  - cell "2026-06-02T21:46:23" [ref=e23883]:
+                    - generic [ref=e23884]: 2026-06-02T21:46:23
+                  - cell "详情 删除" [ref=e23885]:
+                    - generic [ref=e23886]:
+                      - button "详情" [ref=e23887] [cursor=pointer]:
+                        - generic [ref=e23888]: 详情
+                      - button "删除" [ref=e23889] [cursor=pointer]:
+                        - generic [ref=e23890]: 删除
+          - generic [ref=e23893]:
+            - generic [ref=e23894]: Total 0
+            - generic [ref=e23897] [cursor=pointer]:
+              - generic:
+                - combobox [ref=e23899]
+                - generic [ref=e23900]: 10/page
+              - img [ref=e23903]
+            - button "Go to previous page" [disabled] [ref=e23905]:
+              - generic:
+                - img
+            - list [ref=e23906]:
+              - listitem "page 1" [ref=e23907]: "1"
+            - button "Go to next page" [disabled] [ref=e23908]:
+              - generic:
+                - img
+            - generic [ref=e23909]:
+              - generic [ref=e23910]: Go to
+              - spinbutton "Page" [ref=e23913]: "1"
+  - tooltip "全部" [ref=e23914]:
+    - listbox [ref=e23918]:
+      - option "全部" [selected] [ref=e23919] [cursor=pointer]
+      - option "待支付" [ref=e23920] [cursor=pointer]
+      - option "已支付" [ref=e23921] [cursor=pointer]
+      - option "待发货" [ref=e23922] [cursor=pointer]
+      - option "已发货" [ref=e23923] [cursor=pointer]
+      - option "已完成" [ref=e23924] [cursor=pointer]
+      - option "已取消" [ref=e23925] [cursor=pointer]

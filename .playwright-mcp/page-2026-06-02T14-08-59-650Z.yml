@@ -1,0 +1,38 @@
+- generic [ref=e77]:
+  - generic [ref=e79]:
+    - generic [ref=e81] [cursor=pointer]: 
+    - generic [ref=e82]: 确认订单
+  - generic [ref=e83]:
+    - generic [ref=e84]:
+      - generic [ref=e85]: 配送方式
+      - generic [ref=e86]:
+        - button "到店自提" [ref=e87] [cursor=pointer]:
+          - img [ref=e88]
+          - generic [ref=e91]: 到店自提
+        - button "送货上门" [ref=e92] [cursor=pointer]:
+          - img [ref=e93]
+          - generic [ref=e98]: 送货上门
+    - generic [ref=e99]:
+      - generic [ref=e100]: 商品清单
+      - generic [ref=e101]:
+        - img [ref=e103]
+        - generic [ref=e107]:
+          - generic [ref=e108]: iPhone 15
+          - generic [ref=e109]:
+            - generic [ref=e110]: ¥6999.00
+            - generic [ref=e111]: x1
+    - generic [ref=e113] [cursor=pointer]:
+      - generic [ref=e114]: 备注
+      - textbox "选填，对商品有什么要求" [ref=e115]
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - generic [ref=e118]: 商品金额
+        - generic [ref=e119]: ¥6999.00
+      - generic [ref=e120]:
+        - generic [ref=e121]: 合计
+        - generic [ref=e122]: ¥6999.00
+    - generic [ref=e123]:
+      - generic [ref=e124]:
+        - text: 实付
+        - generic [ref=e125]: ¥6999.00
+      - button "提交订单" [ref=e126] [cursor=pointer]

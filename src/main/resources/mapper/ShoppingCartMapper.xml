@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.walmart.oms.mapper.ShoppingCartMapper">
+    <select id="selectCartWithProduct" resultType="com.walmart.oms.entity.ShoppingCart">
+        SELECT sc.*, p.product_name AS productName, p.price, p.stock, p.image_url AS imageUrl
+        FROM shopping_cart sc
+        LEFT JOIN product p ON sc.product_id = p.id
+        WHERE sc.member_id = #{memberId}
+        ORDER BY sc.create_time DESC
+    </select>
+</mapper>

@@ -1,0 +1,75 @@
+- generic [ref=e60]:
+  - complementary [ref=e61]:
+    - generic [ref=e62]:
+      - img "Walmart" [ref=e63]
+      - generic [ref=e64]: 沃尔玛OMS
+    - menubar [ref=e65]:
+      - menuitem "首页" [ref=e66] [cursor=pointer]:
+        - img [ref=e68]
+        - generic [ref=e70]: 首页
+      - menuitem "系统管理" [ref=e71]:
+        - generic [ref=e72] [cursor=pointer]:
+          - img [ref=e74]
+          - generic [ref=e76]: 系统管理
+          - img [ref=e78]
+      - menuitem "商品管理" [ref=e80]:
+        - generic [ref=e81] [cursor=pointer]:
+          - img [ref=e83]
+          - generic [ref=e85]: 商品管理
+          - img [ref=e87]
+      - menuitem "库存管理" [ref=e89]:
+        - generic [ref=e90] [cursor=pointer]:
+          - img [ref=e92]
+          - generic [ref=e95]: 库存管理
+          - img [ref=e97]
+      - menuitem "会员管理" [ref=e99]:
+        - generic [ref=e100] [cursor=pointer]:
+          - img [ref=e102]
+          - generic [ref=e104]: 会员管理
+          - img [ref=e106]
+      - menuitem "订单管理" [ref=e108]:
+        - generic [ref=e109] [cursor=pointer]:
+          - img [ref=e111]
+          - generic [ref=e113]: 订单管理
+          - img [ref=e115]
+      - menuitem "销售报表" [expanded] [ref=e117]:
+        - generic [ref=e118] [cursor=pointer]:
+          - img [ref=e120]
+          - generic [ref=e122]: 销售报表
+          - img [ref=e124]
+        - menu [ref=e15271]:
+          - menuitem "销售报表" [active] [ref=e15272] [cursor=pointer]
+  - generic [ref=e126]:
+    - banner [ref=e127]:
+      - button "切换菜单" [ref=e129] [cursor=pointer]:
+        - img [ref=e131]
+      - generic [ref=e135]:
+        - generic [ref=e136]:
+          - generic:
+            - search
+        - textbox "搜索订单、商品、会员..." [ref=e137]
+      - generic [ref=e138]:
+        - button "通知" [ref=e140] [cursor=pointer]:
+          - img [ref=e142]
+        - button "超级管理员" [ref=e148] [cursor=pointer]:
+          - generic [ref=e150]: 超级管理员
+          - img [ref=e152]
+    - main [ref=e154]:
+      - generic [ref=e15274]:
+        - generic [ref=e15277]: 销售报表
+        - generic [ref=e15280]:
+          - tablist [ref=e15284]:
+            - tab "销售统计" [selected] [ref=e15286]
+            - tab "销量排行" [ref=e15287]
+            - tab "利润分析" [ref=e15288]
+          - tabpanel "销售统计" [ref=e15290]:
+            - radiogroup "radio-group" [ref=e15293]:
+              - generic [ref=e15294]:
+                - radio "日" [checked] [ref=e15295]
+                - generic [ref=e15296] [cursor=pointer]: 日
+              - generic [ref=e15297]:
+                - radio "周" [ref=e15298]
+                - generic [ref=e15299] [cursor=pointer]: 周
+              - generic [ref=e15300]:
+                - radio "月" [ref=e15301]
+                - generic [ref=e15302] [cursor=pointer]: 月

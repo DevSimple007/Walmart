@@ -1,0 +1,232 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e45]:
+    - complementary [ref=e46]:
+      - generic [ref=e47]:
+        - img "Walmart" [ref=e48]
+        - generic [ref=e49]: 沃尔玛OMS
+      - menubar [ref=e50]:
+        - menuitem "首页" [ref=e51] [cursor=pointer]:
+          - img [ref=e53]
+          - generic [ref=e55]: 首页
+        - menuitem "系统管理" [ref=e56]:
+          - generic [ref=e57] [cursor=pointer]:
+            - img [ref=e59]
+            - generic [ref=e61]: 系统管理
+            - img [ref=e63]
+        - menuitem "商品管理" [ref=e65]:
+          - generic [ref=e66] [cursor=pointer]:
+            - img [ref=e68]
+            - generic [ref=e70]: 商品管理
+            - img [ref=e72]
+        - menuitem "库存管理" [expanded] [ref=e74]:
+          - generic [ref=e75] [cursor=pointer]:
+            - img [ref=e77]
+            - generic [ref=e80]: 库存管理
+            - img [ref=e82]
+          - menu [ref=e20137]:
+            - menuitem "库存查询" [ref=e20138] [cursor=pointer]
+            - menuitem "仓库管理" [ref=e20139] [cursor=pointer]
+        - menuitem "会员管理" [ref=e84]:
+          - generic [ref=e85] [cursor=pointer]:
+            - img [ref=e87]
+            - generic [ref=e89]: 会员管理
+            - img [ref=e91]
+        - menuitem "订单管理" [ref=e93]:
+          - generic [ref=e94] [cursor=pointer]:
+            - img [ref=e96]
+            - generic [ref=e98]: 订单管理
+            - img [ref=e100]
+        - menuitem "销售报表" [ref=e102]:
+          - generic [ref=e103] [cursor=pointer]:
+            - img [ref=e105]
+            - generic [ref=e107]: 销售报表
+            - img [ref=e109]
+    - generic [ref=e111]:
+      - banner [ref=e112]:
+        - button "切换菜单" [ref=e114] [cursor=pointer]:
+          - img [ref=e116]
+        - generic [ref=e120]:
+          - generic [ref=e121]:
+            - generic:
+              - search
+          - textbox "搜索订单、商品、会员..." [ref=e122]
+        - generic [ref=e123]:
+          - button "通知" [ref=e125] [cursor=pointer]:
+            - img [ref=e127]
+          - button "超级管理员" [ref=e133] [cursor=pointer]:
+            - generic [ref=e135]: 超级管理员
+            - img [ref=e137]
+      - main [ref=e139]:
+        - generic [ref=e23473]:
+          - generic [ref=e23474]:
+            - generic [ref=e23476]:
+              - generic [ref=e23477]: 仓库管理
+              - button "添加仓库" [ref=e23478] [cursor=pointer]:
+                - generic [ref=e23479]: 添加仓库
+            - generic [ref=e23480]:
+              - generic [ref=e23481]:
+                - generic [ref=e23482]:
+                  - generic [ref=e23483]: 仓库名称
+                  - textbox "仓库名称" [ref=e23487]:
+                    - /placeholder: 请输入仓库名称
+                - generic [ref=e23489]:
+                  - button "搜索" [ref=e23490] [cursor=pointer]:
+                    - generic [ref=e23491]: 搜索
+                  - button "重置" [ref=e23492] [cursor=pointer]:
+                    - generic [ref=e23493]: 重置
+              - generic [ref=e23495]:
+                - table [ref=e23497]:
+                  - rowgroup [ref=e23506]:
+                    - row "ID 仓库名称 地址 联系人 联系电话 创建时间 操作" [ref=e23507]:
+                      - columnheader "ID" [ref=e23508]:
+                        - generic [ref=e23509]: ID
+                      - columnheader "仓库名称" [ref=e23510]:
+                        - generic [ref=e23511]: 仓库名称
+                      - columnheader "地址" [ref=e23512]:
+                        - generic [ref=e23513]: 地址
+                      - columnheader "联系人" [ref=e23514]:
+                        - generic [ref=e23515]: 联系人
+                      - columnheader "联系电话" [ref=e23516]:
+                        - generic [ref=e23517]: 联系电话
+                      - columnheader "创建时间" [ref=e23518]:
+                        - generic [ref=e23519]: 创建时间
+                      - columnheader "操作" [ref=e23520]:
+                        - generic [ref=e23521]: 操作
+                - table [ref=e23526]:
+                  - rowgroup [ref=e23535]:
+                    - row "1 北京一号仓 北京市朝阳区东五环物流园 张海 13800138001 2026-05-04T23:11:11 编辑 删除" [ref=e23536]:
+                      - cell "1" [ref=e23537]:
+                        - generic [ref=e23538]: "1"
+                      - cell "北京一号仓" [ref=e23539]:
+                        - generic [ref=e23540]: 北京一号仓
+                      - cell "北京市朝阳区东五环物流园" [ref=e23541]:
+                        - generic [ref=e23542]: 北京市朝阳区东五环物流园
+                      - cell "张海" [ref=e23543]:
+                        - generic [ref=e23544]: 张海
+                      - cell "13800138001" [ref=e23545]:
+                        - generic [ref=e23546]: "13800138001"
+                      - cell "2026-05-04T23:11:11" [ref=e23547]:
+                        - generic [ref=e23548]: 2026-05-04T23:11:11
+                      - cell "编辑 删除" [ref=e23549]:
+                        - generic [ref=e23550]:
+                          - button "编辑" [ref=e23551] [cursor=pointer]:
+                            - generic [ref=e23552]: 编辑
+                          - button "删除" [ref=e23553] [cursor=pointer]:
+                            - generic [ref=e23554]: 删除
+                    - row "2 上海中心仓 上海市浦东新区祝桥镇 李明 13800138002 2026-05-04T23:11:11 编辑 删除" [ref=e23555]:
+                      - cell "2" [ref=e23556]:
+                        - generic [ref=e23557]: "2"
+                      - cell "上海中心仓" [ref=e23558]:
+                        - generic [ref=e23559]: 上海中心仓
+                      - cell "上海市浦东新区祝桥镇" [ref=e23560]:
+                        - generic [ref=e23561]: 上海市浦东新区祝桥镇
+                      - cell "李明" [ref=e23562]:
+                        - generic [ref=e23563]: 李明
+                      - cell "13800138002" [ref=e23564]:
+                        - generic [ref=e23565]: "13800138002"
+                      - cell "2026-05-04T23:11:11" [ref=e23566]:
+                        - generic [ref=e23567]: 2026-05-04T23:11:11
+                      - cell "编辑 删除" [ref=e23568]:
+                        - generic [ref=e23569]:
+                          - button "编辑" [ref=e23570] [cursor=pointer]:
+                            - generic [ref=e23571]: 编辑
+                          - button "删除" [ref=e23572] [cursor=pointer]:
+                            - generic [ref=e23573]: 删除
+                    - row "3 广州南区仓 广州市白云区石井物流园 王磊 13800138003 2026-05-04T23:11:11 编辑 删除" [ref=e23574]:
+                      - cell "3" [ref=e23575]:
+                        - generic [ref=e23576]: "3"
+                      - cell "广州南区仓" [ref=e23577]:
+                        - generic [ref=e23578]: 广州南区仓
+                      - cell "广州市白云区石井物流园" [ref=e23579]:
+                        - generic [ref=e23580]: 广州市白云区石井物流园
+                      - cell "王磊" [ref=e23581]:
+                        - generic [ref=e23582]: 王磊
+                      - cell "13800138003" [ref=e23583]:
+                        - generic [ref=e23584]: "13800138003"
+                      - cell "2026-05-04T23:11:11" [ref=e23585]:
+                        - generic [ref=e23586]: 2026-05-04T23:11:11
+                      - cell "编辑 删除" [ref=e23587]:
+                        - generic [ref=e23588]:
+                          - button "编辑" [ref=e23589] [cursor=pointer]:
+                            - generic [ref=e23590]: 编辑
+                          - button "删除" [ref=e23591] [cursor=pointer]:
+                            - generic [ref=e23592]: 删除
+                    - row "4 成都西南仓 成都市双流区空港物流园 赵峰 13800138004 2026-05-04T23:11:11 编辑 删除" [ref=e23593]:
+                      - cell "4" [ref=e23594]:
+                        - generic [ref=e23595]: "4"
+                      - cell "成都西南仓" [ref=e23596]:
+                        - generic [ref=e23597]: 成都西南仓
+                      - cell "成都市双流区空港物流园" [ref=e23598]:
+                        - generic [ref=e23599]: 成都市双流区空港物流园
+                      - cell "赵峰" [ref=e23600]:
+                        - generic [ref=e23601]: 赵峰
+                      - cell "13800138004" [ref=e23602]:
+                        - generic [ref=e23603]: "13800138004"
+                      - cell "2026-05-04T23:11:11" [ref=e23604]:
+                        - generic [ref=e23605]: 2026-05-04T23:11:11
+                      - cell "编辑 删除" [ref=e23606]:
+                        - generic [ref=e23607]:
+                          - button "编辑" [ref=e23608] [cursor=pointer]:
+                            - generic [ref=e23609]: 编辑
+                          - button "删除" [ref=e23610] [cursor=pointer]:
+                            - generic [ref=e23611]: 删除
+                    - row "5 武汉中转仓 武汉市东西湖区保税园 陈静 13800138005 2026-05-04T23:11:11 编辑 删除" [ref=e23612]:
+                      - cell "5" [ref=e23613]:
+                        - generic [ref=e23614]: "5"
+                      - cell "武汉中转仓" [ref=e23615]:
+                        - generic [ref=e23616]: 武汉中转仓
+                      - cell "武汉市东西湖区保税园" [ref=e23617]:
+                        - generic [ref=e23618]: 武汉市东西湖区保税园
+                      - cell "陈静" [ref=e23619]:
+                        - generic [ref=e23620]: 陈静
+                      - cell "13800138005" [ref=e23621]:
+                        - generic [ref=e23622]: "13800138005"
+                      - cell "2026-05-04T23:11:11" [ref=e23623]:
+                        - generic [ref=e23624]: 2026-05-04T23:11:11
+                      - cell "编辑 删除" [ref=e23625]:
+                        - generic [ref=e23626]:
+                          - button "编辑" [ref=e23627] [cursor=pointer]:
+                            - generic [ref=e23628]: 编辑
+                          - button "删除" [ref=e23629] [cursor=pointer]:
+                            - generic [ref=e23630]: 删除
+                    - row "6 西安北方仓 西安市未央区综合物流基地 刘洋 13800138006 2026-05-04T23:11:11 编辑 删除" [ref=e23631]:
+                      - cell "6" [ref=e23632]:
+                        - generic [ref=e23633]: "6"
+                      - cell "西安北方仓" [ref=e23634]:
+                        - generic [ref=e23635]: 西安北方仓
+                      - cell "西安市未央区综合物流基地" [ref=e23636]:
+                        - generic [ref=e23637]: 西安市未央区综合物流基地
+                      - cell "刘洋" [ref=e23638]:
+                        - generic [ref=e23639]: 刘洋
+                      - cell "13800138006" [ref=e23640]:
+                        - generic [ref=e23641]: "13800138006"
+                      - cell "2026-05-04T23:11:11" [ref=e23642]:
+                        - generic [ref=e23643]: 2026-05-04T23:11:11
+                      - cell "编辑 删除" [ref=e23644]:
+                        - generic [ref=e23645]:
+                          - button "编辑" [ref=e23646] [cursor=pointer]:
+                            - generic [ref=e23647]: 编辑
+                          - button "删除" [ref=e23648] [cursor=pointer]:
+                            - generic [ref=e23649]: 删除
+              - generic [ref=e23650]:
+                - generic [ref=e23651]: Total 0
+                - generic [ref=e23654] [cursor=pointer]:
+                  - generic:
+                    - combobox [ref=e23656]
+                    - generic [ref=e23657]: 10/page
+                  - img [ref=e23660]
+                - button "Go to previous page" [disabled] [ref=e23662]:
+                  - generic:
+                    - img
+                - list [ref=e23663]:
+                  - listitem "page 1" [ref=e23664]: "1"
+                - button "Go to next page" [disabled] [ref=e23665]:
+                  - generic:
+                    - img
+                - generic [ref=e23666]:
+                  - generic [ref=e23667]: Go to
+                  - spinbutton "Page" [ref=e23670]: "1"
+          - text: "* * * *"
+  - alert [ref=e23738]:
+    - img [ref=e23740]
+    - paragraph [ref=e23742]: 删除成功

@@ -1,0 +1,36 @@
+- generic [ref=e22]:
+  - generic [ref=e24]:
+    - generic [ref=e25]:
+      - generic [ref=e26]: 分类
+      - generic [ref=e27]:
+        - img
+        - textbox "搜索商品" [ref=e28]
+      - button "消息通知" [ref=e29] [cursor=pointer]:
+        - img [ref=e30]
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35] [cursor=pointer]: 全部
+        - generic [ref=e36] [cursor=pointer]: 电子产品
+        - generic [ref=e37] [cursor=pointer]: 家用电器
+        - generic [ref=e38] [cursor=pointer]: 服装鞋帽
+        - generic [ref=e39] [cursor=pointer]: 食品饮料
+        - generic [ref=e40] [cursor=pointer]: 日化百货
+      - feed [ref=e42]:
+        - generic [ref=e294] [cursor=pointer]:
+          - img [ref=e296]
+          - generic [ref=e300]:
+            - generic [ref=e301]: 荣耀平板 X9
+            - generic [ref=e302]: ¥1699.00
+  - tablist [ref=e257]:
+    - tab "首页" [ref=e258] [cursor=pointer]:
+      - img [ref=e260]
+      - generic [ref=e263]: 首页
+    - tab "分类" [selected] [ref=e264] [cursor=pointer]:
+      - img [ref=e266]
+      - generic [ref=e271]: 分类
+    - tab "购物车" [ref=e272] [cursor=pointer]:
+      - img [ref=e275]
+      - generic [ref=e279]: 购物车
+    - tab "我的" [ref=e280] [cursor=pointer]:
+      - img [ref=e282]
+      - generic [ref=e285]: 我的

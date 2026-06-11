@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.walmart.oms.mapper.FavoriteMapper">
+    <select id="selectFavoritesWithProduct" resultType="com.walmart.oms.entity.Favorite">
+        SELECT f.*, p.product_name AS productName, p.price, p.stock, p.image_url AS imageUrl
+        FROM favorite f
+        LEFT JOIN product p ON f.product_id = p.id
+        WHERE f.member_id = #{memberId}
+        ORDER BY f.create_time DESC
+    </select>
+</mapper>

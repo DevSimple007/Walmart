@@ -1,0 +1,100 @@
+- generic [ref=e60]:
+  - complementary [ref=e61]:
+    - generic [ref=e62]:
+      - img "Walmart" [ref=e63]
+      - generic [ref=e64]: 沃尔玛OMS
+    - menubar [ref=e65]:
+      - menuitem "首页" [ref=e66] [cursor=pointer]:
+        - img [ref=e68]
+        - generic [ref=e70]: 首页
+      - menuitem "系统管理" [ref=e71]:
+        - generic [ref=e72] [cursor=pointer]:
+          - img [ref=e74]
+          - generic [ref=e76]: 系统管理
+          - img [ref=e78]
+      - menuitem "商品管理" [expanded] [ref=e80]:
+        - generic [ref=e81] [cursor=pointer]:
+          - img [ref=e83]
+          - generic [ref=e85]: 商品管理
+          - img [ref=e87]
+        - menu [ref=e240]:
+          - menuitem "商品分类" [ref=e241] [cursor=pointer]
+          - menuitem "商品列表" [ref=e242] [cursor=pointer]
+          - menuitem "品牌管理" [ref=e243] [cursor=pointer]
+          - menuitem "分类图标管理" [ref=e244] [cursor=pointer]
+      - menuitem "库存管理" [ref=e89]:
+        - generic [ref=e90] [cursor=pointer]:
+          - img [ref=e92]
+          - generic [ref=e95]: 库存管理
+          - img [ref=e97]
+      - menuitem "会员管理" [ref=e99]:
+        - generic [ref=e100] [cursor=pointer]:
+          - img [ref=e102]
+          - generic [ref=e104]: 会员管理
+          - img [ref=e106]
+      - menuitem "订单管理" [ref=e108]:
+        - generic [ref=e109] [cursor=pointer]:
+          - img [ref=e111]
+          - generic [ref=e113]: 订单管理
+          - img [ref=e115]
+      - menuitem "销售报表" [ref=e117]:
+        - generic [ref=e118] [cursor=pointer]:
+          - img [ref=e120]
+          - generic [ref=e122]: 销售报表
+          - img [ref=e124]
+  - generic [ref=e126]:
+    - banner [ref=e127]:
+      - button "切换菜单" [ref=e129] [cursor=pointer]:
+        - img [ref=e131]
+      - generic [ref=e135]:
+        - generic [ref=e136]:
+          - generic:
+            - search
+        - textbox "搜索订单、商品、会员..." [ref=e137]
+      - generic [ref=e138]:
+        - button "通知" [ref=e140] [cursor=pointer]:
+          - img [ref=e142]
+        - button "超级管理员" [ref=e148] [cursor=pointer]:
+          - generic [ref=e150]: 超级管理员
+          - img [ref=e152]
+    - main [ref=e154]:
+      - generic [ref=e155]:
+        - generic [ref=e156]:
+          - heading "欢迎回来，超级管理员" [level=1] [ref=e157]
+          - paragraph [ref=e158]: 沃尔玛OMS系统数据概览
+        - generic [ref=e159]:
+          - generic [ref=e160]:
+            - img [ref=e163]
+            - generic [ref=e165]:
+              - heading "今日销售额" [level=3] [ref=e166]
+              - paragraph [ref=e167]: ¥0
+              - paragraph [ref=e168]: "-100% 较昨日"
+          - generic [ref=e169]:
+            - img [ref=e172]
+            - generic [ref=e174]:
+              - heading "今日订单" [level=3] [ref=e175]
+              - paragraph [ref=e176]: "0"
+              - paragraph [ref=e177]: "-100% 较昨日"
+          - generic [ref=e178]:
+            - img [ref=e181]
+            - generic [ref=e184]:
+              - heading "库存预警" [level=3] [ref=e185]
+              - paragraph [ref=e186]: "0"
+              - paragraph [ref=e187]: 低库存商品预警
+          - generic [ref=e188]:
+            - img [ref=e191]
+            - generic [ref=e193]:
+              - heading "会员总数" [level=3] [ref=e194]
+              - paragraph [ref=e195]: "2"
+              - paragraph [ref=e196]: 已注册会员
+        - generic [ref=e197]:
+          - generic [ref=e199]:
+            - heading "销售趋势" [level=3] [ref=e200]
+            - generic [ref=e202] [cursor=pointer]:
+              - generic:
+                - combobox [ref=e204]
+                - generic [ref=e205]: 日
+              - img [ref=e208]
+          - heading "订单状态分布" [level=3] [ref=e216]
+          - heading "热门商品" [level=3] [ref=e223]
+          - heading "库存分类分布" [level=3] [ref=e230]

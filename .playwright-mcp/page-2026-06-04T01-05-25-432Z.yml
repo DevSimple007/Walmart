@@ -1,0 +1,11 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e127]:
+    - img [ref=e129]
+    - generic [ref=e132]: 下单成功
+    - generic [ref=e133]: ORD17805351234311758
+    - generic [ref=e134]: 您的订单正在处理中，请耐心等待
+    - generic [ref=e135]:
+      - button "查看订单" [ref=e136] [cursor=pointer]
+      - button "继续购物" [ref=e137] [cursor=pointer]
+  - dialog [ref=e138]:
+    - generic [ref=e139]: 下单成功

@@ -1,0 +1,259 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - img "Walmart" [ref=e6]
+      - generic [ref=e7]: 沃尔玛OMS
+    - menubar [ref=e8]:
+      - menuitem "首页" [ref=e9] [cursor=pointer]:
+        - img [ref=e11]
+        - generic [ref=e13]: 首页
+      - menuitem "系统管理" [ref=e14]:
+        - generic [ref=e15] [cursor=pointer]:
+          - img [ref=e17]
+          - generic [ref=e19]: 系统管理
+          - img [ref=e21]
+      - menuitem "商品管理" [ref=e23]:
+        - generic [ref=e24] [cursor=pointer]:
+          - img [ref=e26]
+          - generic [ref=e28]: 商品管理
+          - img [ref=e30]
+      - menuitem "库存管理" [ref=e32]:
+        - generic [ref=e33] [cursor=pointer]:
+          - img [ref=e35]
+          - generic [ref=e38]: 库存管理
+          - img [ref=e40]
+      - menuitem "会员管理" [expanded] [ref=e42]:
+        - generic [ref=e43] [cursor=pointer]:
+          - img [ref=e45]
+          - generic [ref=e47]: 会员管理
+          - img [ref=e49]
+        - menu [ref=e51]:
+          - menuitem "会员管理" [ref=e52] [cursor=pointer]
+          - menuitem "会员等级" [ref=e53] [cursor=pointer]
+          - menuitem "优惠券管理" [ref=e54] [cursor=pointer]
+      - menuitem "订单管理" [ref=e55]:
+        - generic [ref=e56] [cursor=pointer]:
+          - img [ref=e58]
+          - generic [ref=e60]: 订单管理
+          - img [ref=e62]
+      - menuitem "销售报表" [ref=e64]:
+        - generic [ref=e65] [cursor=pointer]:
+          - img [ref=e67]
+          - generic [ref=e69]: 销售报表
+          - img [ref=e71]
+  - generic [ref=e73]:
+    - banner [ref=e74]:
+      - button "切换菜单" [ref=e76] [cursor=pointer]:
+        - img [ref=e78]
+      - generic [ref=e82]:
+        - generic [ref=e83]:
+          - generic:
+            - search
+        - textbox "搜索订单、商品、会员..." [ref=e84]
+      - generic [ref=e85]:
+        - button "通知" [ref=e87] [cursor=pointer]:
+          - img [ref=e89]
+        - button "超级管理员" [ref=e95] [cursor=pointer]:
+          - generic [ref=e97]: 超级管理员
+          - img [ref=e99]
+    - main [ref=e101]:
+      - generic [ref=e102]:
+        - generic [ref=e103]:
+          - generic [ref=e105]:
+            - generic [ref=e106]: 会员等级管理
+            - button "添加会员等级" [ref=e107] [cursor=pointer]:
+              - generic [ref=e108]: 添加会员等级
+          - generic [ref=e109]:
+            - generic [ref=e110]:
+              - generic [ref=e111]:
+                - generic [ref=e112]: 等级名称
+                - textbox "等级名称" [ref=e116]:
+                  - /placeholder: 请输入等级名称
+              - generic [ref=e118]:
+                - button "搜索" [ref=e119] [cursor=pointer]:
+                  - generic [ref=e120]: 搜索
+                - button "重置" [ref=e121] [cursor=pointer]:
+                  - generic [ref=e122]: 重置
+            - generic [ref=e124]:
+              - table [ref=e126]:
+                - rowgroup [ref=e136]:
+                  - row "ID 等级名称 最小积分 最大积分 折扣 状态 创建时间 操作" [ref=e137]:
+                    - columnheader "ID" [ref=e138]:
+                      - generic [ref=e139]: ID
+                    - columnheader "等级名称" [ref=e140]:
+                      - generic [ref=e141]: 等级名称
+                    - columnheader "最小积分" [ref=e142]:
+                      - generic [ref=e143]: 最小积分
+                    - columnheader "最大积分" [ref=e144]:
+                      - generic [ref=e145]: 最大积分
+                    - columnheader "折扣" [ref=e146]:
+                      - generic [ref=e147]: 折扣
+                    - columnheader "状态" [ref=e148]:
+                      - generic [ref=e149]: 状态
+                    - columnheader "创建时间" [ref=e150]:
+                      - generic [ref=e151]: 创建时间
+                    - columnheader "操作" [ref=e152]:
+                      - generic [ref=e153]: 操作
+              - table [ref=e158]:
+                - rowgroup [ref=e168]:
+                  - row "1 普通会员-测试修改 0 1折 启用 2026-05-04T23:11:11 编辑 删除" [ref=e372]:
+                    - cell "1" [ref=e170]:
+                      - generic [ref=e171]: "1"
+                    - cell "普通会员-测试修改" [ref=e373]:
+                      - generic [ref=e173]: 普通会员-测试修改
+                    - cell "0" [ref=e174]:
+                      - generic [ref=e175]: "0"
+                    - cell [ref=e176]
+                    - cell "1折" [ref=e177]:
+                      - generic [ref=e178]: 1折
+                    - cell "启用" [ref=e179]:
+                      - generic [ref=e182]: 启用
+                    - cell "2026-05-04T23:11:11" [ref=e183]:
+                      - generic [ref=e184]: 2026-05-04T23:11:11
+                    - cell "编辑 删除" [ref=e185]:
+                      - generic [ref=e186]:
+                        - button "编辑" [ref=e187] [cursor=pointer]:
+                          - generic [ref=e188]: 编辑
+                        - button "删除" [ref=e189] [cursor=pointer]:
+                          - generic [ref=e190]: 删除
+                  - row "2 银卡会员 1000 0.98折 启用 2026-05-04T23:11:11 编辑 删除" [ref=e191]:
+                    - cell "2" [ref=e192]:
+                      - generic [ref=e193]: "2"
+                    - cell "银卡会员" [ref=e194]:
+                      - generic [ref=e195]: 银卡会员
+                    - cell "1000" [ref=e196]:
+                      - generic [ref=e197]: "1000"
+                    - cell [ref=e198]
+                    - cell "0.98折" [ref=e199]:
+                      - generic [ref=e200]: 0.98折
+                    - cell "启用" [ref=e201]:
+                      - generic [ref=e204]: 启用
+                    - cell "2026-05-04T23:11:11" [ref=e205]:
+                      - generic [ref=e206]: 2026-05-04T23:11:11
+                    - cell "编辑 删除" [ref=e207]:
+                      - generic [ref=e208]:
+                        - button "编辑" [ref=e209] [cursor=pointer]:
+                          - generic [ref=e210]: 编辑
+                        - button "删除" [ref=e211] [cursor=pointer]:
+                          - generic [ref=e212]: 删除
+                  - row "3 金卡会员 5000 0.95折 启用 2026-05-04T23:11:11 编辑 删除" [ref=e213]:
+                    - cell "3" [ref=e214]:
+                      - generic [ref=e215]: "3"
+                    - cell "金卡会员" [ref=e216]:
+                      - generic [ref=e217]: 金卡会员
+                    - cell "5000" [ref=e218]:
+                      - generic [ref=e219]: "5000"
+                    - cell [ref=e220]
+                    - cell "0.95折" [ref=e221]:
+                      - generic [ref=e222]: 0.95折
+                    - cell "启用" [ref=e223]:
+                      - generic [ref=e226]: 启用
+                    - cell "2026-05-04T23:11:11" [ref=e227]:
+                      - generic [ref=e228]: 2026-05-04T23:11:11
+                    - cell "编辑 删除" [ref=e229]:
+                      - generic [ref=e230]:
+                        - button "编辑" [ref=e231] [cursor=pointer]:
+                          - generic [ref=e232]: 编辑
+                        - button "删除" [ref=e233] [cursor=pointer]:
+                          - generic [ref=e234]: 删除
+                  - row "4 铂金会员 10000 0.92折 启用 2026-05-04T23:11:11 编辑 删除" [ref=e235]:
+                    - cell "4" [ref=e236]:
+                      - generic [ref=e237]: "4"
+                    - cell "铂金会员" [ref=e238]:
+                      - generic [ref=e239]: 铂金会员
+                    - cell "10000" [ref=e240]:
+                      - generic [ref=e241]: "10000"
+                    - cell [ref=e242]
+                    - cell "0.92折" [ref=e243]:
+                      - generic [ref=e244]: 0.92折
+                    - cell "启用" [ref=e245]:
+                      - generic [ref=e248]: 启用
+                    - cell "2026-05-04T23:11:11" [ref=e249]:
+                      - generic [ref=e250]: 2026-05-04T23:11:11
+                    - cell "编辑 删除" [ref=e251]:
+                      - generic [ref=e252]:
+                        - button "编辑" [ref=e253] [cursor=pointer]:
+                          - generic [ref=e254]: 编辑
+                        - button "删除" [ref=e255] [cursor=pointer]:
+                          - generic [ref=e256]: 删除
+                  - row "5 钻石会员 20000 0.88折 启用 2026-05-04T23:11:11 编辑 删除" [ref=e257]:
+                    - cell "5" [ref=e258]:
+                      - generic [ref=e259]: "5"
+                    - cell "钻石会员" [ref=e260]:
+                      - generic [ref=e261]: 钻石会员
+                    - cell "20000" [ref=e262]:
+                      - generic [ref=e263]: "20000"
+                    - cell [ref=e264]
+                    - cell "0.88折" [ref=e265]:
+                      - generic [ref=e266]: 0.88折
+                    - cell "启用" [ref=e267]:
+                      - generic [ref=e270]: 启用
+                    - cell "2026-05-04T23:11:11" [ref=e271]:
+                      - generic [ref=e272]: 2026-05-04T23:11:11
+                    - cell "编辑 删除" [ref=e273]:
+                      - generic [ref=e274]:
+                        - button "编辑" [ref=e275] [cursor=pointer]:
+                          - generic [ref=e276]: 编辑
+                        - button "删除" [ref=e277] [cursor=pointer]:
+                          - generic [ref=e278]: 删除
+            - generic [ref=e279]:
+              - generic [ref=e280]: Total 0
+              - generic [ref=e283] [cursor=pointer]:
+                - generic:
+                  - combobox [ref=e285]
+                  - generic [ref=e286]: 10/page
+                - img [ref=e289]
+              - button "Go to previous page" [disabled] [ref=e291]:
+                - generic:
+                  - img
+              - list [ref=e292]:
+                - listitem "page 1" [ref=e293]: "1"
+              - button "Go to next page" [disabled] [ref=e294]:
+                - generic:
+                  - img
+              - generic [ref=e295]:
+                - generic [ref=e296]: Go to
+                - spinbutton "Page" [ref=e299]: "1"
+        - dialog "编辑会员等级" [ref=e301]:
+          - generic [active] [ref=e302]:
+            - generic [ref=e303]:
+              - heading "编辑会员等级" [level=2] [ref=e304]
+              - button "Close this dialog" [ref=e305] [cursor=pointer]:
+                - img [ref=e307]
+            - generic [ref=e310]:
+              - generic [ref=e311]:
+                - generic [ref=e312]: "* 等级名称"
+                - textbox "* 等级名称" [ref=e316]:
+                  - /placeholder: 请输入等级名称
+                  - text: 普通会员-测试修改
+              - generic [ref=e317]:
+                - generic [ref=e318]: "* 最小积分"
+                - generic [ref=e320]:
+                  - button "decrease number" [ref=e321]:
+                    - img [ref=e323]
+                  - button "increase number" [ref=e325] [cursor=pointer]:
+                    - img [ref=e327]
+                  - spinbutton "* 最小积分" [ref=e331]: "0"
+              - generic [ref=e332]:
+                - generic [ref=e333]: "* 最大积分"
+                - generic [ref=e335]:
+                  - button "decrease number" [ref=e336] [cursor=pointer]:
+                    - img [ref=e338]
+                  - button "increase number" [ref=e340] [cursor=pointer]:
+                    - img [ref=e342]
+                  - spinbutton "* 最大积分" [ref=e346]
+              - generic [ref=e347]:
+                - generic [ref=e348]: "* 折扣"
+                - spinbutton "* 折扣" [ref=e352]: "1"
+              - generic [ref=e353]:
+                - generic [ref=e354]: "* 状态"
+                - generic [ref=e357] [cursor=pointer]:
+                  - generic:
+                    - combobox "* 状态" [ref=e359]
+                    - generic [ref=e360]: "1"
+                  - img [ref=e363]
+            - generic [ref=e366]:
+              - button "取消" [ref=e367] [cursor=pointer]:
+                - generic [ref=e368]: 取消
+              - button "确定" [ref=e369] [cursor=pointer]:
+                - generic [ref=e370]: 确定

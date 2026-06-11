@@ -1,0 +1,127 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - img "Walmart" [ref=e6]
+      - generic [ref=e7]: 沃尔玛OMS
+    - menubar [ref=e8]:
+      - menuitem "首页" [ref=e9] [cursor=pointer]:
+        - img [ref=e11]
+        - generic [ref=e13]: 首页
+      - menuitem "系统管理" [ref=e14]:
+        - generic [ref=e15] [cursor=pointer]:
+          - img [ref=e17]
+          - generic [ref=e19]: 系统管理
+          - img [ref=e21]
+      - menuitem "商品管理" [ref=e23]:
+        - generic [ref=e24] [cursor=pointer]:
+          - img [ref=e26]
+          - generic [ref=e28]: 商品管理
+          - img [ref=e30]
+      - menuitem "库存管理" [ref=e32]:
+        - generic [ref=e33] [cursor=pointer]:
+          - img [ref=e35]
+          - generic [ref=e38]: 库存管理
+          - img [ref=e40]
+      - menuitem "会员管理" [ref=e42]:
+        - generic [ref=e43] [cursor=pointer]:
+          - img [ref=e45]
+          - generic [ref=e47]: 会员管理
+          - img [ref=e49]
+      - menuitem "订单管理" [expanded] [ref=e51]:
+        - generic [ref=e52] [cursor=pointer]:
+          - img [ref=e54]
+          - generic [ref=e56]: 订单管理
+          - img [ref=e58]
+        - menu [ref=e60]:
+          - menuitem "订单列表" [ref=e61] [cursor=pointer]
+          - menuitem "订单详情" [ref=e62] [cursor=pointer]
+      - menuitem "销售报表" [ref=e63]:
+        - generic [ref=e64] [cursor=pointer]:
+          - img [ref=e66]
+          - generic [ref=e68]: 销售报表
+          - img [ref=e70]
+  - generic [ref=e72]:
+    - banner [ref=e73]:
+      - button "切换菜单" [ref=e75] [cursor=pointer]:
+        - img [ref=e77]
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - generic:
+            - search
+        - textbox "搜索订单、商品、会员..." [ref=e83]
+      - generic [ref=e84]:
+        - button "通知" [ref=e86] [cursor=pointer]:
+          - img [ref=e88]
+        - button "超级管理员" [ref=e94] [cursor=pointer]:
+          - generic [ref=e96]: 超级管理员
+          - img [ref=e98]
+    - main [ref=e100]:
+      - generic [ref=e272]:
+        - generic [ref=e274]:
+          - generic [ref=e275]: 订单详情
+          - button "返回" [ref=e276] [cursor=pointer]:
+            - generic [ref=e277]: 返回
+        - generic [ref=e279]:
+          - generic [ref=e280]:
+            - heading "订单信息" [level=3] [ref=e281]
+            - table [ref=e284]:
+              - rowgroup [ref=e285]:
+                - row "订单号 ORD17804079828627950 订单状态 待支付" [ref=e286]:
+                  - cell "订单号" [ref=e287]
+                  - cell "ORD17804079828627950" [ref=e288]
+                  - cell "订单状态" [ref=e289]
+                  - cell "待支付" [ref=e290]:
+                    - generic [ref=e292]: 待支付
+                - row "用户ID 1 总金额 ¥7999" [ref=e293]:
+                  - cell "用户ID" [ref=e294]
+                  - cell "1" [ref=e295]
+                  - cell "总金额" [ref=e296]
+                  - cell "¥7999" [ref=e297]
+                - row "收货地址 北京市朝阳区望京街道望京SOHO T1 20层 备注 请尽快发货，谢谢" [ref=e298]:
+                  - cell "收货地址" [ref=e299]
+                  - cell "北京市朝阳区望京街道望京SOHO T1 20层" [ref=e300]
+                  - cell "备注" [ref=e301]
+                  - cell "请尽快发货，谢谢" [ref=e302]
+                - row "创建时间 2026-06-02T21:46:23 更新时间 2026-06-02T21:46:23" [ref=e303]:
+                  - cell "创建时间" [ref=e304]
+                  - cell "2026-06-02T21:46:23" [ref=e305]
+                  - cell "更新时间" [ref=e306]
+                  - cell "2026-06-02T21:46:23" [ref=e307]
+          - generic [ref=e308]:
+            - heading "商品列表" [level=3] [ref=e309]
+            - generic [ref=e311]:
+              - table [ref=e313]:
+                - rowgroup [ref=e321]:
+                  - row "ID 商品名称 商品ID 数量 单价 总价" [ref=e322]:
+                    - columnheader "ID" [ref=e323]:
+                      - generic [ref=e324]: ID
+                    - columnheader "商品名称" [ref=e325]:
+                      - generic [ref=e326]: 商品名称
+                    - columnheader "商品ID" [ref=e327]:
+                      - generic [ref=e328]: 商品ID
+                    - columnheader "数量" [ref=e329]:
+                      - generic [ref=e330]: 数量
+                    - columnheader "单价" [ref=e331]:
+                      - generic [ref=e332]: 单价
+                    - columnheader "总价" [ref=e333]:
+                      - generic [ref=e334]: 总价
+              - table [ref=e339]:
+                - rowgroup [ref=e347]:
+                  - row "6 iPhone 15 Pro 1 1 ¥7999 ¥7999" [ref=e348]:
+                    - cell "6" [ref=e349]:
+                      - generic [ref=e350]: "6"
+                    - cell "iPhone 15 Pro" [ref=e351]:
+                      - generic [ref=e352]: iPhone 15 Pro
+                    - cell "1" [ref=e353]:
+                      - generic [ref=e354]: "1"
+                    - cell "1" [ref=e355]:
+                      - generic [ref=e356]: "1"
+                    - cell "¥7999" [ref=e357]:
+                      - generic [ref=e358]: ¥7999
+                    - cell "¥7999" [ref=e359]:
+                      - generic [ref=e360]: ¥7999
+          - generic [ref=e361]:
+            - button "修改状态" [ref=e362] [cursor=pointer]:
+              - generic [ref=e363]: 修改状态
+            - button "申请退款" [ref=e364] [cursor=pointer]:
+              - generic [ref=e365]: 申请退款

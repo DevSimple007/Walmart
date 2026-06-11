@@ -1,0 +1,432 @@
+/* ============================
+   Walmart OMS Design System
+   ============================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+
+/* 设计系统变量 */
+:root {
+  /* 品牌色 */
+  --wm-primary: #0071dc;
+  --wm-primary-hover: #0056b3;
+  --wm-primary-light: rgba(0, 113, 220, 0.08);
+  --wm-primary-glow: rgba(0, 113, 220, 0.15);
+
+  /* 功能色 */
+  --wm-success: #22c55e;
+  --wm-warning: #f59e0b;
+  --wm-danger: #ef4444;
+  --wm-info: #3b82f6;
+
+  /* 文字色 */
+  --wm-text-primary: #0f172a;
+  --wm-text-secondary: #475569;
+  --wm-text-muted: #94a3b8;
+  --wm-text-inverse: #ffffff;
+
+  /* 背景色 */
+  --wm-bg-page: #f1f5f9;
+  --wm-bg-card: #ffffff;
+  --wm-bg-sidebar: #0071dc;
+  --wm-bg-overlay: rgba(0, 0, 0, 0.4);
+
+  /* 边框 */
+  --wm-border: #e2e8f0;
+  --wm-border-light: #f1f5f9;
+
+  /* 阴影 - Glassmorphism 风格 */
+  --wm-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --wm-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --wm-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+  --wm-shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.08);
+
+  /* 圆角 */
+  --wm-radius-sm: 8px;
+  --wm-radius-md: 12px;
+  --wm-radius-lg: 16px;
+  --wm-radius-xl: 20px;
+  --wm-radius-full: 9999px;
+
+  /* 间距 */
+  --wm-space-xs: 4px;
+  --wm-space-sm: 8px;
+  --wm-space-md: 16px;
+  --wm-space-lg: 24px;
+  --wm-space-xl: 32px;
+
+  /* 字体 */
+  --wm-font: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --wm-font-mono: 'Fira Code', 'SF Mono', 'Consolas', monospace;
+
+  /* 字号 */
+  --wm-text-xs: 12px;
+  --wm-text-sm: 14px;
+  --wm-text-base: 16px;
+  --wm-text-lg: 18px;
+  --wm-text-xl: 20px;
+  --wm-text-2xl: 24px;
+  --wm-text-3xl: 30px;
+
+  /* 行高 */
+  --wm-leading-tight: 1.3;
+  --wm-leading-normal: 1.5;
+  --wm-leading-relaxed: 1.75;
+
+  /* 过渡 */
+  --wm-transition-fast: 150ms ease;
+  --wm-transition-normal: 250ms ease;
+  --wm-transition-slow: 350ms ease;
+
+  /* Z-index 层级 */
+  --wm-z-dropdown: 100;
+  --wm-z-sticky: 200;
+  --wm-z-overlay: 300;
+  --wm-z-modal: 400;
+  --wm-z-toast: 500;
+
+  /* 布局 */
+  --wm-sidebar-width: 220px;
+  --wm-sidebar-collapsed: 64px;
+  --wm-header-height: 64px;
+}
+
+/* 主题: light */
+:root[data-theme='light'] {
+  --wm-bg-page: #f1f5f9;
+  --wm-bg-card: #ffffff;
+  --wm-text-primary: #0f172a;
+  --wm-text-secondary: #475569;
+  --wm-border: #e2e8f0;
+}
+
+/* ============================
+   基础重置
+   ============================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--wm-font);
+  font-size: var(--wm-text-sm);
+  line-height: var(--wm-leading-normal);
+  color: var(--wm-text-primary);
+  background-color: var(--wm-bg-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 减弱动画偏好 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================
+   卡片 - Glassmorphism 风格
+   ============================ */
+.wm-card {
+  background: var(--wm-bg-card);
+  border-radius: var(--wm-radius-md);
+  box-shadow: var(--wm-shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: box-shadow var(--wm-transition-normal), transform var(--wm-transition-normal);
+  overflow: hidden;
+}
+
+.wm-card:hover {
+  box-shadow: var(--wm-shadow-lg);
+  transform: translateY(-2px);
+}
+
+.wm-card-glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: var(--wm-shadow-glass);
+}
+
+.wm-card-header {
+  padding: var(--wm-space-lg) var(--wm-space-lg);
+  border-bottom: 1px solid var(--wm-border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wm-card-title {
+  font-size: var(--wm-text-base);
+  font-weight: 600;
+  color: var(--wm-text-primary);
+  margin: 0;
+}
+
+.wm-card-body {
+  padding: var(--wm-space-lg);
+}
+
+/* ============================
+   按钮
+   ============================ */
+.wm-btn {
+  border-radius: var(--wm-radius-sm);
+  font-weight: 500;
+  transition: all var(--wm-transition-fast);
+  cursor: pointer;
+  min-height: 40px;
+  padding: 8px 20px;
+}
+
+.wm-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 113, 220, 0.25);
+}
+
+.wm-btn:active {
+  transform: translateY(0);
+}
+
+.wm-btn-primary {
+  background-color: var(--wm-primary);
+  border-color: var(--wm-primary);
+  color: var(--wm-text-inverse);
+}
+
+.wm-btn-primary:hover {
+  background-color: var(--wm-primary-hover);
+  border-color: var(--wm-primary-hover);
+}
+
+/* ============================
+   表格
+   ============================ */
+.wm-table {
+  border-radius: var(--wm-radius-sm);
+  overflow: hidden;
+  box-shadow: var(--wm-shadow-sm);
+}
+
+.wm-table .el-table__header-wrapper {
+  background-color: var(--wm-bg-page);
+}
+
+.wm-table .el-table__header th {
+  font-weight: 600;
+  color: var(--wm-text-primary);
+  background-color: var(--wm-bg-page);
+  border-bottom: 1px solid var(--wm-border);
+}
+
+.wm-table .el-table__body tr {
+  transition: background-color var(--wm-transition-fast);
+}
+
+.wm-table .el-table__body tr:hover {
+  background-color: var(--wm-primary-light);
+}
+
+.wm-table .el-table__body tr.el-table__row--striped {
+  background-color: #fafbfc;
+}
+
+/* ============================
+   表单
+   ============================ */
+.wm-form .el-form-item {
+  margin-bottom: var(--wm-space-lg);
+}
+
+.wm-form .el-form-item__label {
+  font-weight: 500;
+  color: var(--wm-text-primary);
+}
+
+.wm-form .el-input,
+.wm-form .el-select,
+.wm-form .el-date-picker {
+  border-radius: var(--wm-radius-sm);
+  transition: all var(--wm-transition-fast);
+}
+
+.wm-form .el-input:focus-within,
+.wm-form .el-select:focus-within,
+.wm-form .el-date-picker:focus-within {
+  border-color: var(--wm-primary);
+  box-shadow: 0 0 0 3px var(--wm-primary-glow);
+}
+
+/* ============================
+   状态提示
+   ============================ */
+.wm-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--wm-space-xl);
+}
+
+.wm-loading .el-icon-loading {
+  font-size: var(--wm-space-lg);
+  color: var(--wm-primary);
+}
+
+.wm-error {
+  padding: var(--wm-space-md);
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: var(--wm-radius-sm);
+  color: var(--wm-danger);
+  margin-bottom: var(--wm-space-md);
+}
+
+.wm-success {
+  padding: var(--wm-space-md);
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: var(--wm-radius-sm);
+  color: var(--wm-success);
+  margin-bottom: var(--wm-space-md);
+}
+
+.wm-warning {
+  padding: var(--wm-space-md);
+  background-color: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: var(--wm-radius-sm);
+  color: var(--wm-warning);
+  margin-bottom: var(--wm-space-md);
+}
+
+.wm-info {
+  padding: var(--wm-space-md);
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: var(--wm-radius-sm);
+  color: var(--wm-info);
+  margin-bottom: var(--wm-space-md);
+}
+
+/* ============================
+   响应式断点
+
+   桌面端: > 1024px  (默认)
+   平板端: 768px ~ 1024px
+   移动端: < 768px
+   ============================ */
+
+/* 平板端 (768px ~ 1024px) */
+@media screen and (max-width: 1024px) {
+  .wm-card-header {
+    padding: var(--wm-space-md) var(--wm-space-lg);
+  }
+
+  .wm-card-body {
+    padding: var(--wm-space-md);
+  }
+
+  .wm-form .el-form-item {
+    margin-bottom: var(--wm-space-md);
+  }
+
+  .wm-btn {
+    min-height: 44px;
+  }
+}
+
+/* 移动端 (< 768px) */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: var(--wm-text-base);
+  }
+
+  .wm-card-header {
+    padding: var(--wm-space-md);
+  }
+
+  .wm-card-body {
+    padding: var(--wm-space-md);
+  }
+
+  .wm-card-title {
+    font-size: var(--wm-text-sm);
+  }
+
+  .wm-btn {
+    min-height: 48px;
+    padding: 10px 20px;
+    font-size: var(--wm-text-base);
+  }
+}
+
+/* ============================
+   滚动条样式
+   ============================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: var(--wm-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ============================
+   Element Plus 覆盖
+   ============================ */
+
+/* 表格移动端水平滚动 */
+.el-table__body-wrapper {
+  overflow-x: auto;
+}
+
+/* 分页移动端适配 */
+@media screen and (max-width: 768px) {
+  .el-pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--wm-space-sm);
+  }
+
+  .el-pagination .el-pagination__jump {
+    display: none;
+  }
+
+  .el-pagination .el-pagination__sizes {
+    display: none;
+  }
+}
+
+/* 输入框触摸友好 */
+@media screen and (max-width: 1024px) {
+  .el-input__inner {
+    min-height: 44px;
+  }
+
+  .el-select .el-input__inner {
+    min-height: 44px;
+  }
+}
+
+/* 对话框移动端 */
+@media screen and (max-width: 768px) {
+  .el-dialog {
+    width: 92% !important;
+    margin: 0 auto !important;
+  }
+}

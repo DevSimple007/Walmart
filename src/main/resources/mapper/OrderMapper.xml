@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.walmart.oms.mapper.OrderMapper">
+
+    <select id="sumAmountByDate" resultType="java.math.BigDecimal">
+        SELECT COALESCE(SUM(total_amount), 0) FROM `order`
+        WHERE DATE(create_time) = #{date}
+    </select>
+
+    <select id="countByDate" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM `order`
+        WHERE DATE(create_time) = #{date}
+    </select>
+
+    <select id="countByStatus" resultType="java.util.Map">
+        SELECT status, COUNT(*) as count FROM `order`
+        GROUP BY status
+    </select>
+
+    <select id="salesByDay" resultType="java.util.Map">
+        SELECT DATE_FORMAT(create_time, '%m月%d日') as date,
+               COALESCE(SUM(total_amount), 0) as sales,
+               COUNT(*) as orders
+        FROM `order`
+        WHERE create_time >= #{startDate}
+        GROUP BY DATE_FORMAT(create_time, '%m月%d日')
+        ORDER BY MIN(create_time)
+    </select>
+
+    <select id="salesByWeek" resultType="java.util.Map">
+        SELECT CONCAT('第', WEEK(create_time, 1) - WEEK(#{startDate}, 1) + 1, '周') as week,
+               COALESCE(SUM(total_amount), 0) as sales,
+               COUNT(*) as orders
+        FROM `order`
+        WHERE create_time >= #{startDate}
+        GROUP BY WEEK(create_time, 1), WEEK(#{startDate}, 1)
+        ORDER BY MIN(create_time)
+    </select>
+
+    <select id="salesByMonth" resultType="java.util.Map">
+        SELECT DATE_FORMAT(create_time, '%Y年%m月') as month,
+               COALESCE(SUM(total_amount), 0) as sales,
+               COUNT(*) as orders
+        FROM `order`
+        WHERE create_time >= #{startDate}
+        GROUP BY DATE_FORMAT(create_time, '%Y年%m月')
+        ORDER BY MIN(create_time)
+    </select>
+
+    <select id="topProducts" resultType="java.util.Map">
+        SELECT oi.product_id as productId,
+               COALESCE(p.product_name, CONCAT('商品#', oi.product_id)) as productName,
+               SUM(oi.quantity) as quantity,
+               SUM(oi.price * oi.quantity) as sales
+        FROM order_item oi
+        LEFT JOIN product p ON oi.product_id = p.id
+        GROUP BY oi.product_id, p.product_name
+        ORDER BY sales DESC
+        LIMIT #{limit}
+    </select>
+
+</mapper>

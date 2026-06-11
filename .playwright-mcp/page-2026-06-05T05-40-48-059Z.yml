@@ -1,0 +1,186 @@
+- generic [ref=e60]:
+  - complementary [ref=e61]:
+    - generic [ref=e62]:
+      - img "Walmart" [ref=e63]
+      - generic [ref=e64]: 沃尔玛OMS
+    - menubar [ref=e65]:
+      - menuitem "首页" [ref=e66] [cursor=pointer]:
+        - img [ref=e68]
+        - generic [ref=e70]: 首页
+      - menuitem "系统管理" [expanded] [ref=e71]:
+        - generic [ref=e72] [cursor=pointer]:
+          - img [ref=e74]
+          - generic [ref=e76]: 系统管理
+          - img [ref=e78]
+        - menu [ref=e15100]:
+          - menuitem "用户管理" [active] [ref=e15101] [cursor=pointer]
+          - menuitem "角色管理" [ref=e15102] [cursor=pointer]
+          - menuitem "菜单管理" [ref=e15103] [cursor=pointer]
+      - menuitem "商品管理" [ref=e80]:
+        - generic [ref=e81] [cursor=pointer]:
+          - img [ref=e83]
+          - generic [ref=e85]: 商品管理
+          - img [ref=e87]
+      - menuitem "库存管理" [ref=e89]:
+        - generic [ref=e90] [cursor=pointer]:
+          - img [ref=e92]
+          - generic [ref=e95]: 库存管理
+          - img [ref=e97]
+      - menuitem "会员管理" [ref=e99]:
+        - generic [ref=e100] [cursor=pointer]:
+          - img [ref=e102]
+          - generic [ref=e104]: 会员管理
+          - img [ref=e106]
+      - menuitem "订单管理" [ref=e108]:
+        - generic [ref=e109] [cursor=pointer]:
+          - img [ref=e111]
+          - generic [ref=e113]: 订单管理
+          - img [ref=e115]
+      - menuitem "销售报表" [ref=e117]:
+        - generic [ref=e118] [cursor=pointer]:
+          - img [ref=e120]
+          - generic [ref=e122]: 销售报表
+          - img [ref=e124]
+  - generic [ref=e126]:
+    - banner [ref=e127]:
+      - button "切换菜单" [ref=e129] [cursor=pointer]:
+        - img [ref=e131]
+      - generic [ref=e135]:
+        - generic [ref=e136]:
+          - generic:
+            - search
+        - textbox "搜索订单、商品、会员..." [ref=e137]
+      - generic [ref=e138]:
+        - button "通知" [ref=e140] [cursor=pointer]:
+          - img [ref=e142]
+        - button "超级管理员" [ref=e148] [cursor=pointer]:
+          - generic [ref=e150]: 超级管理员
+          - img [ref=e152]
+    - main [ref=e154]:
+      - generic [ref=e15105]:
+        - generic [ref=e15107]:
+          - generic [ref=e15108]: 用户管理
+          - button "添加用户" [ref=e15109] [cursor=pointer]:
+            - generic [ref=e15110]: 添加用户
+        - generic [ref=e15111]:
+          - generic [ref=e15112]:
+            - generic [ref=e15113]:
+              - generic [ref=e15114]: 用户名
+              - textbox "用户名" [ref=e15118]:
+                - /placeholder: 请输入用户名
+            - generic [ref=e15120]:
+              - button "搜索" [ref=e15121] [cursor=pointer]:
+                - generic [ref=e15122]: 搜索
+              - button "重置" [ref=e15123] [cursor=pointer]:
+                - generic [ref=e15124]: 重置
+          - generic [ref=e15126]:
+            - table [ref=e15128]:
+              - rowgroup [ref=e15139]:
+                - row "ID 用户名 登录密码 昵称 邮箱 电话 状态 创建时间 操作" [ref=e15140]:
+                  - columnheader "ID" [ref=e15141]:
+                    - generic [ref=e15142]: ID
+                  - columnheader "用户名" [ref=e15143]:
+                    - generic [ref=e15144]: 用户名
+                  - columnheader "登录密码" [ref=e15145]:
+                    - generic [ref=e15146]: 登录密码
+                  - columnheader "昵称" [ref=e15147]:
+                    - generic [ref=e15148]: 昵称
+                  - columnheader "邮箱" [ref=e15149]:
+                    - generic [ref=e15150]: 邮箱
+                  - columnheader "电话" [ref=e15151]:
+                    - generic [ref=e15152]: 电话
+                  - columnheader "状态" [ref=e15153]:
+                    - generic [ref=e15154]: 状态
+                  - columnheader "创建时间" [ref=e15155]:
+                    - generic [ref=e15156]: 创建时间
+                  - columnheader "操作" [ref=e15157]:
+                    - generic [ref=e15158]: 操作
+            - table [ref=e15163]:
+              - rowgroup [ref=e15174]:
+                - row "1 admin 123456 超级管理员 admin@walmart.com 13800138000 启用 2026-05-04T23:11:11 编辑 删除" [ref=e15175]:
+                  - cell "1" [ref=e15176]:
+                    - generic [ref=e15177]: "1"
+                  - cell "admin" [ref=e15178]:
+                    - generic [ref=e15179]: admin
+                  - cell "123456" [ref=e15180]:
+                    - generic [ref=e15181]: "123456"
+                  - cell "超级管理员" [ref=e15182]:
+                    - generic [ref=e15183]: 超级管理员
+                  - cell "admin@walmart.com" [ref=e15184]:
+                    - generic [ref=e15185]: admin@walmart.com
+                  - cell "13800138000" [ref=e15186]:
+                    - generic [ref=e15187]: "13800138000"
+                  - cell "启用" [ref=e15188]:
+                    - generic [ref=e15191]: 启用
+                  - cell "2026-05-04T23:11:11" [ref=e15192]:
+                    - generic [ref=e15193]: 2026-05-04T23:11:11
+                  - cell "编辑 删除" [ref=e15194]:
+                    - generic [ref=e15195]:
+                      - button "编辑" [ref=e15196] [cursor=pointer]:
+                        - generic [ref=e15197]: 编辑
+                      - button "删除" [ref=e15198] [cursor=pointer]:
+                        - generic [ref=e15199]: 删除
+                - row "2 operator 123456 运营经理 operator@walmart.com 13800138010 启用 2026-05-04T23:11:11 编辑 删除" [ref=e15200]:
+                  - cell "2" [ref=e15201]:
+                    - generic [ref=e15202]: "2"
+                  - cell "operator" [ref=e15203]:
+                    - generic [ref=e15204]: operator
+                  - cell "123456" [ref=e15205]:
+                    - generic [ref=e15206]: "123456"
+                  - cell "运营经理" [ref=e15207]:
+                    - generic [ref=e15208]: 运营经理
+                  - cell "operator@walmart.com" [ref=e15209]:
+                    - generic [ref=e15210]: operator@walmart.com
+                  - cell "13800138010" [ref=e15211]:
+                    - generic [ref=e15212]: "13800138010"
+                  - cell "启用" [ref=e15213]:
+                    - generic [ref=e15216]: 启用
+                  - cell "2026-05-04T23:11:11" [ref=e15217]:
+                    - generic [ref=e15218]: 2026-05-04T23:11:11
+                  - cell "编辑 删除" [ref=e15219]:
+                    - generic [ref=e15220]:
+                      - button "编辑" [ref=e15221] [cursor=pointer]:
+                        - generic [ref=e15222]: 编辑
+                      - button "删除" [ref=e15223] [cursor=pointer]:
+                        - generic [ref=e15224]: 删除
+                - row "3 warehouse 123456 仓库主管 warehouse@walmart.com 13800138020 启用 2026-05-04T23:11:11 编辑 删除" [ref=e15225]:
+                  - cell "3" [ref=e15226]:
+                    - generic [ref=e15227]: "3"
+                  - cell "warehouse" [ref=e15228]:
+                    - generic [ref=e15229]: warehouse
+                  - cell "123456" [ref=e15230]:
+                    - generic [ref=e15231]: "123456"
+                  - cell "仓库主管" [ref=e15232]:
+                    - generic [ref=e15233]: 仓库主管
+                  - cell "warehouse@walmart.com" [ref=e15234]:
+                    - generic [ref=e15235]: warehouse@walmart.com
+                  - cell "13800138020" [ref=e15236]:
+                    - generic [ref=e15237]: "13800138020"
+                  - cell "启用" [ref=e15238]:
+                    - generic [ref=e15241]: 启用
+                  - cell "2026-05-04T23:11:11" [ref=e15242]:
+                    - generic [ref=e15243]: 2026-05-04T23:11:11
+                  - cell "编辑 删除" [ref=e15244]:
+                    - generic [ref=e15245]:
+                      - button "编辑" [ref=e15246] [cursor=pointer]:
+                        - generic [ref=e15247]: 编辑
+                      - button "删除" [ref=e15248] [cursor=pointer]:
+                        - generic [ref=e15249]: 删除
+          - generic [ref=e15250]:
+            - generic [ref=e15251]: Total 0
+            - generic [ref=e15254] [cursor=pointer]:
+              - generic:
+                - combobox [ref=e15256]
+                - generic [ref=e15257]: 10/page
+              - img [ref=e15260]
+            - button "Go to previous page" [disabled] [ref=e15262]:
+              - generic:
+                - img
+            - list [ref=e15263]:
+              - listitem "page 1" [ref=e15264]: "1"
+            - button "Go to next page" [disabled] [ref=e15265]:
+              - generic:
+                - img
+            - generic [ref=e15266]:
+              - generic [ref=e15267]: Go to
+              - spinbutton "Page" [ref=e15270]: "1"

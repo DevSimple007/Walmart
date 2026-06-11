@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.walmart.oms.mapper.ProductMapper">
+    <select id="selectProductPage" parameterType="com.baomidou.mybatisplus.extension.plugins.pagination.Page" resultType="com.walmart.oms.entity.Product">
+        SELECT p.*, c.category_name as categoryName
+        FROM product p
+        LEFT JOIN product_category c ON p.category_id = c.id
+        ORDER BY p.create_time DESC
+    </select>
+
+    <select id="selectProductPageWithFilter" resultType="com.walmart.oms.entity.Product">
+        SELECT p.*, c.category_name as categoryName
+        FROM product p
+        LEFT JOIN product_category c ON p.category_id = c.id
+        WHERE p.status = 1
+        <if test="keyword != null and keyword != ''">
+            AND (p.product_name LIKE CONCAT('%', #{keyword}, '%')
+                 OR c.category_name LIKE CONCAT('%', #{keyword}, '%')
+                 OR p.description LIKE CONCAT('%', #{keyword}, '%'))
+        </if>
+        <if test="categoryId != null">
+            AND (p.category_id = #{categoryId} OR p.category_id IN (SELECT id FROM product_category WHERE parent_id = #{categoryId}))
+        </if>
+        ORDER BY p.create_time DESC
+    </select>
+
+    <select id="selectHotProducts" resultType="com.walmart.oms.entity.Product">
+        SELECT p.*, c.category_name as categoryName
+        FROM product p
+        LEFT JOIN product_category c ON p.category_id = c.id
+        WHERE p.status = 1
+        ORDER BY p.stock DESC
+        LIMIT 10
+    </select>
+
+    <select id="selectLatestProducts" resultType="com.walmart.oms.entity.Product">
+        SELECT p.*, c.category_name as categoryName
+        FROM product p
+        LEFT JOIN product_category c ON p.category_id = c.id
+        WHERE p.status = 1
+        ORDER BY p.create_time DESC
+        LIMIT 10
+    </select>
+</mapper>
