@@ -3,10 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="https://www.walmart.com/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+
+    <!-- Stitch 设计稿字体（本地自托管，避免外网不可达导致图标/字体丢失）
+         Plus Jakarta Sans（拉丁/数字） + Material Symbols Outlined（图标） -->
+    <link href="/fonts/plus-jakarta-sans.css" rel="stylesheet" />
+    <link href="/fonts/material-symbols.css" rel="stylesheet" />
+
     <title>沃尔玛购物</title>
+    <style>
+      html, body { margin: 0; padding: 0; background: #f7f9ff; }
+      #app { min-height: 100vh; }
+    </style>
   </head>
-  <body>
+  <body class="bg-background font-body-md text-body-md text-on-surface flex flex-col min-h-screen antialiased">
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>

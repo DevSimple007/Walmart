@@ -1,56 +1,75 @@
 <template>
-  <div class="tab-bar-layout">
-    <div class="page-content">
+  <div class="flex flex-col min-h-screen bg-background">
+    <div class="flex-1">
       <router-view v-slot="{ Component, route: r }">
         <keep-alive :include="aliveNames">
           <component :is="Component" :key="r.path" />
         </keep-alive>
       </router-view>
     </div>
-    <van-tabbar v-model="activeTab" @change="onTabChange">
-      <van-tabbar-item>
-        <template #icon="{ active }">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" :stroke="active ? '#0071DC' : '#86868B'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-            <polyline points="9 22 9 12 15 12 15 22"/>
-          </svg>
-        </template>
-        首页
-      </van-tabbar-item>
-      <van-tabbar-item>
-        <template #icon="{ active }">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" :stroke="active ? '#0071DC' : '#86868B'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="7" height="7" rx="1.5"/>
-            <rect x="14" y="3" width="7" height="7" rx="1.5"/>
-            <rect x="3" y="14" width="7" height="7" rx="1.5"/>
-            <rect x="14" y="14" width="7" height="7" rx="1.5"/>
-          </svg>
-        </template>
-        分类
-      </van-tabbar-item>
-      <van-tabbar-item>
-        <template #icon="{ active }">
-          <div class="tab-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" :stroke="active ? '#0071DC' : '#86868B'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="9" cy="21" r="1"/>
-              <circle cx="20" cy="21" r="1"/>
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-            </svg>
-            <span v-if="cartCount > 0" class="tab-badge">{{ cartCount > 99 ? '99+' : cartCount }}</span>
+
+    <!-- 底部导航（外观严格取自 Stitch 设计稿，逻辑沿用原实现） -->
+    <nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+      <div class="flex justify-around items-center h-14 max-w-[540px] mx-auto px-margin">
+        <a
+          :aria-current="activeTab === 0 ? 'page' : undefined"
+          :class="[
+            'flex flex-col items-center justify-center min-w-[44px] min-h-[44px] transition-colors',
+            activeTab === 0 ? 'text-primary-container' : 'text-on-surface-variant hover:text-primary-container'
+          ]"
+          href="javascript:;"
+          @click="onTabChange(0)"
+        >
+          <span class="material-symbols-outlined text-[24px]">home</span>
+          <span class="font-tab-label text-tab-label mt-0.5">首页</span>
+        </a>
+
+        <a
+          :aria-current="activeTab === 1 ? 'page' : undefined"
+          :class="[
+            'flex flex-col items-center justify-center min-w-[44px] min-h-[44px] transition-colors',
+            activeTab === 1 ? 'text-primary-container' : 'text-on-surface-variant hover:text-primary-container'
+          ]"
+          href="javascript:;"
+          @click="onTabChange(1)"
+        >
+          <span class="material-symbols-outlined text-[24px]">grid_view</span>
+          <span class="font-tab-label text-tab-label mt-0.5">分类</span>
+        </a>
+
+        <a
+          :aria-current="activeTab === 2 ? 'page' : undefined"
+          :class="[
+            'flex flex-col items-center justify-center min-w-[44px] min-h-[44px] transition-colors relative',
+            activeTab === 2 ? 'text-primary-container' : 'text-on-surface-variant hover:text-primary-container'
+          ]"
+          href="javascript:;"
+          @click="onTabChange(2)"
+        >
+          <div class="relative flex items-center justify-center">
+            <span class="material-symbols-outlined text-[24px]">shopping_cart</span>
+            <span
+              v-if="cartCount > 0"
+              class="absolute -top-1 -right-2 bg-tertiary-container text-on-tertiary font-badge-label text-badge-label px-1.5 py-0.2 rounded-full min-w-[16px] h-4 flex items-center justify-center"
+            >{{ cartCount > 99 ? '99+' : cartCount }}</span>
           </div>
-        </template>
-        购物车
-      </van-tabbar-item>
-      <van-tabbar-item>
-        <template #icon="{ active }">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" :stroke="active ? '#0071DC' : '#86868B'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
-        </template>
-        我的
-      </van-tabbar-item>
-    </van-tabbar>
+          <span class="font-tab-label text-tab-label mt-0.5">购物车</span>
+        </a>
+
+        <a
+          :aria-current="activeTab === 3 ? 'page' : undefined"
+          :class="[
+            'flex flex-col items-center justify-center min-w-[44px] min-h-[44px] transition-colors',
+            activeTab === 3 ? 'text-primary-container' : 'text-on-surface-variant hover:text-primary-container'
+          ]"
+          href="javascript:;"
+          @click="onTabChange(3)"
+        >
+          <span class="material-symbols-outlined text-[24px]">person</span>
+          <span class="font-tab-label text-tab-label mt-0.5">我的</span>
+        </a>
+      </div>
+    </nav>
   </div>
 </template>
 
@@ -82,34 +101,3 @@ function onTabChange(index) {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.tab-bar-layout {
-  min-height: 100vh;
-  background: var(--shop-bg-secondary);
-}
-
-.page-content {
-  padding-bottom: 50px;
-}
-
-.tab-icon-wrap {
-  position: relative;
-}
-
-.tab-badge {
-  position: absolute;
-  top: -6px;
-  right: -10px;
-  min-width: 16px;
-  height: 16px;
-  line-height: 16px;
-  text-align: center;
-  font-size: 10px;
-  font-weight: 600;
-  color: #fff;
-  background: var(--shop-accent);
-  border-radius: 8px;
-  padding: 0 4px;
-}
-</style>

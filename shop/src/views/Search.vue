@@ -1,125 +1,178 @@
 <template>
-  <div class="search-page">
-    <!-- Search header -->
-    <div class="search-header">
-      <button class="back-btn" @click="$router.back()">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="15 18 9 12 15 6"/>
-        </svg>
-      </button>
-      <div class="search-input-wrap">
-        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEAEB2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
-        <input
-          ref="inputRef"
-          v-model="keyword"
-          class="search-field"
-          placeholder="搜索商品"
-          @keyup.enter="doSearch"
-        />
-        <button v-if="keyword" class="clear-btn" @click="keyword = ''">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEAEB2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
-          </svg>
+  <!-- Search — 外观严格取自 Stitch 设计稿；数据/事件沿用原有接口逻辑 -->
+  <header class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
+    <div class="h-14 px-margin flex items-center justify-between gap-space-sm">
+      <div class="flex items-center gap-space-sm">
+        <button aria-label="Back" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors -ml-space-xs" @click="$router.back()">
+          <span class="material-symbols-outlined text-[24px]">arrow_back_ios_new</span>
+        </button>
+        <img alt="Walmart Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WxbFcbyvQxjOWkbhkpIy_RXXWkvvU4r8XwbBzzs9Nco_MOan5kyMhQR-HNMCR0mRp1uF8RgvdxFCmQDKNrWLsQIREwC9bCIhANclidwFzjHDJdKYngvbC9SVhJUEFCNQKdAdgsR_kuBjHhBzu_6r_lIOSDxLPhDvxFeI1qc18Fk2Q5QU-DNPWkKJpBlkAaHNmUuGr1XuZnVwAPynaif0RJ1AMEB8zun78Qcq8acrYVeyXlIND6DoxdvQ" />
+        <h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold truncate max-w-[160px]">Search Results</h1>
+      </div>
+      <div class="flex items-center gap-space-sm">
+        <button aria-label="More actions" class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+          <span class="material-symbols-outlined text-[22px]">more_vert</span>
+        </button>
+        <img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbWRWRjaR21qK1jU0kCwRb_bAPV-hTUNuaZhWlx7qH_Va4V32egzB9EA-dyJjfPe9hnkJfPAuD8FSIvw03zd17tPdYx3K8XtSc9b3_YTnlSDYSwkgXgjlVRRjOPE3rL-UQNuJ74U9yW3VtEtg7VpupRBb7r9Y5r5wmAz-R2XiUVAipjvedop15RZTvklVj-vtaXe9VOD3ODfIai_ITvZaWs2hlEdS_VxLLC-YWL49tz4gKH6_IB6yQ" />
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 flex flex-col relative w-full pt-14 pb-safe bg-background max-w-[540px] mx-auto min-h-screen">
+    <div class="flex flex-col w-full pb-10">
+      <!-- Search Header Strip -->
+      <div class="sticky top-0 z-40 bg-surface-container-lowest shadow-sm px-margin py-space-sm flex items-center gap-space-sm">
+        <div class="flex-1 flex items-center bg-surface-container-low rounded-full px-space-md h-10 gap-space-xs shadow-inner">
+          <span class="material-symbols-outlined text-[20px] text-on-surface-variant shrink-0">search</span>
+          <input ref="inputRef" v-model="keyword" class="bg-transparent text-body-md font-body-md text-on-surface w-full focus:outline-none placeholder:text-outline" id="search-input" placeholder="搜索商品、品牌或品类" type="text" @keyup.enter="doSearch" />
+          <button v-if="keyword" aria-label="清空输入" class="w-6 h-6 flex items-center justify-center rounded-full bg-surface-container-highest text-on-surface-variant hover:text-on-surface" id="clear-search-btn" @click="keyword = ''">
+            <span class="material-symbols-outlined text-[16px]">close</span>
+          </button>
+        </div>
+        <button class="text-primary-container font-headline-sm text-headline-sm px-space-xs py-1 active:opacity-75 transition-opacity" id="search-action-btn" @click="doSearch">
+          搜索
         </button>
       </div>
-      <button class="search-btn" @click="doSearch">搜索</button>
-    </div>
 
-    <!-- Filter bar -->
-    <div class="filter-bar" v-if="searched && results.length">
-      <button class="filter-item" :class="{ active: sortBy === 'default' }" @click="sortBy = 'default'; doSort()">综合</button>
-      <button class="filter-item" :class="{ active: sortBy === 'price_asc' }" @click="sortBy = 'price_asc'; doSort()">价格↑</button>
-      <button class="filter-item" :class="{ active: sortBy === 'price_desc' }" @click="sortBy = 'price_desc'; doSort()">价格↓</button>
-      <button class="filter-item" :class="{ active: sortBy === 'newest' }" @click="sortBy = 'newest'; doSort()">最新</button>
-    </div>
-
-    <!-- Results count -->
-    <div class="results-info" v-if="searched && results.length">
-      <span>{{ results.length }} 个结果</span>
-      <span v-if="keyword">  "{{ keyword }}"</span>
-    </div>
-
-    <!-- Search history -->
-    <div class="search-history" v-if="!searched && history.length">
-      <div class="history-header">
-        <span class="history-title">搜索历史</span>
-        <button class="history-clear" @click="clearHistory">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AEAEB2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="3 6 5 6 21 6"/>
-            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-          </svg>
-        </button>
-      </div>
-      <div class="history-tags">
-        <span class="history-tag" v-for="h in history" :key="h" @click="keyword = h; doSearch()">{{ h }}</span>
-      </div>
-    </div>
-
-    <!-- Hot products -->
-    <div class="search-history" v-if="!searched && hotProducts.length">
-      <div class="history-header">
-        <span class="history-title">热门搜索</span>
-      </div>
-      <div class="history-tags">
-        <span class="history-tag" v-for="p in hotProducts" :key="p.id" @click="searchByTag(p.productName)">{{ p.productName }}</span>
-      </div>
-    </div>
-
-    <!-- Latest products -->
-    <div class="search-history" v-if="!searched && latestProducts.length">
-      <div class="history-header">
-        <span class="history-title">最新上架</span>
-      </div>
-      <div class="history-tags">
-        <span class="history-tag" v-for="p in latestProducts" :key="p.id" @click="searchByTag(p.productName)">{{ p.productName }}</span>
-      </div>
-    </div>
-
-    <!-- Search results — horizontal list -->
-    <div class="search-results" v-if="searched && results.length">
-      <van-list
-        v-model:loading="loading"
-        :finished="finished"
-        finished-text=""
-        @load="loadMore"
-      >
-        <div
-          class="product-list-item"
-          v-for="product in results"
-          :key="product.id"
-          @click="$router.push(`/product/${product.id}`)"
-        >
-          <div class="item-img">
-            <img v-if="product.imageUrl" :src="product.imageUrl" :alt="product.productName" />
-            <svg v-else width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D1D1D6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-              <circle cx="8.5" cy="8.5" r="1.5"/>
-              <polyline points="21 15 16 10 5 21"/>
-            </svg>
+      <!-- View Mode Switch: Search Hints & History State (Toggleable) -->
+      <div class="flex flex-col gap-space-lg px-margin pt-space-md" id="search-history-container" v-if="!searched && (history.length || hotProducts.length || latestProducts.length)">
+        <!-- Recent Searches -->
+        <div class="flex flex-col gap-space-sm" v-if="!searched && history.length">
+          <div class="flex items-center justify-between">
+            <span class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-space-xs">
+              <span class="material-symbols-outlined text-[18px] text-outline">history</span>
+              搜索历史
+            </span>
+            <button aria-label="清空历史" class="flex items-center gap-0.5 text-outline hover:text-error text-body-sm font-body-sm" id="clear-history-btn" @click="clearHistory">
+              <span class="material-symbols-outlined text-[18px]">delete</span>
+            </button>
           </div>
-          <div class="item-info">
-            <div class="item-name text-ellipsis-2">{{ product.productName }}</div>
-            <div class="item-price">
-              <span class="unit">¥</span>{{ formatPrice(product.price) }}
-            </div>
-            <div class="item-meta" v-if="product.categoryName">{{ product.categoryName }}</div>
+          <div class="flex flex-wrap gap-space-xs" id="history-tags-wrapper">
+            <button v-for="h in history" :key="h" class="history-chip bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-body-sm text-body-sm px-space-md py-1 rounded-full active:scale-95 transition-all" @click="searchByTag(h)">{{ h }}</button>
           </div>
         </div>
-      </van-list>
-    </div>
 
-    <div class="empty-state" v-else-if="searched && !loading">
-      <div class="empty-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AEAEB2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"/>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
+        <!-- Hot Searches & New Arrivals -->
+        <div class="grid grid-cols-1 gap-space-md">
+          <!-- Hot Search Flame Section -->
+          <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-sm" v-if="!searched && hotProducts.length">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-space-xs">
+                <span class="w-6 h-6 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+                  <span class="material-symbols-outlined text-[16px] text-tertiary">local_fire_department</span>
+                </span>
+                <span class="font-headline-sm text-headline-sm text-on-surface">热门搜索</span>
+              </div>
+              <span class="font-badge-label text-badge-label text-tertiary-container bg-tertiary-fixed px-space-xs py-0.5 rounded">实时榜单</span>
+            </div>
+            <div class="flex flex-wrap gap-space-xs">
+              <span v-for="(p, i) in hotProducts" :key="p.id" class="inline-flex items-center gap-1 bg-surface-container-low text-on-surface px-space-md py-1 rounded-full font-body-sm text-body-sm active:bg-surface-container-high cursor-pointer" @click="searchByTag(p.productName)">
+                <span v-if="i < 3" class="font-badge-label text-badge-label font-bold" :class="i === 2 ? 'text-secondary' : 'text-tertiary'">{{ i + 1 }}</span> {{ p.productName }}
+              </span>
+            </div>
+          </div>
+          <!-- New Releases -->
+          <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-sm" v-if="!searched && latestProducts.length">
+            <div class="flex items-center gap-space-xs">
+              <span class="w-6 h-6 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined text-[16px]">new_releases</span>
+              </span>
+              <span class="font-headline-sm text-headline-sm text-on-surface">最新上架</span>
+            </div>
+            <div class="flex flex-wrap gap-space-xs">
+              <span v-for="p in latestProducts" :key="p.id" class="bg-primary-fixed/40 text-on-primary-fixed-variant px-space-md py-1 rounded-full font-body-sm text-body-sm cursor-pointer hover:bg-primary-fixed/70" @click="searchByTag(p.productName)">
+                {{ p.productName }}
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
-      <p>没有找到"{{ keyword }}"相关商品</p>
+
+      <!-- Search Results Module -->
+      <div class="flex flex-col mt-space-sm" id="search-results-section" v-if="searched">
+        <!-- Result Header & Sort Bar -->
+        <div class="sticky top-14 z-30 bg-surface-container-lowest shadow-sm flex flex-col">
+          <div class="px-margin pt-space-xs pb-1 flex items-center justify-between bg-surface-container-low/60">
+            <span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px] text-primary">info</span>
+              为您找到 <span class="font-bold text-primary font-headline-sm text-headline-sm">{{ results.length }}</span> 件<span v-if="keyword">“{{ keyword }}”</span>相关商品
+            </span>
+            <span class="font-badge-label text-badge-label text-on-secondary-container bg-secondary-fixed px-1.5 py-0.5 rounded">自营极速达</span>
+          </div>
+          <!-- Sorting Tabs Strip -->
+          <div class="flex items-center justify-between px-margin py-2 text-body-md font-body-md">
+            <button class="relative py-1 font-bold text-primary font-headline-sm text-headline-sm" @click="sortBy = 'default'; doSort()">
+              综合
+              <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-primary rounded-full"></span>
+            </button>
+            <button class="text-on-surface-variant flex items-center gap-0.5 hover:text-on-surface" @click="sortBy = sortBy === 'price_asc' ? 'price_desc' : 'price_asc'; doSort()">
+              价格
+              <span class="material-symbols-outlined text-[16px] text-outline">swap_vert</span>
+            </button>
+            <button class="text-on-surface-variant hover:text-on-surface">
+              销量
+            </button>
+            <button class="text-on-surface-variant hover:text-on-surface" @click="sortBy = 'newest'; doSort()">
+              最新上架
+            </button>
+          </div>
+        </div>
+
+        <!-- Product SKU List -->
+        <div class="flex flex-col gap-space-xs p-margin" v-if="results.length" @scroll="onListScroll">
+          <!-- Item: 沿用设计稿重复商品横卡结构 -->
+          <div
+            v-for="(product, i) in results"
+            :key="product.id"
+            class="bg-surface-container-lowest rounded-xl p-space-md flex gap-space-md shadow-sm relative overflow-hidden active:bg-surface-container-low transition-colors"
+            @click="$router.push('/product/' + product.id)"
+          >
+            <!-- Visual Thumbnail -->
+            <div class="relative w-24 h-24 shrink-0 rounded-lg overflow-hidden bg-surface-container">
+              <img class="w-full h-full object-cover" data-alt="Deluxe packaging box of premium Mengniu Deluxe pure milk bottles arranged neatly with rich creamy splashing milk in clean white commercial lighting, high retail standard product photography." :src="product.imageUrl || '/placeholder.svg'" />
+              <div v-if="product.categoryName" class="absolute top-0 left-0 font-badge-label text-badge-label px-1.5 py-0.5 rounded-br-lg" :class="i % 3 === 2 ? 'bg-secondary-container text-on-secondary-container' : (i % 3 === 1 ? 'bg-primary text-on-primary' : 'bg-tertiary-container text-on-tertiary-container')">
+                {{ product.categoryName }}
+              </div>
+            </div>
+            <!-- Info Stack -->
+            <div class="flex-1 flex flex-col justify-between min-w-0">
+              <div class="flex flex-col gap-1">
+                <div class="flex items-center gap-1">
+                  <span class="font-badge-label text-badge-label px-1 py-0.2 rounded shrink-0" :class="i % 2 ? 'bg-secondary-fixed text-on-secondary-fixed-variant' : 'bg-tertiary-fixed text-on-tertiary-fixed'">
+                    {{ i % 2 ? '满减可用' : '大牌低价' }}
+                  </span>
+                  <h2 class="font-headline-sm text-headline-sm text-on-surface line-clamp-1 truncate">
+                    {{ product.productName }}
+                  </h2>
+                </div>
+                <p v-if="product.description" class="font-body-sm text-body-sm text-on-surface-variant">{{ product.description }}</p>
+              </div>
+              <div class="flex items-end justify-between mt-space-xs">
+                <div class="flex flex-col">
+                  <span class="font-body-sm text-body-sm text-outline">销量 2.3万+</span>
+                  <div class="flex items-baseline gap-1">
+                    <span class="text-tertiary font-price-currency text-price-currency">¥</span>
+                    <span class="text-tertiary font-price-lg text-price-lg">{{ formatPrice(product.price) }}</span>
+                    <span v-if="product.originalPrice" class="text-outline line-through font-body-sm text-body-sm">¥{{ formatPrice(product.originalPrice) }}</span>
+                  </div>
+                </div>
+                <!-- Cart Circular Action -->
+                <button aria-label="加入购物车" class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-md active:scale-90 transition-transform">
+                  <span class="material-symbols-outlined text-[20px]">add</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty Result -->
+        <div class="flex flex-col items-center justify-center py-16 px-margin gap-space-sm" v-if="searched && !loading && !results.length">
+          <span class="material-symbols-outlined text-[48px] text-outline">search_off</span>
+          <p class="font-body-md text-body-md text-on-surface-variant">没有找到相关商品</p>
+        </div>
+      </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script setup>
@@ -201,155 +254,9 @@ function searchByTag(name) {
   keyword.value = name
   doSearch()
 }
+
+function onListScroll(e) {
+  const el = e.target
+  if (el.scrollTop + el.clientHeight >= el.scrollHeight - 80) loadMore()
+}
 </script>
-
-<style lang="scss" scoped>
-.search-page {
-  min-height: 100vh;
-  background: var(--shop-bg-secondary);
-}
-
-.search-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px var(--shop-page-pad);
-  background: var(--shop-bg);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.back-btn {
-  background: none;
-  border: none;
-  padding: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  color: var(--shop-text-primary);
-}
-
-.search-input-wrap {
-  flex: 1;
-  position: relative;
-
-  .search-icon {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-  }
-
-  .search-field {
-    width: 100%;
-    height: 38px;
-    border-radius: 20px;
-    border: none;
-    padding: 0 36px 0 38px;
-    background: var(--shop-bg-secondary);
-    font-size: 14px;
-    outline: none;
-    color: var(--shop-text-primary);
-    font-family: var(--shop-font);
-
-    &::placeholder {
-      color: var(--shop-text-tertiary);
-    }
-  }
-
-  .clear-btn {
-    position: absolute;
-    right: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    padding: 4px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-  }
-}
-
-.search-btn {
-  background: none;
-  border: none;
-  color: var(--shop-accent);
-  font-size: 15px;
-  font-weight: 600;
-  font-family: var(--shop-font);
-  padding: 6px 4px;
-  cursor: pointer;
-  white-space: nowrap;
-
-  &:active {
-    opacity: 0.6;
-  }
-}
-
-.results-info {
-  padding: 10px var(--shop-page-pad) 6px;
-  font-size: 12px;
-  color: var(--shop-text-tertiary);
-}
-
-.search-history {
-  margin: var(--shop-gap) var(--shop-page-pad) 0;
-  padding: 16px;
-  background: var(--shop-card-bg);
-  border-radius: var(--shop-card-radius);
-}
-
-.history-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.history-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--shop-text-primary);
-}
-
-.history-clear {
-  background: none;
-  border: none;
-  padding: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  border-radius: 8px;
-
-  &:active {
-    background: var(--shop-bg-secondary);
-  }
-}
-
-.history-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.history-tag {
-  display: inline-block;
-  padding: 7px 14px;
-  background: var(--shop-bg-secondary);
-  border-radius: 20px;
-  font-size: 13px;
-  color: var(--shop-text-primary);
-  cursor: pointer;
-
-  &:active {
-    background: var(--shop-bg-tertiary);
-  }
-}
-
-.search-results {
-  padding-top: 2px;
-}
-</style>

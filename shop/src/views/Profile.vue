@@ -1,133 +1,342 @@
 <template>
-  <div class="profile-page">
-    <!-- User header -->
-    <div class="user-header">
-      <div v-if="userStore.userInfo" class="user-info">
-        <div class="avatar">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
-        </div>
-        <div class="user-detail">
-          <div class="username">{{ userStore.userInfo.memberName || '用户' }}</div>
-          <div class="user-meta">
-            <span v-if="userStore.userInfo.levelId" class="level-badge">Lv.{{ userStore.userInfo.levelId }}</span>
-            <span>{{ userStore.userInfo.points || 0 }} 积分</span>
+  <!-- Profile — 外观严格取自 Stitch 设计稿；数据/事件沿用原有接口逻辑 -->
+  <header class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
+    <div class="h-14 px-margin flex items-center justify-between gap-space-md">
+      <div class="flex items-center gap-space-sm shrink-0">
+        <img alt="Walmart Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WxbFcbyvQxjOWkbhkpIy_RXXWkvvU4r8XwbBzzs9Nco_MOan5kyMhQR-HNMCR0mRp1uF8RgvdxFCmQDKNrWLsQIREwC9bCIhANclidwFzjHDJdKYngvbC9SVhJUEFCNQKdAdgsR_kuBjHhBzu_6r_lIOSDxLPhDvxFeI1qc18Fk2Q5QU-DNPWkKJpBlkAaHNmUuGr1XuZnVwAPynaif0RJ1AMEB8zun78Qcq8acrYVeyXlIND6DoxdvQ" />
+        <span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold">Profile</span>
+      </div>
+      <div class="flex items-center gap-space-sm shrink-0">
+        <button aria-label="Search" class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" @click="$router.push('/search')">
+          <span class="material-symbols-outlined text-[22px]">search</span>
+        </button>
+        <img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbWRWRjaR21qK1jU0kCwRb_bAPV-hTUNuaZhWlx7qH_Va4V32egzB9EA-dyJjfPe9hnkJfPAuD8FSIvw03zd17tPdYx3K8XtSc9b3_YTnlSDYSwkgXgjlVRRjOPE3rL-UQNuJ74U9yW3VtEtg7VpupRBb7r9Y5r5wmAz-R2XiUVAipjvedop15RZTvklVj-vtaXe9VOD3ODfIai_ITvZaWs2hlEdS_VxLLC-YWL49tz4gKH6_IB6yQ" />
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 flex flex-col relative w-full pt-14 pb-20 bg-background max-w-[540px] mx-auto min-h-screen">
+    <div class="flex flex-col w-full">
+      <div class="px-margin pt-space-sm pb-space-lg flex flex-col gap-space-md">
+        <!-- 1. Top User Status Card (Logged in) -->
+        <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-space-md" @click="!userStore.userInfo && $router.push('/login')">
+              <div class="relative shrink-0">
+                <img alt="用户头像" class="w-14 h-14 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbWRWRjaR21qK1jU0kCwRb_bAPV-hTUNuaZhWlx7qH_Va4V32egzB9EA-dyJjfPe9hnkJfPAuD8FSIvw03zd17tPdYx3K8XtSc9b3_YTnlSDYSwkgXgjlVRRjOPE3rL-UQNuJ74U9yW3VtEtg7VpupRBb7r9Y5r5wmAz-R2XiUVAipjvedop15RZTvklVj-vtaXe9VOD3ODfIai_ITvZaWs2hlEdS_VxLLC-YWL49tz4gKH6_IB6yQ" />
+                <div class="absolute -bottom-1 -right-1 bg-secondary-container text-on-secondary-container rounded-full p-0.5 flex items-center justify-center shadow-sm">
+                  <span class="material-symbols-outlined text-[14px]">stars</span>
+                </div>
+              </div>
+              <div class="flex flex-col min-w-0">
+                <div class="flex items-center gap-space-xs">
+                  <span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">{{ userStore.userInfo?.memberName || userStore.userInfo?.phone || '' }}</span>
+                  <span class="inline-flex items-center gap-0.5 bg-secondary-fixed text-on-secondary-fixed font-badge-label text-badge-label px-1.5 py-0.5 rounded-full">
+                    <span class="material-symbols-outlined text-[11px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                    <span class="">{{ levelName }}</span>
+                  </span>
+                </div>
+                <div class="flex items-center gap-space-xs mt-1 text-on-surface-variant font-body-sm text-body-sm">
+                  <span class="">积分余额 <strong class="text-primary font-headline-sm text-[13px]">{{ userStore.userInfo?.points || 0 }}</strong>
+                  </span>
+                  <span class="text-outline-variant">•</span>
+                  <span class="">{{ nextLevel ? ('距' + nextLevel.levelName + ' 差 ' + Math.max(0, nextLevel.minPoints - (userStore.userInfo?.points || 0)) + ' 分') : '已是最高等级' }}</span>
+                </div>
+              </div>
+            </div>
+            <button aria-label="会员详情" class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+              <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+            </button>
+          </div>
+          <!-- Growth Progress Bar -->
+          <div class="flex flex-col gap-1.5 bg-surface-container-low rounded-lg p-space-sm">
+            <div class="flex justify-between items-center text-on-surface-variant font-badge-label text-badge-label">
+              <span class="flex items-center gap-1 font-bold text-secondary">
+                <span class="material-symbols-outlined text-[12px]">verified</span>
+                当前金卡会员 {{ progressPercent }}%
+              </span>
+              <span v-if="nextLevel" class="text-on-surface-variant">目标：{{ nextLevel?.levelName }} ({{ nextLevel?.minPoints }}分)</span>
+            </div>
+            <div class="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+              <div class="bg-gradient-to-r from-secondary-container to-secondary-fixed-dim h-full rounded-full transition-all duration-500" :style="{ width: progressPercent + '%' }">
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div v-else class="user-info" @click="$router.push('/login')">
-        <div class="avatar">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
-        </div>
-        <div class="user-detail">
-          <div class="username">登录 / 注册</div>
-          <div class="user-meta">点击登录享受更多优惠</div>
-        </div>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="9 18 15 12 9 6"/>
-        </svg>
-      </div>
-    </div>
-
-    <!-- Asset card -->
-    <div class="asset-card" v-if="userStore.userInfo">
-      <div class="asset-item">
-        <div class="asset-num">{{ userStore.userInfo.balance || 0 }}</div>
-        <div class="asset-label">余额</div>
-      </div>
-      <div class="asset-divider"></div>
-      <div class="asset-item">
-        <div class="asset-num">{{ userStore.userInfo.points || 0 }}</div>
-        <div class="asset-label">积分</div>
-      </div>
-      <div class="asset-divider"></div>
-      <div class="asset-item">
-        <div class="asset-num">{{ userStore.userInfo.levelId || 1 }}</div>
-        <div class="asset-label">等级</div>
-      </div>
-    </div>
-
-    <!-- 会员等级 -->
-    <div class="section-block" v-if="userStore.userInfo">
-      <div class="section-block-header">
-        <span class="section-block-title">会员等级</span>
-      </div>
-      <div class="level-info">
-        <div class="level-current">
-          <div class="level-badge" :style="{ background: levelColor }">
-            {{ levelName }}
+        <!-- 2. Money Saver Card Banner (Orange-Red Gradient Banner) -->
+        <div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-[#FF6B00] via-[#FA4B00] to-[#E60012] text-on-tertiary p-space-md shadow-md flex flex-col gap-space-sm">
+          <!-- Ambient Sparkle Decor -->
+          <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-white/10 rounded-full blur-xl pointer-events-none">
           </div>
-          <div class="level-detail">
-            <div class="level-points">{{ userStore.userInfo.points || 0 }} 积分</div>
-            <div class="level-next" v-if="nextLevel && (userStore.userInfo.points || 0) < nextLevel.minPoints">{{ nextLevel.levelName }} 还需 {{ nextLevel.minPoints - (userStore.userInfo.points || 0) }} 积分</div>
-            <div class="level-next" v-else-if="nextLevel">已达{{ nextLevel.levelName }}门槛</div>
-            <div class="level-next" v-else>已是最高等级</div>
+          <!-- Header Row -->
+          <div class="flex items-center justify-between z-10">
+            <div class="flex items-baseline gap-space-xs">
+              <span class="font-headline-sm text-headline-sm tracking-tight text-white font-extrabold flex items-center gap-1">
+                <span class="material-symbols-outlined text-[18px] text-secondary-fixed">savings</span>
+                省钱卡
+              </span>
+              <span class="font-body-sm text-body-sm text-white/90">每月可享12张券</span>
+            </div>
+            <button class="bg-white text-[#E60012] font-tab-label text-tab-label font-bold px-3 py-1 rounded-full shadow-sm flex items-center gap-0.5 hover:bg-surface-container-lowest active:scale-95 transition-all">
+              <span class="">立即开通</span>
+              <span class="material-symbols-outlined text-[13px] font-bold">chevron_right</span>
+            </button>
+          </div>
+          <!-- Main Benefits & Coupon Mockups -->
+          <div class="grid grid-cols-12 gap-space-xs items-center mt-1 z-10">
+            <!-- Benefit Bullets -->
+            <div class="col-span-5 flex flex-col gap-1 text-[11px] leading-tight text-white/95">
+              <div class="flex items-center gap-1">
+                <span class="material-symbols-outlined text-[13px] text-white">check_circle</span>
+                <span class="truncate">小程序/H5可用</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <span class="material-symbols-outlined text-[13px] text-white">check_circle</span>
+                <span class="truncate">9.9购月卡一单回本</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <span class="material-symbols-outlined text-[13px] text-white">check_circle</span>
+                <span class="truncate">可叠加促销商品券</span>
+              </div>
+            </div>
+            <!-- 3 Coupon Tickets -->
+            <div class="col-span-7 grid grid-cols-3 gap-1">
+              <!-- Coupon 1 -->
+              <div class="bg-surface-container-lowest text-on-surface rounded-md p-1 flex flex-col items-center justify-center shadow-sm relative overflow-hidden">
+                <div class="text-[#E60012] font-display-hero text-[15px] leading-none font-black flex items-baseline">
+                  <span class="font-price-currency text-[10px]">¥</span>7
+                </div>
+                <span class="text-[9px] text-on-surface-variant scale-90 -mt-0.5 whitespace-nowrap">满89元</span>
+              </div>
+              <!-- Coupon 2 -->
+              <div class="bg-surface-container-lowest text-on-surface rounded-md p-1 flex flex-col items-center justify-center shadow-sm relative overflow-hidden">
+                <div class="text-[#E60012] font-display-hero text-[15px] leading-none font-black flex items-baseline">
+                  <span class="font-price-currency text-[10px]">¥</span>10
+                </div>
+                <span class="text-[9px] text-on-surface-variant scale-90 -mt-0.5 whitespace-nowrap">满119元</span>
+              </div>
+              <!-- Coupon 3 -->
+              <div class="bg-surface-container-lowest text-on-surface rounded-md p-1 flex flex-col items-center justify-center shadow-sm relative overflow-hidden">
+                <div class="text-[#E60012] font-display-hero text-[15px] leading-none font-black flex items-baseline">
+                  <span class="font-price-currency text-[10px]">¥</span>10
+                </div>
+                <span class="text-[9px] text-on-surface-variant scale-90 -mt-0.5 whitespace-nowrap">满119元</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="level-progress" v-if="nextLevel">
-          <div class="progress-bar">
-            <div class="progress-fill" :style="{ width: progressPercent + '%' }"></div>
+        <!-- 3. My Orders Module -->
+        <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+          <div class="flex items-center justify-between">
+            <h2 class="font-headline-sm text-headline-sm text-on-surface">我的订单</h2>
+            <a class="flex items-center text-on-surface-variant hover:text-primary text-body-sm font-body-sm transition-colors" href="javascript:;" @click="$router.push('/order')">
+              <span class="">全部订单</span>
+              <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+            </a>
           </div>
-          <div class="progress-text">{{ userStore.userInfo.points || 0 }} / {{ nextLevel.minPoints }}</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Orders -->
-    <div class="section-block">
-      <div class="section-block-header">
-        <span class="section-block-title">我的订单</span>
-        <span class="section-block-link" @click="$router.push('/order')">全部订单</span>
-      </div>
-      <div class="order-grid">
-        <div class="order-item" v-for="item in orderItems" :key="item.label" @click="goOrder(item.status)">
-          <div class="order-icon" :style="{ background: item.bg }">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" :stroke="item.color" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <component :is="item.iconSvg" />
-            </svg>
+          <!-- 5 Order Status Icons -->
+          <div class="grid grid-cols-5 gap-1 pt-1">
+            <!-- 待付款 -->
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;" @click="goOrder(0)">
+              <div class="relative w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface group-hover:bg-primary-fixed group-hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[22px]">account_balance_wallet</span>
+                <span class="absolute -top-1 -right-1 bg-tertiary-container text-on-tertiary font-badge-label text-badge-label px-1.5 py-0.2 rounded-full min-w-[16px] h-4 flex items-center justify-center">1</span>
+              </div>
+              <span class="font-tab-label text-tab-label text-on-surface">待付款</span>
+            </a>
+            <!-- 待配送 -->
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;" @click="goOrder(1)">
+              <div class="relative w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface group-hover:bg-primary-fixed group-hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[22px]">local_shipping</span>
+              </div>
+              <span class="font-tab-label text-tab-label text-on-surface">待配送</span>
+            </a>
+            <!-- 待收货 -->
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;" @click="goOrder(3)">
+              <div class="relative w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface group-hover:bg-primary-fixed group-hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[22px]">inventory_2</span>
+                <span class="absolute -top-1 -right-1 bg-tertiary-container text-on-tertiary font-badge-label text-badge-label px-1.5 py-0.2 rounded-full min-w-[16px] h-4 flex items-center justify-center">2</span>
+              </div>
+              <span class="font-tab-label text-tab-label text-on-surface">待收货</span>
+            </a>
+            <!-- 待评价 -->
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;" @click="goOrder(4)">
+              <div class="relative w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface group-hover:bg-primary-fixed group-hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[22px]">chat_bubble_outline</span>
+              </div>
+              <span class="font-tab-label text-tab-label text-on-surface">待评价</span>
+            </a>
+            <!-- 退货/售后 -->
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;">
+              <div class="relative w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface group-hover:bg-primary-fixed group-hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[22px]">currency_yen</span>
+              </div>
+              <span class="font-tab-label text-tab-label text-on-surface">退货/售后</span>
+            </a>
           </div>
-          <span class="order-label">{{ item.label }}</span>
+        </div>
+        <!-- 4. Core Promotional Activities (4-Grid) -->
+        <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+          <div class="grid grid-cols-4 gap-2">
+            <!-- 抽试吃 -->
+            <a class="flex flex-col items-center justify-center gap-1.5 relative group" href="javascript:;">
+              <div class="relative">
+                <div class="w-11 h-11 rounded-full bg-[#FFF1F0] flex items-center justify-center text-tertiary group-active:scale-95 transition-transform">
+                  <span class="material-symbols-outlined text-[24px]">restaurant</span>
+                </div>
+                <span class="absolute -top-1.5 -right-2 bg-tertiary-container text-on-tertiary font-badge-label text-[9px] px-1 py-0.2 rounded-full whitespace-nowrap shadow-xs">领奖品</span>
+              </div>
+              <span class="font-tab-label text-tab-label text-on-surface">抽试吃</span>
+            </a>
+            <!-- 邀请有礼 -->
+            <a class="flex flex-col items-center justify-center gap-1.5 relative group" href="javascript:;">
+              <div class="relative">
+                <div class="w-11 h-11 rounded-full bg-[#FFF7E6] flex items-center justify-center text-secondary group-active:scale-95 transition-transform">
+                  <span class="material-symbols-outlined text-[24px]">redeem</span>
+                </div>
+                <span class="absolute -top-1.5 -right-2 bg-secondary text-on-secondary font-badge-label text-[9px] px-1 py-0.2 rounded-full whitespace-nowrap shadow-xs">抽茅台</span>
+              </div>
+              <span class="font-tab-label text-tab-label text-on-surface">邀请有礼</span>
+            </a>
+            <!-- 推广赚钱 -->
+            <a class="flex flex-col items-center justify-center gap-1.5 relative group" href="javascript:;">
+              <div class="relative">
+                <div class="w-11 h-11 rounded-full bg-[#FFF2E8] flex items-center justify-center text-[#FA541C] group-active:scale-95 transition-transform">
+                  <span class="material-symbols-outlined text-[24px]">monetization_on</span>
+                </div>
+                <span class="absolute -top-1.5 -right-2 bg-[#FA541C] text-white font-badge-label text-[9px] px-1 py-0.2 rounded-full whitespace-nowrap shadow-xs">返现</span>
+              </div>
+              <span class="font-tab-label text-tab-label text-on-surface">推广赚钱</span>
+            </a>
+            <!-- 购物卡 -->
+            <a class="flex flex-col items-center justify-center gap-1.5 relative group" href="javascript:;">
+              <div class="w-11 h-11 rounded-full bg-[#E6F7FF] flex items-center justify-center text-primary-container group-active:scale-95 transition-transform">
+                <span class="material-symbols-outlined text-[24px]">credit_card</span>
+              </div>
+              <span class="font-tab-label text-tab-label text-on-surface">购物卡</span>
+            </a>
+          </div>
+        </div>
+        <!-- 5. Assets & Services Matrix (2 Rows x 5 Items) -->
+        <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+          <div class="flex items-center justify-between">
+            <h3 class="font-headline-sm text-headline-sm text-on-surface">我的资产与服务</h3>
+          </div>
+          <!-- Row 1 -->
+          <div class="grid grid-cols-5 gap-1">
+            <!-- 简单报 -->
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;">
+              <div class="relative w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[22px]">feed</span>
+                <span class="absolute -top-1 -right-1 bg-tertiary text-on-tertiary font-badge-label text-[9px] px-1 rounded-full scale-90">HOT</span>
+              </div>
+              <span class="font-tab-label text-tab-label text-on-surface">简单报</span>
+            </a>
+            <!-- 联系客服 -->
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;">
+              <div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[22px]">support_agent</span>
+              </div>
+              <span class="font-tab-label text-tab-label text-on-surface">联系客服</span>
+            </a>
+            <!-- 优惠券 -->
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;" @click="goPage('/coupon')">
+              <div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[22px]">confirmation_number</span>
+              </div>
+              <span class="font-tab-label text-tab-label text-on-surface">优惠券</span>
+              <span class="text-[10px] text-tertiary -mt-1 font-bold">3张可用</span>
+            </a>
+            <!-- 我的收藏 -->
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;" @click="goPage('/favorites')">
+              <div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[22px]">favorite_border</span>
+              </div>
+              <span class="font-tab-label text-tab-label text-on-surface">我的收藏</span>
+              <span class="text-[10px] text-on-surface-variant -mt-1">12件</span>
+            </a>
+            <!-- 收货地址 -->
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;" @click="goPage('/address')">
+              <div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[22px]">location_on</span>
+              </div>
+              <span class="font-tab-label text-tab-label text-on-surface">收货地址</span>
+              <span class="text-[10px] text-on-surface-variant -mt-1">管理</span>
+            </a>
+          </div>
+          <!-- Row 2 -->
+          <div class="grid grid-cols-5 gap-1 pt-1">
+            <!-- 企业采购 -->
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;">
+              <div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[22px]">domain</span>
+              </div>
+              <span class="font-tab-label text-tab-label text-on-surface">企业采购</span>
+            </a>
+            <!-- 公众号 -->
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;">
+              <div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[22px]">forum</span>
+              </div>
+              <span class="font-tab-label text-tab-label text-on-surface">公众号</span>
+            </a>
+            <!-- 扫码加车 -->
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;">
+              <div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[22px]">qr_code_scanner</span>
+              </div>
+              <span class="font-tab-label text-tab-label text-on-surface">扫码加车</span>
+            </a>
+            <!-- 顾客调研 -->
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;">
+              <div class="relative w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[22px]">assignment</span>
+                <span class="absolute -top-1 -right-1 bg-tertiary-container text-on-tertiary font-badge-label text-[9px] px-1 rounded-full scale-90">有奖</span>
+              </div>
+              <span class="font-tab-label text-tab-label text-on-surface">顾客调研</span>
+            </a>
+            <!-- 关于我们 -->
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;" @click="showToast('功能开发中')">
+              <div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[22px]">info</span>
+              </div>
+              <span class="font-tab-label text-tab-label text-on-surface">关于我们</span>
+            </a>
+          </div>
+        </div>
+        <!-- 6. Bottom Rewarded Survey Banner -->
+        <div class="bg-gradient-to-r from-primary-fixed to-surface-container-lowest rounded-xl p-space-md shadow-sm flex items-center justify-between gap-space-sm relative overflow-hidden">
+          <!-- Playful Mascot / Dialogue Cloud -->
+          <div class="flex items-center gap-space-sm shrink-0">
+            <div class="relative w-12 h-12 flex items-center justify-center">
+              <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shadow-sm">
+                <span class="material-symbols-outlined text-[24px]">sentiment_very_satisfied</span>
+              </div>
+              <div class="absolute -top-1 -right-1 bg-primary text-on-primary rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">!</div>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-tab-label text-[11px] text-primary font-bold bg-white/80 px-2 py-0.5 rounded-full inline-block w-fit">今天我们做得怎么样？</span>
+              <span class="font-headline-sm text-[13px] text-on-surface font-extrabold mt-1">参与顾客满意度调研</span>
+            </div>
+          </div>
+          <!-- Action Button Pill -->
+          <a class="shrink-0 bg-primary-container text-on-primary font-tab-label text-tab-label font-bold px-3.5 py-2 rounded-full shadow-sm flex items-center gap-1 active:scale-95 transition-transform" href="javascript:;">
+            <span class="">赢取优惠券</span>
+            <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+          </a>
+        </div>
+        <!-- 退出登录（复用「我的资产与服务」卡片 + 条目 class，无新增视觉风格） -->
+        <div v-if="userStore.userInfo" class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+          <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;" @click="handleLogout">
+            <div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+              <span class="material-symbols-outlined text-[22px]">logout</span>
+            </div>
+            <span class="font-tab-label text-tab-label text-on-surface">退出登录</span>
+          </a>
         </div>
       </div>
     </div>
-
-    <!-- Menu list -->
-    <div class="section-block menu-list">
-      <div
-        class="menu-item"
-        v-for="item in menuItems"
-        :key="item.label"
-        @click="item.action ? item.action() : goPage(item.path)"
-      >
-        <div class="menu-icon-wrap">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0071DC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <component :is="item.iconSvg" />
-          </svg>
-        </div>
-        <span class="menu-label">{{ item.label }}</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ABABAB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="9 18 15 12 9 6"/>
-        </svg>
-      </div>
-    </div>
-
-    <!-- Logout -->
-    <div v-if="userStore.userInfo" class="logout-section">
-      <button class="logout-btn" @click="handleLogout">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-          <polyline points="16 17 21 12 16 7"/>
-          <line x1="21" y1="12" x2="9" y2="12"/>
-        </svg>
-        <span>退出登录</span>
-      </button>
-    </div>
-  </div>
+  </main>
 </template>
 
 <script setup>
@@ -244,269 +453,3 @@ onMounted(async () => {
   }
 })
 </script>
-
-<style lang="scss" scoped>
-.user-header {
-  background: linear-gradient(135deg, #1D1D1F 0%, #3A3A3C 100%);
-  padding: 40px 16px 28px;
-  color: #fff;
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  cursor: pointer;
-}
-
-.avatar {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.username {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.user-meta {
-  font-size: 13px;
-  opacity: 0.8;
-  margin-top: 4px;
-  display: flex;
-  gap: 10px;
-}
-
-.level-badge {
-  background: rgba(255, 255, 255, 0.25);
-  padding: 1px 8px;
-  border-radius: 4px;
-  font-size: 11px;
-  font-weight: 600;
-}
-
-.asset-card {
-  display: flex;
-  align-items: center;
-  background: var(--shop-card-bg);
-  margin: -16px 16px 0;
-  border-radius: var(--shop-card-radius);
-  padding: 20px 0;
-  position: relative;
-  z-index: 1;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.asset-item {
-  flex: 1;
-  text-align: center;
-}
-
-.asset-num {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--shop-text-primary);
-}
-
-.asset-label {
-  font-size: 12px;
-  color: var(--shop-text-secondary);
-  margin-top: 4px;
-}
-
-.asset-divider {
-  width: 1px;
-  height: 32px;
-  background: var(--shop-separator);
-}
-
-.level-info {
-  .level-current {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-
-  .level-badge {
-    padding: 4px 12px;
-    border-radius: 12px;
-    color: #fff;
-    font-size: 13px;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-
-  .level-detail {
-    flex: 1;
-  }
-
-  .level-points {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--shop-text-primary);
-  }
-
-  .level-next {
-    font-size: 12px;
-    color: var(--shop-text-secondary);
-    margin-top: 2px;
-  }
-
-  .progress-bar {
-    height: 6px;
-    background: var(--shop-bg-secondary);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: var(--shop-accent);
-    border-radius: 3px;
-    transition: width 0.3s ease;
-  }
-
-  .progress-text {
-    font-size: 11px;
-    color: var(--shop-text-tertiary);
-    text-align: right;
-    margin-top: 4px;
-  }
-}
-
-.section-block {
-  background: var(--shop-card-bg);
-  margin: 12px 16px 0;
-  border-radius: var(--shop-card-radius);
-  padding: 16px;
-}
-
-.section-block-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.section-block-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--shop-text-primary);
-}
-
-.section-block-link {
-  font-size: 13px;
-  color: var(--shop-accent);
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.order-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  text-align: center;
-}
-
-.order-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  padding: 4px 0;
-
-  &:active {
-    opacity: 0.7;
-  }
-}
-
-.order-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.order-label {
-  font-size: 12px;
-  color: var(--shop-text-secondary);
-  font-weight: 500;
-}
-
-.menu-list {
-  padding: 0;
-}
-
-.menu-item {
-  display: flex;
-  align-items: center;
-  padding: 14px 16px;
-  cursor: pointer;
-  border-bottom: 0.5px solid var(--shop-separator);
-
-  &:last-child {
-    border-bottom: none;
-  }
-
-  &:active {
-    background: var(--shop-bg-secondary);
-  }
-}
-
-.menu-icon-wrap {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: var(--shop-accent-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 12px;
-}
-
-.menu-label {
-  flex: 1;
-  font-size: 14px;
-  color: var(--shop-text-primary);
-}
-
-.logout-section {
-  padding: 24px 16px 40px;
-}
-
-.logout-btn {
-  width: 100%;
-  height: 50px;
-  border: 1.5px solid #FFD4D4;
-  border-radius: 14px;
-  background: linear-gradient(180deg, #FFF5F5 0%, #FFF 100%);
-  color: #FF3B30;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: var(--shop-font);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: all 0.2s ease;
-
-  &:active {
-    background: #FFECEC;
-    transform: scale(0.98);
-  }
-
-  svg {
-    flex-shrink: 0;
-  }
-}
-</style>

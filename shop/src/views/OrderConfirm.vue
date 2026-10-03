@@ -1,225 +1,285 @@
 <template>
-  <div class="order-confirm-page">
-    <van-nav-bar title="确认订单" left-arrow @click-left="$router.back()" />
-
-    <div class="confirm-content" v-if="cartStore.orderItems.length">
-      <!-- 配送方式 -->
-      <div class="section">
-        <div class="section-label">配送方式</div>
-        <div class="delivery-options">
-          <button
-            class="delivery-option"
-            :class="{ active: deliveryType === 'pickup' }"
-            @click="deliveryType = 'pickup'"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" :stroke="deliveryType === 'pickup' ? '#0071DC' : '#86868B'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <polyline points="9 22 9 12 15 12 15 22"/>
-            </svg>
-            <span>到店自提</span>
+  <!-- OrderConfirm — 外观严格取自 Stitch 设计稿；数据/事件沿用原有接口逻辑 -->
+  <header class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
+    <div class="h-14 px-margin flex items-center justify-between gap-space-sm">
+      <div class="flex items-center gap-space-sm">
+        <button aria-label="Back" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors -ml-space-xs" @click="$router.back()">
+          <span class="material-symbols-outlined text-[24px]">arrow_back_ios_new</span>
+        </button>
+        <img alt="Walmart Logo with Favicon Spark" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WxbFcbyvQxjOWkbhkpIy_RXXWkvvU4r8XwbBzzs9Nco_MOan5kyMhQR-HNMCR0mRp1uF8RgvdxFCmQDKNrWLsQIREwC9bCIhANclidwFzjHDJdKYngvbC9SVhJUEFCNQKdAdgsR_kuBjHhBzu_6r_lIOSDxLPhDvxFeI1qc18Fk2Q5QU-DNPWkKJpBlkAaHNmUuGr1XuZnVwAPynaif0RJ1AMEB8zun78Qcq8acrYVeyXlIND6DoxdvQ" />
+        <h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold truncate max-w-[160px]">Checkout Flow</h1>
+      </div>
+      <div class="flex items-center gap-space-sm">
+        <button aria-label="More actions" class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+          <span class="material-symbols-outlined text-[22px]">more_vert</span>
+        </button>
+        <img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbWRWRjaR21qK1jU0kCwRb_bAPV-hTUNuaZhWlx7qH_Va4V32egzB9EA-dyJjfPe9hnkJfPAuD8FSIvw03zd17tPdYx3K8XtSc9b3_YTnlSDYSwkgXgjlVRRjOPE3rL-UQNuJ74U9yW3VtEtg7VpupRBb7r9Y5r5wmAz-R2XiUVAipjvedop15RZTvklVj-vtaXe9VOD3ODfIai_ITvZaWs2hlEdS_VxLLC-YWL49tz4gKH6_IB6yQ" />
+      </div>
+    </div>
+  </header>
+  <main class="flex-1 flex flex-col relative w-full pt-14 pb-safe bg-background max-w-[540px] mx-auto min-h-screen">
+    <div class="flex flex-col w-full pb-28" v-if="cartStore.orderItems.length">
+      <!-- Top Address / Fulfillment Mode Switch -->
+      <section class="p-margin flex flex-col gap-space-md">
+        <!-- Fulfillment Toggle Pill -->
+        <div class="bg-surface-container-high p-space-xs rounded-full grid grid-cols-2 gap-space-xs shadow-inner" id="fulfillmentToggle">
+          <button class="relative flex items-center justify-center gap-space-xs py-2 px-space-md rounded-full transition-all duration-200" :class="deliveryType === 'delivery' ? 'bg-primary-container text-on-primary shadow-sm' : 'text-on-surface-variant hover:text-on-surface'" id="btnDelivery" @click="deliveryType = 'delivery'" type="button">
+            <span class="material-symbols-outlined text-[18px]">local_shipping</span>
+            <span class="font-headline-sm text-headline-sm">送货上门</span>
+            <span class="font-badge-label text-badge-label bg-surface-container-lowest/20 px-1.5 py-0.5 rounded-full">配送费 ¥{{ deliveryFee }}</span>
+            <span v-if="deliveryType === 'delivery'" class="material-symbols-outlined text-[14px] absolute right-2.5 top-1/2 -translate-y-1/2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
           </button>
-          <button
-            class="delivery-option"
-            :class="{ active: deliveryType === 'delivery' }"
-            @click="deliveryType = 'delivery'"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" :stroke="deliveryType === 'delivery' ? '#0071DC' : '#86868B'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="1" y="3" width="15" height="13"/>
-              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
-              <circle cx="5.5" cy="18.5" r="2.5"/>
-              <circle cx="18.5" cy="18.5" r="2.5"/>
-            </svg>
-            <span>送货上门</span>
+          <button class="relative flex items-center justify-center gap-space-xs py-2 px-space-md rounded-full transition-all duration-200" :class="deliveryType === 'pickup' ? 'bg-primary-container text-on-primary shadow-sm' : 'text-on-surface-variant hover:text-on-surface'" id="btnPickup" @click="deliveryType = 'pickup'" type="button">
+            <span class="material-symbols-outlined text-[18px]">storefront</span>
+            <span class="font-headline-sm text-headline-sm">到店自提</span>
+            <span class="font-badge-label text-badge-label bg-surface-container-highest px-1.5 py-0.5 rounded-full text-secondary">免配送费</span>
           </button>
         </div>
-      </div>
-
-      <!-- 配送信息 -->
-      <div class="section" v-if="deliveryType === 'delivery'">
-        <div class="section-label">收货信息</div>
-
-        <!-- 选择已有地址 -->
-        <div v-if="addressList.length" class="saved-addresses">
+        <!-- Delivery Address Card (Delivery Mode) -->
+        <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm transition-all duration-300" id="addressSection" v-if="deliveryType === 'delivery'">
+          <!-- 暂无地址 -->
+          <div v-if="!addressList.length" class="flex items-start justify-between gap-space-md cursor-pointer active:opacity-70 transition-opacity">
+            <div class="flex gap-space-sm items-start flex-1 min-w-0">
+              <div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary shrink-0 mt-0.5">
+                <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">location_on</span>
+              </div>
+              <div class="flex flex-col gap-1 min-w-0">
+                <p class="font-body-md text-body-md text-on-surface leading-snug line-clamp-2">暂无收货地址</p>
+              </div>
+            </div>
+          </div>
+          <!-- 地址列表 -->
           <div
-            class="saved-addr-item"
             v-for="addr in addressList"
             :key="addr.id"
-            :class="{ active: selectedAddressId === addr.id }"
+            class="flex items-start justify-between gap-space-md cursor-pointer active:opacity-70 transition-opacity"
+            :class="{ 'ring-2 ring-primary-fixed rounded-lg': selectedAddressId === addr.id }"
             @click="selectAddress(addr)"
           >
-            <div class="addr-info">
-              <div class="addr-row">
-                <span class="addr-name">{{ addr.name }}</span>
-                <span class="addr-phone">{{ addr.phone }}</span>
-                <span v-if="addr.isDefault" class="addr-default">默认</span>
+            <div class="flex gap-space-sm items-start flex-1 min-w-0">
+              <div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary shrink-0 mt-0.5">
+                <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">location_on</span>
               </div>
-              <div class="addr-detail">{{ formatAddress(addr) }}</div>
+              <div class="flex flex-col gap-1 min-w-0">
+                <div class="flex items-center gap-space-xs">
+                  <span class="font-headline-sm text-headline-sm text-on-surface">{{ addr.name }}</span>
+                  <span class="font-body-md text-body-md text-on-surface-variant">{{ addr.phone }}</span>
+                  <span v-if="addr.isDefault === 1 || addr.isDefault === true" class="font-badge-label text-badge-label bg-primary-container text-on-primary px-1.5 py-0.5 rounded">默认</span>
+                </div>
+                <p class="font-body-md text-body-md text-on-surface leading-snug line-clamp-2">{{ formatAddress(addr) }}</p>
+              </div>
             </div>
-            <svg v-if="selectedAddressId === addr.id" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0071DC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12"/>
-            </svg>
+            <span class="material-symbols-outlined text-outline text-[20px] shrink-0 self-center">chevron_right</span>
           </div>
-          <div class="use-manual" @click="selectedAddressId = 0">使用其他地址</div>
-        </div>
-
-        <!-- 手动填写 -->
-        <div class="form-fields" v-if="!addressList.length || selectedAddressId === 0">
-          <div class="field-row">
-            <span class="field-label">收货人</span>
-            <input v-model="addressName" placeholder="请输入收货人姓名" class="field-input" />
-          </div>
-          <div class="field-row">
-            <span class="field-label">联系电话</span>
-            <input v-model="phone" placeholder="请输入手机号" type="tel" class="field-input" />
-          </div>
-          <div class="field-row">
-            <span class="field-label">收货地址</span>
-            <input v-model="address" placeholder="请输入详细收货地址" class="field-input" />
-          </div>
-        </div>
-
-        <div class="field-row" @click="showTimePicker = true" style="margin-top: 8px;">
-          <span class="field-label">送达时间</span>
-          <span class="field-value" :class="{ placeholder: !deliveryTime }">{{ deliveryTime || '请选择期望送达时间' }}</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEAEB2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="9 18 15 12 9 6"/>
-          </svg>
-        </div>
-
-        <van-popup v-model:show="showTimePicker" position="bottom" round teleport="body" :z-index="3000" :overlay-style="{ zIndex: 2999 }">
-          <van-date-picker
-            v-model="tempDate"
-            title="选择日期"
-            :min-date="minDate"
-            @confirm="onDateConfirm"
-            @cancel="showTimePicker = false"
-          />
-        </van-popup>
-      </div>
-
-      <!-- 商品清单 -->
-      <div class="section">
-        <div class="section-label">商品清单</div>
-        <div class="goods-item" v-for="item in cartStore.orderItems" :key="item.productId">
-          <div class="goods-img">
-            <img v-if="item.imageUrl" :src="item.imageUrl" :alt="item.productName" />
-            <svg v-else width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D1D1D6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-              <circle cx="8.5" cy="8.5" r="1.5"/>
-              <polyline points="21 15 16 10 5 21"/>
-            </svg>
-          </div>
-          <div class="goods-info">
-            <div class="goods-name text-ellipsis">{{ item.productName }}</div>
-            <div class="goods-meta">
-              <span class="goods-price"><span class="unit">¥</span>{{ formatPrice(item.price) }}</span>
-              <span class="goods-qty">x{{ item.quantity }}</span>
+          <!-- Delivery Slot Selector -->
+          <div class="mt-space-md pt-space-md flex items-center justify-between gap-space-sm bg-surface-container-low p-space-sm rounded-lg cursor-pointer" @click="showTimePicker = true">
+            <div class="flex items-center gap-1.5 text-on-surface">
+              <span class="material-symbols-outlined text-primary text-[18px]">schedule</span>
+              <span class="font-body-md text-body-md font-semibold">送达时间</span>
+            </div>
+            <div class="flex items-center gap-1 text-primary">
+              <span class="font-body-sm text-body-sm font-semibold">{{ deliveryTime || '请选择期望送达时间' }}</span>
+              <span class="font-badge-label text-badge-label bg-secondary-fixed text-on-secondary-fixed px-1 rounded font-bold">极速履约</span>
+              <span class="material-symbols-outlined text-[16px]">chevron_right</span>
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- 备注 -->
-      <div class="section">
-        <div class="field-row">
-          <span class="field-label">备注</span>
-          <input v-model="remark" placeholder="选填，对商品有什么要求" class="field-input" />
-        </div>
-      </div>
-
-      <!-- 优惠券 -->
-      <div class="section" @click="showCouponPopup = true" style="cursor: pointer;">
-        <div class="field-row" style="border-bottom: none;">
-          <span class="field-label">优惠券</span>
-          <span class="field-value" :class="{ placeholder: !selectedCoupon }">
-            {{ selectedCoupon ? '已选优惠券' : (usableCoupons.length ? `${usableCoupons.length}张可用` : '暂无可用优惠券') }}
-          </span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEAEB2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="9 18 15 12 9 6"/>
-          </svg>
-        </div>
-      </div>
-
-      <!-- 优惠券弹窗 -->
-      <van-popup v-model:show="showCouponPopup" position="bottom" round teleport="body" :z-index="3000" :overlay-style="{ zIndex: 2999 }" style="max-height: 60vh;">
-        <div class="coupon-popup">
-          <div class="coupon-popup-header">
-            <span>选择优惠券</span>
-            <svg @click="showCouponPopup = false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#86868B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor: pointer;">
-              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-            </svg>
+        <!-- Store Pickup Card -->
+        <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm" id="pickupSection" v-if="deliveryType === 'pickup'">
+          <div class="flex items-center justify-between gap-space-md">
+            <div class="flex gap-space-sm items-start flex-1 min-w-0">
+              <div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0">
+                <span class="material-symbols-outlined text-[20px]">store</span>
+              </div>
+              <div class="flex flex-col gap-1">
+                <div class="flex items-center gap-space-xs">
+                  <span class="font-headline-sm text-headline-sm text-on-surface">沃尔玛深圳蛇口店</span>
+                  <span class="font-badge-label text-badge-label bg-surface-container-highest text-on-surface-variant px-1.5 py-0.5 rounded">距您 1.2km</span>
+                </div>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">自提无需配送地址，核销凭证将在支付后生成</p>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-outline text-[20px]">chevron_right</span>
           </div>
-          <div class="coupon-list">
-            <div class="coupon-none" @click="selectCoupon(null)" :class="{ active: !selectedCoupon }">不使用优惠券</div>
-            <div
-              v-for="c in usableCoupons"
-              :key="c.id"
-              class="coupon-item"
-              :class="{ active: selectedCoupon?.id === c.id }"
-              @click="selectCoupon(c)"
-            >
-              <div class="coupon-left">
-                <div class="coupon-value">
-                  <span v-if="c.couponType === 2" class="coupon-num">{{ ((1 - Number(c.couponValue)) * 10).toFixed(1) }}</span>
-                  <span v-else class="coupon-num">¥{{ formatCouponValue(c.couponValue) }}</span>
-                  <span v-if="c.couponType === 2" class="coupon-unit">折</span>
+        </div>
+      </section>
+      <!-- SKU Items Accordion Card -->
+      <section class="px-margin mb-space-md">
+        <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+          <!-- Store Header -->
+          <div class="flex items-center justify-between pb-space-sm mb-space-sm">
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-primary text-[20px]">storefront</span>
+              <span class="font-headline-sm text-headline-sm text-on-surface">沃尔玛自营超市</span>
+              <span class="font-badge-label text-badge-label bg-primary-fixed text-on-primary-fixed px-1.5 py-0.5 rounded font-bold">正品保真</span>
+            </div>
+            <span class="font-body-sm text-body-sm text-on-surface-variant">共 {{ cartStore.orderItems.length }} 件</span>
+          </div>
+          <!-- Item List -->
+          <div class="flex flex-col gap-space-md">
+            <div class="flex items-center gap-space-md" v-for="item in cartStore.orderItems" :key="item.productId">
+              <div class="relative w-16 h-16 rounded-lg overflow-hidden shrink-0 bg-surface-container">
+                <img class="w-full h-full object-cover" :data-alt="item.productName" :src="item.imageUrl || '/placeholder.svg'" />
+              </div>
+              <div class="flex-1 min-w-0 flex flex-col justify-between h-16">
+                <div class="flex justify-between items-start gap-space-xs">
+                  <h2 class="font-body-md text-body-md text-on-surface font-semibold truncate">{{ item.productName }}</h2>
+                  <span class="font-price-lg text-price-lg text-on-surface shrink-0">¥{{ formatPrice(item.price) }}</span>
+                </div>
+                <div class="flex justify-between items-center text-on-surface-variant">
+                  <span v-if="item.spec || item.subtitle" class="font-body-sm text-body-sm bg-surface-container-low px-1.5 py-0.5 rounded">{{ item.spec || item.subtitle }}</span>
+                  <span class="font-body-sm text-body-sm font-medium">x {{ item.quantity }}</span>
                 </div>
               </div>
-              <div class="coupon-right">
-                <div class="coupon-name">{{ c.couponName }}</div>
-                <div class="coupon-desc">{{ formatCouponDesc(c) }}</div>
-              </div>
-              <svg v-if="selectedCoupon?.id === c.id" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0071DC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="coupon-check">
-                <polyline points="20 6 9 17 4 12"/>
-              </svg>
             </div>
-            <div v-if="!usableCoupons.length" class="coupon-empty">暂无可用优惠券</div>
           </div>
         </div>
-      </van-popup>
-
-      <!-- 金额 -->
-      <div class="section amount-section">
-        <div class="amount-row">
-          <span>商品金额</span>
-          <span>¥{{ cartStore.orderTotal.toFixed(2) }}</span>
+      </section>
+      <!-- Promotions & Order Notes Card -->
+      <section class="px-margin mb-space-md flex flex-col gap-space-md">
+        <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+          <!-- Coupon Selector -->
+          <div class="flex items-center justify-between cursor-pointer active:opacity-75 transition-opacity" @click="showCouponPopup = true">
+            <div class="flex items-center gap-1.5 text-on-surface">
+              <span class="material-symbols-outlined text-tertiary-container text-[20px]">confirmation_number</span>
+              <span class="font-headline-sm text-headline-sm">优惠券</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <span class="font-badge-label text-badge-label bg-secondary-fixed text-on-secondary-fixed-variant px-2 py-0.5 rounded-full font-bold flex items-center gap-0.5">
+                <span class="material-symbols-outlined text-[14px]">local_activity</span>
+                {{ selectedCoupon ? '已选 ' + selectedCoupon.couponName : (usableCoupons.length ? usableCoupons.length + ' 张可用' : '暂无可用优惠券') }}
+              </span>
+              <span class="material-symbols-outlined text-outline text-[18px]">chevron_right</span>
+            </div>
+          </div>
+          <!-- Invoice / Tax Info Optional -->
+          <div class="flex items-center justify-between cursor-pointer">
+            <span class="font-body-md text-body-md text-on-surface">发票信息</span>
+            <div class="flex items-center gap-1 text-on-surface-variant">
+              <span class="font-body-sm text-body-sm">个人电子普通发票</span>
+              <span class="material-symbols-outlined text-outline text-[18px]">chevron_right</span>
+            </div>
+          </div>
+          <!-- Order Note Input -->
+          <div class="flex items-center gap-space-sm pt-space-xs">
+            <span class="font-body-md text-body-md text-on-surface whitespace-nowrap">订单备注</span>
+            <input class="w-full bg-surface-container-low text-on-surface placeholder:text-outline-variant font-body-sm text-body-sm px-space-md py-2 rounded-lg focus:outline-none focus:bg-surface-container focus:text-on-surface transition-colors" maxlength="50" placeholder="选填，请和配送员协商一致（50字内）" type="text" v-model="remark" />
+          </div>
         </div>
-        <div class="amount-row" v-if="deliveryType === 'delivery'">
-          <span>配送费</span>
-          <span>¥{{ deliveryFee.toFixed(2) }}</span>
+      </section>
+      <!-- Pricing Breakdown Card -->
+      <section class="px-margin mb-space-md">
+        <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-sm">
+          <h3 class="font-headline-sm text-headline-sm text-on-surface mb-1">金额明细</h3>
+          <div class="flex items-center justify-between text-body-md font-body-md text-on-surface-variant">
+            <span class="">商品总额</span>
+            <span class="text-on-surface font-semibold">¥{{ cartStore.orderTotal.toFixed(2) }}</span>
+          </div>
+          <div class="flex items-center justify-between text-body-md font-body-md text-on-surface-variant" v-if="deliveryType === 'delivery'">
+            <span class="">配送费</span>
+            <span class="text-on-surface font-semibold" id="deliveryFeeVal">¥{{ deliveryFee.toFixed(2) }}</span>
+          </div>
+          <div class="flex items-center justify-between text-body-md font-body-md text-on-surface-variant" v-if="couponDiscount > 0">
+            <span class="">优惠券抵扣</span>
+            <span class="text-tertiary font-bold">-¥{{ couponDiscount.toFixed(2) }}</span>
+          </div>
+          <div class="flex items-center justify-between text-body-md font-body-md text-on-surface-variant" id="freightDiscountRow">
+            <div class="flex items-center gap-1">
+              <span class="">运费减免</span>
+              <span class="font-badge-label text-badge-label bg-secondary-fixed text-on-secondary-fixed px-1 rounded">新客首单</span>
+            </div>
+            <span class="text-tertiary font-bold">-¥5.00</span>
+          </div>
         </div>
-        <div class="amount-row" v-if="couponDiscount > 0">
-          <span>优惠券</span>
-          <span class="coupon-discount">-¥{{ couponDiscount.toFixed(2) }}</span>
+      </section>
+      <!-- Safe Delivery Promise Micro-banner -->
+      <section class="px-margin mb-space-md flex items-center justify-center gap-space-md text-outline">
+        <div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+          <span class="material-symbols-outlined text-[16px] text-primary">verified_user</span>
+          <span class="">正品自营保证</span>
         </div>
-        <div class="amount-row total">
-          <span>合计</span>
-          <span class="total-price"><span class="unit">¥</span>{{ totalWithFee.toFixed(2) }}</span>
+        <span class="text-surface-container-highest">•</span>
+        <div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+          <span class="material-symbols-outlined text-[16px] text-primary">update</span>
+          <span class="">超时无忧赔付</span>
         </div>
-      </div>
-
-      <!-- 提交 -->
-      <div class="submit-footer safe-bottom">
-        <div class="submit-total">
-          <span class="total-label">实付</span>
-          <span class="total-amount"><span class="unit">¥</span>{{ totalWithFee.toFixed(2) }}</span>
+        <span class="text-surface-container-highest">•</span>
+        <div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+          <span class="material-symbols-outlined text-[16px] text-primary">eco</span>
+          <span class="">绿色环保配送</span>
         </div>
-        <button class="submit-btn" @click="submitOrder" :disabled="submitting">{{ submitting ? '提交中...' : '提交订单' }}</button>
-      </div>
+      </section>
+      <!-- Sticky Bottom Checkout Bar (Level 3 Elevation) -->
+      <aside class="fixed bottom-0 left-0 right-0 z-40 bg-surface-container-lowest shadow-[0_-4px_16px_rgba(0,0,0,0.06)] pb-safe">
+        <div class="max-w-[540px] mx-auto px-margin h-16 flex items-center justify-between">
+          <!-- Price Summary -->
+          <div class="flex flex-col">
+            <div class="flex items-baseline gap-1">
+              <span class="font-body-md text-body-md text-on-surface font-semibold">实付款：</span>
+              <span class="font-price-currency text-price-currency text-tertiary font-bold">¥</span>
+              <span class="font-display-hero text-display-hero text-tertiary font-extrabold leading-none tracking-tight">{{ totalWithFee.toFixed(2) }}</span>
+            </div>
+            <div class="flex items-center gap-1 text-on-surface-variant">
+              <span class="font-body-sm text-body-sm">已优惠 ¥15.00</span>
+              <span class="material-symbols-outlined text-[14px]">info</span>
+            </div>
+          </div>
+          <!-- Action Button -->
+          <button class="h-11 px-7 rounded-full bg-primary-container text-on-primary font-headline-sm text-headline-sm font-bold shadow-md hover:opacity-95 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 cursor-pointer" id="btnSubmitOrder" @click="submitOrder" :disabled="submitting" type="button">
+            <span id="btnText" class="">{{ submitting ? '提交中...' : '提交订单' }}</span>
+            <span class="material-symbols-outlined animate-spin text-[18px]" :class="{ hidden: !submitting }" id="btnSpinner">progress_activity</span>
+          </button>
+        </div>
+      </aside>
     </div>
 
-    <div class="empty-state" v-else>
-      <div class="empty-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AEAEB2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="9" cy="21" r="1"/>
-          <circle cx="20" cy="21" r="1"/>
-          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-        </svg>
+    <!-- 空态 -->
+    <div v-else class="flex-1 flex flex-col items-center justify-center px-margin gap-space-md pt-24 pb-28">
+      <div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center text-outline">
+        <span class="material-symbols-outlined text-[32px]">shopping_cart</span>
       </div>
-      <p>没有选中的商品</p>
-      <button class="shop-btn-plain" style="border-radius:12px;height:44px;padding:0 28px;border:1.5px solid rgba(0,0,0,0.06);background:transparent;font-weight:600;font-size:15px;cursor:pointer;font-family:var(--shop-font);" @click="$router.push('/')">去选购</button>
+      <p class="font-body-md text-body-md text-on-surface-variant">购物车中暂无可结算商品</p>
+      <button class="h-11 px-7 rounded-full bg-primary-container text-on-primary font-headline-sm text-headline-sm font-bold shadow-md hover:opacity-95 active:scale-[0.98] transition-all cursor-pointer" @click="$router.push('/')" type="button">去选购</button>
     </div>
-  </div>
+
+    <!-- 送达时间选择浮层（保留原有逻辑） -->
+    <van-popup v-model:show="showTimePicker" position="bottom" round teleport="body" :z-index="3000" :overlay-style="{ zIndex: 2999 }">
+      <van-date-picker
+        v-model="tempDate"
+        title="选择日期"
+        :min-date="minDate"
+        @confirm="onDateConfirm"
+        @cancel="showTimePicker = false"
+      />
+    </van-popup>
+
+    <!-- 优惠券选择浮层（保留原有逻辑） -->
+    <van-popup v-model:show="showCouponPopup" position="bottom" round teleport="body" :z-index="3000" :overlay-style="{ zIndex: 2999 }" style="max-height: 60vh;">
+      <div class="p-space-lg flex flex-col">
+        <div class="flex items-center justify-between mb-space-md">
+          <span class="font-headline-sm text-headline-sm text-on-surface font-bold">选择优惠券</span>
+          <span class="material-symbols-outlined text-outline cursor-pointer" @click="showCouponPopup = false">close</span>
+        </div>
+        <div class="flex flex-col gap-space-sm overflow-y-auto" style="max-height: 50vh;">
+          <div class="px-space-md py-space-sm rounded-lg border text-center font-body-md text-body-md cursor-pointer" :class="!selectedCoupon ? 'border-primary-container text-primary bg-primary-fixed/40' : 'border-surface-container-highest text-on-surface-variant'" @click="selectCoupon(null)">不使用优惠券</div>
+          <div
+            v-for="c in usableCoupons"
+            :key="c.id"
+            class="flex items-center justify-between px-space-md py-space-sm rounded-lg border cursor-pointer"
+            :class="selectedCoupon?.id === c.id ? 'border-primary-container bg-primary-fixed/40' : 'border-surface-container-highest'"
+            @click="selectCoupon(c)"
+          >
+            <div class="flex flex-col">
+              <span class="font-headline-sm text-headline-sm text-on-surface font-bold">{{ c.couponName }}</span>
+              <span class="font-body-sm text-body-sm text-on-surface-variant">{{ formatCouponDesc(c) }}</span>
+            </div>
+            <span class="material-symbols-outlined text-primary" v-if="selectedCoupon?.id === c.id">check_circle</span>
+          </div>
+          <div v-if="!usableCoupons.length" class="text-center py-space-lg font-body-md text-body-md text-outline">暂无可用优惠券</div>
+        </div>
+      </div>
+    </van-popup>
+  </main>
 </template>
 
 <script setup>
@@ -380,416 +440,3 @@ onMounted(async () => {
   }
 })
 </script>
-
-<style lang="scss" scoped>
-.confirm-content {
-  padding-bottom: 80px;
-}
-
-.section {
-  background: var(--shop-card-bg);
-  margin: var(--shop-gap) var(--shop-page-pad) 0;
-  border-radius: var(--shop-card-radius);
-  padding: 16px;
-}
-
-.section-label {
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--shop-text-primary);
-  margin-bottom: 12px;
-}
-
-.delivery-options {
-  display: flex;
-  gap: 12px;
-}
-
-.delivery-option {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 14px;
-  border: 1.5px solid var(--shop-separator);
-  border-radius: 12px;
-  background: transparent;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--shop-text-secondary);
-  font-family: var(--shop-font);
-  cursor: pointer;
-  transition: all var(--shop-duration) var(--shop-ease);
-
-  &.active {
-    border-color: var(--shop-accent);
-    color: var(--shop-accent);
-    background: var(--shop-accent-light);
-  }
-}
-
-.saved-addresses {
-  margin-bottom: 8px;
-}
-
-.saved-addr-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px;
-  border: 1.5px solid var(--shop-separator);
-  border-radius: 12px;
-  margin-bottom: 8px;
-  cursor: pointer;
-  transition: all 0.2s;
-
-  &.active {
-    border-color: var(--shop-accent);
-    background: var(--shop-accent-light);
-  }
-
-  .addr-info {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .addr-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 4px;
-  }
-
-  .addr-name {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--shop-text-primary);
-  }
-
-  .addr-phone {
-    font-size: 13px;
-    color: var(--shop-text-secondary);
-  }
-
-  .addr-default {
-    font-size: 11px;
-    background: var(--shop-accent);
-    color: #fff;
-    padding: 1px 6px;
-    border-radius: 4px;
-  }
-
-  .addr-detail {
-    font-size: 13px;
-    color: var(--shop-text-secondary);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-}
-
-.use-manual {
-  font-size: 13px;
-  color: var(--shop-accent);
-  text-align: center;
-  padding: 8px;
-  cursor: pointer;
-}
-
-.form-fields {
-  display: flex;
-  flex-direction: column;
-}
-
-.field-row {
-  display: flex;
-  align-items: center;
-  padding: 12px 0;
-  border-bottom: 0.5px solid var(--shop-separator);
-  cursor: pointer;
-
-  &:last-child {
-    border-bottom: none;
-  }
-}
-
-.field-label {
-  font-size: 14px;
-  color: var(--shop-text-secondary);
-  width: 80px;
-  flex-shrink: 0;
-}
-
-.field-input {
-  flex: 1;
-  border: none;
-  outline: none;
-  font-size: 15px;
-  color: var(--shop-text-primary);
-  background: transparent;
-  font-family: var(--shop-font);
-
-  &::placeholder {
-    color: var(--shop-text-tertiary);
-  }
-}
-
-.field-value {
-  flex: 1;
-  font-size: 15px;
-  color: var(--shop-text-primary);
-
-  &.placeholder {
-    color: var(--shop-text-tertiary);
-  }
-}
-
-.goods-item {
-  display: flex;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 0.5px solid var(--shop-separator);
-
-  &:last-child {
-    border-bottom: none;
-  }
-}
-
-.goods-img {
-  width: 64px;
-  height: 64px;
-  background: var(--shop-bg-secondary);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  overflow: hidden;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-}
-
-.goods-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.goods-name {
-  font-size: 15px;
-  color: var(--shop-text-primary);
-  margin-bottom: 8px;
-}
-
-.goods-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.goods-price {
-  color: var(--shop-danger);
-  font-weight: 600;
-  font-size: 16px;
-
-  .unit {
-    font-size: 12px;
-  }
-}
-
-.goods-qty {
-  color: var(--shop-text-tertiary);
-  font-size: 14px;
-}
-
-.amount-section {
-  .amount-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    font-size: 15px;
-    color: var(--shop-text-secondary);
-
-    &.total {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--shop-text-primary);
-      border-top: 0.5px solid var(--shop-separator);
-      padding-top: 12px;
-      margin-top: 4px;
-    }
-  }
-}
-
-.total-price {
-  color: var(--shop-danger);
-}
-
-.submit-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px var(--shop-page-pad);
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-top: 0.5px solid var(--shop-separator);
-}
-
-.submit-total {
-  .total-label {
-    font-size: 14px;
-    color: var(--shop-text-secondary);
-    margin-right: 4px;
-  }
-
-  .total-amount {
-    color: var(--shop-danger);
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-
-    .unit {
-      font-size: 14px;
-    }
-  }
-}
-
-.submit-btn {
-  height: 48px;
-  padding: 0 32px;
-  border: none;
-  border-radius: 14px;
-  background: var(--shop-accent);
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  font-family: var(--shop-font);
-  cursor: pointer;
-  transition: background var(--shop-duration) var(--shop-ease);
-
-  &:active {
-    background: var(--shop-accent-hover);
-  }
-
-  &:disabled {
-    opacity: 0.6;
-  }
-}
-
-.coupon-discount {
-  color: #FF3B30;
-  font-weight: 500;
-}
-
-.coupon-popup {
-  padding: 16px;
-}
-
-.coupon-popup-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--shop-text-primary);
-  margin-bottom: 16px;
-}
-
-.coupon-list {
-  max-height: 50vh;
-  overflow-y: auto;
-}
-
-.coupon-none {
-  padding: 14px 16px;
-  border: 1.5px solid var(--shop-separator);
-  border-radius: 12px;
-  text-align: center;
-  font-size: 14px;
-  color: var(--shop-text-secondary);
-  margin-bottom: 8px;
-  cursor: pointer;
-
-  &.active {
-    border-color: var(--shop-accent);
-    color: var(--shop-accent);
-    background: var(--shop-accent-light);
-  }
-}
-
-.coupon-item {
-  display: flex;
-  align-items: center;
-  padding: 14px 12px;
-  border: 1.5px solid var(--shop-separator);
-  border-radius: 12px;
-  margin-bottom: 8px;
-  cursor: pointer;
-  transition: all 0.2s;
-
-  &.active {
-    border-color: var(--shop-accent);
-    background: var(--shop-accent-light);
-  }
-}
-
-.coupon-left {
-  width: 72px;
-  text-align: center;
-  flex-shrink: 0;
-}
-
-.coupon-num {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--shop-danger);
-}
-
-.coupon-unit {
-  font-size: 12px;
-  color: var(--shop-danger);
-  margin-left: 2px;
-}
-
-.coupon-right {
-  flex: 1;
-  min-width: 0;
-  margin-left: 12px;
-}
-
-.coupon-name {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--shop-text-primary);
-  margin-bottom: 4px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.coupon-desc {
-  font-size: 12px;
-  color: var(--shop-text-tertiary);
-}
-
-.coupon-check {
-  flex-shrink: 0;
-  margin-left: 8px;
-}
-
-.coupon-empty {
-  text-align: center;
-  padding: 32px 0;
-  color: var(--shop-text-tertiary);
-  font-size: 14px;
-}
-</style>
