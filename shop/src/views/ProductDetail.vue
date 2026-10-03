@@ -1,89 +1,291 @@
 <template>
-  <div class="detail-page">
-    <van-nav-bar title="商品详情" left-arrow @click-left="$router.back()" />
-
-    <div v-if="product" class="detail-content">
-      <!-- Product image -->
-      <div class="detail-img">
-        <img v-if="product.imageUrl" :src="product.imageUrl" :alt="product.productName" class="detail-img-content" />
-        <svg v-else width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#D1D1D6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-          <circle cx="8.5" cy="8.5" r="1.5"/>
-          <polyline points="21 15 16 10 5 21"/>
-        </svg>
+  <!-- ProductDetail — 外观严格取自 Stitch 设计稿；数据/事件沿用原有接口逻辑 -->
+  <header class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
+    <div class="h-14 px-margin flex items-center justify-between gap-space-sm">
+      <div class="flex items-center gap-space-sm">
+        <button aria-label="Back" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors -ml-space-xs" @click="$router.back()">
+          <span class="material-symbols-outlined text-[24px]">arrow_back_ios_new</span>
+        </button>
+        <img alt="Walmart Logo with Favicon Spark" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WxbFcbyvQxjOWkbhkpIy_RXXWkvvU4r8XwbBzzs9Nco_MOan5kyMhQR-HNMCR0mRp1uF8RgvdxFCmQDKNrWLsQIREwC9bCIhANclidwFzjHDJdKYngvbC9SVhJUEFCNQKdAdgsR_kuBjHhBzu_6r_lIOSDxLPhDvxFeI1qc18Fk2Q5QU-DNPWkKJpBlkAaHNmUuGr1XuZnVwAPynaif0RJ1AMEB8zun78Qcq8acrYVeyXlIND6DoxdvQ" />
+        <h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold truncate max-w-[160px]">Product Detail</h1>
       </div>
-
-      <!-- Price section -->
-      <div class="price-section">
-        <div class="detail-price">
-          <span class="unit">¥</span><span class="price-num">{{ formatPrice(product.price) }}</span>
-        </div>
-        <div class="stock-info" :class="{ low: product.stock < 10 }">
-          {{ product.stock > 0 ? (product.stock < 10 ? '仅剩' + product.stock + '件' : '库存充足') : '暂时缺货' }}
-        </div>
-      </div>
-
-      <!-- Product info -->
-      <div class="info-section">
-        <div class="detail-name">{{ product.productName }}</div>
-        <div class="detail-cat" v-if="product.categoryName">
-          <span class="cat-tag">{{ product.categoryName }}</span>
-        </div>
-      </div>
-
-      <!-- Specs -->
-      <div class="spec-section">
-        <div class="spec-title">商品参数</div>
-        <div class="spec-list">
-          <div class="spec-item">
-            <span class="spec-label">商品编号</span>
-            <span class="spec-value">{{ product.id }}</span>
-          </div>
-          <div class="spec-item" v-if="product.categoryName">
-            <span class="spec-label">商品分类</span>
-            <span class="spec-value">{{ product.categoryName }}</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">库存数量</span>
-            <span class="spec-value">{{ product.stock }}件</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Description -->
-      <div class="desc-section">
-        <div class="desc-title">商品介绍</div>
-        <div class="desc-content">{{ product.description || '该商品暂无详细介绍，如有疑问请联系客服。' }}</div>
-      </div>
-
-      <!-- Bottom actions -->
-      <div class="detail-footer safe-bottom">
-        <div class="footer-icons">
-          <button class="footer-icon" @click="$router.push('/')">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#767676" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <polyline points="9 22 9 12 15 12 15 22"/>
-            </svg>
-            <span>首页</span>
-          </button>
-          <button class="footer-icon" @click="$router.push('/cart')">
-            <div class="icon-badge-wrap">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#767676" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="9" cy="21" r="1"/>
-                <circle cx="20" cy="21" r="1"/>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-              </svg>
-              <span v-if="cartStore.totalCount > 0" class="icon-badge">{{ cartStore.totalCount }}</span>
-            </div>
-            <span>购物车</span>
-          </button>
-        </div>
-        <button class="btn-cart" @click="addToCart" :disabled="product.stock === 0">加入购物车</button>
-        <button class="btn-buy" @click="buyNow" :disabled="product.stock === 0">立即购买</button>
+      <div class="flex items-center gap-space-sm">
+        <button aria-label="More actions" class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+          <span class="material-symbols-outlined text-[22px]">more_vert</span>
+        </button>
+        <img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbWRWRjaR21qK1jU0kCwRb_bAPV-hTUNuaZhWlx7qH_Va4V32egzB9EA-dyJjfPe9hnkJfPAuD8FSIvw03zd17tPdYx3K8XtSc9b3_YTnlSDYSwkgXgjlVRRjOPE3rL-UQNuJ74U9yW3VtEtg7VpupRBb7r9Y5r5wmAz-R2XiUVAipjvedop15RZTvklVj-vtaXe9VOD3ODfIai_ITvZaWs2hlEdS_VxLLC-YWL49tz4gKH6_IB6yQ" />
       </div>
     </div>
+  </header>
 
-    <van-loading v-else class="page-loading" size="24px" />
+  <main v-if="product" class="flex-1 flex flex-col relative w-full pt-14 pb-safe bg-background max-w-[540px] mx-auto min-h-screen">
+    <div class="flex flex-col w-full pb-24">
+      <!-- Top Transparent/Blur Action Overlay Bar (Floating in Content Area) -->
+      <div class="relative w-full">
+        <!-- Carousel Gallery Container -->
+        <div class="relative w-full aspect-square bg-surface-container overflow-hidden">
+          <div class="flex w-full h-full transition-transform duration-300 ease-out" id="pdp-carousel">
+            <div class="w-full h-full flex-shrink-0 relative">
+              <img class="w-full h-full object-cover" data-alt="Macro close-up shot of radiant, translucent shine muscat green grapes with delicate water droplets on skin, nestled in fresh green vine leaves, soft warm natural sunlight backlighting the clusters, ultra realistic commercial grocery photography, clean studio background, high vibrant tones" :src="product.imageUrl || '/placeholder.svg'" :alt="product.productName" />
+            </div>
+            <div class="w-full h-full flex-shrink-0 relative">
+              <img class="w-full h-full object-cover" data-alt="Cross section of a crisp, juicy shine muscat grape cut in half revealing seedless translucent flesh, resting on clean white ceramic surface with splash of cool morning mist, commercial food macro shot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8taEiaGQD_F15ASzV2RZXQsQa3XXKCgcJOJip0IPlGAYxLUQnea8uM7vb6o-IKjG0bi6k2YxrhItoJrkFkKqSWjE_lNbFT2-4BSpoGVkf0-qvPYCqnh7sKue8J4LrKza7rFGNHJkkYXZ5HekXqw29BzREYYC3rBpiCG4R2kvXIfq46_yvgkJ4lYUu5zxsMFOJpYCXxRXsCuBPb3OJkr9I-YRx6ZLesI4QyG23eblDGWEupwfjv2Vo" />
+            </div>
+            <div class="w-full h-full flex-shrink-0 relative">
+              <img class="w-full h-full object-cover" data-alt="Scenic Yunnan Jianshui terraced highland grape vineyard under bright morning sunlight, lush green vines stretching towards blue mountain horizon, authentic origin agricultural imagery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFnPMHebPPg6vAwcEc4ZWpnIs7RZSK0hBqW3JU8APey692w6sPbTQHX2ttjjVujJhQH2EfDXzm7pMnq9tJannGtFB02KFdXeP-Gbo8RSlHkq4GGW5-l0J2vJfM0JiIauThAj5dCHrXm7dAX60vnMIYP6WuCiNDIpK2KFdUTW5-xLpjFccJqTMCXBAGsM5hNEwKpJ-KLu547dBj7shm547V5zXaGQxzVHoT7cYOW32DHiCTfuXgS8vm" />
+            </div>
+          </div>
+          <!-- Quick Action Badges Over Hero -->
+          <div class="absolute top-space-md left-space-md right-space-md flex items-center justify-between pointer-events-none z-10">
+            <button aria-label="返回上一页" class="w-9 h-9 rounded-full bg-inverse-surface/40 backdrop-blur-md text-on-primary flex items-center justify-center pointer-events-auto active:scale-95 transition-transform" @click="$router.back()">
+              <span class="material-symbols-outlined text-[20px]">arrow_back_ios_new</span>
+            </button>
+            <div class="flex items-center gap-space-xs pointer-events-auto">
+              <button aria-label="分享商品" class="w-9 h-9 rounded-full bg-inverse-surface/40 backdrop-blur-md text-on-primary flex items-center justify-center active:scale-95 transition-transform" id="shareBtn">
+                <span class="material-symbols-outlined text-[20px]">share</span>
+              </button>
+              <button aria-label="更多操作" class="w-9 h-9 rounded-full bg-inverse-surface/40 backdrop-blur-md text-on-primary flex items-center justify-center active:scale-95 transition-transform">
+                <span class="material-symbols-outlined text-[20px]">more_horiz</span>
+              </button>
+            </div>
+          </div>
+          <!-- Fresh Harvest Stamp & Badge -->
+          <div class="absolute bottom-space-md left-space-md flex items-center gap-space-xs">
+            <span class="bg-secondary-container text-on-secondary-container px-space-sm py-0.5 rounded-full font-badge-label text-badge-label flex items-center gap-1 shadow-sm">
+              <span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">eco</span>
+              今日采摘 · 鲜冷达
+            </span>
+          </div>
+          <!-- Carousel Pagination Indicator -->
+          <div class="absolute bottom-space-md right-space-md bg-inverse-surface/60 backdrop-blur-md text-on-primary px-space-sm py-0.5 rounded-full font-badge-label text-badge-label tracking-wider">
+            <span id="carousel-curr" class="">1</span>/5
+          </div>
+        </div>
+      </div>
+      <!-- Main Details Section -->
+      <div class="px-margin flex flex-col gap-space-md -mt-space-sm relative z-10">
+        <!-- Card 1: Core Price & Title Info -->
+        <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+          <!-- Price & Promotion Row -->
+          <div class="flex items-baseline justify-between">
+            <div class="flex items-baseline gap-space-xs">
+              <span class="text-tertiary-container font-price-currency text-price-currency">¥</span>
+              <span class="text-tertiary-container font-display-hero text-display-hero tracking-tight">{{ formatPrice(product.price) }}</span>
+              <span class="text-on-surface-variant font-body-sm text-body-sm">/盒</span>
+              <span class="text-outline font-body-sm text-body-sm line-through ml-space-xs">¥19.90</span>
+            </div>
+            <!-- Urgency Stock Callout -->
+            <div class="flex items-center gap-1 bg-secondary-fixed text-on-secondary-fixed px-space-xs py-0.5 rounded">
+              <span class="material-symbols-outlined text-[14px]">local_fire_department</span>
+              <span class="font-tab-label text-tab-label">{{ product.stock > 0 ? '仅剩 ' + product.stock + ' 件' : '暂时缺货' }}</span>
+            </div>
+          </div>
+          <!-- Badges and Benefit Tags -->
+          <div class="flex flex-wrap items-center gap-space-xs">
+            <span class="bg-tertiary-container text-on-tertiary-container px-space-xs py-0.5 rounded font-badge-label text-badge-label">
+              限时降价
+            </span>
+            <span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-space-xs py-0.5 rounded font-badge-label text-badge-label">
+              每满99减15
+            </span>
+            <span class="bg-primary-fixed text-on-primary-fixed-variant px-space-xs py-0.5 rounded font-badge-label text-badge-label">
+              沃集鲜严选
+            </span>
+          </div>
+          <!-- Product Title -->
+          <h1 class="font-headline-lg text-headline-lg text-on-surface line-clamp-2 mt-0.5 leading-snug">
+            {{ product.productName }}
+          </h1>
+          <!-- Key Selling Points Row -->
+          <div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+            <div class="flex items-center gap-1">
+              <span class="material-symbols-outlined text-primary text-[15px]">verified</span>
+              <span class="">源头直采</span>
+            </div>
+            <span class="text-outline-variant">•</span>
+            <div class="flex items-center gap-1">
+              <span class="material-symbols-outlined text-primary text-[15px]">ac_unit</span>
+              <span class="">产地冷链直达</span>
+            </div>
+            <span class="text-outline-variant">•</span>
+            <div class="flex items-center gap-1">
+              <span class="material-symbols-outlined text-primary text-[15px]">thumb_up</span>
+              <span class="">不甜包退</span>
+            </div>
+          </div>
+        </div>
+        <!-- Card 2: Fulfillment & Guarantees -->
+        <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+          <!-- Delivery Info -->
+          <div class="flex items-start gap-space-sm">
+            <span class="material-symbols-outlined text-primary text-[20px] mt-0.5">local_shipping</span>
+            <div class="flex-1 flex flex-col">
+              <div class="flex items-center justify-between">
+                <span class="font-headline-sm text-headline-sm text-on-surface">发货配送</span>
+                <span class="text-primary font-badge-label text-badge-label bg-primary-fixed/50 px-space-xs py-0.5 rounded">极速履约</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                送货上门（极速达最快 30 分钟内送达）或支持到就近沃尔玛门店免费自提。
+              </p>
+            </div>
+          </div>
+          <!-- Divider by spacing & tonal shift -->
+          <div class="h-px bg-surface-container-high w-full">
+          </div>
+          <!-- Service Guarantees -->
+          <div class="flex items-start gap-space-sm">
+            <span class="material-symbols-outlined text-secondary-container text-[20px] mt-0.5">shield</span>
+            <div class="flex-1 flex flex-col">
+              <span class="font-headline-sm text-headline-sm text-on-surface">品质安心买</span>
+              <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                沃尔玛正品保真 · 坏果烂果当场赔付包退 · 7天无理由退货无忧
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Card 3: Specifications Table -->
+        <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+          <div class="flex items-center justify-between pb-space-xs">
+            <h2 class="font-headline-sm text-headline-sm text-on-surface">商品参数与规格</h2>
+            <span class="font-body-sm text-body-sm text-outline">品质认证标识</span>
+          </div>
+          <div class="grid grid-cols-2 gap-x-space-md gap-y-space-sm font-body-sm text-body-sm">
+            <div class="flex flex-col bg-surface-container-low p-space-sm rounded-lg">
+              <span class="text-on-surface-variant text-[11px]">商品编号</span>
+              <span class="text-on-surface font-semibold truncate">{{ product.id }}</span>
+            </div>
+            <div class="flex flex-col bg-surface-container-low p-space-sm rounded-lg" v-if="product.categoryName">
+              <span class="text-on-surface-variant text-[11px]">商品分类</span>
+              <span class="text-on-surface font-semibold truncate">{{ product.categoryName }}</span>
+            </div>
+            <div class="flex flex-col bg-surface-container-low p-space-sm rounded-lg">
+              <span class="text-on-surface-variant text-[11px]">原产地</span>
+              <span class="text-on-surface font-semibold truncate">云南红河州建水县</span>
+            </div>
+            <div class="flex flex-col bg-surface-container-low p-space-sm rounded-lg">
+              <span class="text-on-surface-variant text-[11px]">储存条件</span>
+              <span class="text-on-surface font-semibold truncate">0-4℃ 冷藏保鲜</span>
+            </div>
+            <div class="flex flex-col bg-surface-container-low p-space-sm rounded-lg">
+              <span class="text-on-surface-variant text-[11px]">净含量规格</span>
+              <span class="text-on-surface font-semibold truncate">500g ± 20g / 盒</span>
+            </div>
+          </div>
+        </div>
+        <!-- Card 4: Customer Review Snippet -->
+        <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-space-xs">
+              <h2 class="font-headline-sm text-headline-sm text-on-surface">用户评价</h2>
+              <span class="font-tab-label text-tab-label text-tertiary-container bg-tertiary-fixed px-space-xs rounded">99.2% 好评率</span>
+            </div>
+            <button class="flex items-center text-outline hover:text-primary font-body-sm text-body-sm">
+              <span class="">共 1.2万+ 条</span>
+              <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+            </button>
+          </div>
+          <!-- Quick Tag Chips -->
+          <div class="flex flex-wrap gap-space-xs pt-1">
+            <span class="bg-surface-container text-on-surface font-badge-label text-badge-label px-space-sm py-1 rounded-full">脆甜多汁 (4280)</span>
+            <span class="bg-surface-container text-on-surface font-badge-label text-badge-label px-space-sm py-1 rounded-full">包装完好 (1922)</span>
+            <span class="bg-surface-container text-on-surface font-badge-label text-badge-label px-space-sm py-1 rounded-full">分量充足 (945)</span>
+          </div>
+          <!-- Reviewer quote -->
+          <div class="bg-surface-container-low p-space-sm rounded-lg mt-space-xs flex flex-col gap-1">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-1.5">
+                <span class="w-5 h-5 rounded-full bg-primary text-on-primary font-tab-label text-[10px] flex items-center justify-center font-bold">W</span>
+                <span class="font-body-sm text-body-sm text-on-surface font-medium">李** (沃尔玛黑卡会员)</span>
+              </div>
+              <div class="flex text-secondary-container">
+                <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              </div>
+            </div>
+            <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+              葡萄颗颗饱满圆润，拆开箱子有一股浓浓的玫瑰清香，甜度非常足，皮薄无籽直接吃超爽！
+            </p>
+          </div>
+        </div>
+        <!-- Card 5: Visual Narrative & Detail Section -->
+        <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md mb-space-md">
+          <div class="flex items-center justify-center gap-space-sm py-space-xs">
+            <div class="h-px bg-outline-variant w-12">
+            </div>
+            <span class="font-headline-sm text-headline-sm text-on-surface">图文详情</span>
+            <div class="h-px bg-outline-variant w-12">
+            </div>
+          </div>
+          <div class="flex flex-col gap-space-sm">
+            <div class="overflow-hidden rounded-lg">
+              <img class="w-full aspect-[4/3] object-cover" data-alt="High-definition macro details of fresh Yunnan Shine Muscat grapes packed closely in premium eco-friendly carton box, showing sugar spots on translucent emerald green skin, natural condensation beads, vibrant clean composition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCStcxL1oSbtwg1Dvk0GIdrpP1FZnaYoNFUlIHsl_WfLsoB72ZuQLRG-4nf0OsIbCMWq0p2Y79itOrxpWhcljh0sAEutbzPhswbmPddrxHTiOaV6RAKIRyMmvIJMFajhHTJMwl6bRusNFqNXgl7EV46jJ7bvdwD56BvPUmWfvbXuBqoDv8d9sMu3edrnpnIhh26Vrj0CMNDg0nkDeHVoYEI2TA8LjyNSz43SVmKuOs02GlhLvXfYBv0" />
+            </div>
+            <p v-if="product.description" class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              {{ product.description }}
+            </p>
+            <p v-else class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              源自云南建水高海拔梯田果园，日照充足昼夜温差大，糖分积累丰厚。每一颗都经过人工严选，果肉丰腴饱满，入口如蜜糖裹挟玫瑰香气，脆嫩弹滑。
+            </p>
+            <div class="overflow-hidden rounded-lg mt-space-xs">
+              <img class="w-full aspect-[4/3] object-cover" data-alt="Modern high standard cold chain sorting warehouse with refrigerated logistics truck, professional technicians inspecting pristine fresh fruits with precision scales, hygienic and modern agricultural distribution atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCTFyYrIBHp_xvUIxUf-ZT6Y8ULwSsTEAYe8SQKLc5qtnv1Jl9qp1EX72TD4nEm2kWs3t1UYejz1LDlKmdeP10sQsiI8Lu3zKKRc9_WvN4SerjNZOzT-Ymoy9NpTWIoL_pdD0CEHu_5t-ydeF4fDxwVqkevMostz5Wsd5M0ZV2FUiN0Xw4wyrRepZqcATxVgzFY0qzvBMvoJk_ZSKsldp1hSeKaKevCE-oKcmpZhS2rxgsNbvc1cif" />
+            </div>
+            <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              采用全温程冷链锁鲜直发体系，采收后2小时内迅速预冷降温，全程0-4℃恒温护航，锁住从枝头到舌尖的新鲜脆爽。
+            </p>
+          </div>
+        </div>
+        <!-- Persistent Bottom Action Bar (PRD 3.4 Floating Dock) -->
+        <div class="fixed bottom-0 left-0 right-0 z-40 bg-surface-container-lowest shadow-[0_-4px_16px_rgba(0,0,0,0.06)] pb-safe">
+          <div class="max-w-[540px] mx-auto h-16 px-margin flex items-center justify-between gap-space-sm">
+            <!-- Utility Icons (Left) -->
+            <div class="flex items-center gap-space-xs">
+              <!-- Home Icon -->
+              <button aria-label="返回首页" class="flex flex-col items-center justify-center w-10 text-on-surface-variant hover:text-primary active:scale-95 transition-transform" @click="$router.push('/')">
+                <span class="material-symbols-outlined text-[22px]">storefront</span>
+                <span class="font-tab-label text-tab-label">首页</span>
+              </button>
+              <!-- Customer Service -->
+              <button aria-label="联系客服" class="flex flex-col items-center justify-center w-10 text-on-surface-variant hover:text-primary active:scale-95 transition-transform">
+                <span class="material-symbols-outlined text-[22px]">headset_mic</span>
+                <span class="font-tab-label text-tab-label">客服</span>
+              </button>
+              <!-- Cart with Quantity Badge -->
+              <button aria-label="购物车" class="flex flex-col items-center justify-center w-10 text-on-surface-variant hover:text-primary active:scale-95 transition-transform relative" id="cartBtn" @click="$router.push('/cart')">
+                <span class="material-symbols-outlined text-[22px]">shopping_cart</span>
+                <span class="font-tab-label text-tab-label">购物车</span>
+                <span v-if="cartStore.totalCount > 0" class="absolute -top-0.5 right-1 w-4 h-4 bg-tertiary-container text-on-tertiary-container font-badge-label text-[10px] rounded-full flex items-center justify-center scale-100 transition-transform" id="cartBadge">
+                  {{ cartStore.totalCount > 99 ? '99+' : cartStore.totalCount }}
+                </span>
+              </button>
+            </div>
+            <!-- Action Buttons (Right) -->
+            <div class="flex items-center gap-space-xs flex-1 ml-space-xs">
+              <!-- Add To Cart -->
+              <button class="flex-1 h-11 rounded-full bg-surface-container-highest text-on-surface font-headline-sm text-[14px] flex items-center justify-center active:scale-[0.98] transition-all duration-150" id="addToCartBtn" @click="addToCart" :disabled="product.stock === 0">
+                加入购物车
+              </button>
+              <!-- Instant Buy -->
+              <button class="flex-1 h-11 rounded-full bg-primary-container text-on-primary font-headline-sm text-[14px] shadow-sm flex items-center justify-center active:scale-[0.98] transition-all duration-150" id="buyNowBtn" @click="buyNow" :disabled="product.stock === 0">
+                立即购买
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Micro-interaction Toast for Cart Delight -->
+        <div class="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-inverse-surface/90 text-inverse-on-surface font-body-sm text-body-sm px-space-md py-space-xs rounded-full shadow-lg pointer-events-none transition-all duration-300 opacity-0 translate-y-2 flex items-center gap-1.5" id="toastNotification">
+          <span class="material-symbols-outlined text-[16px] text-secondary-fixed">check_circle</span>
+          <span id="toastMessage" class="">已成功加入购物车</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div v-else class="flex-1 flex flex-col items-center justify-center bg-background max-w-[540px] mx-auto min-h-screen gap-space-sm">
+    <span class="material-symbols-outlined text-primary text-[32px] animate-spin">progress_activity</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant">加载中…</span>
   </div>
 </template>
 
@@ -125,229 +327,3 @@ function buyNow() {
   router.push('/order/confirm')
 }
 </script>
-
-<style lang="scss" scoped>
-.detail-page {
-  background: var(--shop-bg-secondary);
-  min-height: 100vh;
-  padding-bottom: 80px;
-}
-
-.detail-img {
-  height: 375px;
-  background: var(--shop-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-
-  .detail-img-content {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-}
-
-.price-section {
-  background: var(--shop-bg);
-  padding: 14px var(--shop-page-pad);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.detail-price {
-  color: var(--shop-accent);
-
-  .unit {
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  .price-num {
-    font-size: 32px;
-    font-weight: 800;
-    letter-spacing: -1px;
-  }
-}
-
-.stock-info {
-  font-size: 12px;
-  color: var(--shop-text-secondary);
-
-  &.low {
-    color: var(--shop-accent);
-  }
-}
-
-.info-section {
-  background: var(--shop-bg);
-  padding: 14px var(--shop-page-pad);
-  margin-top: 8px;
-
-  .detail-name {
-    font-size: 17px;
-    font-weight: 600;
-    line-height: 1.5;
-    color: var(--shop-text-primary);
-  }
-
-  .detail-cat {
-    margin-top: 10px;
-  }
-
-  .cat-tag {
-    display: inline-block;
-    font-size: 12px;
-    color: var(--shop-accent);
-    background: var(--shop-accent-light);
-    padding: 3px 10px;
-    border-radius: 6px;
-    font-weight: 600;
-  }
-}
-
-.desc-section,
-.spec-section {
-  background: var(--shop-bg);
-  padding: 14px var(--shop-page-pad);
-  margin-top: 8px;
-}
-
-.desc-title,
-.spec-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--shop-text-primary);
-  margin-bottom: 10px;
-}
-
-.desc-content {
-  font-size: 14px;
-  color: var(--shop-text-secondary);
-  line-height: 1.7;
-}
-
-.spec-list .spec-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 11px 0;
-  border-bottom: 0.5px solid var(--shop-separator);
-  font-size: 13px;
-
-  &:last-child {
-    border-bottom: none;
-  }
-
-  .spec-label {
-    color: var(--shop-text-secondary);
-  }
-
-  .spec-value {
-    color: var(--shop-text-primary);
-  }
-}
-
-.detail-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  gap: 0;
-  padding: 10px var(--shop-page-pad);
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-top: 0.5px solid var(--shop-separator);
-}
-
-.footer-icons {
-  display: flex;
-  gap: 4px;
-  margin-right: 8px;
-}
-
-.footer-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  font-size: 10px;
-  color: var(--shop-text-secondary);
-  width: 48px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  position: relative;
-}
-
-.icon-badge-wrap {
-  position: relative;
-}
-
-.icon-badge {
-  position: absolute;
-  top: -6px;
-  right: -8px;
-  min-width: 16px;
-  height: 16px;
-  line-height: 16px;
-  text-align: center;
-  font-size: 10px;
-  font-weight: 600;
-  color: #fff;
-  background: var(--shop-accent);
-  border-radius: 8px;
-  padding: 0 4px;
-}
-
-.btn-cart {
-  flex: 1;
-  height: 42px;
-  border-radius: 10px 0 0 10px;
-  background: #191919;
-  color: #fff;
-  border: none;
-  font-weight: 700;
-  font-size: 14px;
-  font-family: var(--shop-font);
-  cursor: pointer;
-
-  &:active {
-    opacity: 0.8;
-  }
-
-  &:disabled {
-    opacity: 0.4;
-  }
-}
-
-.btn-buy {
-  flex: 1;
-  height: 42px;
-  border-radius: 0 10px 10px 0;
-  background: var(--shop-accent);
-  color: #fff;
-  border: none;
-  font-weight: 700;
-  font-size: 14px;
-  font-family: var(--shop-font);
-  cursor: pointer;
-
-  &:active {
-    background: var(--shop-accent-hover);
-  }
-
-  &:disabled {
-    opacity: 0.4;
-  }
-}
-
-.page-loading {
-  text-align: center;
-  padding: 60px;
-}
-</style>

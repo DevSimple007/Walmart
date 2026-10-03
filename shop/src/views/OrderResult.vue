@@ -1,102 +1,163 @@
 <template>
-  <div class="order-result-page">
-    <div class="result-icon">
-      <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-        <polyline points="22 4 12 14.01 9 11.01"/>
-      </svg>
+  <!-- OrderResult — 外观严格取自 Stitch 设计稿；数据/事件沿用原有接口逻辑 -->
+  <header class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
+    <div class="h-14 px-margin flex items-center justify-between gap-space-sm">
+      <div class="flex items-center gap-space-sm">
+        <button aria-label="Back" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors -ml-space-xs" @click="$router.back()">
+          <span class="material-symbols-outlined text-[24px]">arrow_back_ios_new</span>
+        </button>
+        <img alt="Walmart Logo with Favicon Spark" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WxbFcbyvQxjOWkbhkpIy_RXXWkvvU4r8XwbBzzs9Nco_MOan5kyMhQR-HNMCR0mRp1uF8RgvdxFCmQDKNrWLsQIREwC9bCIhANclidwFzjHDJdKYngvbC9SVhJUEFCNQKdAdgsR_kuBjHhBzu_6r_lIOSDxLPhDvxFeI1qc18Fk2Q5QU-DNPWkKJpBlkAaHNmUuGr1XuZnVwAPynaif0RJ1AMEB8zun78Qcq8acrYVeyXlIND6DoxdvQ" />
+        <h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold truncate max-w-[160px]">Checkout Flow</h1>
+      </div>
+      <div class="flex items-center gap-space-sm">
+        <button aria-label="More actions" class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+          <span class="material-symbols-outlined text-[22px]">more_vert</span>
+        </button>
+        <img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbWRWRjaR21qK1jU0kCwRb_bAPV-hTUNuaZhWlx7qH_Va4V32egzB9EA-dyJjfPe9hnkJfPAuD8FSIvw03zd17tPdYx3K8XtSc9b3_YTnlSDYSwkgXgjlVRRjOPE3rL-UQNuJ74U9yW3VtEtg7VpupRBb7r9Y5r5wmAz-R2XiUVAipjvedop15RZTvklVj-vtaXe9VOD3ODfIai_ITvZaWs2hlEdS_VxLLC-YWL49tz4gKH6_IB6yQ" />
+      </div>
     </div>
-    <div class="result-title">下单成功</div>
-    <div class="result-order-no" v-if="orderNo">{{ orderNo }}</div>
-    <div class="result-desc">您的订单正在处理中，请耐心等待</div>
-    <div class="result-actions">
-      <button class="btn-primary" @click="$router.push('/order')">查看订单</button>
-      <button class="btn-secondary" @click="$router.push('/')">继续购物</button>
+  </header>
+
+  <main class="flex-1 flex flex-col relative w-full pt-14 pb-safe bg-background max-w-[540px] mx-auto min-h-screen">
+    <div class="flex flex-col w-full pb-10">
+      <div class="flex flex-col items-center justify-center px-margin pt-6 pb-5 text-center relative overflow-hidden">
+        <div class="relative flex items-center justify-center mb-3">
+          <div class="absolute w-20 h-20 rounded-full bg-[#00A862]/15 blur-lg animate-pulse">
+          </div>
+          <div class="relative w-16 h-16 rounded-full bg-[#00A862] shadow-[0_4px_16px_rgba(0,168,98,0.35)] flex items-center justify-center text-on-primary">
+            <span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1, 'wght' 700;">check</span>
+          </div>
+        </div>
+        <h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-extrabold mb-1.5">
+          支付及下单成功！
+        </h2>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-[300px] leading-relaxed">
+          您的订单已提交仓库，拣货人员正在加急为您打包
+        </p>
+        <div class="mt-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-badge-label text-badge-label font-bold">
+          <span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+          <span class="">极速拣货通道生效中</span>
+        </div>
+      </div>
+      <div class="px-margin flex flex-col gap-space-md">
+        <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_2px_12px_rgba(0,30,80,0.05)] flex flex-col gap-3.5">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+              <span class="font-body-sm text-body-sm text-on-surface-variant">订单编号</span>
+              <span class="font-body-md text-body-md font-semibold text-on-surface select-all tracking-tight" id="orderNoText">{{ orderNo }}</span>
+            </div>
+            <button class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors active:scale-95 text-primary text-body-sm font-semibold" id="copyBtn" @click="copyOrderNo">
+              <span class="material-symbols-outlined text-[14px]">content_copy</span>
+              <span id="copyLabel" class="">复制</span>
+            </button>
+          </div>
+          <div class="h-[1px] w-full bg-surface-container">
+          </div>
+          <div class="flex items-baseline justify-between">
+            <span class="font-body-sm text-body-sm text-on-surface-variant">支付金额</span>
+            <div class="text-right">
+              <div class="flex items-baseline justify-end text-tertiary">
+                <span class="font-price-currency text-price-currency mr-0.5">¥</span>
+                <span class="font-price-lg text-price-lg">80.69</span>
+              </div>
+              <span class="font-body-sm text-body-sm text-on-surface-variant block mt-0.5">微信免密支付已扣款</span>
+            </div>
+          </div>
+          <div class="h-[1px] w-full bg-surface-container">
+          </div>
+          <div class="flex items-start justify-between gap-space-sm">
+            <span class="font-body-sm text-body-sm text-on-surface-variant shrink-0 mt-0.5">配送方式</span>
+            <div class="flex items-center gap-1 text-right">
+              <span class="font-badge-label text-badge-label font-bold px-1.5 py-0.5 rounded bg-primary-fixed text-on-primary-fixed-variant">最快达</span>
+              <span class="font-body-md text-body-md font-semibold text-on-surface">极速送货上门</span>
+            </div>
+          </div>
+          <div class="flex items-start justify-between gap-space-sm">
+            <span class="font-body-sm text-body-sm text-on-surface-variant shrink-0 mt-0.5">预计送达</span>
+            <div class="text-right">
+              <span class="font-body-md text-body-md font-bold text-primary">明天（10月02日）10:00 - 11:00</span>
+            </div>
+          </div>
+          <div class="flex items-start justify-between gap-space-md">
+            <span class="font-body-sm text-body-sm text-on-surface-variant shrink-0 mt-0.5">收货地址</span>
+            <div class="text-right min-w-0">
+              <p class="font-body-md text-body-md font-semibold text-on-surface leading-snug">
+                广东省深圳市南山区高新南一道
+              </p>
+              <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                沃尔玛总部大厦 6楼
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-surface-container-low rounded-xl p-space-md flex items-start gap-space-md shadow-sm">
+          <div class="w-9 h-9 rounded-full bg-primary-fixed flex items-center justify-center shrink-0 text-primary">
+            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+          </div>
+          <div class="flex flex-col justify-center min-w-0 flex-1">
+            <div class="flex items-center gap-1.5">
+              <span class="font-headline-sm text-headline-sm text-on-surface font-bold text-[14px]">冷链保鲜 · 无接触配送</span>
+            </div>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5 leading-tight">
+              全程温控追溯，配送骑手规范佩戴口罩并定时整车消杀。
+            </p>
+          </div>
+        </div>
+        <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-[0_2px_8px_rgba(0,30,80,0.04)] flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg overflow-hidden bg-surface-container flex items-center justify-center shrink-0">
+              <img class="w-full h-full object-cover" data-alt="Close up fresh premium organic milk box and ripe bananas packed neatly inside a crisp Walmart delivery paper grocery bag bathed in bright sunny kitchen morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAexK7sPHJTpqi_6GBAZ70yw30xZKY4rTihhwwRr22JYuoQxFlOvsrzBBz2_mSRtQ0f62XrOPhvvYkKJtb0kz1Fw8Ra0RBgN3rhcFdh-Hp-jFpIPsmaZBRu-DlfvKOCGvGjXgOl_DeRObBhY4PVv_Udccp7Vtykts3Ogpdwsd2MZIgFr08YNNL2N-ia40_MPmmFbMnvZYetKaOtyMdz2gV2bNz4oMOM9zYMYeJhKKvW1YbYtlrgRKyp" />
+            </div>
+            <div>
+              <p class="font-body-md text-body-md font-bold text-on-surface">共 3 件品质生鲜商品</p>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">包含 鲜牛奶、进口香蕉 等</p>
+            </div>
+          </div>
+          <span class="material-symbols-outlined text-outline-variant text-[20px]">chevron_right</span>
+        </div>
+        <div class="flex flex-col gap-space-sm pt-2">
+          <a class="w-full h-12 rounded-full bg-primary-container hover:bg-primary transition-all active:scale-[0.98] shadow-md flex items-center justify-center gap-2 text-on-primary font-headline-sm text-headline-sm" href="javascript:;" @click="$router.push('/order/detail/' + orderNo)">
+            <span class="">查看订单详情</span>
+            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+          </a>
+          <a class="w-full h-12 rounded-full bg-surface-container hover:bg-surface-container-high transition-all active:scale-[0.98] flex items-center justify-center text-on-surface font-headline-sm text-headline-sm" href="javascript:;" @click="$router.push('/')">
+            <span class="">返回首页继续逛</span>
+          </a>
+        </div>
+        <div class="flex items-center justify-center gap-6 pt-3 pb-2 text-on-surface-variant font-body-sm text-body-sm">
+          <a class="flex items-center gap-1 hover:text-primary transition-colors" href="/support">
+            <span class="material-symbols-outlined text-[16px]">headset_mic</span>
+            <span class="">在线客服</span>
+          </a>
+          <span class="w-1 h-1 rounded-full bg-outline-variant">
+          </span>
+          <a class="flex items-center gap-1 hover:text-primary transition-colors" href="/faq">
+            <span class="material-symbols-outlined text-[16px]">help_outline</span>
+            <span class="">配送常见问题</span>
+          </a>
+        </div>
+      </div>
+      <div class="fixed bottom-12 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-4 py-2 rounded-full font-body-sm text-body-sm shadow-xl flex items-center gap-1.5 opacity-0 pointer-events-none transition-opacity duration-200 z-50" id="toast">
+        <span class="material-symbols-outlined text-[18px] text-secondary-fixed">check_circle</span>
+        <span class="">订单编号已复制到剪贴板</span>
+      </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script setup>
 import { useRoute } from 'vue-router'
+import { showToast } from 'vant'
 
 const route = useRoute()
 const orderNo = route.params.orderNo
+
+function copyOrderNo() {
+  const text = String(orderNo ?? '')
+  if (navigator.clipboard?.writeText) {
+    navigator.clipboard.writeText(text).then(() => showToast('订单编号已复制到剪贴板')).catch(() => showToast('复制失败'))
+  } else {
+    showToast('订单编号：' + text)
+  }
+}
 </script>
-
-<style lang="scss" scoped>
-.order-result-page {
-  text-align: center;
-  padding: 100px var(--shop-page-pad) 40px;
-  min-height: 100vh;
-  background: var(--shop-bg);
-}
-
-.result-icon {
-  margin-bottom: 20px;
-}
-
-.result-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--shop-text-primary);
-  letter-spacing: -0.5px;
-  margin-bottom: 10px;
-}
-
-.result-order-no {
-  font-size: 14px;
-  color: var(--shop-text-secondary);
-  background: var(--shop-bg-secondary);
-  display: inline-block;
-  padding: 8px 20px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-.result-desc {
-  color: var(--shop-text-tertiary);
-  font-size: 15px;
-  margin-bottom: 40px;
-}
-
-.result-actions {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-}
-
-.btn-primary {
-  min-width: 130px;
-  height: 48px;
-  border: none;
-  border-radius: 14px;
-  background: var(--shop-accent);
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  font-family: var(--shop-font);
-  cursor: pointer;
-  transition: background var(--shop-duration) var(--shop-ease);
-
-  &:active {
-    background: var(--shop-accent-hover);
-  }
-}
-
-.btn-secondary {
-  min-width: 130px;
-  height: 48px;
-  border: 1.5px solid var(--shop-separator);
-  border-radius: 14px;
-  background: transparent;
-  color: var(--shop-text-primary);
-  font-size: 16px;
-  font-weight: 600;
-  font-family: var(--shop-font);
-  cursor: pointer;
-
-  &:active {
-    background: var(--shop-bg-secondary);
-  }
-}
-</style>
