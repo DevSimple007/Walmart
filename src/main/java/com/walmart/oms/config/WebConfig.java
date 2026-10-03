@@ -37,7 +37,16 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        // 映射 /uploads/** 路径
         registry.addResourceHandler("/uploads/**")
-                .addResourceLocations("file:" + uploadPath + "/");
+                .addResourceLocations("file:" + uploadPath + "/")
+                .setCachePeriod(3600)
+                .resourceChain(true);
+
+        // 映射 /api/uploads/** 路径（前端可能通过 /api 前缀访问）
+        registry.addResourceHandler("/api/uploads/**")
+                .addResourceLocations("file:" + uploadPath + "/")
+                .setCachePeriod(3600)
+                .resourceChain(true);
     }
 }

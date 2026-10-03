@@ -24,7 +24,7 @@ public class JwtInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        // 从请求头中获取token
+
         String token = request.getHeader("Authorization");
         if (token == null || token.isEmpty()) {
             log.warn("JWT认证失败: 未提供认证令牌, URI={}", request.getRequestURI());
@@ -43,18 +43,12 @@ public class JwtInterceptor implements HandlerInterceptor {
             return false;
         }
 
-        // 从令牌中获取用户ID
+
         Long userId = jwtUtils.getUserIdFromToken(token);
         // 将用户ID存储到请求中，供后续使用
         request.setAttribute("userId", userId);
 
-        // 这里可以添加权限校验逻辑
-        // 例如：检查用户是否有权限访问当前接口
-        // boolean hasPermission = checkPermission(userId, request.getRequestURI(), request.getMethod());
-        // if (!hasPermission) {
-        //     sendErrorResponse(response, "权限不足");
-        //     return false;
-        // }
+
 
         return true;
     }
