@@ -10,7 +10,7 @@
         <button aria-label="Search" class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" @click="$router.push('/search')">
           <span class="material-symbols-outlined text-[22px]">search</span>
         </button>
-        <img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbWRWRjaR21qK1jU0kCwRb_bAPV-hTUNuaZhWlx7qH_Va4V32egzB9EA-dyJjfPe9hnkJfPAuD8FSIvw03zd17tPdYx3K8XtSc9b3_YTnlSDYSwkgXgjlVRRjOPE3rL-UQNuJ74U9yW3VtEtg7VpupRBb7r9Y5r5wmAz-R2XiUVAipjvedop15RZTvklVj-vtaXe9VOD3ODfIai_ITvZaWs2hlEdS_VxLLC-YWL49tz4gKH6_IB6yQ" @click="$router.push('/profile')" />
+        <img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="/avatar-default.svg" @click="$router.push('/profile')" />
       </div>
     </div>
   </header>
@@ -148,7 +148,7 @@
               </div>
             </div>
             <div class="w-24 h-20 shrink-0 relative rounded-lg overflow-hidden">
-              <img class="w-full h-full object-cover" data-alt="Fresh sliced golden juicy Qiuyue Asian pears in wooden bowl with autumn sunlight, studio macro food photograph with clean background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBboI6j4Z8AiDb_zVOhNccVE8gEhw5uh7gzvUcJP8Gg7KKf2qVJI-rnImAZ4USxdqpfTPUsqqdNJ0jxGGfx6nJAbdNoaGYWWzcCdlPlKUVio3J-4bit0OM9A-uxKp99CxgbJczqWLkMVt7fITFKmjdc-SfyHd7NUJUVKyx3pCjyddl9WwWuK_edDX4MZn7JZ-3-eR5OOVWtyEEwuwcH7oCrFfeXC3Hxu3lZd089ClBMkoZ4e6DwQRCJ" />
+              <img class="w-full h-full object-cover" data-alt="Fresh sliced golden juicy Qiuyue Asian pears in wooden bowl with autumn sunlight, studio macro food photograph with clean background." src="/placeholder.svg" />
             </div>
           </div>
           <!-- SKU List (商品数据来自商品列表接口) -->

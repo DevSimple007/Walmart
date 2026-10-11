@@ -13,7 +13,7 @@
         <button aria-label="More actions" class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
           <span class="material-symbols-outlined text-[22px]">more_vert</span>
         </button>
-        <img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbWRWRjaR21qK1jU0kCwRb_bAPV-hTUNuaZhWlx7qH_Va4V32egzB9EA-dyJjfPe9hnkJfPAuD8FSIvw03zd17tPdYx3K8XtSc9b3_YTnlSDYSwkgXgjlVRRjOPE3rL-UQNuJ74U9yW3VtEtg7VpupRBb7r9Y5r5wmAz-R2XiUVAipjvedop15RZTvklVj-vtaXe9VOD3ODfIai_ITvZaWs2hlEdS_VxLLC-YWL49tz4gKH6_IB6yQ" />
+        <img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="/avatar-default.svg" />
       </div>
     </div>
   </header>
@@ -125,18 +125,7 @@
                   <img class="w-full h-full object-cover" data-alt="Fresh Atlantic salmon fillet raw cut on clean ice display with fresh lemon slice garnish, bright grocery studio shot with cool clean lighting" :src="item.imageUrl || '/placeholder.svg'" />
                   <span class="absolute bottom-0 right-0 bg-inverse-surface/75 text-inverse-on-surface font-badge-label text-badge-label px-1 rounded-tl-md">x{{ item.quantity }}</span>
                 </div>
-                <!-- 无 items 时保留设计稿结构（隐藏） -->
-                <template v-if="false">
-                  <div class="relative w-[70px] h-[70px] rounded-lg bg-surface-container-low shrink-0 overflow-hidden">
-                    <img class="w-full h-full object-cover" data-alt="Fresh Atlantic salmon fillet raw cut on clean ice display with fresh lemon slice garnish, bright grocery studio shot with cool clean lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK_b1hMh0o2_lTh88uAI-TgQgsec0g6LCudx_cDv2CAK6Hsz_CqvFfsHasEjFTmMFBUZqhMrJwreQAUPDQUU77Wad6kiBm8GTdzouMBGbM5DJU3J40vrd6b1zjpGHn2Oujx6jILBCGbNT4TU9oUeZpB1m1pw_pBQRjCSzsEAMLrT012c5vsQsJPHJSs65K5g-Mk0K9Gf964lzTpYxySiC2J87Ls5dX9YGae2IzafVoP-mbfmvaDfcY" />
-                    <span class="absolute bottom-0 right-0 bg-inverse-surface/75 text-inverse-on-surface font-badge-label text-badge-label px-1 rounded-tl-md">x1</span>
-                  </div>
-                  <div class="relative w-[70px] h-[70px] rounded-lg bg-surface-container-low shrink-0 overflow-hidden">
-                    <img class="w-full h-full object-cover" data-alt="Cluster of plump seedless red grapes with dew water drops in transparent eco box, premium produce product photography with vibrant scarlet red tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl4KwY6LWICjOAFX2WL8GwNT0pqvzzGkV3bNWxNBn5v3IEBnD-MfTg-Gskns0Q4BbyNNFubFhW1NrhaRd_vOhLzq16Lf8HSmKLff-2kAV4_C2rECJcU7bsRGLHSSb_iZ0knrSq_pp2LKnPOH2oE18X83F23J3Y1sFh1UdmvkHHyT3lHIZUmG7zge0lkzFexhbwTm397y9KEpoJbE1BPTyDg51JLdZSJFaQNjCLgj9s2Tj9mCYF7pCW" />
-                    <span class="absolute bottom-0 right-0 bg-inverse-surface/75 text-inverse-on-surface font-badge-label text-badge-label px-1 rounded-tl-md">x1</span>
-                  </div>
-                </template>
-              </div>
+                </div>
               <div class="flex flex-col items-end shrink-0 pl-space-xs text-right">
                 <span class="font-body-sm text-body-sm text-on-surface-variant">共 {{ (order.items || []).length }} 件</span>
                 <span class="material-symbols-outlined text-outline text-[18px] mt-1">navigate_next</span>
@@ -199,22 +188,7 @@
                 </div>
                 <span class="font-body-sm text-body-sm font-bold text-on-surface shrink-0">¥{{ formatPrice(item.price) }}</span>
               </div>
-              <!-- 无 items 时保留设计稿结构（隐藏） -->
-              <template v-if="false">
-                <div class="flex items-center justify-between gap-space-sm">
-                  <div class="flex items-center gap-space-sm min-w-0">
-                    <div class="w-14 h-14 rounded-lg bg-surface-container-low shrink-0 overflow-hidden">
-                      <img class="w-full h-full object-cover" data-alt="High-end Shine Muscat green grapes with radiant emerald translucent skin, placed on pristine clean studio surface with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLJiuEniWEILV0XdzqR142CvIylNYItGMLVxacNscFGM2rd5QQQyzXRid_sILx2QeTcUorB55Fb0vwUjJzr_OQce11_40EjKnMScH4fs41e7itmJUw7Ou4J33pIgoTlDyB_zFoexhItqz_LAJfB-X8De7e_MB7dAydJkptyvrSSodK5CY9OF0dcdY75DML9XdG4iZvhRXZH0BDSOzVNPxBTtQnhQEbceM9ZonrxLX42xydhoiv3GVA" />
-                    </div>
-                    <div class="flex flex-col min-w-0">
-                      <span class="font-body-md text-body-md font-medium text-on-surface truncate">阳光玫瑰青提 500g</span>
-                      <span class="font-body-sm text-body-sm text-outline">数量: 2</span>
-                    </div>
-                  </div>
-                  <span class="font-body-sm text-body-sm font-bold text-on-surface shrink-0">¥39.80</span>
-                </div>
-              </template>
-            </div>
+              </div>
             <!-- Card Amount Summary -->
             <div class="px-3.5 pb-3 flex items-center justify-between">
               <span class="font-body-sm text-body-sm text-on-surface-variant">共 {{ (order.items || []).length }} 种商品</span>
@@ -289,13 +263,7 @@
                 >
                   <img class="w-full h-full object-cover" data-alt="Fresh sourdough bakery bread loaf sliced on wooden rustic board with flour dust, natural warm morning bakery aesthetic" :src="item.imageUrl || '/placeholder.svg'" />
                 </div>
-                <!-- 无 items 时保留设计稿结构（隐藏） -->
-                <template v-if="false">
-                  <div class="relative w-[64px] h-[64px] rounded-lg bg-surface-container-low shrink-0 overflow-hidden">
-                    <img class="w-full h-full object-cover" data-alt="Fresh sourdough bakery bread loaf sliced on wooden rustic board with flour dust, natural warm morning bakery aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMZb_1bHmfYXBD6-0fX3k22U30G0G63mOia1a9_QYjNDENLaaTwUb9Xk5agKtI0K_a0Uqyt-QbVWFoH6GuFtMMcjD5Wm1a3ienDtXye-hhwxB6HpEywx6rDJVt_q4I0d03RcEn1_pBvlGwciNC37_JrvmLg2G4AlrvGBpmqQPE5oBmQ0B1GnD-2OGFqktCDN5pxOe8LsI269wZ1aRsZGeAuZ022oxy9jvTYa0i2HCWW-RoBGOzf9DX" />
-                  </div>
-                </template>
-              </div>
+                </div>
               <div class="flex flex-col items-end shrink-0 pl-space-xs text-right">
                 <span class="font-body-sm text-body-sm text-on-surface-variant">共 {{ (order.items || []).length }} 件</span>
                 <span class="material-symbols-outlined text-outline text-[18px] mt-1">navigate_next</span>

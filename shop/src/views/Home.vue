@@ -10,7 +10,7 @@
         <button aria-label="Search" class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" @click="$router.push('/search')">
           <span class="material-symbols-outlined text-[22px]">search</span>
         </button>
-        <img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbWRWRjaR21qK1jU0kCwRb_bAPV-hTUNuaZhWlx7qH_Va4V32egzB9EA-dyJjfPe9hnkJfPAuD8FSIvw03zd17tPdYx3K8XtSc9b3_YTnlSDYSwkgXgjlVRRjOPE3rL-UQNuJ74U9yW3VtEtg7VpupRBb7r9Y5r5wmAz-R2XiUVAipjvedop15RZTvklVj-vtaXe9VOD3ODfIai_ITvZaWs2hlEdS_VxLLC-YWL49tz4gKH6_IB6yQ" @click="$router.push('/profile')" />
+        <img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="/avatar-default.svg" @click="$router.push('/profile')" />
       </div>
     </div>
   </header>
@@ -66,7 +66,7 @@
           @click="goCategory(cat)"
         >
           <div :class="['relative w-12 h-12 rounded-full flex items-center justify-center shadow-sm overflow-hidden mb-1', CAT_GRADIENTS[i % CAT_GRADIENTS.length]]">
-            <img class="w-full h-full object-cover" :alt="cat.categoryName || cat.name" :src="cat.iconUrl || CAT_FALLBACK_IMAGES[i % CAT_FALLBACK_IMAGES.length]" />
+            <img class="w-full h-full object-cover" :alt="cat.categoryName || cat.name" :src="cat.iconUrl || '/placeholder.svg'" />
           </div>
           <span
             v-if="cat.promoTag || PROMO_TAGS[i]"
@@ -410,20 +410,6 @@ const CAT_GRADIENTS = [
   'bg-gradient-to-b from-orange-100 to-yellow-50',
   'bg-gradient-to-b from-amber-100 to-amber-50',
   'bg-gradient-to-b from-cyan-100 to-sky-50'
-]
-
-// 金刚区缺图时的设计稿底图（按序号循环使用）
-const CAT_FALLBACK_IMAGES = [
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDXlnB1TbpSUfbn5ivRu31twf0VB7epiG_dvcDcbPBms9H4AAmCSVZdWT5LrbdVMUgKcM1DFhwXaZivKTegoTz4GZXS38FLeE9Z1i5GuJaMV5Yhtj3pGdeyScXEAkbEySCbs7GGYbrWpn2Xs3mtwnSxiO_n6aGWHz-eTRgGaBGy_eDAKAjNuxzWZcxyVTa-Ul6w32vTauA9ZiXmfP9gx-ApZhGgTnLIxWrQS4qmwHAEK9J795MTb7PD',
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDLnZkC_gFuKy0mGsM1ORqQIBCsNMnr-vb2DIRSJnlXJ-0wdZDqLSSH5eS30qpteG0_RFb6ezt1gvtcBGq0ayrMiaDFrLYzFlB6-aI4XkiTMSto8yzBG3-omxOOl1JU32G9Llf8RoQ9-b8TZIHX_zjby5yM3kn8OPXGEwl8beu0Ol6v-Mb3Eh88MHIWju9TgYnkTG_FZj6SjPmdssCV5tlGuKtUvvoisv1KS6_REGxKbxDQkgHgOgN_',
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuAG7smnXCtnw2y_oY4p3v95FsVp6AJReGFpDMkR6n6PpZQ1xkWeylB2-1rJeQK1H2B2Leutush5AW5OH4M-0HcuyMmHSCgS9d3uRS4W3fNZULv72xy0JULLrtLLg_TL7B89jbcwANA1V4JRDWakUsVG9OGQuBDgSmbmNVROfXDydvANeSoTAkncNCxBKx2tCSuj5FSijoIG1CDu05xMUsyKleP7u7EOwOeNimpJ9ZJ52XgwVypGadXn',
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuBuZoT_FDF2a39TOj9_Pkk089mHLEMbUV0yDdzjvDOIn1Y84cNE5hgbz-9gXW33WSjYphUSskmjH-Be1P-nhxw8gqA_V5evgSTGEYKaA-I16jPO2sFDQq5F5DE9SwqsR0mcMvzppT88NHnGX2AUngxox1TTGcKbIOEIKlbqdzWn8o7mhGIKE3lLvqxoFdZXO5QWuGOSSUAV4XK9-itHK8z33CYL-V27eDU7diOWJC9dJCmr-9AohKZv',
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuB7wyr8yVU-xUhCuDi9EJouvMRwRbX1tSkyJYMMMKEsfmHYfKhzzlNJzBXZQt0wRP9_UWCSfO5yVek-gNmxWzvmsJ7c_5w4URfIheZnvGJD6AQKgL91M6jcmULa0fg5PbJQZ_DOUC9EI00MIKah7gSeG4oxegB2FA8CNw_XDoKf9T2Zkp0fHfImX2L5q765YHhItzQX-lOeZiEqhK4g8SCFXP6g13rbFrH1NjHc3M6NBkBsPLc83-k1',
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDAocRfJzzb9VH4Og206enjoJ0NOhtXvXrK538beTpy5ERoz_WJFFFO22GtrNujocVu8PL1Qc_ZsZsBfNKds5-E-CFU1XgwvvQt9Zhk_ntAEmR-GEaQydRdYngk8hCx8SMiUFmpwPBqpWQuv1Z3tZVCOEWj8RFRJ-fvFnxTw3HnihACXPJ7-AGIKDhASwH0nY1V0U0o2yhEDyztpxa7eKv6T5gr2Wd0YdvC45qxjK9AkyEIHM17o9KR',
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuAEW9rOzS9mr_S2HZokd7HJPFzfOFZpjY2O5sYYK0iEJJsl_6F62cDqpONn_YunfxgLlaky4tsXt45443HHaZfY6av6268UvqckmgrHdMsalXx_DHk4tWPtwnSSoW_B8TlWIFnvrQmY5Uw3ql7moWi5UxkkY59SYQwTjq4kXD6OwJFJmFFpXykV5bAGH-FKT4yW0TmwJeAXS_jKHErkcxiHutEAxU8yehPCZyOoJivJ_to5dnRRdef7',
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuA3YP2Ryqac7MwKHHjaU3uKweV-Zh8Q0uDe6jxjX3UOylujnBSvEAcsk-NTBZdDuxmeNCKjMB4UMidW7T61IkORIlzAFkQxZ6xTazcYEPGg2JF-s1Qx-3HFG1XXmFGPDeOeq0N_rWFPHZnxbBEMTM7uISHh1qvaEgHgtDGo3nRf7_VI_f5J96Ax-1mmOCvFeUgC9h9FeWo8i-o42GRAHlVSVK80JpeKNSUvqMxVPvG8OAv3rV5CTC4s',
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuA-QL1JVkbPhZdkK0nmhthHe0JGf5hlBY9cUUSbvHnOYEiIEe9ZEere9P3ACNGni6WcN3XTxigklVpocYf3UvlfTfEz39M3qTO11xNCgn1IfBLMXw1kl_mf1z5UnKb6C2nWtjHlcXIF6P53Yp-vucKIQ4qHAwah0A-PUjHzXKB-xsX-abOxlXyIYda8P3zPe3bLW8J0AuA8G0OVGEdO794lGrzrmYDRfKNRLmYpIccPnM9SIYAh94SD',
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuADpShPOU2fYXqxVi2-3G9daOUiyYC2T2Xabs0zTx8UhYikAiPXRDWe9g_EpuvIUr364MmtsEeS_f_2Ynzxl2mSoVXR_edf-SI8MN1uxj3pwmT3iXlfzAiaW9xOYOMnWUv8xFw3i9DApMuXGcHqsA3O9LzxiA3dYN_JgWldB_eW-MUX8fnky1tobaB7K2p49gWH8_SiHHKuEJTwosv1pFlEUIU9zAyFgGGAV-GCEG4pzePb5Br48Hmg'
 ]
 
 // 金刚区角标（设计稿静态促销文案，如接口返回 promoTag 则以接口为准）

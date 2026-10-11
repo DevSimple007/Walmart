@@ -13,7 +13,7 @@
         <button aria-label="More actions" class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
           <span class="material-symbols-outlined text-[22px]">more_vert</span>
         </button>
-        <img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbWRWRjaR21qK1jU0kCwRb_bAPV-hTUNuaZhWlx7qH_Va4V32egzB9EA-dyJjfPe9hnkJfPAuD8FSIvw03zd17tPdYx3K8XtSc9b3_YTnlSDYSwkgXgjlVRRjOPE3rL-UQNuJ74U9yW3VtEtg7VpupRBb7r9Y5r5wmAz-R2XiUVAipjvedop15RZTvklVj-vtaXe9VOD3ODfIai_ITvZaWs2hlEdS_VxLLC-YWL49tz4gKH6_IB6yQ" />
+        <img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="/avatar-default.svg" />
       </div>
     </div>
   </header>
@@ -106,7 +106,7 @@
         <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-[0_2px_8px_rgba(0,30,80,0.04)] flex items-center justify-between">
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-lg overflow-hidden bg-surface-container flex items-center justify-center shrink-0">
-              <img class="w-full h-full object-cover" data-alt="Close up fresh premium organic milk box and ripe bananas packed neatly inside a crisp Walmart delivery paper grocery bag bathed in bright sunny kitchen morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAexK7sPHJTpqi_6GBAZ70yw30xZKY4rTihhwwRr22JYuoQxFlOvsrzBBz2_mSRtQ0f62XrOPhvvYkKJtb0kz1Fw8Ra0RBgN3rhcFdh-Hp-jFpIPsmaZBRu-DlfvKOCGvGjXgOl_DeRObBhY4PVv_Udccp7Vtykts3Ogpdwsd2MZIgFr08YNNL2N-ia40_MPmmFbMnvZYetKaOtyMdz2gV2bNz4oMOM9zYMYeJhKKvW1YbYtlrgRKyp" />
+              <img class="w-full h-full object-cover" data-alt="Close up fresh premium organic milk box and ripe bananas packed neatly inside a crisp Walmart delivery paper grocery bag bathed in bright sunny kitchen morning light" src="/placeholder.svg" />
             </div>
             <div>
               <p class="font-body-md text-body-md font-bold text-on-surface">共 3 件品质生鲜商品</p>
