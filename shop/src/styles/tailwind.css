@@ -39,6 +39,12 @@
   input, textarea, select {
     font: inherit;
     color: inherit;
+    /* preflight 已关闭，这里补上浏览器默认的输入框边框/底色重置，
+       否则 input 会露出 UA 默认的方框（分类页靠 border-none 单点规避过） */
+    border: 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   input:focus, textarea:focus, select:focus, button:focus {

@@ -137,7 +137,7 @@ import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useUserStore } from '@/stores/user'
-import { register } from '@/api'
+import { customerRegister } from '@/api'
 import { ElMessage } from 'element-plus'
 
 const { t } = useI18n()
@@ -228,7 +228,7 @@ async function handleRegister() {
     await registerFormRef.value.validate()
     loading.value = true
     // 后端注册接口期望 { phone, password, memberName }，注册成功后自动登录
-    await register({
+    await customerRegister({
       phone: registerForm.phone,
       password: registerForm.password,
       memberName: registerForm.username

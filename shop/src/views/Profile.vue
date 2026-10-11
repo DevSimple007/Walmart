@@ -1,10 +1,10 @@
 <template>
   <!-- Profile — 外观严格取自 Stitch 设计稿；数据/事件沿用原有接口逻辑 -->
   <header class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
-    <div class="h-14 px-margin flex items-center justify-between gap-space-md">
+    <div class="h-14 pl-margin pr-[96px] flex items-center justify-between gap-space-md">
       <div class="flex items-center gap-space-sm shrink-0">
-        <img alt="Walmart Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WxbFcbyvQxjOWkbhkpIy_RXXWkvvU4r8XwbBzzs9Nco_MOan5kyMhQR-HNMCR0mRp1uF8RgvdxFCmQDKNrWLsQIREwC9bCIhANclidwFzjHDJdKYngvbC9SVhJUEFCNQKdAdgsR_kuBjHhBzu_6r_lIOSDxLPhDvxFeI1qc18Fk2Q5QU-DNPWkKJpBlkAaHNmUuGr1XuZnVwAPynaif0RJ1AMEB8zun78Qcq8acrYVeyXlIND6DoxdvQ" />
-        <span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold">Profile</span>
+        <img alt="Walmart Logo" class="h-8 w-auto max-w-[45%] object-contain shrink-0" :src="'/api/uploads/商品图片/screen.png'" />
+        
       </div>
       <div class="flex items-center gap-space-sm shrink-0">
         <button aria-label="Search" class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" @click="$router.push('/search')">
@@ -23,7 +23,7 @@
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-space-md" @click="!userStore.userInfo && $router.push('/login')">
               <div class="relative shrink-0">
-                <img alt="用户头像" class="w-14 h-14 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbWRWRjaR21qK1jU0kCwRb_bAPV-hTUNuaZhWlx7qH_Va4V32egzB9EA-dyJjfPe9hnkJfPAuD8FSIvw03zd17tPdYx3K8XtSc9b3_YTnlSDYSwkgXgjlVRRjOPE3rL-UQNuJ74U9yW3VtEtg7VpupRBb7r9Y5r5wmAz-R2XiUVAipjvedop15RZTvklVj-vtaXe9VOD3ODfIai_ITvZaWs2hlEdS_VxLLC-YWL49tz4gKH6_IB6yQ" />
+                <img alt="用户头像" class="w-14 h-14 rounded-full object-cover" :src="userStore.userInfo?.avatar || 'https://lh3.googleusercontent.com/aida-public/AB6AXuAbWRWRjaR21qK1jU0kCwRb_bAPV-hTUNuaZhWlx7qH_Va4V32egzB9EA-dyJjfPe9hnkJfPAuD8FSIvw03zd17tPdYx3K8XtSc9b3_YTnlSDYSwkgXgjlVRRjOPE3rL-UQNuJ74U9yW3VtEtg7VpupRBb7r9Y5r5wmAz-R2XiUVAipjvedop15RZTvklVj-vtaXe9VOD3ODfIai_ITvZaWs2hlEdS_VxLLC-YWL49tz4gKH6_IB6yQ'" />
                 <div class="absolute -bottom-1 -right-1 bg-secondary-container text-on-secondary-container rounded-full p-0.5 flex items-center justify-center shadow-sm">
                   <span class="material-symbols-outlined text-[14px]">stars</span>
                 </div>
@@ -44,7 +44,7 @@
                 </div>
               </div>
             </div>
-            <button aria-label="会员详情" class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+            <button aria-label="个人信息" class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" @click="goPage('/profile/info')">
               <span class="material-symbols-outlined text-[18px]">chevron_right</span>
             </button>
           </div>
@@ -77,7 +77,7 @@
               </span>
               <span class="font-body-sm text-body-sm text-white/90">每月可享12张券</span>
             </div>
-            <button class="bg-white text-[#E60012] font-tab-label text-tab-label font-bold px-3 py-1 rounded-full shadow-sm flex items-center gap-0.5 hover:bg-surface-container-lowest active:scale-95 transition-all">
+            <button class="bg-white text-[#E60012] font-tab-label text-tab-label font-bold px-3 py-1 rounded-full shadow-sm flex items-center gap-0.5 hover:bg-surface-container-lowest active:scale-95 transition-all" @click="showToast('功能开发中')">
               <span class="">立即开通</span>
               <span class="material-symbols-outlined text-[13px] font-bold">chevron_right</span>
             </button>
@@ -167,7 +167,7 @@
               <span class="font-tab-label text-tab-label text-on-surface">待评价</span>
             </a>
             <!-- 退货/售后 -->
-            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;">
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;" @click="showToast('功能开发中')">
               <div class="relative w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface group-hover:bg-primary-fixed group-hover:text-primary transition-colors">
                 <span class="material-symbols-outlined text-[22px]">currency_yen</span>
               </div>
@@ -179,7 +179,7 @@
         <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
           <div class="grid grid-cols-4 gap-2">
             <!-- 抽试吃 -->
-            <a class="flex flex-col items-center justify-center gap-1.5 relative group" href="javascript:;">
+            <a class="flex flex-col items-center justify-center gap-1.5 relative group" href="javascript:;" @click="showToast('功能开发中')">
               <div class="relative">
                 <div class="w-11 h-11 rounded-full bg-[#FFF1F0] flex items-center justify-center text-tertiary group-active:scale-95 transition-transform">
                   <span class="material-symbols-outlined text-[24px]">restaurant</span>
@@ -189,7 +189,7 @@
               <span class="font-tab-label text-tab-label text-on-surface">抽试吃</span>
             </a>
             <!-- 邀请有礼 -->
-            <a class="flex flex-col items-center justify-center gap-1.5 relative group" href="javascript:;">
+            <a class="flex flex-col items-center justify-center gap-1.5 relative group" href="javascript:;" @click="showToast('功能开发中')">
               <div class="relative">
                 <div class="w-11 h-11 rounded-full bg-[#FFF7E6] flex items-center justify-center text-secondary group-active:scale-95 transition-transform">
                   <span class="material-symbols-outlined text-[24px]">redeem</span>
@@ -199,7 +199,7 @@
               <span class="font-tab-label text-tab-label text-on-surface">邀请有礼</span>
             </a>
             <!-- 推广赚钱 -->
-            <a class="flex flex-col items-center justify-center gap-1.5 relative group" href="javascript:;">
+            <a class="flex flex-col items-center justify-center gap-1.5 relative group" href="javascript:;" @click="showToast('功能开发中')">
               <div class="relative">
                 <div class="w-11 h-11 rounded-full bg-[#FFF2E8] flex items-center justify-center text-[#FA541C] group-active:scale-95 transition-transform">
                   <span class="material-symbols-outlined text-[24px]">monetization_on</span>
@@ -209,7 +209,7 @@
               <span class="font-tab-label text-tab-label text-on-surface">推广赚钱</span>
             </a>
             <!-- 购物卡 -->
-            <a class="flex flex-col items-center justify-center gap-1.5 relative group" href="javascript:;">
+            <a class="flex flex-col items-center justify-center gap-1.5 relative group" href="javascript:;" @click="showToast('功能开发中')">
               <div class="w-11 h-11 rounded-full bg-[#E6F7FF] flex items-center justify-center text-primary-container group-active:scale-95 transition-transform">
                 <span class="material-symbols-outlined text-[24px]">credit_card</span>
               </div>
@@ -225,7 +225,7 @@
           <!-- Row 1 -->
           <div class="grid grid-cols-5 gap-1">
             <!-- 简单报 -->
-            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;">
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;" @click="showToast('功能开发中')">
               <div class="relative w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
                 <span class="material-symbols-outlined text-[22px]">feed</span>
                 <span class="absolute -top-1 -right-1 bg-tertiary text-on-tertiary font-badge-label text-[9px] px-1 rounded-full scale-90">HOT</span>
@@ -233,7 +233,7 @@
               <span class="font-tab-label text-tab-label text-on-surface">简单报</span>
             </a>
             <!-- 联系客服 -->
-            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;">
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;" @click="showToast('功能开发中')">
               <div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
                 <span class="material-symbols-outlined text-[22px]">support_agent</span>
               </div>
@@ -241,11 +241,11 @@
             </a>
             <!-- 优惠券 -->
             <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;" @click="goPage('/coupon')">
-              <div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+              <div class="relative w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
                 <span class="material-symbols-outlined text-[22px]">confirmation_number</span>
+                <span v-if="couponCount" class="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#FF3B30]"></span>
               </div>
               <span class="font-tab-label text-tab-label text-on-surface">优惠券</span>
-              <span class="text-[10px] text-tertiary -mt-1 font-bold">3张可用</span>
             </a>
             <!-- 我的收藏 -->
             <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;" @click="goPage('/favorites')">
@@ -253,7 +253,6 @@
                 <span class="material-symbols-outlined text-[22px]">favorite_border</span>
               </div>
               <span class="font-tab-label text-tab-label text-on-surface">我的收藏</span>
-              <span class="text-[10px] text-on-surface-variant -mt-1">12件</span>
             </a>
             <!-- 收货地址 -->
             <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;" @click="goPage('/address')">
@@ -261,34 +260,33 @@
                 <span class="material-symbols-outlined text-[22px]">location_on</span>
               </div>
               <span class="font-tab-label text-tab-label text-on-surface">收货地址</span>
-              <span class="text-[10px] text-on-surface-variant -mt-1">管理</span>
             </a>
           </div>
           <!-- Row 2 -->
           <div class="grid grid-cols-5 gap-1 pt-1">
             <!-- 企业采购 -->
-            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;">
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;" @click="showToast('功能开发中')">
               <div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
                 <span class="material-symbols-outlined text-[22px]">domain</span>
               </div>
               <span class="font-tab-label text-tab-label text-on-surface">企业采购</span>
             </a>
             <!-- 公众号 -->
-            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;">
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;" @click="showToast('功能开发中')">
               <div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
                 <span class="material-symbols-outlined text-[22px]">forum</span>
               </div>
               <span class="font-tab-label text-tab-label text-on-surface">公众号</span>
             </a>
             <!-- 扫码加车 -->
-            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;">
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;" @click="showToast('功能开发中')">
               <div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
                 <span class="material-symbols-outlined text-[22px]">qr_code_scanner</span>
               </div>
               <span class="font-tab-label text-tab-label text-on-surface">扫码加车</span>
             </a>
             <!-- 顾客调研 -->
-            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;">
+            <a class="flex flex-col items-center justify-center gap-1 group" href="javascript:;" @click="showToast('功能开发中')">
               <div class="relative w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
                 <span class="material-symbols-outlined text-[22px]">assignment</span>
                 <span class="absolute -top-1 -right-1 bg-tertiary-container text-on-tertiary font-badge-label text-[9px] px-1 rounded-full scale-90">有奖</span>
@@ -320,7 +318,7 @@
             </div>
           </div>
           <!-- Action Button Pill -->
-          <a class="shrink-0 bg-primary-container text-on-primary font-tab-label text-tab-label font-bold px-3.5 py-2 rounded-full shadow-sm flex items-center gap-1 active:scale-95 transition-transform" href="javascript:;">
+          <a class="shrink-0 bg-primary-container text-on-primary font-tab-label text-tab-label font-bold px-3.5 py-2 rounded-full shadow-sm flex items-center gap-1 active:scale-95 transition-transform" href="javascript:;" @click="showToast('功能开发中')">
             <span class="">赢取优惠券</span>
             <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
           </a>
@@ -344,13 +342,16 @@ import { onMounted, h, computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 import { showConfirmDialog, showToast } from 'vant'
-import { getMemberLevels } from '@/api'
+import { getMemberLevels, getCustomerCoupons } from '@/api'
 
 const router = useRouter()
 const userStore = useUserStore()
 
 // 会员等级数据（从后端动态获取）
 const levelList = ref([])
+
+// 可用优惠券数量（动态）
+const couponCount = ref(0)
 
 const levelColors = {
   1: '#86868B',
@@ -450,6 +451,18 @@ onMounted(async () => {
   // 获取用户信息
   if (userStore.token) {
     userStore.fetchUserInfo()
+    // 获取可用优惠券数量（动态角标）
+    try {
+      const res = await getCustomerCoupons()
+      const now = new Date()
+      couponCount.value = (res.data || []).filter(c =>
+        c.status === 0 &&
+        (!c.startTime || new Date(c.startTime) <= now) &&
+        (!c.endTime || new Date(c.endTime) >= now)
+      ).length
+    } catch (e) {
+      console.error('获取优惠券失败', e)
+    }
   }
 })
 </script>

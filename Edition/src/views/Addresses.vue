@@ -47,7 +47,7 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getAddresses, addAddress, updateAddress, deleteAddress, setDefaultAddress } from '@/api'
+import { getAddressList, addAddress, updateAddress, deleteAddress, setDefaultAddress } from '@/api'
 import { ElMessage, ElMessageBox } from 'element-plus'
 
 const { t } = useI18n()
@@ -66,7 +66,7 @@ const rules = {
 }
 
 async function loadAddresses() {
-  try { const res = await getAddresses(); addresses.value = res.data || [] } catch {}
+  try { const res = await getAddressList(); addresses.value = res.data || [] } catch {}
 }
 
 // 后端 ShippingAddress 由 province/city/district/address 组成完整地址

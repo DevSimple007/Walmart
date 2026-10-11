@@ -34,6 +34,16 @@ public class Product {
     private BigDecimal price;
 
     /**
+     * 原价（用于折扣展示，null 表示无折扣）
+     */
+    private BigDecimal originalPrice;
+
+    /**
+     * 是否国际品牌：1-是，0-否
+     */
+    private Integer isInternational;
+
+    /**
      * 库存
      */
     private Integer stock;
@@ -68,4 +78,10 @@ public class Product {
      */
     @TableField(exist = false)
     private String categoryName;
+
+    /**
+     * 累计销量（非数据库字段，用于热销榜展示）
+     */
+    @TableField(exist = false)
+    private Integer soldCount;
 }

@@ -62,6 +62,24 @@ const routes = [
         meta: { titleKey: 'orders', needLogin: true }
       },
       {
+        path: 'order/confirm',
+        name: 'OrderConfirm',
+        component: () => import('@/views/OrderConfirm.vue'),
+        meta: { titleKey: 'orderConfirm', needLogin: true }
+      },
+      {
+        path: 'order/detail/:orderNo',
+        name: 'OrderDetail',
+        component: () => import('@/views/OrderDetail.vue'),
+        meta: { titleKey: 'orderDetail', needLogin: true }
+      },
+      {
+        path: 'order/result/:orderNo',
+        name: 'OrderResult',
+        component: () => import('@/views/OrderResult.vue'),
+        meta: { titleKey: 'orderResult', needLogin: true }
+      },
+      {
         path: 'account',
         name: 'Account',
         component: () => import('@/views/Account.vue'),

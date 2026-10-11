@@ -8,10 +8,13 @@ import com.walmart.oms.utils.JwtUtils;
 import com.walmart.oms.utils.R;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/customer/auth")
@@ -38,6 +41,16 @@ public class CustomerAuthController {
         private String phone;
         private String password;
         private String memberName;
+    }
+
+    @Data
+    public static class UpdateProfileRequest {
+        private String memberName;
+        private String email;
+        private Integer gender;
+        @JsonFormat(pattern = "yyyy-MM-dd")
+        private LocalDate birthday;
+        private String avatar;
     }
 
     @Data
@@ -76,6 +89,15 @@ public class CustomerAuthController {
         if (member == null) {
             return R.error(401, "用户不存在");
         }
+        return R.success(member);
+    }
+
+    @PutMapping("/update")
+    @Operation(summary = "修改个人信息")
+    public R<Member> updateProfile(HttpServletRequest request, @RequestBody UpdateProfileRequest body) {
+        Long memberId = (Long) request.getAttribute("userId");
+        Member member = memberService.updateProfile(memberId, body.getMemberName(), body.getEmail(),
+                body.getGender(), body.getBirthday(), body.getAvatar());
         return R.success(member);
     }
 

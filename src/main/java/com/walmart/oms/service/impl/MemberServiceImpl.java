@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Map;
 
 @Service
@@ -116,6 +117,45 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
         member.setPoints(0);
         member.setBalance(BigDecimal.ZERO);
         this.save(member);
+        return member;
+    }
+
+    @Override
+    public Member updateProfile(Long memberId, String memberName, String email, Integer gender, LocalDate birthday, String avatar) {
+        Member member = this.getById(memberId);
+        if (member == null) {
+            throw new BusinessException("用户不存在");
+        }
+        if (memberName != null) {
+            String name = memberName.trim();
+            if (name.isEmpty()) {
+                throw new BusinessException("昵称不能为空");
+            }
+            if (name.length() > 20) {
+                throw new BusinessException("昵称不能超过20个字符");
+            }
+            member.setMemberName(name);
+        }
+        if (email != null) {
+            String mail = email.trim();
+            if (!mail.isEmpty() && !mail.matches("^[\\w.%+-]+@[\\w.-]+\\.[A-Za-z]{2,}$")) {
+                throw new BusinessException("邮箱格式不正确");
+            }
+            member.setEmail(mail.isEmpty() ? null : mail);
+        }
+        if (gender != null) {
+            if (gender < 0 || gender > 2) {
+                throw new BusinessException("性别参数不合法");
+            }
+            member.setGender(gender);
+        }
+        if (birthday != null) {
+            member.setBirthday(birthday);
+        }
+        if (avatar != null && !avatar.trim().isEmpty()) {
+            member.setAvatar(avatar.trim());
+        }
+        this.updateById(member);
         return member;
     }
 

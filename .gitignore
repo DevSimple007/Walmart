@@ -47,3 +47,6 @@ D:/专业/spring/WalmartUploads/
 .env
 .env.local
 .env.*.local
+
+# WorkBuddy workspace data
+.workbuddy/

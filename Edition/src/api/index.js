@@ -1,19 +1,24 @@
 import request from '@/utils/request'
 
-// ===== Auth =====
-export function login(data) {
+// ===== Auth 认证 =====
+export function customerLogin(data) {
   return request.post('/customer/auth/login', data)
 }
 
-export function register(data) {
+export function customerRegister(data) {
   return request.post('/customer/auth/register', data)
 }
 
-export function getUserInfo() {
+export function getCustomerInfo() {
   return request.get('/customer/auth/info')
 }
 
-// ===== Products =====
+// 会员等级列表（与 shop 对齐新增）
+export function getMemberLevels() {
+  return request.get('/customer/auth/levels')
+}
+
+// ===== Products 商品 =====
 export function searchProducts(params) {
   return request.get('/customer/product/list', { params })
 }
@@ -34,12 +39,12 @@ export function getLatestProducts() {
   return request.get('/customer/product/latest')
 }
 
-// ===== Home Categories =====
+// ===== Home Categories 首页分类 =====
 export function getHomeCategories() {
   return request.get('/homeCategory/customer/list')
 }
 
-// ===== Cart =====
+// ===== Cart 购物车 =====
 export function getCartList() {
   return request.get('/customer/cart/list')
 }
@@ -56,20 +61,20 @@ export function removeCartItem(productId) {
   return request.delete(`/customer/cart/remove/${productId}`)
 }
 
-export function clearCart() {
+export function clearCartApi() {
   return request.delete('/customer/cart/clear')
 }
 
-// ===== Orders =====
-export function createOrder(data) {
+// ===== Orders 订单 =====
+export function createCustomerOrder(data) {
   return request.post('/customer/order/create', data)
 }
 
-export function getOrders(params) {
+export function getCustomerOrders(params) {
   return request.get('/customer/order/list', { params })
 }
 
-export function getOrderDetail(orderNo) {
+export function getCustomerOrderDetail(orderNo) {
   return request.get(`/customer/order/detail/${orderNo}`)
 }
 
@@ -81,11 +86,11 @@ export function cancelOrder(orderNo) {
   return request.put(`/customer/order/cancel/${orderNo}`)
 }
 
-export function confirmReceive(orderNo) {
+export function confirmOrder(orderNo) {
   return request.put(`/customer/order/confirm/${orderNo}`)
 }
 
-// ===== Favorites =====
+// ===== Favorites 收藏 =====
 export function getFavorites() {
   return request.get('/customer/favorite/list')
 }
@@ -102,8 +107,8 @@ export function checkFavorite(productId) {
   return request.get(`/customer/favorite/check/${productId}`)
 }
 
-// ===== Addresses =====
-export function getAddresses() {
+// ===== Addresses 收货地址 =====
+export function getAddressList() {
   return request.get('/customer/address/list')
 }
 
@@ -123,8 +128,8 @@ export function setDefaultAddress(id) {
   return request.put(`/customer/address/setDefault/${id}`)
 }
 
-// ===== Coupons =====
-export function getCoupons() {
+// ===== Coupons 优惠券 =====
+export function getCustomerCoupons() {
   return request.get('/customer/coupon/list')
 }
 

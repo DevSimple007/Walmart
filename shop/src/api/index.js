@@ -17,6 +17,10 @@ export function getMemberLevels() {
   return request.get('/customer/auth/levels')
 }
 
+export function updateCustomerInfo(data) {
+  return request.put('/customer/auth/update', data)
+}
+
 // ===== 商品 =====
 export function searchProducts(params) {
   return request.get('/customer/product/list', { params })
@@ -135,4 +139,19 @@ export function getHotProducts() {
 
 export function getLatestProducts() {
   return request.get('/customer/product/latest')
+}
+
+// ===== 折扣商品（大牌低价） =====
+export function getDiscountProducts(params) {
+  return request.get('/customer/product/discount', { params })
+}
+
+// ===== 热销榜单（按真实成交量） =====
+export function getBestSellers(params) {
+  return request.get('/customer/product/best-sellers', { params })
+}
+
+// ===== 文件上传 =====
+export function uploadFile(formData) {
+  return request.post('/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
 }

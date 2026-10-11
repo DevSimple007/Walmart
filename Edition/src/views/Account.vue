@@ -104,7 +104,7 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useUserStore } from '@/stores/user'
-import { getOrders } from '@/api'
+import { getCustomerOrders } from '@/api'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { User, List, Location, Star, Ticket, SwitchButton } from '@element-plus/icons-vue'
 
@@ -147,7 +147,7 @@ async function handleLogout() {
 
 onMounted(async () => {
   try {
-    const res = await getOrders({ pageNum: 1, pageSize: 3 })
+    const res = await getCustomerOrders({ pageNum: 1, pageSize: 3 })
     recentOrders.value = res.data?.records || []
   } catch (e) {
     console.error('Failed to load orders', e)

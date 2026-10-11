@@ -23,6 +23,18 @@
             />
           </el-select>
         </el-form-item>
+        <el-form-item label="国际品牌">
+          <el-select v-model="searchForm.isInternational" placeholder="全部" style="width: 120px">
+            <el-option label="全部" value="" />
+            <el-option label="是" :value="1" />
+            <el-option label="否" :value="0" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="折扣价">
+          <el-input v-model="searchForm.minOriginalPrice" type="number" placeholder="最低" style="width: 110px" />
+          <span style="margin: 0 6px;">-</span>
+          <el-input v-model="searchForm.maxOriginalPrice" type="number" placeholder="最高" style="width: 110px" />
+        </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="handleSearch">搜索</el-button>
           <el-button @click="resetForm">重置</el-button>
@@ -49,6 +61,18 @@
         <el-table-column prop="price" label="价格" width="100">
           <template #default="scope">
             ¥{{ scope.row.price }}
+          </template>
+        </el-table-column>
+        <el-table-column label="折扣价" width="100">
+          <template #default="scope">
+            {{ scope.row.originalPrice ? '¥' + scope.row.originalPrice : '-' }}
+          </template>
+        </el-table-column>
+        <el-table-column label="国际品牌" width="100">
+          <template #default="scope">
+            <el-tag :type="scope.row.isInternational === 1 ? 'success' : 'info'" size="small">
+              {{ scope.row.isInternational === 1 ? '是' : '否' }}
+            </el-tag>
           </template>
         </el-table-column>
         <el-table-column prop="stock" label="库存" width="100" />
@@ -104,6 +128,12 @@
         </el-form-item>
         <el-form-item label="价格" prop="price">
           <el-input v-model="form.price" type="number" placeholder="请输入价格" />
+        </el-form-item>
+        <el-form-item label="折扣价" prop="originalPrice">
+          <el-input v-model="form.originalPrice" type="number" placeholder="划线原价，须大于售价；留空表示无折扣" />
+        </el-form-item>
+        <el-form-item label="国际品牌" prop="isInternational">
+          <el-checkbox v-model="form.isInternational" :true-value="1" :false-value="0">该商品为国际品牌</el-checkbox>
         </el-form-item>
         <el-form-item label="库存" prop="stock">
           <el-input-number v-model="form.stock" :min="0" />
@@ -163,7 +193,10 @@ const pagination = reactive({
 
 const searchForm = reactive({
   productName: '',
-  categoryId: ''
+  categoryId: '',
+  isInternational: '' as number | '',
+  minOriginalPrice: '',
+  maxOriginalPrice: ''
 })
 
 const dialogVisible = ref(false)
@@ -174,6 +207,8 @@ const form = reactive({
   productName: '',
   categoryId: '',
   price: '',
+  originalPrice: '',
+  isInternational: 0,
   stock: 0,
   status: 1,
   description: '',
@@ -216,12 +251,16 @@ const uploadUrl = computed(() => {
 // 获取商品列表
 const getProductList = async () => {
   try {
-    const res = await axios.get('/product/list/list', {
-      params: {
-        pageNum: pagination.currentPage,
-        pageSize: pagination.pageSize
-      }
-    })
+    const params: Record<string, any> = {
+      pageNum: pagination.currentPage,
+      pageSize: pagination.pageSize
+    }
+    if (searchForm.productName) params.productName = searchForm.productName
+    if (searchForm.categoryId !== '') params.categoryId = searchForm.categoryId
+    if (searchForm.isInternational !== '') params.isInternational = searchForm.isInternational
+    if (searchForm.minOriginalPrice !== '') params.minOriginalPrice = searchForm.minOriginalPrice
+    if (searchForm.maxOriginalPrice !== '') params.maxOriginalPrice = searchForm.maxOriginalPrice
+    const res = await axios.get('/product/list/list', { params })
     productList.value = res.data.records
     pagination.total = res.data.total
   } catch (error) {
@@ -230,11 +269,19 @@ const getProductList = async () => {
   }
 }
 
-// 获取分类选项
+// 获取分类选项（后台列表接口分页，这里改用分类树并拍平，避免只拿到前 10 个）
 const getCategoryOptions = async () => {
   try {
-    const res = await axios.get('/product/category/list')
-    categoryOptions.value = res.data.records
+    const res = await axios.get('/product/category/tree')
+    const flat: any[] = []
+    const walk = (nodes: any[]) => {
+      (nodes || []).forEach((node: any) => {
+        flat.push({ id: node.id, categoryName: node.categoryName })
+        if (node.children?.length) walk(node.children)
+      })
+    }
+    walk(res.data || [])
+    categoryOptions.value = flat
   } catch (error) {
     console.error('获取分类选项失败', error)
   }
@@ -250,6 +297,9 @@ const handleSearch = () => {
 const resetForm = () => {
   searchForm.productName = ''
   searchForm.categoryId = ''
+  searchForm.isInternational = ''
+  searchForm.minOriginalPrice = ''
+  searchForm.maxOriginalPrice = ''
   pagination.currentPage = 1
   getProductList()
 }
@@ -272,6 +322,8 @@ const handleAdd = () => {
   form.productName = ''
   form.categoryId = ''
   form.price = ''
+  form.originalPrice = ''
+  form.isInternational = 0
   form.stock = 0
   form.status = 1
   form.description = ''
@@ -287,6 +339,8 @@ const handleEdit = (row: any) => {
   form.productName = row.productName
   form.categoryId = row.categoryId
   form.price = row.price
+  form.originalPrice = row.originalPrice ?? ''
+  form.isInternational = row.isInternational ?? 0
   form.stock = row.stock
   form.status = row.status
   form.description = row.description

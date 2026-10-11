@@ -1,13 +1,13 @@
 <template>
   <!-- OrderConfirm — 外观严格取自 Stitch 设计稿；数据/事件沿用原有接口逻辑 -->
   <header class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
-    <div class="h-14 px-margin flex items-center justify-between gap-space-sm">
+    <div class="h-14 pl-margin pr-[96px] flex items-center justify-between gap-space-sm">
       <div class="flex items-center gap-space-sm">
         <button aria-label="Back" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors -ml-space-xs" @click="$router.back()">
           <span class="material-symbols-outlined text-[24px]">arrow_back_ios_new</span>
         </button>
-        <img alt="Walmart Logo with Favicon Spark" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WxbFcbyvQxjOWkbhkpIy_RXXWkvvU4r8XwbBzzs9Nco_MOan5kyMhQR-HNMCR0mRp1uF8RgvdxFCmQDKNrWLsQIREwC9bCIhANclidwFzjHDJdKYngvbC9SVhJUEFCNQKdAdgsR_kuBjHhBzu_6r_lIOSDxLPhDvxFeI1qc18Fk2Q5QU-DNPWkKJpBlkAaHNmUuGr1XuZnVwAPynaif0RJ1AMEB8zun78Qcq8acrYVeyXlIND6DoxdvQ" />
-        <h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold truncate max-w-[160px]">Checkout Flow</h1>
+        <img alt="Walmart Logo with Favicon Spark" class="h-8 w-auto max-w-[45%] object-contain shrink-0" :src="'/api/uploads/商品图片/screen.png'" />
+        
       </div>
       <div class="flex items-center gap-space-sm">
         <button aria-label="More actions" class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
@@ -163,7 +163,7 @@
           <!-- Order Note Input -->
           <div class="flex items-center gap-space-sm pt-space-xs">
             <span class="font-body-md text-body-md text-on-surface whitespace-nowrap">订单备注</span>
-            <input class="w-full bg-surface-container-low text-on-surface placeholder:text-outline-variant font-body-sm text-body-sm px-space-md py-2 rounded-lg focus:outline-none focus:bg-surface-container focus:text-on-surface transition-colors" maxlength="50" placeholder="选填，请和配送员协商一致（50字内）" type="text" v-model="remark" />
+            <input class="w-full bg-surface-container-low border-none text-on-surface placeholder:text-outline-variant font-body-sm text-body-sm px-space-md py-2 rounded-lg focus:outline-none focus:bg-surface-container focus:text-on-surface transition-colors" maxlength="50" placeholder="选填，请和配送员协商一致（50字内）" type="text" v-model="remark" />
           </div>
         </div>
       </section>

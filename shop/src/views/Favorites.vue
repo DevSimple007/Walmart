@@ -69,7 +69,16 @@ async function loadFavorites() {
 
 async function removeFav(productId) {
   try {
-    await showConfirmDialog({ title: '提示', message: '确定取消收藏吗？' })
+    await showConfirmDialog({
+      title: '提示',
+      message: '确定取消收藏吗？',
+      confirmButtonText: '取消收藏',
+      cancelButtonText: '再想想',
+      confirmButtonColor: '#FF3B30',
+      teleport: 'body',
+      zIndex: 9999,
+      overlayStyle: { zIndex: 9998 },
+    })
     await removeFavorite(productId)
     favorites.value = favorites.value.filter(f => f.productId !== productId)
     showToast('已取消收藏')

@@ -30,7 +30,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getCoupons, claimCoupon as claimApi } from '@/api'
+import { getCustomerCoupons, claimCoupon as claimApi } from '@/api'
 import { ElMessage } from 'element-plus'
 import { Ticket } from '@element-plus/icons-vue'
 
@@ -51,7 +51,7 @@ function couponDesc(coupon) {
 }
 
 async function loadCoupons() {
-  try { const res = await getCoupons(); coupons.value = res.data || [] } catch {}
+  try { const res = await getCustomerCoupons(); coupons.value = res.data || [] } catch {}
 }
 
 async function claimCoupon(coupon) {

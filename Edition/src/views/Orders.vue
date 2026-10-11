@@ -72,7 +72,7 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getOrders, getOrderDetail, payOrder as payOrderApi, cancelOrder as cancelOrderApi } from '@/api'
+import { getCustomerOrders, getCustomerOrderDetail, payOrder as payOrderApi, cancelOrder as cancelOrderApi } from '@/api'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Document } from '@element-plus/icons-vue'
 
@@ -95,14 +95,14 @@ async function loadOrders() {
     const params = { pageNum: 1, pageSize: 20 }
     // 后端订单状态为数字：0-待支付 1-已支付 2-待发货 3-已发货 4-已完成 5-已取消
     if (activeTab.value !== '') params.status = activeTab.value
-    const res = await getOrders(params)
+    const res = await getCustomerOrders(params)
     const records = res.data?.records || []
     // 列表接口不返回订单明细，逐单补全 items 用于展示
     const enriched = await Promise.all(
       records.map(async order => {
         if (order.items && order.items.length) return order
         try {
-          const detail = await getOrderDetail(order.orderNo)
+          const detail = await getCustomerOrderDetail(order.orderNo)
           return { ...order, items: detail.data?.items || [] }
         } catch {
           return { ...order, items: [] }

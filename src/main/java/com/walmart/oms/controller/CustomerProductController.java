@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -29,9 +30,15 @@ public class CustomerProductController {
     public R<IPage<Product>> list(
             @RequestParam(required = false) String keyword,
             @RequestParam(required = false) Long categoryId,
+            @RequestParam(required = false) String sort,
+            @RequestParam(required = false) BigDecimal minPrice,
+            @RequestParam(required = false) BigDecimal maxPrice,
+            @RequestParam(required = false) Boolean discountOnly,
+            @RequestParam(required = false) Boolean internationalOnly,
             @RequestParam(defaultValue = "1") Integer pageNum,
             @RequestParam(defaultValue = "10") Integer pageSize) {
-        IPage<Product> page = productService.searchProducts(keyword, categoryId, pageNum, pageSize);
+        IPage<Product> page = productService.searchProducts(keyword, categoryId, pageNum, pageSize,
+                sort, minPrice, maxPrice, discountOnly, internationalOnly);
         return R.success(page);
     }
 
@@ -41,6 +48,13 @@ public class CustomerProductController {
         Product product = productService.getById(id);
         if (product == null) {
             return R.error("商品不存在");
+        }
+        // 补充分类名称（详情页需要按商品分类动态展示内容）
+        if (product.getCategoryId() != null) {
+            ProductCategory category = productCategoryService.getById(product.getCategoryId());
+            if (category != null) {
+                product.setCategoryName(category.getCategoryName());
+            }
         }
         return R.success(product);
     }
@@ -62,5 +76,17 @@ public class CustomerProductController {
     @Operation(summary = "最新商品")
     public R<List<Product>> latest() {
         return R.success(productService.getLatestProducts());
+    }
+
+    @GetMapping("/discount")
+    @Operation(summary = "折扣商品（大牌低价）")
+    public R<List<Product>> discount(@RequestParam(defaultValue = "10") Integer limit) {
+        return R.success(productService.getDiscountProducts(limit));
+    }
+
+    @GetMapping("/best-sellers")
+    @Operation(summary = "热销榜单（按真实成交量）")
+    public R<List<Product>> bestSellers(@RequestParam(defaultValue = "10") Integer limit) {
+        return R.success(productService.getBestSellers(limit));
     }
 }

@@ -90,7 +90,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useCartStore } from '@/stores/cart'
-import { getAddresses, createOrder, clearCart } from '@/api'
+import { getAddressList, createCustomerOrder, clearCartApi } from '@/api'
 import { ElMessage } from 'element-plus'
 
 const { t } = useI18n()
@@ -132,9 +132,9 @@ async function placeOrder() {
       deliveryType: 'delivery',
       remark: ''
     }
-    await createOrder(orderData)
+    await createCustomerOrder(orderData)
     ElMessage.success(t('checkout.orderPlaced'))
-    try { await clearCart() } catch {}
+    try { await clearCartApi() } catch {}
     cartStore.loadCart()
     router.push('/orders')
   } catch (e) {
@@ -146,7 +146,7 @@ async function placeOrder() {
 
 onMounted(async () => {
   try {
-    const res = await getAddresses()
+    const res = await getAddressList()
     const addresses = res.data || []
     selectedAddress.value = addresses.find(a => a.isDefault) || addresses[0] || null
   } catch {}

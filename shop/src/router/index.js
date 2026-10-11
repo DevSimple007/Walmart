@@ -91,6 +91,12 @@ const routes = [
     name: 'Favorites',
     component: () => import('@/views/Favorites.vue'),
     meta: { title: '我的收藏', hideTabBar: true, needLogin: true }
+  },
+  {
+    path: '/profile/info',
+    name: 'ProfileInfo',
+    component: () => import('@/views/ProfileInfo.vue'),
+    meta: { title: '个人信息', hideTabBar: true, needLogin: true }
   }
 ]
 

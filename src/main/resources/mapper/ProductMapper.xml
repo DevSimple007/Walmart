@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.walmart.oms.mapper.ProductMapper">
-    <select id="selectProductPage" parameterType="com.baomidou.mybatisplus.extension.plugins.pagination.Page" resultType="com.walmart.oms.entity.Product">
+    <select id="selectProductPage" resultType="com.walmart.oms.entity.Product">
         SELECT p.*, c.category_name as categoryName
         FROM product p
         LEFT JOIN product_category c ON p.category_id = c.id
+        <where>
+            <if test="productName != null and productName != ''">
+                AND p.product_name LIKE CONCAT('%', #{productName}, '%')
+            </if>
+            <if test="categoryId != null">
+                AND (p.category_id = #{categoryId} OR p.category_id IN (SELECT id FROM product_category WHERE parent_id = #{categoryId}))
+            </if>
+            <if test="isInternational != null">
+                AND p.is_international = #{isInternational}
+            </if>
+            <if test="minOriginalPrice != null">
+                AND p.original_price &gt;= #{minOriginalPrice}
+            </if>
+            <if test="maxOriginalPrice != null">
+                AND p.original_price &lt;= #{maxOriginalPrice}
+            </if>
+        </where>
         ORDER BY p.create_time DESC
     </select>
 
@@ -12,6 +29,10 @@
         SELECT p.*, c.category_name as categoryName
         FROM product p
         LEFT JOIN product_category c ON p.category_id = c.id
+        <if test="sort == 'sales'">
+            LEFT JOIN (SELECT product_id, SUM(quantity) AS sold FROM order_item GROUP BY product_id) oi
+                ON oi.product_id = p.id
+        </if>
         WHERE p.status = 1
         <if test="keyword != null and keyword != ''">
             AND (p.product_name LIKE CONCAT('%', #{keyword}, '%')
@@ -21,7 +42,24 @@
         <if test="categoryId != null">
             AND (p.category_id = #{categoryId} OR p.category_id IN (SELECT id FROM product_category WHERE parent_id = #{categoryId}))
         </if>
-        ORDER BY p.create_time DESC
+        <if test="minPrice != null">
+            AND p.price &gt;= #{minPrice}
+        </if>
+        <if test="maxPrice != null">
+            AND p.price &lt;= #{maxPrice}
+        </if>
+        <if test="discountOnly != null and discountOnly">
+            AND p.original_price IS NOT NULL AND p.original_price &gt; p.price
+        </if>
+        <if test="internationalOnly != null and internationalOnly">
+            AND p.is_international = 1
+        </if>
+        <choose>
+            <when test="sort == 'sales'">ORDER BY IFNULL(oi.sold, 0) DESC, p.id DESC</when>
+            <when test="sort == 'price_asc'">ORDER BY p.price ASC, p.id DESC</when>
+            <when test="sort == 'price_desc'">ORDER BY p.price DESC, p.id DESC</when>
+            <otherwise>ORDER BY p.create_time DESC</otherwise>
+        </choose>
     </select>
 
     <select id="selectHotProducts" resultType="com.walmart.oms.entity.Product">
@@ -40,5 +78,27 @@
         WHERE p.status = 1
         ORDER BY p.create_time DESC
         LIMIT 10
+    </select>
+
+    <select id="selectDiscountProducts" resultType="com.walmart.oms.entity.Product">
+        SELECT p.*, c.category_name as categoryName
+        FROM product p
+        LEFT JOIN product_category c ON p.category_id = c.id
+        WHERE p.status = 1
+          AND p.original_price IS NOT NULL
+          AND p.original_price &gt; p.price
+        ORDER BY (p.original_price - p.price) / p.original_price DESC, p.id DESC
+        LIMIT #{limit}
+    </select>
+
+    <select id="selectBestSellers" resultType="com.walmart.oms.entity.Product">
+        SELECT p.*, c.category_name as categoryName, IFNULL(SUM(oi.quantity), 0) AS soldCount
+        FROM product p
+        LEFT JOIN product_category c ON p.category_id = c.id
+        LEFT JOIN order_item oi ON oi.product_id = p.id
+        WHERE p.status = 1
+        GROUP BY p.id, c.category_name
+        ORDER BY soldCount DESC, p.stock DESC
+        LIMIT #{limit}
     </select>
 </mapper>

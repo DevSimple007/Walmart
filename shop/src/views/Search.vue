@@ -1,13 +1,13 @@
 <template>
   <!-- Search — 外观严格取自 Stitch 设计稿；数据/事件沿用原有接口逻辑 -->
   <header class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
-    <div class="h-14 px-margin flex items-center justify-between gap-space-sm">
+    <div class="h-14 pl-margin pr-[96px] flex items-center justify-between gap-space-sm">
       <div class="flex items-center gap-space-sm">
         <button aria-label="Back" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors -ml-space-xs" @click="$router.back()">
           <span class="material-symbols-outlined text-[24px]">arrow_back_ios_new</span>
         </button>
-        <img alt="Walmart Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WxbFcbyvQxjOWkbhkpIy_RXXWkvvU4r8XwbBzzs9Nco_MOan5kyMhQR-HNMCR0mRp1uF8RgvdxFCmQDKNrWLsQIREwC9bCIhANclidwFzjHDJdKYngvbC9SVhJUEFCNQKdAdgsR_kuBjHhBzu_6r_lIOSDxLPhDvxFeI1qc18Fk2Q5QU-DNPWkKJpBlkAaHNmUuGr1XuZnVwAPynaif0RJ1AMEB8zun78Qcq8acrYVeyXlIND6DoxdvQ" />
-        <h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold truncate max-w-[160px]">Search Results</h1>
+        <img alt="Walmart Logo" class="h-8 w-auto max-w-[45%] object-contain shrink-0" :src="'/api/uploads/商品图片/screen.png'" />
+        
       </div>
       <div class="flex items-center gap-space-sm">
         <button aria-label="More actions" class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
@@ -24,7 +24,7 @@
       <div class="sticky top-0 z-40 bg-surface-container-lowest shadow-sm px-margin py-space-sm flex items-center gap-space-sm">
         <div class="flex-1 flex items-center bg-surface-container-low rounded-full px-space-md h-10 gap-space-xs shadow-inner">
           <span class="material-symbols-outlined text-[20px] text-on-surface-variant shrink-0">search</span>
-          <input ref="inputRef" v-model="keyword" class="bg-transparent text-body-md font-body-md text-on-surface w-full focus:outline-none placeholder:text-outline" id="search-input" placeholder="搜索商品、品牌或品类" type="text" @keyup.enter="doSearch" />
+          <input ref="inputRef" v-model="keyword" class="bg-transparent border-none text-body-md font-body-md text-on-surface w-full focus:outline-none placeholder:text-outline" id="search-input" placeholder="搜索商品、品牌或品类" type="text" @keyup.enter="doSearch" />
           <button v-if="keyword" aria-label="清空输入" class="w-6 h-6 flex items-center justify-center rounded-full bg-surface-container-highest text-on-surface-variant hover:text-on-surface" id="clear-search-btn" @click="keyword = ''">
             <span class="material-symbols-outlined text-[16px]">close</span>
           </button>
@@ -177,7 +177,10 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import { searchProducts, getHotProducts, getLatestProducts } from '@/api'
+
+const route = useRoute()
 
 const keyword = ref('')
 const results = ref([])
@@ -248,6 +251,12 @@ onMounted(async () => {
     hotProducts.value = hotRes.data || []
     latestProducts.value = latestRes.data || []
   } catch (_) {}
+  // 支持通过 URL 参数直接搜索（购物车「看相似」等入口跳转）
+  const q = route.query.keyword
+  if (q && typeof q === 'string') {
+    keyword.value = q
+    doSearch()
+  }
 })
 
 function searchByTag(name) {

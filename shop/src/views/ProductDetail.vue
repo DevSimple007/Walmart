@@ -1,13 +1,13 @@
 <template>
   <!-- ProductDetail — 外观严格取自 Stitch 设计稿；数据/事件沿用原有接口逻辑 -->
   <header class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
-    <div class="h-14 px-margin flex items-center justify-between gap-space-sm">
+    <div class="h-14 pl-margin pr-[96px] flex items-center justify-between gap-space-sm">
       <div class="flex items-center gap-space-sm">
         <button aria-label="Back" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors -ml-space-xs" @click="$router.back()">
           <span class="material-symbols-outlined text-[24px]">arrow_back_ios_new</span>
         </button>
-        <img alt="Walmart Logo with Favicon Spark" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WxbFcbyvQxjOWkbhkpIy_RXXWkvvU4r8XwbBzzs9Nco_MOan5kyMhQR-HNMCR0mRp1uF8RgvdxFCmQDKNrWLsQIREwC9bCIhANclidwFzjHDJdKYngvbC9SVhJUEFCNQKdAdgsR_kuBjHhBzu_6r_lIOSDxLPhDvxFeI1qc18Fk2Q5QU-DNPWkKJpBlkAaHNmUuGr1XuZnVwAPynaif0RJ1AMEB8zun78Qcq8acrYVeyXlIND6DoxdvQ" />
-        <h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold truncate max-w-[160px]">Product Detail</h1>
+        <img alt="Walmart Logo with Favicon Spark" class="h-8 w-auto max-w-[45%] object-contain shrink-0" :src="'/api/uploads/商品图片/screen.png'" />
+        
       </div>
       <div class="flex items-center gap-space-sm">
         <button aria-label="More actions" class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
@@ -24,15 +24,9 @@
       <div class="relative w-full">
         <!-- Carousel Gallery Container -->
         <div class="relative w-full aspect-square bg-surface-container overflow-hidden">
-          <div class="flex w-full h-full transition-transform duration-300 ease-out" id="pdp-carousel">
+          <div class="flex w-full h-full" id="pdp-carousel">
             <div class="w-full h-full flex-shrink-0 relative">
-              <img class="w-full h-full object-cover" data-alt="Macro close-up shot of radiant, translucent shine muscat green grapes with delicate water droplets on skin, nestled in fresh green vine leaves, soft warm natural sunlight backlighting the clusters, ultra realistic commercial grocery photography, clean studio background, high vibrant tones" :src="product.imageUrl || '/placeholder.svg'" :alt="product.productName" />
-            </div>
-            <div class="w-full h-full flex-shrink-0 relative">
-              <img class="w-full h-full object-cover" data-alt="Cross section of a crisp, juicy shine muscat grape cut in half revealing seedless translucent flesh, resting on clean white ceramic surface with splash of cool morning mist, commercial food macro shot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8taEiaGQD_F15ASzV2RZXQsQa3XXKCgcJOJip0IPlGAYxLUQnea8uM7vb6o-IKjG0bi6k2YxrhItoJrkFkKqSWjE_lNbFT2-4BSpoGVkf0-qvPYCqnh7sKue8J4LrKza7rFGNHJkkYXZ5HekXqw29BzREYYC3rBpiCG4R2kvXIfq46_yvgkJ4lYUu5zxsMFOJpYCXxRXsCuBPb3OJkr9I-YRx6ZLesI4QyG23eblDGWEupwfjv2Vo" />
-            </div>
-            <div class="w-full h-full flex-shrink-0 relative">
-              <img class="w-full h-full object-cover" data-alt="Scenic Yunnan Jianshui terraced highland grape vineyard under bright morning sunlight, lush green vines stretching towards blue mountain horizon, authentic origin agricultural imagery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFnPMHebPPg6vAwcEc4ZWpnIs7RZSK0hBqW3JU8APey692w6sPbTQHX2ttjjVujJhQH2EfDXzm7pMnq9tJannGtFB02KFdXeP-Gbo8RSlHkq4GGW5-l0J2vJfM0JiIauThAj5dCHrXm7dAX60vnMIYP6WuCiNDIpK2KFdUTW5-xLpjFccJqTMCXBAGsM5hNEwKpJ-KLu547dBj7shm547V5zXaGQxzVHoT7cYOW32DHiCTfuXgS8vm" />
+              <img class="w-full h-full object-cover" :src="product.imageUrl || '/placeholder.svg'" :alt="product.productName" />
             </div>
           </div>
           <!-- Quick Action Badges Over Hero -->
@@ -41,7 +35,10 @@
               <span class="material-symbols-outlined text-[20px]">arrow_back_ios_new</span>
             </button>
             <div class="flex items-center gap-space-xs pointer-events-auto">
-              <button aria-label="分享商品" class="w-9 h-9 rounded-full bg-inverse-surface/40 backdrop-blur-md text-on-primary flex items-center justify-center active:scale-95 transition-transform" id="shareBtn">
+              <button aria-label="收藏商品" class="w-9 h-9 rounded-full bg-inverse-surface/40 backdrop-blur-md flex items-center justify-center active:scale-95 transition-transform" id="favBtn" @click="toggleFavorite">
+                <span class="material-symbols-outlined text-[20px]" :class="isFav ? 'text-tertiary-container' : 'text-on-primary'" :style="isFav ? `font-variation-settings: 'FILL' 1` : ''">{{ isFav ? 'favorite' : 'favorite_border' }}</span>
+              </button>
+              <button aria-label="分享商品" class="w-9 h-9 rounded-full bg-inverse-surface/40 backdrop-blur-md text-on-primary flex items-center justify-center active:scale-95 transition-transform" id="shareBtn" @click="showToast('分享功能正在完善中')">
                 <span class="material-symbols-outlined text-[20px]">share</span>
               </button>
               <button aria-label="更多操作" class="w-9 h-9 rounded-full bg-inverse-surface/40 backdrop-blur-md text-on-primary flex items-center justify-center active:scale-95 transition-transform">
@@ -49,16 +46,16 @@
               </button>
             </div>
           </div>
-          <!-- Fresh Harvest Stamp & Badge -->
+          <!-- Fresh Harvest Stamp & Badge（按商品动态） -->
           <div class="absolute bottom-space-md left-space-md flex items-center gap-space-xs">
             <span class="bg-secondary-container text-on-secondary-container px-space-sm py-0.5 rounded-full font-badge-label text-badge-label flex items-center gap-1 shadow-sm">
-              <span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">eco</span>
-              今日采摘 · 鲜冷达
+              <span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">{{ heroBadge.icon }}</span>
+              {{ heroBadge.text }}
             </span>
           </div>
           <!-- Carousel Pagination Indicator -->
           <div class="absolute bottom-space-md right-space-md bg-inverse-surface/60 backdrop-blur-md text-on-primary px-space-sm py-0.5 rounded-full font-badge-label text-badge-label tracking-wider">
-            <span id="carousel-curr" class="">1</span>/5
+            <span id="carousel-curr" class="">1</span>/1
           </div>
         </div>
       </div>
@@ -71,8 +68,8 @@
             <div class="flex items-baseline gap-space-xs">
               <span class="text-tertiary-container font-price-currency text-price-currency">¥</span>
               <span class="text-tertiary-container font-display-hero text-display-hero tracking-tight">{{ formatPrice(product.price) }}</span>
-              <span class="text-on-surface-variant font-body-sm text-body-sm">/盒</span>
-              <span class="text-outline font-body-sm text-body-sm line-through ml-space-xs">¥19.90</span>
+              <span class="text-on-surface-variant font-body-sm text-body-sm">{{ priceUnit }}</span>
+              <span v-if="hasDiscount" class="text-outline font-body-sm text-body-sm line-through ml-space-xs">¥{{ formatPrice(product.originalPrice) }}</span>
             </div>
             <!-- Urgency Stock Callout -->
             <div class="flex items-center gap-1 bg-secondary-fixed text-on-secondary-fixed px-space-xs py-0.5 rounded">
@@ -80,38 +77,31 @@
               <span class="font-tab-label text-tab-label">{{ product.stock > 0 ? '仅剩 ' + product.stock + ' 件' : '暂时缺货' }}</span>
             </div>
           </div>
-          <!-- Badges and Benefit Tags -->
+          <!-- Badges and Benefit Tags（按商品动态） -->
           <div class="flex flex-wrap items-center gap-space-xs">
-            <span class="bg-tertiary-container text-on-tertiary-container px-space-xs py-0.5 rounded font-badge-label text-badge-label">
+            <span v-if="hasDiscount" class="bg-tertiary-container text-on-tertiary-container px-space-xs py-0.5 rounded font-badge-label text-badge-label">
               限时降价
             </span>
-            <span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-space-xs py-0.5 rounded font-badge-label text-badge-label">
-              每满99减15
+            <span v-if="product.isInternational" class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-space-xs py-0.5 rounded font-badge-label text-badge-label">
+              国际品牌
             </span>
             <span class="bg-primary-fixed text-on-primary-fixed-variant px-space-xs py-0.5 rounded font-badge-label text-badge-label">
-              沃集鲜严选
+              {{ product.categoryName || '沃尔玛精选' }}
             </span>
           </div>
           <!-- Product Title -->
           <h1 class="font-headline-lg text-headline-lg text-on-surface line-clamp-2 mt-0.5 leading-snug">
             {{ product.productName }}
           </h1>
-          <!-- Key Selling Points Row -->
+          <!-- Key Selling Points Row（按分类动态生成） -->
           <div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
-            <div class="flex items-center gap-1">
-              <span class="material-symbols-outlined text-primary text-[15px]">verified</span>
-              <span class="">源头直采</span>
-            </div>
-            <span class="text-outline-variant">•</span>
-            <div class="flex items-center gap-1">
-              <span class="material-symbols-outlined text-primary text-[15px]">ac_unit</span>
-              <span class="">产地冷链直达</span>
-            </div>
-            <span class="text-outline-variant">•</span>
-            <div class="flex items-center gap-1">
-              <span class="material-symbols-outlined text-primary text-[15px]">thumb_up</span>
-              <span class="">不甜包退</span>
-            </div>
+            <template v-for="(pt, i) in sellingPoints" :key="'pt-' + i">
+              <span v-if="i > 0" class="text-outline-variant">•</span>
+              <div class="flex items-center gap-1">
+                <span class="material-symbols-outlined text-primary text-[15px]">{{ pt.icon }}</span>
+                <span>{{ pt.text }}</span>
+              </div>
+            </template>
           </div>
         </div>
         <!-- Card 2: Fulfillment & Guarantees -->
@@ -125,7 +115,7 @@
                 <span class="text-primary font-badge-label text-badge-label bg-primary-fixed/50 px-space-xs py-0.5 rounded">极速履约</span>
               </div>
               <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
-                送货上门（极速达最快 30 分钟内送达）或支持到就近沃尔玛门店免费自提。
+                {{ deliveryText }}
               </p>
             </div>
           </div>
@@ -138,7 +128,7 @@
             <div class="flex-1 flex flex-col">
               <span class="font-headline-sm text-headline-sm text-on-surface">品质安心买</span>
               <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
-                沃尔玛正品保真 · 坏果烂果当场赔付包退 · 7天无理由退货无忧
+                {{ qualityText }}
               </p>
             </div>
           </div>
@@ -154,60 +144,57 @@
               <span class="text-on-surface-variant text-[11px]">商品编号</span>
               <span class="text-on-surface font-semibold truncate">{{ product.id }}</span>
             </div>
-            <div class="flex flex-col bg-surface-container-low p-space-sm rounded-lg" v-if="product.categoryName">
+            <div class="flex flex-col bg-surface-container-low p-space-sm rounded-lg">
               <span class="text-on-surface-variant text-[11px]">商品分类</span>
-              <span class="text-on-surface font-semibold truncate">{{ product.categoryName }}</span>
+              <span class="text-on-surface font-semibold truncate">{{ product.categoryName || '—' }}</span>
             </div>
             <div class="flex flex-col bg-surface-container-low p-space-sm rounded-lg">
-              <span class="text-on-surface-variant text-[11px]">原产地</span>
-              <span class="text-on-surface font-semibold truncate">云南红河州建水县</span>
+              <span class="text-on-surface-variant text-[11px]">商品规格</span>
+              <span class="text-on-surface font-semibold truncate">{{ specText }}</span>
             </div>
             <div class="flex flex-col bg-surface-container-low p-space-sm rounded-lg">
-              <span class="text-on-surface-variant text-[11px]">储存条件</span>
-              <span class="text-on-surface font-semibold truncate">0-4℃ 冷藏保鲜</span>
+              <span class="text-on-surface-variant text-[11px]">库存状态</span>
+              <span class="text-on-surface font-semibold truncate">{{ product.stock > 0 ? product.stock + ' 件' : '暂时缺货' }}</span>
             </div>
             <div class="flex flex-col bg-surface-container-low p-space-sm rounded-lg">
-              <span class="text-on-surface-variant text-[11px]">净含量规格</span>
-              <span class="text-on-surface font-semibold truncate">500g ± 20g / 盒</span>
+              <span class="text-on-surface-variant text-[11px]">上架时间</span>
+              <span class="text-on-surface font-semibold truncate">{{ createdDate }}</span>
+            </div>
+            <div class="flex flex-col bg-surface-container-low p-space-sm rounded-lg">
+              <span class="text-on-surface-variant text-[11px]">商品价格</span>
+              <span class="text-on-surface font-semibold truncate">¥{{ formatPrice(product.price) }}<template v-if="hasDiscount"> (原价 ¥{{ formatPrice(product.originalPrice) }})</template></span>
             </div>
           </div>
         </div>
-        <!-- Card 4: Customer Review Snippet -->
+        <!-- Card 4: Customer Reviews（按商品动态生成） -->
         <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-space-xs">
               <h2 class="font-headline-sm text-headline-sm text-on-surface">用户评价</h2>
-              <span class="font-tab-label text-tab-label text-tertiary-container bg-tertiary-fixed px-space-xs rounded">99.2% 好评率</span>
+              <span class="font-tab-label text-tab-label text-tertiary-container bg-tertiary-fixed px-space-xs rounded">{{ reviewRate }}% 好评率</span>
             </div>
             <button class="flex items-center text-outline hover:text-primary font-body-sm text-body-sm">
-              <span class="">共 1.2万+ 条</span>
+              <span>共 {{ reviewCount }} 条</span>
               <span class="material-symbols-outlined text-[16px]">chevron_right</span>
             </button>
           </div>
-          <!-- Quick Tag Chips -->
+          <!-- Quick Tag Chips（按商品生成） -->
           <div class="flex flex-wrap gap-space-xs pt-1">
-            <span class="bg-surface-container text-on-surface font-badge-label text-badge-label px-space-sm py-1 rounded-full">脆甜多汁 (4280)</span>
-            <span class="bg-surface-container text-on-surface font-badge-label text-badge-label px-space-sm py-1 rounded-full">包装完好 (1922)</span>
-            <span class="bg-surface-container text-on-surface font-badge-label text-badge-label px-space-sm py-1 rounded-full">分量充足 (945)</span>
+            <span v-for="tag in reviewTags" :key="tag.text" class="bg-surface-container text-on-surface font-badge-label text-badge-label px-space-sm py-1 rounded-full">{{ tag.text }} ({{ tag.count }})</span>
           </div>
-          <!-- Reviewer quote -->
-          <div class="bg-surface-container-low p-space-sm rounded-lg mt-space-xs flex flex-col gap-1">
+          <!-- Reviewer quotes（3 条，内容随商品变化） -->
+          <div v-for="(rv, ri) in reviews" :key="'rv-' + ri" class="bg-surface-container-low p-space-sm rounded-lg mt-space-xs flex flex-col gap-1">
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-1.5">
-                <span class="w-5 h-5 rounded-full bg-primary text-on-primary font-tab-label text-[10px] flex items-center justify-center font-bold">W</span>
-                <span class="font-body-sm text-body-sm text-on-surface font-medium">李** (沃尔玛黑卡会员)</span>
+                <span class="w-5 h-5 rounded-full bg-primary text-on-primary font-tab-label text-[10px] flex items-center justify-center font-bold">{{ rv.name.charAt(0) }}</span>
+                <span class="font-body-sm text-body-sm text-on-surface font-medium">{{ rv.name }}</span>
+                <span class="font-body-sm text-[11px] text-outline">{{ rv.date }}</span>
               </div>
               <div class="flex text-secondary-container">
-                <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span v-for="si in 5" :key="si" class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
               </div>
             </div>
-            <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
-              葡萄颗颗饱满圆润，拆开箱子有一股浓浓的玫瑰清香，甜度非常足，皮薄无籽直接吃超爽！
-            </p>
+            <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">{{ rv.text }}</p>
           </div>
         </div>
         <!-- Card 5: Visual Narrative & Detail Section -->
@@ -221,20 +208,18 @@
           </div>
           <div class="flex flex-col gap-space-sm">
             <div class="overflow-hidden rounded-lg">
-              <img class="w-full aspect-[4/3] object-cover" data-alt="High-definition macro details of fresh Yunnan Shine Muscat grapes packed closely in premium eco-friendly carton box, showing sugar spots on translucent emerald green skin, natural condensation beads, vibrant clean composition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCStcxL1oSbtwg1Dvk0GIdrpP1FZnaYoNFUlIHsl_WfLsoB72ZuQLRG-4nf0OsIbCMWq0p2Y79itOrxpWhcljh0sAEutbzPhswbmPddrxHTiOaV6RAKIRyMmvIJMFajhHTJMwl6bRusNFqNXgl7EV46jJ7bvdwD56BvPUmWfvbXuBqoDv8d9sMu3edrnpnIhh26Vrj0CMNDg0nkDeHVoYEI2TA8LjyNSz43SVmKuOs02GlhLvXfYBv0" />
-            </div>
-            <p v-if="product.description" class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              {{ product.description }}
-            </p>
-            <p v-else class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              源自云南建水高海拔梯田果园，日照充足昼夜温差大，糖分积累丰厚。每一颗都经过人工严选，果肉丰腴饱满，入口如蜜糖裹挟玫瑰香气，脆嫩弹滑。
-            </p>
-            <div class="overflow-hidden rounded-lg mt-space-xs">
-              <img class="w-full aspect-[4/3] object-cover" data-alt="Modern high standard cold chain sorting warehouse with refrigerated logistics truck, professional technicians inspecting pristine fresh fruits with precision scales, hygienic and modern agricultural distribution atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCTFyYrIBHp_xvUIxUf-ZT6Y8ULwSsTEAYe8SQKLc5qtnv1Jl9qp1EX72TD4nEm2kWs3t1UYejz1LDlKmdeP10sQsiI8Lu3zKKRc9_WvN4SerjNZOzT-Ymoy9NpTWIoL_pdD0CEHu_5t-ydeF4fDxwVqkevMostz5Wsd5M0ZV2FUiN0Xw4wyrRepZqcATxVgzFY0qzvBMvoJk_ZSKsldp1hSeKaKevCE-oKcmpZhS2rxgsNbvc1cif" />
+              <img class="w-full aspect-[4/3] object-cover" :src="product.imageUrl || '/placeholder.svg'" :alt="product.productName" />
             </div>
             <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              采用全温程冷链锁鲜直发体系，采收后2小时内迅速预冷降温，全程0-4℃恒温护航，锁住从枝头到舌尖的新鲜脆爽。
+              {{ detailText }}
             </p>
+            <div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-2">
+              <div v-for="(pt, i) in sellingPoints" :key="'detail-pt-' + i" class="flex items-center gap-1.5 font-body-sm text-body-sm text-on-surface-variant">
+                <span class="material-symbols-outlined text-primary text-[16px]">{{ pt.icon }}</span>
+                <span>{{ pt.text }}</span>
+              </div>
+            </div>
+            <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">{{ detailServiceText }}</p>
           </div>
         </div>
         <!-- Persistent Bottom Action Bar (PRD 3.4 Floating Dock) -->
@@ -290,9 +275,10 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { getProductDetail } from '@/api'
+import { getProductDetail, checkFavorite, addFavorite, removeFavorite } from '@/api'
+import { getToken } from '@/utils/auth'
 import { useCartStore } from '@/stores/cart'
 import { showToast } from 'vant'
 
@@ -300,13 +286,163 @@ const route = useRoute()
 const router = useRouter()
 const cartStore = useCartStore()
 const product = ref(null)
+const isFav = ref(false)
 
 function formatPrice(price) { return Number(price).toFixed(2) }
+
+// ===== 按商品动态计算的展示数据 =====
+const pid = computed(() => Number(product.value?.id || 0))
+const hasDiscount = computed(() => {
+  const p = product.value || {}
+  return p.originalPrice != null && Number(p.originalPrice) > Number(p.price)
+})
+const priceUnit = computed(() => {
+  const n = product.value?.productName || ''
+  if (/盒/.test(n)) return '/盒'
+  if (/袋/.test(n)) return '/袋'
+  if (/瓶/.test(n)) return '/瓶'
+  if (/箱/.test(n)) return '/箱'
+  if (/(斤|公斤|kg|KG|毫升|ml|mL|克)/.test(n)) return '/份'
+  return '/件'
+})
+const specText = computed(() => {
+  const n = product.value?.productName || ''
+  const m = n.match(/(\d+(?:\.\d+)?\s*(?:g|kg|KG|ml|mL|L|斤|两|只|个|袋|盒|包|片|枚|条|支|罐|瓶|卷|抽|颗|粒|英寸|寸|cm))/)
+  return m ? m[1] : '标准装'
+})
+const createdDate = computed(() => {
+  const t = product.value?.createTime || ''
+  return t ? String(t).replace('T', ' ').slice(0, 10) : '—'
+})
+const isFresh = computed(() => /生鲜|水果|蔬菜|粽/.test(product.value?.categoryName || ''))
+const isAppliance = computed(() => /家电|数码|电脑|手机|电视|空调|冰箱|洗衣机|风扇/.test(product.value?.categoryName || ''))
+
+const sellingPoints = computed(() => {
+  const p = product.value || {}
+  if (isFresh.value) return [
+    { icon: 'verified', text: '源头直采' },
+    { icon: 'ac_unit', text: '产地冷链直达' },
+    { icon: 'thumb_up', text: '坏果包赔' }
+  ]
+  if (p.isInternational) return [
+    { icon: 'public', text: '国际品牌' },
+    { icon: 'verified', text: '正品保真' },
+    { icon: 'workspace_premium', text: '品牌直采' }
+  ]
+  if (isAppliance.value) return [
+    { icon: 'verified', text: '官方正品' },
+    { icon: 'build', text: '全国联保' },
+    { icon: 'local_shipping', text: '送货入户' }
+  ]
+  return [
+    { icon: 'verified', text: '正品保真' },
+    { icon: 'local_shipping', text: '极速发货' },
+    { icon: 'autorenew', text: '7天无理由' }
+  ]
+})
+
+const heroBadge = computed(() => {
+  if (isFresh.value) return { icon: 'eco', text: '今日采摘 · 鲜冷达' }
+  if (product.value?.isInternational) return { icon: 'public', text: '国际品牌 · 正品直采' }
+  return { icon: 'verified', text: '沃尔玛自营 · 正品保障' }
+})
+
+const deliveryText = computed(() => {
+  if (isFresh.value) return '送货上门（极速达最快 30 分钟内送达）或支持到就近沃尔玛门店免费自提，生鲜商品全程冷链配送。'
+  if (isAppliance.value) return '大件商品支持送货入户并预约配送时间，也可到就近沃尔玛门店自提，配送全程可追踪。'
+  return '送货上门（极速达最快 30 分钟内送达）或支持到就近沃尔玛门店免费自提。'
+})
+
+const qualityText = computed(() => {
+  if (isFresh.value) return '沃尔玛正品保真 · 坏果烂果当场赔付包退 · 7天无理由退货无忧'
+  if (isAppliance.value) return '沃尔玛官方正品 · 全国联保 · 支持上门安装维修 · 7天无理由退货无忧'
+  if (product.value?.isInternational) return '国际品牌正品直采 · 支持防伪查验 · 7天无理由退货无忧'
+  return '沃尔玛正品保真 · 假一赔十 · 7天无理由退货无忧'
+})
+
+const detailText = computed(() => {
+  const p = product.value || {}
+  if (p.description) return p.description
+  return `精选${p.categoryName || '品质好物'} · ${p.productName}。沃尔玛为您严选每一件商品，从源头把控品质，让每一次购物都安心。`
+})
+
+const detailServiceText = computed(() => {
+  if (isFresh.value) return '全程冷链配送，收货后请及时冷藏保存；如遇坏果、少发等问题，可在订单页一键售后，沃尔玛为您快速理赔。'
+  if (isAppliance.value) return '大件商品支持送货入户并预约安装服务；如遇质量问题，凭订单在订单页发起售后，全国联保更省心。'
+  if (product.value?.isInternational) return '国际品牌正品直采，支持防伪查询；如遇质量问题，支持7天无理由退换，售后无忧。'
+  return '沃尔玛官方直营，正品保障；如遇质量问题，支持7天无理由退换，下单后由就近仓库发货，全程可追踪。'
+})
+
+// ===== 用户评价（按商品 id 稳定生成：每个商品展示不同评价） =====
+const reviews = computed(() => {
+  const p = product.value
+  if (!p) return []
+  const id = Number(p.id || 1)
+  const names = ['李**', '王**', '张**', '刘**', '陈**', '赵**', '周**', '吴**']
+  const texts = isFresh.value ? [
+    `${p.productName}收到了，非常新鲜，包装也很仔细，家里人都说好吃，下次还会回购！`,
+    `一直在这家买，${p.productName}品相一流，分量足，冷链配送很给力。`,
+    `第二次回购${p.productName}了，果肉饱满，新鲜度没得说，五星好评。`
+  ] : [
+    `${p.productName}质量不错，和描述一致，发货快，包装也挺好。`,
+    `买了好几次了，${p.productName}性价比很高，推荐入手。`,
+    `${p.productName}收到了，正品无疑，客服服务态度好，很满意！`
+  ]
+  return [0, 1, 2].map(i => ({
+    name: names[(id * 3 + i * 7) % names.length],
+    date: `2026-0${((id + i) % 9) + 1}-${10 + ((id * (i + 3)) % 18)}`,
+    text: texts[(id + i) % texts.length]
+  }))
+})
+
+const reviewRate = computed(() => (95 + ((pid.value * 7) % 50) / 10).toFixed(1))
+const reviewCount = computed(() => 1000 + (pid.value * 137) % 9000)
+const reviewTags = computed(() => {
+  const id = pid.value
+  const pool = isFresh.value
+    ? ['新鲜水灵', '分量充足', '包装完好', '物流很快', '甜度刚好', '值得回购']
+    : ['包装完好', '物流很快', '性价比高', '正品保障', '分量充足', '客服耐心']
+  return [0, 1, 2].map(i => ({
+    text: pool[(id + i * 2) % pool.length],
+    count: 100 + (id * (i + 11)) % 3000
+  }))
+})
+
+// ===== 收藏 =====
+async function loadFavState() {
+  if (!getToken() || !product.value) return
+  try {
+    const res = await checkFavorite(product.value.id)
+    isFav.value = !!res.data
+  } catch (e) { console.error('查询收藏状态失败', e) }
+}
+
+async function toggleFavorite() {
+  if (!getToken()) {
+    router.push({ path: '/login', query: { redirect: route.fullPath } })
+    return
+  }
+  if (!product.value) return
+  try {
+    if (isFav.value) {
+      await removeFavorite(product.value.id)
+      isFav.value = false
+      showToast('已取消收藏')
+    } else {
+      await addFavorite(product.value.id)
+      isFav.value = true
+      showToast('已加入收藏')
+    }
+  } catch (e) {
+    showToast(e.message || '操作失败')
+  }
+}
 
 onMounted(async () => {
   try {
     const res = await getProductDetail(route.params.id)
     product.value = res.data
+    loadFavState()
   } catch (e) {
     showToast('商品不存在')
     router.back()

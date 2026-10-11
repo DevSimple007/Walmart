@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.walmart.oms.entity.Product;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -11,12 +12,19 @@ import java.util.List;
  */
 public interface ProductService extends IService<Product> {
     /**
-     * 分页查询商品列表
+     * 分页查询商品列表（支持名称/分类/国际品牌/折扣价筛选）
+     * @param productName 商品名称（模糊）
+     * @param categoryId 分类ID
+     * @param isInternational 是否国际品牌
+     * @param minOriginalPrice 折扣价下限
+     * @param maxOriginalPrice 折扣价上限
      * @param pageNum 页码
      * @param pageSize 每页大小
      * @return 商品列表
      */
-    IPage<Product> getProductPage(Integer pageNum, Integer pageSize);
+    IPage<Product> getProductPage(String productName, Long categoryId, Integer isInternational,
+                                  BigDecimal minOriginalPrice, BigDecimal maxOriginalPrice,
+                                  Integer pageNum, Integer pageSize);
 
     /**
      * 商品上下架
@@ -26,9 +34,11 @@ public interface ProductService extends IService<Product> {
     void updateStatus(Long id, Integer status);
 
     /**
-     * 搜索商品（按关键词和分类筛选）
+     * 搜索商品（按关键词和分类筛选，支持排序/价格区间/折扣/国际品牌）
      */
-    IPage<Product> searchProducts(String keyword, Long categoryId, Integer pageNum, Integer pageSize);
+    IPage<Product> searchProducts(String keyword, Long categoryId, Integer pageNum, Integer pageSize,
+                                  String sort, BigDecimal minPrice, BigDecimal maxPrice,
+                                  Boolean discountOnly, Boolean internationalOnly);
 
     /**
      * 获取热门商品
@@ -39,4 +49,16 @@ public interface ProductService extends IService<Product> {
      * 获取最新商品
      */
     List<Product> getLatestProducts();
+
+    /**
+     * 获取折扣商品（大牌低价）
+     * @param limit 返回条数
+     */
+    List<Product> getDiscountProducts(Integer limit);
+
+    /**
+     * 获取热销榜单（按真实成交量）
+     * @param limit 返回条数
+     */
+    List<Product> getBestSellers(Integer limit);
 }

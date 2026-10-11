@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.walmart.oms.entity.Member;
 import com.walmart.oms.utils.PageUtils;
 
+import java.time.LocalDate;
 import java.util.Map;
 
 public interface MemberService extends IService<Member> {
@@ -14,4 +15,9 @@ public interface MemberService extends IService<Member> {
     Member login(String phone, String password);
     Member register(String phone, String password, String memberName);
     Member getByPhone(String phone);
+
+    /**
+     * 修改个人信息（仅更新非空字段）
+     */
+    Member updateProfile(Long memberId, String memberName, String email, Integer gender, LocalDate birthday, String avatar);
 }
